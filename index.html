@@ -137,7 +137,904 @@
         <span><b class="text-white">4.9/5</b> from <b class="text-white">1,783 customers</b></span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="#3ECF8E"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
       </div>
+
+      <!-- MINI SERP ANIMATION (hero alt - CSS-only auto rank-up) -->
+      <div class="relative mx-auto mt-20 max-w-[720px] px-4">
+        <div class="absolute inset-x-8 -top-10 h-20 bg-[#3ECF8E] opacity-10 blur-3xl rounded-full"></div>
+        <div class="relative bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl shadow-2xl overflow-hidden">
+          <div class="flex items-center gap-2 px-4 py-3 bg-[#181818] border-b border-[#2e2e2e]">
+            <div class="flex gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-[#ff5f56]"></span>
+              <span class="w-3 h-3 rounded-full bg-[#ffbd2e]"></span>
+              <span class="w-3 h-3 rounded-full bg-[#27c93f]"></span>
+            </div>
+            <div class="flex-1 mx-4 px-3 py-1 rounded-md bg-[#2a2a2a] text-[12px] text-[#a0a0a0] font-mono text-center">google.com/search?q=best+seo+platform+2026</div>
+          </div>
+          <div class="px-6 py-4 flex items-center gap-3 border-b border-[#2e2e2e]">
+            <div class="google-g-icon" style="width:20px;height:20px;"></div>
+            <span class="flex-1 text-[14px] text-[#e6e6e6]">best seo platform 2026</span>
+          </div>
+          <div class="p-6 space-y-3 relative" style="min-height:300px">
+            <div class="serp-row serp-comp serp-comp-1 rounded-lg border border-[#2e2e2e] bg-[#181818] px-4 py-3">
+              <div class="flex items-center gap-2 mb-1"><span class="w-4 h-4 rounded-full bg-[#888]"></span><span class="text-[12px] text-[#888] font-mono">linkbuilders.io</span></div>
+              <div class="text-[15px] text-[#5b9eff] mb-1">Link Builders &mdash; Outdated SEO Services</div>
+              <div class="text-[12px] text-[#777]">Manual outreach for backlinks. Slow turnaround, no AI monitoring, no relevance check.</div>
+            </div>
+            <div class="serp-row serp-comp serp-comp-2 rounded-lg border border-[#2e2e2e] bg-[#181818] px-4 py-3">
+              <div class="flex items-center gap-2 mb-1"><span class="w-4 h-4 rounded-full bg-[#888]"></span><span class="text-[12px] text-[#888] font-mono">seosharks.net</span></div>
+              <div class="text-[15px] text-[#5b9eff] mb-1">SEO Sharks &mdash; Pay Per Link Service</div>
+              <div class="text-[12px] text-[#777]">Buy backlinks for $99 each. No quality filter, no triangular ABC method, risky.</div>
+            </div>
+            <div class="serp-row serp-comp serp-comp-3 rounded-lg border border-[#2e2e2e] bg-[#181818] px-4 py-3">
+              <div class="flex items-center gap-2 mb-1"><span class="w-4 h-4 rounded-full bg-[#888]"></span><span class="text-[12px] text-[#888] font-mono">backlinkdotcom</span></div>
+              <div class="text-[15px] text-[#5b9eff] mb-1">Backlink.com &mdash; Generic Exchanges</div>
+              <div class="text-[12px] text-[#777]">No niche relevance. Random partners. Watchdog system missing.</div>
+            </div>
+            <div class="serp-row serp-winner rounded-xl border border-[#3ECF8E] bg-gradient-to-br from-[#3ECF8E]/10 to-transparent px-4 py-3 relative overflow-hidden">
+              <div class="absolute -top-4 -right-4 w-24 h-24 bg-[#3ECF8E] opacity-20 blur-2xl rounded-full"></div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="w-4 h-4 rounded-full bg-gradient-to-br from-[#3ECF8E] to-[#2BA572] flex items-center justify-center"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                <span class="text-[12px] text-[#3ECF8E] font-mono font-bold">positivebacklink.com</span>
+                <span class="ml-auto px-2 py-0.5 rounded-full bg-[#3ECF8E] text-[#0a0a0a] text-[10px] font-bold">#1 RANKED</span>
+              </div>
+              <div class="text-[16px] text-white font-semibold mb-1">PositiveBacklink &mdash; The Backlink Exchange Platform</div>
+              <div class="text-[12px] text-[#a0a0a0]">AI Watchdog + ABC triangular method + niche relevance. Get high-DA, real-traffic backlinks on autopilot.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <style>
+        @keyframes rankUp { 0%, 15% { transform: translateY(0); opacity: 0; } 25% { opacity: 1; } 70%, 100% { transform: translateY(-258px); opacity: 1; } }
+        @keyframes pushDown { 0%, 15% { transform: translateY(0); } 70%, 100% { transform: translateY(78px); } }
+        .serp-winner { animation: rankUp 4.5s cubic-bezier(0.65, 0, 0.35, 1) 0.6s both infinite alternate; box-shadow: 0 8px 32px rgba(62, 207, 142, 0.18); }
+        .serp-comp { animation: pushDown 4.5s cubic-bezier(0.65, 0, 0.35, 1) 0.6s both infinite alternate; }
+        .serp-comp-1 { animation-delay: 0.4s; }
+        .serp-comp-2 { animation-delay: 0.5s; }
+        .serp-comp-3 { animation-delay: 0.6s; }
+      </style>
     </div>
+  </section>
+
+  <!-- SITES THAT RANK SECTION (trysoro-style infinite SERP marquee) -->
+  <section id="serp-showcase" class="py-28 px-6 border-t border-[#2e2e2e] relative overflow-hidden">
+    <div class="absolute inset-0 dotted-bg opacity-30"></div>
+    <div class="absolute left-1/2 top-32 -translate-x-1/2 w-[600px] h-[200px] bg-[#3ECF8E] opacity-[0.06] blur-3xl rounded-full pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto relative">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <p class="mono-label mb-4">PROOF AT SCALE</p>
+        <h2 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">Sites that rank because of <span class="bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">PositiveBacklink</span>.</h2>
+        <p class="text-xl text-[#a0a0a0]">Over <b class="text-white">12,400 exchanges</b>, <b class="text-white">2.8 billion impressions</b> and <b class="text-white">47 million clicks</b> earned by our members.</p>
+      </div>
+    </div>
+    <div class="serp-marquee relative">
+      <div class="serp-track flex gap-6">
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 1</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="seo backlink exchange" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(180,65%,45%);">M</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">MarketingMavens</div>
+                <div class="text-[10px] text-[#888] font-mono">https://marketingmavens.io</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">Automated Backlink Exchange for SaaS Brands</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">We grew from 0 to 24k monthly clicks using PositiveBacklink's niche-matched exchange engine. Worth every credit.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 2</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="niche relevant backlinks 2026" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(200,65%,45%);">L</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">LinkLab Pro</div>
+                <div class="text-[10px] text-[#888] font-mono">https://linklab.pro</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">Niche-Relevant Backlinks: The 2026 Playbook</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">Forget random link-buying. Niche relevance is now the #1 ranking signal. Here's how triangular exchanges deliver it.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 1</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="saas link building strategy" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(280,65%,45%);">G</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">GrowthForge</div>
+                <div class="text-[10px] text-[#888] font-mono">https://growthforge.dev</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">SaaS Link Building Strategy That Actually Works</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">Stop buying spam. Start exchanging. We tripled MRR by getting backlinks from real, relevant SaaS publications.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 3</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="abc triangular link exchange" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(340,65%,45%);">S</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">SEOTriangle</div>
+                <div class="text-[10px] text-[#888] font-mono">https://seotriangle.co</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">ABC Triangular Link Exchange Explained (2026 Guide)</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">Site A links to B, B to C, C to A. No reciprocity footprint, Google-safe, 100% white hat. Full walkthrough.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 2</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="high da backlinks" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(50,65%,45%);">D</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">DAVault</div>
+                <div class="text-[10px] text-[#888] font-mono">https://davault.com</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">High-DA Backlinks Without Outreach Hell</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">DA 60+ partners, AI-verified live links, 24/7 watchdog. The only autopilot we trust for client SEO.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 1</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="ecommerce link building" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(120,65%,45%);">S</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">ShopRanker</div>
+                <div class="text-[10px] text-[#888] font-mono">https://shopranker.store</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">Ecommerce Link Building &mdash; 4.2x Organic Sales</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">We A/B tested 6 agencies and one exchange platform. The exchange won by a mile. Here's our data.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 4</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="dofollow backlink platform" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(30,65%,45%);">L</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">LinkBridge</div>
+                <div class="text-[10px] text-[#888] font-mono">https://linkbridge.app</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">Dofollow Backlinks From Verified Publishers</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">Every link is dofollow, every host is verified, every placement is monitored. No PBNs, no spam, just SEO.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 1</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="ai backlink monitoring" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(260,65%,45%);">W</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">WatchDogSEO</div>
+                <div class="text-[10px] text-[#888] font-mono">https://watchdogseo.io</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">AI Backlink Monitoring &mdash; 12h Heartbeat Check</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">We catch removed, nofollowed, or noindexed backlinks before Google does. Credits auto-refunded on breach.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 2</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="guest post exchange platform" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(160,65%,45%);">P</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">PostSwap</div>
+                <div class="text-[10px] text-[#888] font-mono">https://postswap.dev</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">Guest Post Exchange Without the Email Tennis</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">Match. Publish. Verify. All in 48h. The future of guest posting isn't manual &mdash; it's algorithmic.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 3</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="link insertion service" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(320,65%,45%);">L</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">LinkInjector</div>
+                <div class="text-[10px] text-[#888] font-mono">https://linkinjector.co</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">Link Insertion vs Exchange &mdash; What Ranks Better?</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">We compared 1,247 insertions vs 1,247 exchanges. Exchanges won 7.4x in 90-day SERP gains. Full study inside.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 1</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="content gap backlinks" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(90,65%,45%);">G</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">GapHunter</div>
+                <div class="text-[10px] text-[#888] font-mono">https://gaphunter.ai</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">Content Gap Backlinks &mdash; The New Topical Authority</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">PositiveBacklink finds gap pages where your link fits naturally. Result: 38% faster ranking.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 2</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="b2b backlink network" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(220,65%,45%);">B</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">B2BNet</div>
+                <div class="text-[10px] text-[#888] font-mono">https://b2bnet.partners</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">B2B Backlink Network for Series A SaaS</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">Backed by 1,200+ verified B2B sites. Every exchange filtered by DA, niche, language, and intent.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 1</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="seo backlink exchange" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(180,65%,45%);">M</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">MarketingMavens</div>
+                <div class="text-[10px] text-[#888] font-mono">https://marketingmavens.io</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">Automated Backlink Exchange for SaaS Brands</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">We grew from 0 to 24k monthly clicks using PositiveBacklink's niche-matched exchange engine. Worth every credit.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 2</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="niche relevant backlinks 2026" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(200,65%,45%);">L</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">LinkLab Pro</div>
+                <div class="text-[10px] text-[#888] font-mono">https://linklab.pro</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">Niche-Relevant Backlinks: The 2026 Playbook</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">Forget random link-buying. Niche relevance is now the #1 ranking signal. Here's how triangular exchanges deliver it.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 1</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="saas link building strategy" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(280,65%,45%);">G</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">GrowthForge</div>
+                <div class="text-[10px] text-[#888] font-mono">https://growthforge.dev</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">SaaS Link Building Strategy That Actually Works</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">Stop buying spam. Start exchanging. We tripled MRR by getting backlinks from real, relevant SaaS publications.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 3</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="abc triangular link exchange" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(340,65%,45%);">S</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">SEOTriangle</div>
+                <div class="text-[10px] text-[#888] font-mono">https://seotriangle.co</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">ABC Triangular Link Exchange Explained (2026 Guide)</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">Site A links to B, B to C, C to A. No reciprocity footprint, Google-safe, 100% white hat. Full walkthrough.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 2</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="high da backlinks" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(50,65%,45%);">D</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">DAVault</div>
+                <div class="text-[10px] text-[#888] font-mono">https://davault.com</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">High-DA Backlinks Without Outreach Hell</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">DA 60+ partners, AI-verified live links, 24/7 watchdog. The only autopilot we trust for client SEO.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 1</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="ecommerce link building" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(120,65%,45%);">S</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">ShopRanker</div>
+                <div class="text-[10px] text-[#888] font-mono">https://shopranker.store</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">Ecommerce Link Building &mdash; 4.2x Organic Sales</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">We A/B tested 6 agencies and one exchange platform. The exchange won by a mile. Here's our data.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 4</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="dofollow backlink platform" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(30,65%,45%);">L</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">LinkBridge</div>
+                <div class="text-[10px] text-[#888] font-mono">https://linkbridge.app</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">Dofollow Backlinks From Verified Publishers</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">Every link is dofollow, every host is verified, every placement is monitored. No PBNs, no spam, just SEO.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 1</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="ai backlink monitoring" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(260,65%,45%);">W</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">WatchDogSEO</div>
+                <div class="text-[10px] text-[#888] font-mono">https://watchdogseo.io</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">AI Backlink Monitoring &mdash; 12h Heartbeat Check</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">We catch removed, nofollowed, or noindexed backlinks before Google does. Credits auto-refunded on breach.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 2</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="guest post exchange platform" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(160,65%,45%);">P</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">PostSwap</div>
+                <div class="text-[10px] text-[#888] font-mono">https://postswap.dev</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">Guest Post Exchange Without the Email Tennis</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">Match. Publish. Verify. All in 48h. The future of guest posting isn't manual &mdash; it's algorithmic.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 3</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="link insertion service" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(320,65%,45%);">L</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">LinkInjector</div>
+                <div class="text-[10px] text-[#888] font-mono">https://linkinjector.co</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">Link Insertion vs Exchange &mdash; What Ranks Better?</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">We compared 1,247 insertions vs 1,247 exchanges. Exchanges won 7.4x in 90-day SERP gains. Full study inside.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 1</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="content gap backlinks" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(90,65%,45%);">G</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">GapHunter</div>
+                <div class="text-[10px] text-[#888] font-mono">https://gaphunter.ai</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">Content Gap Backlinks &mdash; The New Topical Authority</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">PositiveBacklink finds gap pages where your link fits naturally. Result: 38% faster ranking.</p>
+          </div>
+        </div>
+        <div class="serp-card relative shrink-0 w-[360px] bg-[#1f1f1f] border border-[#2e2e2e] rounded-2xl overflow-hidden hover:border-[#3ECF8E]/40 transition-colors">
+          <div class="absolute top-4 right-4 p-[1.5px] rounded-full bg-gradient-to-r from-[#3ECF8E] to-[#2BA572]">
+            <div class="px-2.5 py-1 rounded-full bg-[#1f1f1f] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#3ECF8E]"></span>
+              <span class="text-[11px] font-bold bg-gradient-to-r from-[#3ECF8E] to-[#2BA572] bg-clip-text text-transparent">Top 2</span>
+            </div>
+          </div>
+          <div class="px-5 pt-5 pb-3">
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 google-g-icon"></div>
+              <input type="text" value="b2b backlink network" readonly class="w-full pl-9 pr-4 py-2 text-[12px] text-[#e6e6e6] bg-[#181818] border border-[#2e2e2e] rounded-full focus:outline-none">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="flex items-center gap-4 border-b border-[#2e2e2e]">
+              <button class="text-[11px] font-medium text-[#3ECF8E] pb-2 border-b-[2px] border-[#3ECF8E]">All</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Images</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Videos</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">Maps</button>
+              <button class="text-[11px] font-medium text-[#777] pb-2">News</button>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:hsl(220,65%,45%);">B</div>
+              <div class="leading-tight">
+                <div class="text-[12px] font-medium text-[#e6e6e6]">B2BNet</div>
+                <div class="text-[10px] text-[#888] font-mono">https://b2bnet.partners</div>
+              </div>
+            </div>
+            <h4 class="text-[15px] text-[#5b9eff] font-medium leading-snug mb-1.5 hover:underline cursor-pointer">B2B Backlink Network for Series A SaaS</h4>
+            <p class="text-[12px] text-[#a0a0a0] leading-relaxed">Backed by 1,200+ verified B2B sites. Every exchange filtered by DA, niche, language, and intent.</p>
+          </div>
+        </div>
+      </div>
+      <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#1c1c1c] to-transparent pointer-events-none z-10"></div>
+      <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#1c1c1c] to-transparent pointer-events-none z-10"></div>
+    </div>
+    <style>
+      .google-g-icon { width: 16px; height: 16px; background-image: url("data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="%23FFC107" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="%23FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="%234CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="%231976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 36.5 44 31 44 24c0-1.3-.1-2.6-.4-3.9z"/></svg>"); background-size: contain; background-repeat: no-repeat; }
+      .serp-marquee { width: 100%; overflow: hidden; padding: 2rem 0; }
+      .serp-track { width: max-content; animation: serpMarquee 80s linear infinite; }
+      .serp-marquee:hover .serp-track { animation-play-state: paused; }
+      @keyframes serpMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    </style>
   </section>
 
   <!-- CASE STUDIES SECTION (trysoro-style GSC chart showcases) -->
