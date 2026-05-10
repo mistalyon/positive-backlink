@@ -1,409 +1,468 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>PositiveBacklink — Secure Automated Link Exchange</title>
-<meta name="description" content="The first automated backlink exchange platform with AI Watchdog and ABC triangular methodology." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
-<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      fontFamily: { sans: ["Inter","sans-serif"] },
-      colors: {
-        brand: { 50:"#eef4ff",100:"#dbe6ff",400:"#5b85ff",500:"#3361ff",600:"#1f3ff5",700:"#192fe0" },
-        ink: { 100:"#eceef5",200:"#d4d8e5",300:"#aeb5cc",400:"#828bab",500:"#636c8e",700:"#3f455e",800:"#363b50",900:"#171b2d",950:"#0b0e1d" }
-      },
-      animation: { float:"float 6s ease-in-out infinite", shimmer:"shimmer 6s linear infinite", blob:"blob 7s infinite" },
-      keyframes: {
-        float: { "0%,100%":{transform:"translateY(0)"}, "50%":{transform:"translateY(-15px)"} },
-        shimmer: { "0%":{backgroundPosition:"0% 50%"},"50%":{backgroundPosition:"100% 50%"},"100%":{backgroundPosition:"0% 50%"} },
-        blob: { "0%,100%":{transform:"translate(0,0) scale(1)"}, "33%":{transform:"translate(40px,-50px) scale(1.1)"}, "66%":{transform:"translate(-30px,30px) scale(0.9)"} }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PositiveBacklink | The Backlink Exchange Platform</title>
+  <meta name="description" content="The first automated backlink exchange platform with AI Watchdog and ABC triangular methodology. Start exchanging high-quality backlinks in minutes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: "#3ECF8E", dark: "#24b47e", light: "#3ECF8E" },
+            bg: { DEFAULT: "#1c1c1c", soft: "#1f1f1f", surface: "#181818", deep: "#121212" },
+            border: { DEFAULT: "#2e2e2e", strong: "#3a3a3a" },
+            ink: { DEFAULT: "#ededed", muted: "#a0a0a0", dim: "#707070" }
+          },
+          fontFamily: {
+            sans: ["Inter", "system-ui", "sans-serif"],
+            mono: ["JetBrains Mono", "ui-monospace", "monospace"]
+          }
+        }
       }
     }
-  }
-};
-</script>
-<style>
-body{font-family:"Inter",sans-serif;background:#0b0e1d;color:#fff;overflow-x:hidden}
-.grid-bg{background-image:linear-gradient(rgba(91,133,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(91,133,255,.07) 1px,transparent 1px);background-size:60px 60px}
-.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.4;pointer-events:none}
-.gtext{background:linear-gradient(135deg,#5b85ff 0%,#22d3ee 50%,#5b85ff 100%);background-size:200% 200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 6s linear infinite}
-.glass{background:rgba(255,255,255,.04);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08)}
-.card{transition:all .4s cubic-bezier(.4,0,.2,1)}
-.card:hover{transform:translateY(-8px);border-color:rgba(91,133,255,.5);box-shadow:0 30px 60px -15px rgba(51,97,255,.3)}
-.btn-primary{background:linear-gradient(135deg,#3361ff,#1f3ff5);box-shadow:0 10px 30px -10px rgba(51,97,255,.6);transition:all .3s}
-.btn-primary:hover{box-shadow:0 20px 40px -10px rgba(51,97,255,.9);transform:translateY(-2px)}
-html{scroll-behavior:smooth}
-::selection{background:#3361ff;color:#fff}
-.text-balance{text-wrap:balance}
-</style>
+  </script>
+  <style>
+    body { background:#1c1c1c; color:#ededed; font-family: "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    .dotted-bg { background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 22px 22px; }
+    .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+    .text-gradient-brand { background: linear-gradient(180deg,#3ECF8E 0%, #2BA572 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .glow-brand { box-shadow: 0 0 80px rgba(62,207,142,0.25); }
+    .card { background:#1f1f1f; border:1px solid #2e2e2e; border-radius:16px; }
+    .card-hover:hover { border-color:#3a3a3a; background:#222; transition:all .25s ease; }
+    .btn-primary { background:#3ECF8E; color:#0a0a0a; font-weight:500; border-radius:8px; padding:10px 18px; transition: all .2s; }
+    .btn-primary:hover { background:#36b87f; }
+    .btn-outline { background:transparent; color:#ededed; font-weight:500; border:1px solid #3a3a3a; border-radius:8px; padding:10px 18px; transition:all .2s; }
+    .btn-outline:hover { background:#2a2a2a; border-color:#4a4a4a; }
+    .nav-link { color:#a0a0a0; font-size:14px; font-weight:400; transition:color .15s; }
+    .nav-link:hover { color:#ededed; }
+    .pill { background:#222; border:1px solid #2e2e2e; border-radius:999px; padding:6px 14px; font-size:13px; color:#c0c0c0; display:inline-flex; align-items:center; gap:8px; transition:all .2s; }
+    .pill:hover { background:#262626; border-color:#3a3a3a; }
+    .mono-label { font-family:"JetBrains Mono", monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:#707070; }
+    .fade-mask { mask-image: linear-gradient(180deg, black 0%, black 70%, transparent 100%); -webkit-mask-image: linear-gradient(180deg, black 0%, black 70%, transparent 100%); }
+    .glow-spot { position:absolute; width:600px; height:600px; border-radius:50%; background: radial-gradient(circle, rgba(62,207,142,0.18) 0%, rgba(62,207,142,0) 70%); pointer-events:none; }
+    @keyframes pulseGlow { 0%,100% { opacity:.6; } 50% { opacity:1; } }
+    .pulse { animation: pulseGlow 2.5s ease-in-out infinite; }
+    .scrollbar-hide::-webkit-scrollbar { display:none; }
+    .scrollbar-hide { -ms-overflow-style:none; scrollbar-width:none; }
+    a { color: inherit; text-decoration: none; }
+  </style>
 </head>
-<body class="antialiased">
-<nav id="topnav" class="fixed top-0 left-0 right-0 z-50 transition-all bg-ink-950/40 backdrop-blur-xl border-b border-white/5">
-<div class="max-w-7xl mx-auto px-6 lg:px-8">
-<div class="flex items-center justify-between h-20">
-<a href="#" class="flex items-center gap-2 group">
-<div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center group-hover:scale-110 transition">
-<i data-lucide="link-2" class="w-5 h-5 text-white"></i>
-</div>
-<span class="text-xl font-bold tracking-tight">Positive<span class="gtext">Backlink</span></span>
-</a>
-<div class="hidden lg:flex items-center gap-8 text-sm text-ink-300">
-<a href="#features" class="hover:text-white transition">Features</a>
-<a href="#how" class="hover:text-white transition">How it Works</a>
-<a href="#pricing" class="hover:text-white transition">Pricing</a>
-<a href="#faq" class="hover:text-white transition">FAQ</a>
-</div>
-<div class="hidden lg:flex items-center gap-3">
-<a href="./login.html" class="text-sm text-ink-200 hover:text-white px-4 py-2">Sign in</a>
-<a href="./login.html?mode=signup" class="text-sm font-semibold btn-primary text-white px-5 py-2.5 rounded-xl">Get Started Free</a>
-</div>
-<button id="mobile-toggle" class="lg:hidden p-2"><i data-lucide="menu" class="w-6 h-6"></i></button>
-</div>
-<div id="mobile-menu" class="hidden lg:hidden glass rounded-2xl p-4 mb-4 space-y-2">
-<a href="#features" class="block px-4 py-2 hover:bg-white/5 rounded-lg">Features</a>
-<a href="#how" class="block px-4 py-2 hover:bg-white/5 rounded-lg">How it Works</a>
-<a href="#pricing" class="block px-4 py-2 hover:bg-white/5 rounded-lg">Pricing</a>
-<a href="#faq" class="block px-4 py-2 hover:bg-white/5 rounded-lg">FAQ</a>
-<a href="./login.html" class="block px-4 py-2 hover:bg-white/5 rounded-lg">Sign in</a>
-<a href="./login.html?mode=signup" class="block px-4 py-2 btn-primary text-white rounded-lg text-center font-semibold">Get Started Free</a>
-</div>
-</div>
-</nav>
-<section class="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
-<div class="absolute inset-0 grid-bg opacity-60"></div>
-<div class="blob bg-brand-600 w-[500px] h-[500px] top-20 -left-32 animate-blob"></div>
-<div class="blob bg-cyan-500 w-[400px] h-[400px] top-40 right-0 animate-blob" style="animation-delay:2s"></div>
-<div class="blob bg-purple-600 w-[450px] h-[450px] bottom-0 left-1/3 animate-blob" style="animation-delay:4s"></div>
-<div class="relative max-w-7xl mx-auto px-6 lg:px-8 w-full">
-<div class="grid lg:grid-cols-12 gap-12 items-center">
-<div class="lg:col-span-7 space-y-8" data-aos="fade-up">
-<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-xs font-semibold tracking-wider uppercase">
-<span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-<span class="text-ink-200">AI Watchdog Active • 1,240+ sites monitored</span>
-</div>
-<h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.05] text-balance">Build backlinks that <span class="gtext">never disappear</span>.</h1>
-<p class="text-lg md:text-xl text-ink-300 max-w-2xl leading-relaxed">The first automated link exchange platform with 24/7 AI monitoring and ABC triangular methodology. Scale your SEO authority safely, transparently, and at zero cost.</p>
-<div class="flex flex-col sm:flex-row gap-4 pt-2">
-<a href="./login.html?mode=signup" class="btn-primary text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-2"><i data-lucide="rocket" class="w-5 h-5"></i> Start Your First Exchange</a>
-<a href="#how" class="glass hover:bg-white/10 px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-2 transition"><i data-lucide="play-circle" class="w-5 h-5"></i> See How it Works</a>
-</div>
-<div class="flex flex-wrap items-center gap-6 pt-6 text-sm text-ink-400">
-<div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-green-400"></i> No no-follow links</div>
-<div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-green-400"></i> 24/7 audit</div>
-<div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-green-400"></i> ABC safe method</div>
-</div>
-</div>
-<div class="lg:col-span-5 relative" data-aos="fade-left" data-aos-delay="200">
-<div class="glass rounded-3xl p-6 animate-float relative z-10">
-<div class="flex items-center gap-2 mb-4">
-<span class="w-3 h-3 rounded-full bg-red-400"></span>
-<span class="w-3 h-3 rounded-full bg-yellow-400"></span>
-<span class="w-3 h-3 rounded-full bg-green-400"></span>
-<span class="ml-auto text-xs text-ink-400 font-mono">dashboard.positivebacklink.com</span>
-</div>
-<div class="space-y-3">
-<div class="flex items-center justify-between p-3 rounded-xl bg-white/5">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center"><i data-lucide="check" class="w-5 h-5"></i></div>
-<div><p class="font-semibold text-sm">techblog.io → marketing.co</p><p class="text-xs text-ink-400">Active • DA 52</p></div>
-</div>
-<span class="text-xs text-green-400 font-bold">+1 credit</span>
-</div>
-<div class="flex items-center justify-between p-3 rounded-xl bg-white/5">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-400 to-brand-600 flex items-center justify-center"><i data-lucide="link" class="w-5 h-5"></i></div>
-<div><p class="font-semibold text-sm">healthhub.com → fitlife.app</p><p class="text-xs text-ink-400">ABC Exchange • DA 47</p></div>
-</div>
-<span class="text-xs text-brand-400 font-bold">Pending</span>
-</div>
-<div class="flex items-center justify-between p-3 rounded-xl bg-white/5">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-400 to-pink-600 flex items-center justify-center"><i data-lucide="search" class="w-5 h-5"></i></div>
-<div><p class="font-semibold text-sm">AI Watchdog scanning...</p><p class="text-xs text-ink-400">45,892 links audited today</p></div>
-</div>
-<div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-</div>
-</div>
-<div class="mt-4 pt-4 border-t border-white/5 grid grid-cols-3 gap-3 text-center">
-<div><p class="text-2xl font-black gtext">52</p><p class="text-xs text-ink-400 mt-1">Active links</p></div>
-<div><p class="text-2xl font-black gtext">98%</p><p class="text-xs text-ink-400 mt-1">Uptime</p></div>
-<div><p class="text-2xl font-black gtext">+12</p><p class="text-xs text-ink-400 mt-1">This week</p></div>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section class="py-16 border-y border-white/5 relative bg-white/[0.01]">
-<div class="max-w-7xl mx-auto px-6 lg:px-8">
-<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-<div class="text-center" data-aos="fade-up"><p class="text-4xl md:text-5xl font-black gtext">1,240+</p><p class="text-sm text-ink-400 mt-2 uppercase tracking-wider">Active Websites</p></div>
-<div class="text-center" data-aos="fade-up" data-aos-delay="100"><p class="text-4xl md:text-5xl font-black gtext">45,000+</p><p class="text-sm text-ink-400 mt-2 uppercase tracking-wider">Links Verified</p></div>
-<div class="text-center" data-aos="fade-up" data-aos-delay="200"><p class="text-4xl md:text-5xl font-black gtext">DA 40+</p><p class="text-sm text-ink-400 mt-2 uppercase tracking-wider">Avg. Authority</p></div>
-<div class="text-center" data-aos="fade-up" data-aos-delay="300"><p class="text-4xl md:text-5xl font-black gtext">$0</p><p class="text-sm text-ink-400 mt-2 uppercase tracking-wider">Cost per Link</p></div>
-</div></div></section>
-<section id="features" class="py-32 relative">
-<div class="blob bg-brand-500 w-[600px] h-[600px] top-1/4 -right-40 animate-blob" style="animation-delay:1s"></div>
-<div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
-<div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
-<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-semibold tracking-wider uppercase mb-6"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Why Choose Us</div>
-<h2 class="text-4xl md:text-6xl font-black tracking-tight mb-6 text-balance">Built for SEO pros who refuse to gamble.</h2>
-<p class="text-lg text-ink-300">Traditional link exchanges are risky and unsustainable. We engineered a system where every link is protected, verified, and accounted for.</p>
-</div>
-<div class="grid md:grid-cols-3 gap-6">
-<div class="card glass rounded-3xl p-8" data-aos="fade-up">
-<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center mb-6"><i data-lucide="bot" class="w-7 h-7"></i></div>
-<h3 class="text-2xl font-bold mb-3">AI Watchdog</h3>
-<p class="text-ink-300 leading-relaxed mb-6">Our bot scans your active exchanges every 12 hours. If a link is removed, hidden, or switched to no-follow — we catch it instantly and refund your credits automatically.</p>
-<div class="flex items-center gap-2 text-sm text-brand-400 font-semibold"><i data-lucide="zap" class="w-4 h-4"></i> 12-hour audit cycle</div>
-</div>
-<div class="card glass rounded-3xl p-8" data-aos="fade-up" data-aos-delay="100">
-<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center mb-6"><i data-lucide="shuffle" class="w-7 h-7"></i></div>
-<h3 class="text-2xl font-bold mb-3">ABC Triangular Method</h3>
-<p class="text-ink-300 leading-relaxed mb-6">Avoid Google footprint penalties. Instead of A↔B exchanges, we create A→B→C→A chains so your links look completely natural and editorial.</p>
-<div class="flex items-center gap-2 text-sm text-purple-400 font-semibold"><i data-lucide="shield" class="w-4 h-4"></i> Penalty-proof topology</div>
-</div>
-<div class="card glass rounded-3xl p-8" data-aos="fade-up" data-aos-delay="200">
-<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500 to-emerald-600 flex items-center justify-center mb-6"><i data-lucide="gem" class="w-7 h-7"></i></div>
-<h3 class="text-2xl font-bold mb-3">Niche Relevance Engine</h3>
-<p class="text-ink-300 leading-relaxed mb-6">Our matching algorithm pairs you only with topically relevant sites. Tech with tech, health with health. Maximum SEO impact, zero spam.</p>
-<div class="flex items-center gap-2 text-sm text-emerald-400 font-semibold"><i data-lucide="target" class="w-4 h-4"></i> Category-locked matching</div>
-</div>
-<div class="card glass rounded-3xl p-8" data-aos="fade-up">
-<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center mb-6"><i data-lucide="trending-up" class="w-7 h-7"></i></div>
-<h3 class="text-2xl font-bold mb-3">Credit Economy</h3>
-<p class="text-ink-300 leading-relaxed mb-6">Give a link, get a credit. Receive a link, spend a credit. Simple, fair, transparent. No money changes hands — pure value exchange.</p>
-<div class="flex items-center gap-2 text-sm text-orange-400 font-semibold"><i data-lucide="coins" class="w-4 h-4"></i> 5 free credits on signup</div>
-</div>
-<div class="card glass rounded-3xl p-8" data-aos="fade-up" data-aos-delay="100">
-<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center mb-6"><i data-lucide="user-check" class="w-7 h-7"></i></div>
-<h3 class="text-2xl font-bold mb-3">Trust Score System</h3>
-<p class="text-ink-300 leading-relaxed mb-6">Every member has a public trust score. Honor your commitments and your score rises. Break a link and it drops. The community polices itself.</p>
-<div class="flex items-center gap-2 text-sm text-yellow-400 font-semibold"><i data-lucide="award" class="w-4 h-4"></i> Reputation-based access</div>
-</div>
-<div class="card glass rounded-3xl p-8" data-aos="fade-up" data-aos-delay="200">
-<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-fuchsia-500 to-violet-600 flex items-center justify-center mb-6"><i data-lucide="bar-chart-3" class="w-7 h-7"></i></div>
-<h3 class="text-2xl font-bold mb-3">Real-time Analytics</h3>
-<p class="text-ink-300 leading-relaxed mb-6">Track every link, every position, every referral. Beautiful dashboards show your authority growth, traffic flow, and partner network at a glance.</p>
-<div class="flex items-center gap-2 text-sm text-fuchsia-400 font-semibold"><i data-lucide="line-chart" class="w-4 h-4"></i> Live data, no delays</div>
-</div>
-</div></div></section>
-<section id="how" class="py-32 relative bg-white/[0.02] border-y border-white/5">
-<div class="max-w-7xl mx-auto px-6 lg:px-8">
-<div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
-<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-semibold tracking-wider uppercase mb-6"><i data-lucide="route" class="w-3.5 h-3.5"></i> How It Works</div>
-<h2 class="text-4xl md:text-6xl font-black tracking-tight mb-6 text-balance">From signup to first link in <span class="gtext">under 10 minutes</span>.</h2>
-<p class="text-lg text-ink-300">A streamlined onboarding designed for webmasters who value their time.</p>
-</div>
-<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-<div class="relative" data-aos="fade-up">
-<div class="absolute -top-4 -left-4 w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-2xl font-black">1</div>
-<div class="glass rounded-3xl p-8 pt-10 h-full">
-<i data-lucide="user-plus" class="w-8 h-8 text-brand-400 mb-4"></i>
-<h3 class="text-xl font-bold mb-3">Create Account</h3>
-<p class="text-ink-300 text-sm leading-relaxed">Sign up with Google in seconds. Get 5 free credits to kickstart your link building journey.</p>
-</div></div>
-<div class="relative" data-aos="fade-up" data-aos-delay="100">
-<div class="absolute -top-4 -left-4 w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-2xl font-black">2</div>
-<div class="glass rounded-3xl p-8 pt-10 h-full">
-<i data-lucide="globe" class="w-8 h-8 text-purple-400 mb-4"></i>
-<h3 class="text-xl font-bold mb-3">Add Your Sites</h3>
-<p class="text-ink-300 text-sm leading-relaxed">Add domains, pick categories, then verify ownership by placing a simple meta tag in your HTML head.</p>
-</div></div>
-<div class="relative" data-aos="fade-up" data-aos-delay="200">
-<div class="absolute -top-4 -left-4 w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-500 to-emerald-600 flex items-center justify-center text-2xl font-black">3</div>
-<div class="glass rounded-3xl p-8 pt-10 h-full">
-<i data-lucide="zap" class="w-8 h-8 text-cyan-400 mb-4"></i>
-<h3 class="text-xl font-bold mb-3">Match & Exchange</h3>
-<p class="text-ink-300 text-sm leading-relaxed">Our algorithm surfaces relevant partners. Initiate exchanges with one click, place links, get credits.</p>
-</div></div>
-<div class="relative" data-aos="fade-up" data-aos-delay="300">
-<div class="absolute -top-4 -left-4 w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-2xl font-black">4</div>
-<div class="glass rounded-3xl p-8 pt-10 h-full">
-<i data-lucide="shield-check" class="w-8 h-8 text-orange-400 mb-4"></i>
-<h3 class="text-xl font-bold mb-3">Watchdog Protects</h3>
-<p class="text-ink-300 text-sm leading-relaxed">Sit back. Our bot monitors every link 24/7. If anything changes, you are notified instantly and made whole.</p>
-</div></div>
-</div>
-</div></section>
-<section id="pricing" class="py-32 relative">
-<div class="blob bg-purple-600 w-[500px] h-[500px] top-0 -left-32 animate-blob" style="animation-delay:2s"></div>
-<div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
-<div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
-<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-semibold tracking-wider uppercase mb-6"><i data-lucide="tag" class="w-3.5 h-3.5"></i> Pricing</div>
-<h2 class="text-4xl md:text-6xl font-black tracking-tight mb-6 text-balance">Pricing made <span class="gtext">brutally simple</span>.</h2>
-<p class="text-lg text-ink-300">Free forever for the base tier. Upgrade only if you scale beyond 20 sites.</p>
-</div>
-<div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-<div class="card glass rounded-3xl p-8" data-aos="fade-up">
-<h3 class="text-lg font-bold mb-2">Starter</h3>
-<p class="text-4xl font-black mb-1">$0</p>
-<p class="text-sm text-ink-400 mb-6">Free forever</p>
-<ul class="space-y-3 mb-8 text-sm">
-<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400"></i> Up to 3 sites</li>
-<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400"></i> 5 free credits</li>
-<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400"></i> AI Watchdog basic</li>
-<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400"></i> ABC exchanges</li>
-<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400"></i> Community support</li>
-</ul>
-<a href="./login.html?mode=signup" class="block text-center glass hover:bg-white/10 rounded-xl py-3 font-semibold transition">Get Started</a>
-</div>
-<div class="card relative rounded-3xl p-8 border-2 border-brand-500 bg-gradient-to-br from-brand-600/20 to-purple-600/20" data-aos="fade-up" data-aos-delay="100">
-<div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-brand-500 to-purple-600 text-xs font-bold uppercase tracking-wider">Most Popular</div>
-<h3 class="text-lg font-bold mb-2">Pro</h3>
-<p class="text-4xl font-black mb-1">$19<span class="text-base font-normal text-ink-400">/mo</span></p>
-<p class="text-sm text-ink-400 mb-6">For serious SEOs</p>
-<ul class="space-y-3 mb-8 text-sm">
-<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400"></i> Up to 20 sites</li>
-<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400"></i> Unlimited credits</li>
-<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400"></i> Priority matching</li>
-<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400"></i> 6-hour audit cycle</li>
-<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400"></i> Advanced analytics</li>
-<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400"></i> Email + chat support</li>
-</ul>
-<a href="./login.html?mode=signup" class="block text-center btn-primary text-white rounded-xl py-3 font-semibold">Upgrade to Pro</a>
-</div>
-<div class="card glass rounded-3xl p-8" data-aos="fade-up" data-aos-delay="200">
-<h3 class="text-lg font-bold mb-2">Agency</h3>
-<p class="text-4xl font-black mb-1">$79<span class="text-base font-normal text-ink-400">/mo</span></p>
-<p class="text-sm text-ink-400 mb-6">For teams & studios</p>
-<ul class="space-y-3 mb-8 text-sm">
-<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400"></i> Unlimited sites</li>
-<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400"></i> Unlimited credits</li>
-<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400"></i> Team seats (10)</li>
-<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400"></i> White-label reports</li>
-<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400"></i> API access</li>
-<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-400"></i> Dedicated manager</li>
-</ul>
-<a href="./login.html?mode=signup" class="block text-center glass hover:bg-white/10 rounded-xl py-3 font-semibold transition">Start Trial</a>
-</div>
-</div></div></section>
-<section id="faq" class="py-32 relative">
-<div class="max-w-4xl mx-auto px-6 lg:px-8">
-<div class="text-center mb-16" data-aos="fade-up">
-<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-semibold tracking-wider uppercase mb-6"><i data-lucide="help-circle" class="w-3.5 h-3.5"></i> FAQ</div>
-<h2 class="text-4xl md:text-6xl font-black tracking-tight mb-6">Questions, answered.</h2>
-</div>
-<div class="space-y-4">
-<details class="glass rounded-2xl group" data-aos="fade-up" data-aos-delay="0">
-<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-<span class="font-semibold text-lg">Is link exchanging safe for SEO in 2026?</span>
-<i data-lucide="chevron-down" class="w-5 h-5 transition-transform group-open:rotate-180"></i>
-</summary>
-<div class="px-6 pb-6 text-ink-300 leading-relaxed">Yes, when done with the ABC triangular methodology. We engineered our matching algorithm to prevent footprint detection by Google, ensuring 100% natural-looking link patterns.</div>
-</details>
-<details class="glass rounded-2xl group" data-aos="fade-up" data-aos-delay="50">
-<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-<span class="font-semibold text-lg">What happens if a partner removes my link?</span>
-<i data-lucide="chevron-down" class="w-5 h-5 transition-transform group-open:rotate-180"></i>
-</summary>
-<div class="px-6 pb-6 text-ink-300 leading-relaxed">Our AI Watchdog catches it within 12 hours. Your credit is automatically refunded and the partner gets a trust score penalty. Repeat offenders are banned.</div>
-</details>
-<details class="glass rounded-2xl group" data-aos="fade-up" data-aos-delay="100">
-<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-<span class="font-semibold text-lg">How is this different from PBNs or paid links?</span>
-<i data-lucide="chevron-down" class="w-5 h-5 transition-transform group-open:rotate-180"></i>
-</summary>
-<div class="px-6 pb-6 text-ink-300 leading-relaxed">Zero money changes hands. Every link is a value-for-value editorial exchange between real, verified sites in matching niches. It is the cleanest white-hat method available.</div>
-</details>
-<details class="glass rounded-2xl group" data-aos="fade-up" data-aos-delay="150">
-<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-<span class="font-semibold text-lg">Do you support no-follow links?</span>
-<i data-lucide="chevron-down" class="w-5 h-5 transition-transform group-open:rotate-180"></i>
-</summary>
-<div class="px-6 pb-6 text-ink-300 leading-relaxed">No. We only count do-follow links. Our scanner rejects any partner who switches their link to no-follow, sponsored, or UGC.</div>
-</details>
-<details class="glass rounded-2xl group" data-aos="fade-up" data-aos-delay="200">
-<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-<span class="font-semibold text-lg">Can I cancel my subscription anytime?</span>
-<i data-lucide="chevron-down" class="w-5 h-5 transition-transform group-open:rotate-180"></i>
-</summary>
-<div class="px-6 pb-6 text-ink-300 leading-relaxed">Yes. Cancel from your dashboard with one click. No questions asked. Your existing links remain active until renewal period ends.</div>
-</details>
-<details class="glass rounded-2xl group" data-aos="fade-up" data-aos-delay="250">
-<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-<span class="font-semibold text-lg">What niches are supported?</span>
-<i data-lucide="chevron-down" class="w-5 h-5 transition-transform group-open:rotate-180"></i>
-</summary>
-<div class="px-6 pb-6 text-ink-300 leading-relaxed">Over 40 categories from Tech and Health to Finance, Travel, Lifestyle, B2B SaaS, eCommerce and more. New categories are added monthly based on demand.</div>
-</details>
-</div></div></section>
-<section class="py-32 relative">
-<div class="max-w-5xl mx-auto px-6 lg:px-8">
-<div class="relative rounded-[2.5rem] p-12 md:p-20 text-center overflow-hidden bg-gradient-to-br from-brand-600 via-brand-700 to-purple-700" data-aos="zoom-in">
-<div class="absolute inset-0 grid-bg opacity-30"></div>
-<div class="blob bg-white w-[400px] h-[400px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10"></div>
-<div class="relative">
-<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur text-xs font-semibold tracking-wider uppercase mb-6"><i data-lucide="rocket" class="w-3.5 h-3.5"></i> Launch Special</div>
-<h2 class="text-5xl md:text-7xl font-black tracking-tight mb-6 text-balance">Stop renting traffic.<br>Start <span class="italic">owning</span> rankings.</h2>
-<p class="text-xl text-brand-100 max-w-2xl mx-auto mb-10">Join 1,000+ webmasters who are scaling their authority with zero budget and zero risk.</p>
-<div class="flex flex-col sm:flex-row gap-4 justify-center">
-<a href="./login.html?mode=signup" class="bg-white text-brand-700 hover:bg-brand-50 px-10 py-5 rounded-2xl font-bold text-lg transition flex items-center justify-center gap-2 shadow-2xl"><i data-lucide="sparkles" class="w-5 h-5"></i> Create Free Account</a>
-<a href="#features" class="bg-white/10 hover:bg-white/20 backdrop-blur px-10 py-5 rounded-2xl font-bold text-lg transition flex items-center justify-center gap-2">Learn More <i data-lucide="arrow-right" class="w-5 h-5"></i></a>
-</div>
-<p class="text-sm text-brand-200 mt-8">No credit card required • 5 free credits • Cancel anytime</p>
-</div></div></div></section>
-<footer class="border-t border-white/5 py-16">
-<div class="max-w-7xl mx-auto px-6 lg:px-8">
-<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-<div>
-<a href="#" class="flex items-center gap-2 mb-4"><div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center"><i data-lucide="link-2" class="w-5 h-5"></i></div><span class="text-xl font-bold">Positive<span class="gtext">Backlink</span></span></a>
-<p class="text-sm text-ink-400 leading-relaxed">The first automated link exchange platform built with security and quality at its core.</p>
-</div>
-<div>
-<h4 class="font-bold mb-4 text-sm uppercase tracking-wider text-ink-300">Product</h4>
-<ul class="space-y-2 text-sm text-ink-400">
-<li><a href="#features" class="hover:text-white transition">Features</a></li>
-<li><a href="#how" class="hover:text-white transition">How it Works</a></li>
-<li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
-<li><a href="./dashboard.html" class="hover:text-white transition">Dashboard</a></li>
-</ul></div>
-<div>
-<h4 class="font-bold mb-4 text-sm uppercase tracking-wider text-ink-300">Company</h4>
-<ul class="space-y-2 text-sm text-ink-400">
-<li><a href="#" class="hover:text-white transition">About</a></li>
-<li><a href="#" class="hover:text-white transition">Blog</a></li>
-<li><a href="#" class="hover:text-white transition">Careers</a></li>
-<li><a href="#" class="hover:text-white transition">Contact</a></li>
-</ul></div>
-<div>
-<h4 class="font-bold mb-4 text-sm uppercase tracking-wider text-ink-300">Legal</h4>
-<ul class="space-y-2 text-sm text-ink-400">
-<li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
-<li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
-<li><a href="#" class="hover:text-white transition">Cookie Policy</a></li>
-<li><a href="#" class="hover:text-white transition">GDPR</a></li>
-</ul></div>
-</div>
-<div class="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-<p class="text-sm text-ink-500">© 2026 PositiveBacklink. All rights reserved.</p>
-<div class="flex items-center gap-4">
-<a href="#" class="text-ink-400 hover:text-white transition"><i data-lucide="twitter" class="w-5 h-5"></i></a>
-<a href="#" class="text-ink-400 hover:text-white transition"><i data-lucide="github" class="w-5 h-5"></i></a>
-<a href="#" class="text-ink-400 hover:text-white transition"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-</div></div></div></footer>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
+<body class="min-h-screen">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-[#1c1c1c]/80 border-b border-[#2e2e2e]">
+    <div class="max-w-7xl mx-auto flex items-center justify-between h-16 px-6">
+      <a href="/" class="flex items-center gap-2">
+        <svg width="26" height="26" viewBox="0 0 109 113" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M63.7076 110.284C60.8481 113.885 55.0502 111.912 54.9813 107.314L53.9738 40.0627L99.1935 40.0627C107.384 40.0627 111.952 49.5228 106.859 55.9374L63.7076 110.284Z" fill="#3ECF8E"/>
+          <path d="M45.317 2.07103C48.1765 -1.53037 53.9745 0.442937 54.0434 5.041L54.4849 72.2922H9.83113C1.64038 72.2922 -2.92775 62.8321 2.1655 56.4175L45.317 2.07103Z" fill="#3ECF8E" fill-opacity="0.5"/>
+        </svg>
+        <span class="text-[17px] font-medium tracking-tight">positivebacklink</span>
+      </a>
+      <div class="hidden md:flex items-center gap-7">
+        <a href="#product" class="nav-link flex items-center gap-1">Product</a>
+        <a href="#how" class="nav-link flex items-center gap-1">How it works</a>
+        <a href="#features" class="nav-link flex items-center gap-1">Features</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="https://github.com/mistalyon/positive-backlink" target="_blank" class="hidden sm:flex items-center gap-2 text-[13px] text-[#a0a0a0] hover:text-white">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <span>1.2K</span>
+        </a>
+        <a href="/login.html" class="nav-link">Sign in</a>
+        <a href="/login.html" class="btn-primary">Dashboard</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative pt-40 pb-32 overflow-hidden">
+    <div class="absolute inset-0 dotted-bg opacity-60 fade-mask"></div>
+    <div class="glow-spot pulse" style="top:-100px; left:50%; transform:translateX(-50%);"></div>
+    <div class="relative max-w-5xl mx-auto px-6 text-center">
+      <a href="#features" class="pill mb-10 inline-flex">
+        <span class="w-2 h-2 rounded-full bg-brand pulse"></span>
+        AI Watchdog Active &middot; 1,240+ sites monitored
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+      <h1 class="text-5xl sm:text-6xl md:text-7xl font-medium tracking-tight leading-[1.05]">
+        Exchange backlinks in a weekend.
+        <br/>
+        <span class="text-gradient-brand">Rank to the top.</span>
+      </h1>
+      <p class="mt-8 text-lg text-[#a0a0a0] max-w-2xl mx-auto leading-relaxed">
+        PositiveBacklink is the automated link exchange platform.
+        <br class="hidden sm:block"/>
+        Start exchanging high-DA backlinks with AI Watchdog, ABC triangular method, niche relevance and credit-based fairness.
+      </p>
+      <div class="mt-10 flex items-center justify-center gap-3">
+        <a href="/login.html" class="btn-primary inline-flex items-center gap-2">
+          Start your exchange
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="#how" class="btn-outline">How it works</a>
+      </div>
+    </div>
+
+    <!-- HERO PREVIEW CARD -->
+    <div class="relative max-w-6xl mx-auto px-6 mt-20">
+      <div class="card glow-brand overflow-hidden">
+        <div class="flex items-center gap-2 px-4 py-3 border-b border-[#2e2e2e] bg-[#181818]">
+          <span class="w-3 h-3 rounded-full bg-[#ff5f57]"></span>
+          <span class="w-3 h-3 rounded-full bg-[#febc2e]"></span>
+          <span class="w-3 h-3 rounded-full bg-[#28c840]"></span>
+          <span class="ml-4 font-mono text-xs text-[#707070]">dashboard.positivebacklink.com</span>
+        </div>
+        <div class="grid md:grid-cols-3 gap-4 p-6">
+          <!-- Exchange Card -->
+          <div class="card p-5 card-hover">
+            <div class="flex items-center justify-between mb-3">
+              <span class="mono-label">EXCHANGE</span>
+              <span class="text-xs text-brand">+1 credit</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm">
+              <span class="font-mono">techblog.io</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3ECF8E" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              <span class="font-mono">marketing.co</span>
+            </div>
+            <div class="mt-3 text-xs text-[#707070]">Active &middot; DA 52 &middot; Tech</div>
+            <div class="mt-3 h-1.5 bg-[#2a2a2a] rounded-full overflow-hidden">
+              <div class="h-full bg-brand" style="width:92%"></div>
+            </div>
+          </div>
+          <!-- Watchdog Card -->
+          <div class="card p-5 card-hover">
+            <div class="flex items-center justify-between mb-3">
+              <span class="mono-label">WATCHDOG</span>
+              <span class="w-2 h-2 rounded-full bg-brand pulse"></span>
+            </div>
+            <div class="text-2xl font-medium">45,892</div>
+            <div class="text-xs text-[#707070] mt-1">links audited today</div>
+            <div class="mt-3 flex gap-1">
+              <div class="flex-1 h-8 bg-[#3ECF8E]/30 rounded"></div>
+              <div class="flex-1 h-8 bg-[#3ECF8E]/50 rounded"></div>
+              <div class="flex-1 h-8 bg-[#3ECF8E]/70 rounded"></div>
+              <div class="flex-1 h-8 bg-[#3ECF8E] rounded"></div>
+              <div class="flex-1 h-8 bg-[#3ECF8E]/60 rounded"></div>
+              <div class="flex-1 h-8 bg-[#3ECF8E]/80 rounded"></div>
+              <div class="flex-1 h-8 bg-[#3ECF8E] rounded"></div>
+            </div>
+          </div>
+          <!-- Credits Card -->
+          <div class="card p-5 card-hover">
+            <div class="flex items-center justify-between mb-3">
+              <span class="mono-label">CREDITS</span>
+              <span class="text-xs text-[#707070]">this week</span>
+            </div>
+            <div class="text-2xl font-medium text-brand">+12</div>
+            <div class="text-xs text-[#707070] mt-1">earned via outbound links</div>
+            <div class="mt-3 space-y-2">
+              <div class="flex justify-between text-xs">
+                <span class="text-[#a0a0a0]">healthhub.com</span>
+                <span class="text-brand">+1</span>
+              </div>
+              <div class="flex justify-between text-xs">
+                <span class="text-[#a0a0a0]">fitlife.app</span>
+                <span class="text-brand">+1</span>
+              </div>
+              <div class="flex justify-between text-xs">
+                <span class="text-[#a0a0a0]">seoguru.io</span>
+                <span class="text-brand">+1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGOS / TRUST BAR -->
+  <section class="py-12 border-y border-[#2e2e2e] bg-[#181818]">
+    <div class="max-w-7xl mx-auto px-6">
+      <p class="mono-label text-center mb-8">Trusted by 1,240+ growing websites</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8 items-center opacity-50 hover:opacity-80 transition">
+        <div class="text-center font-medium text-[#a0a0a0]">TechBlog</div>
+        <div class="text-center font-medium text-[#a0a0a0]">HealthHub</div>
+        <div class="text-center font-medium text-[#a0a0a0]">SEO Guru</div>
+        <div class="text-center font-medium text-[#a0a0a0]">FitLife</div>
+        <div class="text-center font-medium text-[#a0a0a0]">Marketing.co</div>
+        <div class="text-center font-medium text-[#a0a0a0]">DevDaily</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE THE PLATFORM / FEATURE INTRO -->
+  <section id="product" class="py-28 px-6">
+    <div class="max-w-7xl mx-auto">
+      <p class="mono-label mb-4">THE PLATFORM</p>
+      <h2 class="text-4xl md:text-5xl font-medium tracking-tight max-w-3xl">
+        Everything you need to <span class="text-[#707070]">grow organic traffic.</span>
+      </h2>
+      <p class="text-[#a0a0a0] mt-4 max-w-2xl">Stop emailing strangers. Stop buying risky links. Exchange backlinks the safe, automated way.</p>
+    </div>
+
+    <!-- HEADLINE FEATURE: AI WATCHDOG -->
+    <div class="max-w-7xl mx-auto mt-12 card overflow-hidden">
+      <div class="grid md:grid-cols-2">
+        <div class="p-10 md:p-14">
+          <div class="flex items-center gap-2 text-brand mb-4">
+            <i data-lucide="shield-check" class="w-5 h-5"></i>
+            <span class="mono-label text-brand">AI WATCHDOG</span>
+          </div>
+          <h3 class="text-3xl font-medium tracking-tight">Links that <span class="text-gradient-brand">never disappear.</span></h3>
+          <p class="mt-4 text-[#a0a0a0]">Our AI scans every exchanged link every 12 hours. If your partner removes, nofollows or breaks your backlink, you are notified instantly and credits are restored.</p>
+          <ul class="mt-6 space-y-3 text-sm text-[#c0c0c0]">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand"></i> 12-hour automated audits</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand"></i> Anchor text & rel=attribute detection</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand"></i> Auto credit refund on broken links</li>
+          </ul>
+        </div>
+        <div class="relative bg-[#181818] border-l border-[#2e2e2e] p-8 grid-bg min-h-[360px]">
+          <div class="glow-spot" style="top:50%; left:50%; transform:translate(-50%,-50%); width:300px; height:300px;"></div>
+          <div class="relative space-y-3">
+            <div class="card p-3 flex items-center justify-between">
+              <div class="flex items-center gap-2 text-sm"><span class="w-2 h-2 rounded-full bg-brand pulse"></span><span class="font-mono text-xs">techblog.io/article</span></div>
+              <span class="text-xs text-brand">OK</span>
+            </div>
+            <div class="card p-3 flex items-center justify-between">
+              <div class="flex items-center gap-2 text-sm"><span class="w-2 h-2 rounded-full bg-brand pulse"></span><span class="font-mono text-xs">healthhub.com/blog/seo</span></div>
+              <span class="text-xs text-brand">OK</span>
+            </div>
+            <div class="card p-3 flex items-center justify-between border-[#5a3a3a]" style="border-color:#5a3a3a;background:#2a1818;">
+              <div class="flex items-center gap-2 text-sm"><span class="w-2 h-2 rounded-full bg-[#ff5f57]"></span><span class="font-mono text-xs">spam-site.xyz/post</span></div>
+              <span class="text-xs text-[#ff5f57]">REMOVED</span>
+            </div>
+            <div class="card p-3 flex items-center justify-between">
+              <div class="flex items-center gap-2 text-sm"><span class="w-2 h-2 rounded-full bg-brand pulse"></span><span class="font-mono text-xs">fitlife.app/guides</span></div>
+              <span class="text-xs text-brand">OK</span>
+            </div>
+            <div class="mt-4 font-mono text-xs text-[#707070]">$ watchdog scan --interval 12h</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2x2 GRID -->
+    <div class="max-w-7xl mx-auto mt-6 grid md:grid-cols-2 gap-6">
+      <div class="card p-10 overflow-hidden relative">
+        <div class="flex items-center gap-2 text-brand mb-3"><i data-lucide="triangle" class="w-5 h-5"></i><span class="mono-label text-brand">ABC TRIANGULAR</span></div>
+        <h3 class="text-2xl font-medium tracking-tight">Avoid Google footprint.</h3>
+        <p class="mt-3 text-[#a0a0a0]">Site A links to Site B, B links to C, C closes the triangle to A. No direct reciprocal links to leave behind a footprint.</p>
+        <div class="mt-8 flex items-center justify-center gap-6 text-sm font-mono">
+          <span class="card px-4 py-2">Site A</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-brand"></i>
+          <span class="card px-4 py-2">Site B</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-brand"></i>
+          <span class="card px-4 py-2">Site C</span>
+        </div>
+      </div>
+      <div class="card p-10">
+        <div class="flex items-center gap-2 text-brand mb-3"><i data-lucide="target" class="w-5 h-5"></i><span class="mono-label text-brand">NICHE RELEVANCE</span></div>
+        <h3 class="text-2xl font-medium tracking-tight">Only contextual links.</h3>
+        <p class="mt-3 text-[#a0a0a0]">Our engine matches your site with partners in the same niche. A fitness blog won't be paired with a casino site. Ever.</p>
+        <div class="mt-8 flex flex-wrap gap-2">
+          <span class="pill">SEO</span><span class="pill">SaaS</span><span class="pill">Fitness</span><span class="pill">Tech</span><span class="pill">Finance</span><span class="pill">Travel</span><span class="pill">Food</span><span class="pill">+47 more</span>
+        </div>
+      </div>
+      <div class="card p-10">
+        <div class="flex items-center gap-2 text-brand mb-3"><i data-lucide="coins" class="w-5 h-5"></i><span class="mono-label text-brand">CREDIT SYSTEM</span></div>
+        <h3 class="text-2xl font-medium tracking-tight">Fair, transparent, simple.</h3>
+        <p class="mt-3 text-[#a0a0a0]">Give a link, earn a credit. Spend a credit, receive a link. Start with 5 free credits. No subscriptions, no surprises.</p>
+        <div class="mt-8 grid grid-cols-3 gap-3 text-center">
+          <div class="card p-4"><div class="text-2xl font-medium text-brand">+5</div><div class="mono-label mt-1">SIGNUP</div></div>
+          <div class="card p-4"><div class="text-2xl font-medium text-brand">+1</div><div class="mono-label mt-1">GIVE</div></div>
+          <div class="card p-4"><div class="text-2xl font-medium">-1</div><div class="mono-label mt-1">RECEIVE</div></div>
+        </div>
+      </div>
+      <div class="card p-10">
+        <div class="flex items-center gap-2 text-brand mb-3"><i data-lucide="star" class="w-5 h-5"></i><span class="mono-label text-brand">TRUST SCORE</span></div>
+        <h3 class="text-2xl font-medium tracking-tight">Reputation that matters.</h3>
+        <p class="mt-3 text-[#a0a0a0]">Every site gets a real-time trust score. Keep links live, respond fast, get matched with top-tier partners.</p>
+        <div class="mt-8">
+          <div class="flex items-center justify-between text-xs mb-2"><span class="mono-label">YOUR SCORE</span><span class="text-brand">94 / 100</span></div>
+          <div class="h-2 bg-[#2a2a2a] rounded-full overflow-hidden"><div class="h-full bg-brand" style="width:94%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="py-28 px-6 border-t border-[#2e2e2e] relative">
+    <div class="absolute inset-0 dotted-bg opacity-30"></div>
+    <div class="relative max-w-7xl mx-auto">
+      <p class="mono-label mb-4">HOW IT WORKS</p>
+      <h2 class="text-4xl md:text-5xl font-medium tracking-tight max-w-3xl">From signup to ranking in <span class="text-gradient-brand">4 steps.</span></h2>
+      <div class="grid md:grid-cols-4 gap-6 mt-14">
+        <div class="card p-6">
+          <div class="mono-label text-brand">01</div>
+          <h3 class="text-xl font-medium mt-3">Add your site</h3>
+          <p class="text-sm text-[#a0a0a0] mt-2">Verify ownership with a meta tag in under 60 seconds.</p>
+        </div>
+        <div class="card p-6">
+          <div class="mono-label text-brand">02</div>
+          <h3 class="text-xl font-medium mt-3">Pick your niche</h3>
+          <p class="text-sm text-[#a0a0a0] mt-2">Choose your category, DA range and target partners.</p>
+        </div>
+        <div class="card p-6">
+          <div class="mono-label text-brand">03</div>
+          <h3 class="text-xl font-medium mt-3">Get matched</h3>
+          <p class="text-sm text-[#a0a0a0] mt-2">Our AI builds your ABC triangle with relevant sites.</p>
+        </div>
+        <div class="card p-6">
+          <div class="mono-label text-brand">04</div>
+          <h3 class="text-xl font-medium mt-3">Exchange & rank</h3>
+          <p class="text-sm text-[#a0a0a0] mt-2">Place links, earn credits, watch your rankings climb.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS / SOCIAL PROOF -->
+  <section class="py-28 px-6 border-t border-[#2e2e2e]">
+    <div class="max-w-7xl mx-auto">
+      <p class="mono-label mb-4">PROVEN AT SCALE</p>
+      <h2 class="text-4xl md:text-5xl font-medium tracking-tight max-w-3xl">Trusted by the world's <span class="text-[#707070]">fastest-growing sites.</span></h2>
+      <p class="text-[#a0a0a0] mt-4 max-w-2xl">See how PositiveBacklink empowers content creators and SaaS founders to dominate search results.</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-14">
+        <div class="card p-6"><div class="text-3xl font-medium text-brand">1,240+</div><div class="mono-label mt-2">ACTIVE SITES</div></div>
+        <div class="card p-6"><div class="text-3xl font-medium text-brand">45K+</div><div class="mono-label mt-2">LINKS EXCHANGED</div></div>
+        <div class="card p-6"><div class="text-3xl font-medium text-brand">98%</div><div class="mono-label mt-2">UPTIME</div></div>
+        <div class="card p-6"><div class="text-3xl font-medium text-brand">12h</div><div class="mono-label mt-2">WATCHDOG INTERVAL</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="py-28 px-6 border-t border-[#2e2e2e]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="mono-label mb-4">PRICING</p>
+        <h2 class="text-4xl md:text-5xl font-medium tracking-tight">Predictable pricing.<br/><span class="text-[#707070]">No surprises.</span></h2>
+        <p class="text-[#a0a0a0] mt-4">Start free. Upgrade when you outgrow it.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 mt-14">
+        <div class="card p-8">
+          <h3 class="text-lg font-medium">Free</h3>
+          <p class="text-sm text-[#a0a0a0] mt-1">Perfect for trying out the platform.</p>
+          <div class="mt-6 flex items-baseline gap-1"><span class="text-4xl font-medium">$0</span><span class="text-[#707070] text-sm">/forever</span></div>
+          <a href="/login.html" class="btn-outline mt-6 w-full inline-flex justify-center">Start free</a>
+          <ul class="mt-8 space-y-3 text-sm text-[#c0c0c0]">
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand mt-0.5"></i> 5 starter credits</li>
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand mt-0.5"></i> 1 verified site</li>
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand mt-0.5"></i> AI Watchdog included</li>
+          </ul>
+        </div>
+        <div class="card p-8 relative" style="border-color:#3ECF8E;background:#1a221d;">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand text-black text-xs font-medium px-3 py-1 rounded-full">POPULAR</span>
+          <h3 class="text-lg font-medium">Pro</h3>
+          <p class="text-sm text-[#a0a0a0] mt-1">For content creators serious about SEO.</p>
+          <div class="mt-6 flex items-baseline gap-1"><span class="text-4xl font-medium">$29</span><span class="text-[#707070] text-sm">/month</span></div>
+          <a href="/login.html" class="btn-primary mt-6 w-full inline-flex justify-center">Start Pro</a>
+          <ul class="mt-8 space-y-3 text-sm text-[#c0c0c0]">
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand mt-0.5"></i> 100 monthly credits</li>
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand mt-0.5"></i> Up to 10 sites</li>
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand mt-0.5"></i> Priority matching</li>
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand mt-0.5"></i> ABC triangular routing</li>
+          </ul>
+        </div>
+        <div class="card p-8">
+          <h3 class="text-lg font-medium">Agency</h3>
+          <p class="text-sm text-[#a0a0a0] mt-1">For agencies managing client portfolios.</p>
+          <div class="mt-6 flex items-baseline gap-1"><span class="text-4xl font-medium">$99</span><span class="text-[#707070] text-sm">/month</span></div>
+          <a href="/login.html" class="btn-outline mt-6 w-full inline-flex justify-center">Contact sales</a>
+          <ul class="mt-8 space-y-3 text-sm text-[#c0c0c0]">
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand mt-0.5"></i> Unlimited credits</li>
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand mt-0.5"></i> Unlimited sites</li>
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand mt-0.5"></i> White-label reports</li>
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand mt-0.5"></i> Dedicated success manager</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-28 px-6 border-t border-[#2e2e2e]">
+    <div class="max-w-3xl mx-auto">
+      <p class="mono-label mb-4 text-center">FAQ</p>
+      <h2 class="text-4xl md:text-5xl font-medium tracking-tight text-center">Questions, answered.</h2>
+      <div class="mt-14 space-y-3">
+        <details class="card p-6 cursor-pointer group"><summary class="flex justify-between items-center font-medium text-lg list-none">Is link exchange against Google guidelines?<i data-lucide="plus" class="w-5 h-5 text-[#707070] group-open:rotate-45 transition"></i></summary><p class="text-[#a0a0a0] mt-4 text-sm">Direct reciprocal link schemes are. Our ABC triangular method (A&rarr;B, B&rarr;C, C&rarr;A) and niche-relevant matching create natural-looking link profiles that align with editorial guidelines.</p></details>
+        <details class="card p-6 cursor-pointer group"><summary class="flex justify-between items-center font-medium text-lg list-none">How does AI Watchdog work?<i data-lucide="plus" class="w-5 h-5 text-[#707070] group-open:rotate-45 transition"></i></summary><p class="text-[#a0a0a0] mt-4 text-sm">Every 12 hours we scan all your incoming exchanged links, check rel attributes, anchor text and HTTP status. If a link is removed, we automatically refund your credit.</p></details>
+        <details class="card p-6 cursor-pointer group"><summary class="flex justify-between items-center font-medium text-lg list-none">What is a credit?<i data-lucide="plus" class="w-5 h-5 text-[#707070] group-open:rotate-45 transition"></i></summary><p class="text-[#a0a0a0] mt-4 text-sm">Credit is the unit of exchange. You earn 1 credit when you give a link to another site, and spend 1 credit when you receive one. You start with 5 free credits at signup.</p></details>
+        <details class="card p-6 cursor-pointer group"><summary class="flex justify-between items-center font-medium text-lg list-none">Can I cancel anytime?<i data-lucide="plus" class="w-5 h-5 text-[#707070] group-open:rotate-45 transition"></i></summary><p class="text-[#a0a0a0] mt-4 text-sm">Yes. No contracts, no questions asked. Your existing links stay live.</p></details>
+        <details class="card p-6 cursor-pointer group"><summary class="flex justify-between items-center font-medium text-lg list-none">Do you accept any niche?<i data-lucide="plus" class="w-5 h-5 text-[#707070] group-open:rotate-45 transition"></i></summary><p class="text-[#a0a0a0] mt-4 text-sm">We support 50+ niches but ban gambling, adult, pharma, and any spam category to protect the quality of the network.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-28 px-6 border-t border-[#2e2e2e] relative overflow-hidden">
+    <div class="absolute inset-0 dotted-bg opacity-50"></div>
+    <div class="glow-spot pulse" style="top:50%; left:50%; transform:translate(-50%,-50%);"></div>
+    <div class="relative max-w-3xl mx-auto text-center">
+      <h2 class="text-4xl md:text-6xl font-medium tracking-tight">Build links in a weekend.<br/><span class="text-gradient-brand">Rank to the top.</span></h2>
+      <p class="text-[#a0a0a0] mt-6 max-w-xl mx-auto">Join 1,240+ sites already exchanging high-DA backlinks the safe way.</p>
+      <div class="mt-10 flex items-center justify-center gap-3">
+        <a href="/login.html" class="btn-primary inline-flex items-center gap-2">Start your exchange<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></a>
+        <a href="#how" class="btn-outline">Read the docs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-[#2e2e2e] py-16 px-6">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-5 gap-10">
+      <div class="md:col-span-2">
+        <a href="/" class="flex items-center gap-2 mb-4">
+          <svg width="24" height="24" viewBox="0 0 109 113" fill="none"><path d="M63.7076 110.284C60.8481 113.885 55.0502 111.912 54.9813 107.314L53.9738 40.0627L99.1935 40.0627C107.384 40.0627 111.952 49.5228 106.859 55.9374L63.7076 110.284Z" fill="#3ECF8E"/><path d="M45.317 2.07103C48.1765 -1.53037 53.9745 0.442937 54.0434 5.041L54.4849 72.2922H9.83113C1.64038 72.2922 -2.92775 62.8321 2.1655 56.4175L45.317 2.07103Z" fill="#3ECF8E" fill-opacity="0.5"/></svg>
+          <span class="font-medium">positivebacklink</span>
+        </a>
+        <p class="text-sm text-[#707070] max-w-xs">The first automated backlink exchange platform with AI Watchdog and ABC triangular methodology.</p>
+      </div>
+      <div>
+        <p class="mono-label mb-4">PRODUCT</p>
+        <ul class="space-y-2 text-sm text-[#a0a0a0]">
+          <li><a href="#features" class="hover:text-white">Features</a></li>
+          <li><a href="#pricing" class="hover:text-white">Pricing</a></li>
+          <li><a href="/login.html" class="hover:text-white">Dashboard</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="mono-label mb-4">RESOURCES</p>
+        <ul class="space-y-2 text-sm text-[#a0a0a0]">
+          <li><a href="#how" class="hover:text-white">How it works</a></li>
+          <li><a href="#faq" class="hover:text-white">FAQ</a></li>
+          <li><a href="https://github.com/mistalyon/positive-backlink" target="_blank" class="hover:text-white">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="mono-label mb-4">COMPANY</p>
+        <ul class="space-y-2 text-sm text-[#a0a0a0]">
+          <li><a href="#" class="hover:text-white">About</a></li>
+          <li><a href="#" class="hover:text-white">Privacy</a></li>
+          <li><a href="#" class="hover:text-white">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-[#2e2e2e] flex flex-col md:flex-row justify-between gap-4 text-xs text-[#707070]">
+      <p>&copy; 2026 PositiveBacklink. All rights reserved.</p>
+      <p class="font-mono">Built on Supabase &middot; Deployed on Vercel</p>
+    </div>
+  </footer>
+
+  <script>
     if (window.lucide) lucide.createIcons();
-    if (window.AOS) AOS.init({ duration: 800, once: true, offset: 80 });
-    const toggle = document.getElementById("mobile-toggle");
-    const menu = document.getElementById("mobile-menu");
-    if (toggle && menu) toggle.addEventListener("click", () => menu.classList.toggle("hidden"));
-    const nav = document.getElementById("topnav");
-    window.addEventListener("scroll", () => {
-      if (window.pageYOffset > 20) nav.classList.add("bg-ink-950/80");
-      else nav.classList.remove("bg-ink-950/80");
-    });
-  });
-</script>
+  </script>
 </body>
 </html>
