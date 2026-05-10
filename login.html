@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sign in — PositiveBacklink</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script type="module">
+  import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+  const supabaseUrl = "https://hsgxsxiwwkuplcedfhxq.supabase.co";
+  const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhzZ3hzeGl3d2t1cGxjZWRmaHhxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0MzQ4MjIsImV4cCI6MjA5NDAxMDgyMn0.nnNbl7Fp-Y-VM_HbEOngILpFBiG5zCUJ8oCd41fcAqo";
+  window.supabase = createClient(supabaseUrl, supabaseAnonKey);
+  window.dispatchEvent(new Event("supabase-ready"));
+</script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    fontFamily: { sans: ["Inter","sans-serif"] },
+    colors: {
+      brand: { 400:"#5b85ff",500:"#3361ff",600:"#1f3ff5",700:"#192fe0" },
+      ink: { 300:"#aeb5cc",400:"#828bab",700:"#3f455e",800:"#363b50",900:"#171b2d",950:"#0b0e1d" }
+    },
+    animation: { blob:"blob 7s infinite" },
+    keyframes: {
+      blob: { "0%,100%":{transform:"translate(0,0) scale(1)"}, "33%":{transform:"translate(40px,-50px) scale(1.1)"}, "66%":{transform:"translate(-30px,30px) scale(0.9)"} }
+    }
+  }}
+};
+</script>
+<style>
+body{font-family:"Inter",sans-serif;background:#0b0e1d;color:#fff;overflow:hidden;min-height:100vh}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.4;pointer-events:none}
+.gtext{background:linear-gradient(135deg,#5b85ff 0%,#22d3ee 50%,#5b85ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.glass{background:rgba(255,255,255,.04);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08)}
+.btn-primary{background:linear-gradient(135deg,#3361ff,#1f3ff5);box-shadow:0 10px 30px -10px rgba(51,97,255,.6);transition:all .3s}
+.btn-primary:hover{box-shadow:0 20px 40px -10px rgba(51,97,255,.9);transform:translateY(-2px)}
+.input-field{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);transition:all .2s}
+.input-field:focus{outline:none;border-color:#5b85ff;background:rgba(91,133,255,.05);box-shadow:0 0 0 4px rgba(91,133,255,.1)}
+</style>
+</head>
+<body class="antialiased min-h-screen flex items-center justify-center p-6">
+<div class="blob bg-brand-600 w-[500px] h-[500px] top-20 -left-32 animate-blob"></div>
+<div class="blob bg-cyan-500 w-[400px] h-[400px] top-40 right-0 animate-blob" style="animation-delay:2s"></div>
+<div class="blob bg-purple-600 w-[450px] h-[450px] bottom-0 left-1/3 animate-blob" style="animation-delay:4s"></div>
+<div class="relative w-full max-w-md">
+<a href="./index.html" class="inline-flex items-center gap-2 mb-8 group">
+<div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center group-hover:scale-110 transition"><i data-lucide="link-2" class="w-5 h-5"></i></div>
+<span class="text-xl font-bold tracking-tight">Positive<span class="gtext">Backlink</span></span>
+</a>
+<div class="glass rounded-3xl p-8">
+<div id="form-header">
+<h1 class="text-3xl font-black mb-2" id="form-title">Welcome back</h1>
+<p class="text-ink-300 mb-8" id="form-subtitle">Sign in to manage your link exchanges.</p>
+</div>
+<button id="google-btn" class="w-full flex items-center justify-center gap-3 bg-white text-gray-900 hover:bg-gray-100 px-6 py-3.5 rounded-xl font-semibold transition mb-4">
+<svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+Continue with Google
+</button>
+<div class="flex items-center gap-4 my-6">
+<div class="flex-1 h-px bg-white/10"></div>
+<span class="text-xs text-ink-400 uppercase tracking-wider">or</span>
+<div class="flex-1 h-px bg-white/10"></div>
+</div>
+<form id="auth-form" class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-ink-300 mb-2">Email address</label>
+<input id="email" type="email" required class="input-field w-full px-4 py-3.5 rounded-xl text-white placeholder-ink-400" placeholder="you@example.com" />
+</div>
+<div>
+<label class="block text-sm font-medium text-ink-300 mb-2">Password</label>
+<input id="password" type="password" required minlength="6" class="input-field w-full px-4 py-3.5 rounded-xl text-white placeholder-ink-400" placeholder="••••••••" />
+</div>
+<button type="submit" id="submit-btn" class="w-full btn-primary text-white px-6 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2">
+<span id="submit-label">Sign in</span>
+<i data-lucide="arrow-right" class="w-4 h-4"></i>
+</button>
+</form>
+<div id="auth-message" class="hidden mt-4 p-3 rounded-xl text-sm"></div>
+<div class="mt-6 text-center text-sm text-ink-300">
+<span id="toggle-text">Do not have an account?</span>
+ <a href="#" id="toggle-mode" class="text-brand-400 hover:text-brand-300 font-semibold">Sign up free</a>
+</div>
+</div>
+<p class="text-center text-xs text-ink-500 mt-6 max-w-sm mx-auto">By continuing, you agree to our Terms of Service and Privacy Policy. We will never share your data.</p>
+</div>
+<script>
+  let isSignUp = new URLSearchParams(location.search).get("mode") === "signup";
+  function renderMode() {
+    document.getElementById("form-title").textContent = isSignUp ? "Create your account" : "Welcome back";
+    document.getElementById("form-subtitle").textContent = isSignUp ? "Get 5 free credits to start exchanging." : "Sign in to manage your link exchanges.";
+    document.getElementById("submit-label").textContent = isSignUp ? "Create account" : "Sign in";
+    document.getElementById("toggle-text").textContent = isSignUp ? "Already have an account?" : "Do not have an account?";
+    document.getElementById("toggle-mode").textContent = isSignUp ? "Sign in" : "Sign up free";
+  }
+  function showMessage(text, type) {
+    const el = document.getElementById("auth-message");
+    el.textContent = text;
+    el.className = "mt-4 p-3 rounded-xl text-sm " + (type === "error" ? "bg-red-500/10 text-red-300 border border-red-500/30" : "bg-green-500/10 text-green-300 border border-green-500/30");
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    if (window.lucide) lucide.createIcons();
+    renderMode();
+    document.getElementById("toggle-mode").addEventListener("click", (e) => {
+      e.preventDefault();
+      isSignUp = !isSignUp;
+      renderMode();
+    });
+  });
+  window.addEventListener("supabase-ready", () => {
+    document.getElementById("auth-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const btn = document.getElementById("submit-btn");
+      btn.disabled = true;
+      btn.style.opacity = "0.6";
+      try {
+        const fn = isSignUp ? "signUp" : "signInWithPassword";
+        const { data, error } = await window.supabase.auth[fn]({ email, password });
+        if (error) throw error;
+        if (isSignUp) showMessage("Account created! Check your email to verify.", "success");
+        else { showMessage("Signed in! Redirecting...", "success"); setTimeout(() => location.href = "./dashboard.html", 800); }
+      } catch (err) {
+        showMessage(err.message || "Authentication failed", "error");
+      } finally {
+        btn.disabled = false;
+        btn.style.opacity = "1";
+      }
+    });
+    document.getElementById("google-btn").addEventListener("click", async () => {
+      const { error } = await window.supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: { redirectTo: location.origin + "/dashboard.html" }
+      });
+      if (error) showMessage(error.message, "error");
+    });
+    window.supabase.auth.getSession().then(({ data }) => {
+      if (data.session) location.href = "./dashboard.html";
+    });
+  });
+</script>
+</body>
+</html>
