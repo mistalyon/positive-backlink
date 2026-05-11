@@ -1,124 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex,nofollow">
-<title>Dashboard - PositiveBacklink</title>
-<link rel="icon" type="image/png" href="/og-image.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#ededed;min-height:100vh;-webkit-font-smoothing:antialiased}
-a{color:#3ECF8E;text-decoration:none}
-a:hover{color:#5dd9a0}
-.mono{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:#888}
-nav.topbar{position:sticky;top:0;z-index:50;background:rgba(10,10,10,0.85);backdrop-filter:blur(12px);border-bottom:1px solid #222;padding:14px 32px;display:flex;align-items:center;justify-content:space-between}
-.brand{font-weight:700;font-size:16px;color:#fff;display:flex;align-items:center;gap:8px}
-.brand-dot{width:10px;height:10px;background:#3ECF8E;border-radius:50%;box-shadow:0 0 12px #3ECF8E}
-.nav-right{display:flex;align-items:center;gap:18px}
-.nav-right a{color:#aaa;font-size:14px}
-.nav-right a:hover{color:#fff}
-.user-email{font-size:13px;color:#666;font-family:'JetBrains Mono',monospace}
-.btn-logout{background:transparent;border:1px solid #333;color:#aaa;padding:7px 14px;border-radius:6px;font-size:13px;cursor:pointer;font-family:inherit}
-.btn-logout:hover{border-color:#3ECF8E;color:#3ECF8E}
-.container{max-width:1200px;margin:0 auto;padding:40px 32px}
-.page-tag{color:#3ECF8E;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;margin-bottom:8px}
-h1{font-size:32px;font-weight:700;margin-bottom:6px;color:#fff}
-.subtitle{color:#888;font-size:15px;margin-bottom:36px}
-.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:40px}
-.kpi-card{background:#111;border:1px solid #222;border-radius:10px;padding:22px;transition:border-color 0.2s}
-.kpi-card:hover{border-color:#333}
-.kpi-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:#666;margin-bottom:10px}
-.kpi-value{font-size:32px;font-weight:700;color:#fff;line-height:1}
-.kpi-value .unit{font-size:14px;color:#666;font-weight:500;margin-left:4px}
-.kpi-meta{margin-top:10px;font-size:12px;color:#888}
-.kpi-meta .ok{color:#3ECF8E}
-.kpi-meta .warn{color:#f5a623}
-.section{margin-bottom:32px}
-.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.section-head h2{font-size:18px;font-weight:600;color:#fff}
-.btn-primary{background:#3ECF8E;color:#0a0a0a;border:none;padding:9px 16px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
-.btn-primary:hover{background:#2eb878}
-.panel{background:#111;border:1px solid #222;border-radius:10px;overflow:hidden}
-.panel-empty{padding:48px 24px;text-align:center;color:#666;font-size:14px}
-.panel-empty .icon{font-size:32px;margin-bottom:10px;opacity:0.4}
-.panel-empty .hint{font-size:12px;color:#555;margin-top:8px}
-table{width:100%;border-collapse:collapse}
-th{text-align:left;padding:12px 18px;font-size:11px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.05em;color:#666;background:#0d0d0d;border-bottom:1px solid #222}
-td{padding:14px 18px;border-bottom:1px solid #1a1a1a;font-size:14px;color:#ccc}
-tr:last-child td{border-bottom:none}
-.badge{display:inline-block;padding:3px 8px;border-radius:4px;font-size:11px;font-weight:500;font-family:'JetBrains Mono',monospace}
-.badge-active{background:rgba(62,207,142,0.15);color:#3ECF8E}
-.badge-pending{background:rgba(245,166,35,0.15);color:#f5a623}
-.info-banner{background:rgba(62,207,142,0.08);border:1px solid rgba(62,207,142,0.25);color:#3ECF8E;padding:14px 18px;border-radius:8px;margin-bottom:28px;font-size:13px;display:flex;align-items:flex-start;gap:10px}
-.info-banner .ic{flex-shrink:0;margin-top:1px}
-.loading{padding:60px 0;text-align:center;color:#666}
-.hidden{display:none!important}
-@media(max-width:640px){.container{padding:24px 18px}nav.topbar{padding:12px 18px}.user-email{display:none}h1{font-size:24px}}
-</style>
-</head>
-<body>
-<div id="loading" class="loading">Loading dashboard...</div>
-<div id="app" class="hidden">
-<nav class="topbar">
-<a href="/" class="brand"><span class="brand-dot"></span>PositiveBacklink</a>
-<div class="nav-right">
-<a href="/blog/">Blog</a>
-<a href="/tools/">Tools</a>
-<span class="user-email" id="user-email"></span>
-<button class="btn-logout" id="btn-logout">Sign out</button>
-</div>
-</nav>
-<div class="container">
-<div class="page-tag">// DASHBOARD</div>
-<h1 id="welcome">Welcome back</h1>
-<p class="subtitle">Track your sites, exchanges, and Watchdog status in one place.</p>
-<div class="kpi-grid">
-<div class="kpi-card"><div class="kpi-label">Connected Sites</div><div class="kpi-value" id="kpi-sites">0</div><div class="kpi-meta"><span class="ok">Ready to add</span></div></div>
-<div class="kpi-card"><div class="kpi-label">Active Exchanges</div><div class="kpi-value" id="kpi-exchanges">0</div><div class="kpi-meta">0 pending</div></div>
-<div class="kpi-card"><div class="kpi-label">Credits Balance</div><div class="kpi-value" id="kpi-credits">10<span class="unit">free</span></div><div class="kpi-meta"><span class="ok">Welcome bonus applied</span></div></div>
-<div class="kpi-card"><div class="kpi-label">Watchdog Status</div><div class="kpi-value" id="kpi-watchdog" style="font-size:18px;padding-top:8px">Idle</div><div class="kpi-meta">Next scan in 12h</div></div>
-</div>
-<div class="info-banner" id="onboarding"><span class="ic">&#9889;</span><div><strong>Get started:</strong> Add your first site to begin matching with niche-relevant exchange partners. The AI Watchdog will monitor your inbound links every 12 hours automatically.</div></div>
-<div class="section"><div class="section-head"><h2>Your Sites</h2><button class="btn-primary" id="btn-add-site">+ Add Site</button></div><div class="panel"><div class="panel-empty"><div class="icon">&#127760;</div><div>No sites connected yet.</div><div class="hint">Connect a domain to start exchanging white-hat backlinks.</div></div></div></div>
-<div class="section"><div class="section-head"><h2>Recent Exchanges</h2><a href="#" style="font-size:13px">View all &rarr;</a></div><div class="panel"><div class="panel-empty"><div class="icon">&#128279;</div><div>No exchanges yet.</div><div class="hint">Once you add a site, the ABC Triangular engine will surface matching partners here.</div></div></div></div>
-</div>
-</div>
-<script type="module">
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-const SUPABASE_URL = "https://hsgxsxiwwkuplcedfhxq.supabase.co";
-const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || "REPLACE_WITH_YOUR_ANON_KEY";
-const loading = document.getElementById("loading");
-const app = document.getElementById("app");
-if (SUPABASE_ANON_KEY === "REPLACE_WITH_YOUR_ANON_KEY") {
-  loading.classList.add("hidden");
-  app.classList.remove("hidden");
-  document.getElementById("user-email").textContent = "demo@positivebacklink.com";
-  document.getElementById("welcome").textContent = "Welcome back (demo mode)";
-  document.getElementById("btn-logout").addEventListener("click", () => { window.location.href = "/login.html"; });
-  document.getElementById("btn-add-site").addEventListener("click", () => { alert("Add Site flow coming soon - finish Supabase setup first."); });
-} else {
-  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  const sess = await supabase.auth.getSession();
-  const session = sess && sess.data && sess.data.session;
-  if (!session) {
-    window.location.href = "/login.html";
-  } else {
-    loading.classList.add("hidden");
-    app.classList.remove("hidden");
-    document.getElementById("user-email").textContent = session.user.email || "";
-    document.getElementById("btn-logout").addEventListener("click", async () => {
-      await supabase.auth.signOut();
-      window.location.href = "/";
-    });
-    document.getElementById("btn-add-site").addEventListener("click", () => {
-      alert("Add Site flow coming soon.");
-    });
-  }
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex,nofollow"><title>Dashboard - PositiveBacklink</title><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#3ECF8E"><link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#fff;min-height:100vh}nav{background:#0a0a0a;border-bottom:1px solid rgba(62,207,142,0.2);padding:1rem 2rem;position:sticky;top:0;z-index:100}.nav-inner{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}.logo{font-size:1.4rem;font-weight:700;color:#3ECF8E;text-decoration:none}.user-menu{display:flex;align-items:center;gap:1rem;color:#aaa;font-size:0.9rem}.logout-btn{background:transparent;border:1px solid rgba(62,207,142,0.3);color:#3ECF8E;padding:0.4rem 0.9rem;border-radius:4px;cursor:pointer;font-size:0.85rem}.logout-btn:hover{background:rgba(62,207,142,0.1)}main{max-width:1400px;margin:0 auto;padding:2rem}.page-header{margin-bottom:2rem}.page-header h1{font-size:1.8rem;margin-bottom:0.25rem}.page-header p{color:#888;font-size:0.95rem}.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:2rem}.stat-card{background:rgba(255,255,255,0.03);border:1px solid rgba(62,207,142,0.15);padding:1.25rem;border-radius:8px}.stat-card .label{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#3ECF8E;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.5rem}.stat-card .value{font-size:1.8rem;font-weight:700;font-family:'JetBrains Mono',monospace}.stat-card .sub{font-size:0.75rem;color:#666;margin-top:0.25rem}.panel{background:rgba(255,255,255,0.02);border:1px solid rgba(62,207,142,0.12);border-radius:8px;padding:1.5rem}.panel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)}.panel-title{font-size:1rem;font-weight:600;color:#fff}.btn-primary{background:#3ECF8E;color:#0a0a0a;padding:0.5rem 1rem;border:none;border-radius:4px;cursor:pointer;font-weight:600;font-size:0.85rem;text-decoration:none;display:inline-block}.btn-primary:hover{background:#36b87c}table{width:100%;border-collapse:collapse;font-size:0.88rem}th{text-align:left;padding:0.6rem;color:#3ECF8E;font-family:'JetBrains Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid rgba(62,207,142,0.15)}td{padding:0.75rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.04);color:#ccc}.badge{display:inline-block;padding:0.2rem 0.55rem;border-radius:3px;font-size:0.7rem;font-family:'JetBrains Mono',monospace}.badge-ok{background:rgba(62,207,142,0.15);color:#3ECF8E}.badge-warn{background:rgba(255,170,0,0.15);color:#ffaa00}.badge-err{background:rgba(255,80,80,0.15);color:#ff5050}.badge-pending{background:rgba(160,160,160,0.15);color:#aaa}.empty-state{text-align:center;padding:2rem 1rem;color:#666}.tab-nav{display:flex;gap:0.5rem;margin-bottom:1.5rem;border-bottom:1px solid rgba(62,207,142,0.15)}.tab{background:transparent;border:none;color:#888;padding:0.6rem 1rem;cursor:pointer;font-size:0.9rem;border-bottom:2px solid transparent}.tab.active{color:#3ECF8E;border-bottom-color:#3ECF8E}.tab-content{display:none}.tab-content.active{display:block}.auth-required{text-align:center;padding:4rem 2rem}</style></head><body>
+<nav><div class="nav-inner"><a href="/" class="logo">PositiveBacklink</a><div class="user-menu"><span id="user-email">Loading...</span><button class="logout-btn" id="logout-btn">Sign Out</button></div></div></nav>
+<main id="app-content" style="display:none"><div class="page-header"><h1>Dashboard</h1><p>Manage your sites, exchanges, and credit balance.</p></div>
+<div class="stats-row"><div class="stat-card"><div class="label">Credit Balance</div><div class="value" id="stat-credits">--</div><div class="sub">Available to spend</div></div><div class="stat-card"><div class="label">Active Sites</div><div class="value" id="stat-sites">--</div><div class="sub">Verified and earning</div></div><div class="stat-card"><div class="label">Live Backlinks</div><div class="value" id="stat-links-in">--</div><div class="sub">Pointing to your sites</div></div><div class="stat-card"><div class="label">Hosted Links</div><div class="value" id="stat-links-out">--</div><div class="sub">Earning credits</div></div></div>
+<div class="tab-nav"><button class="tab active" data-tab="sites">My Sites</button><button class="tab" data-tab="exchanges">Exchanges</button><button class="tab" data-tab="credits">Credit Ledger</button><button class="tab" data-tab="watchdog">Watchdog</button></div>
+<div class="tab-content active" id="tab-sites"><div class="panel"><div class="panel-header"><div class="panel-title">Your Verified Sites</div><button class="btn-primary" id="add-site-btn">+ Add Site</button></div><table><thead><tr><th>Domain</th><th>DR</th><th>Niche</th><th>Tier</th><th>Status</th><th>Hosted</th></tr></thead><tbody id="sites-tbody"><tr><td colspan="6" class="empty-state">Loading...</td></tr></tbody></table></div></div>
+<div class="tab-content" id="tab-exchanges"><div class="panel"><div class="panel-header"><div class="panel-title">Active and Pending Exchanges</div><button class="btn-primary" id="new-exchange-btn">Request Backlink</button></div><table><thead><tr><th>Type</th><th>From</th><th>To</th><th>Anchor</th><th>Credits</th><th>Status</th><th>Date</th></tr></thead><tbody id="exchanges-tbody"><tr><td colspan="7" class="empty-state">Loading...</td></tr></tbody></table></div></div>
+<div class="tab-content" id="tab-credits"><div class="panel"><div class="panel-header"><div class="panel-title">Credit Transaction History</div><a href="/pricing.html" class="btn-primary">Buy Credits</a></div><table><thead><tr><th>Date</th><th>Type</th><th>Description</th><th>Amount</th><th>Balance After</th></tr></thead><tbody id="credits-tbody"><tr><td colspan="5" class="empty-state">Loading...</td></tr></tbody></table></div></div>
+<div class="tab-content" id="tab-watchdog"><div class="panel"><div class="panel-header"><div class="panel-title">AI Watchdog: Recent Events</div><span style="font-size:0.8rem;color:#666">Checks every 12 hours</span></div><table><thead><tr><th>Time</th><th>Site</th><th>Event</th><th>Severity</th><th>Credit Impact</th></tr></thead><tbody id="watchdog-tbody"><tr><td colspan="5" class="empty-state">Loading...</td></tr></tbody></table></div></div>
+</main>
+<div id="auth-gate" class="auth-required" style="display:none"><h2>Sign in to access your dashboard</h2><p style="color:#888;margin:1rem 0 2rem">You need to be logged in to view your sites, exchanges, and credits.</p><a href="/login.html" class="btn-primary">Sign In</a></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SB_URL="https://hsgxsxiwwkuplcedfhxq.supabase.co";const SB_KEY=window.SUPABASE_ANON_KEY||"REPLACE_WITH_YOUR_ANON_KEY";const sb=window.supabase?window.supabase.createClient(SB_URL,SB_KEY):null;
+function showGate(){document.getElementById('auth-gate').style.display='block';document.getElementById('app-content').style.display='none';}
+function showApp(){document.getElementById('auth-gate').style.display='none';document.getElementById('app-content').style.display='block';}
+function badge(s){const m={active:'badge-ok',live:'badge-ok',verified:'badge-ok',pending:'badge-pending',review:'badge-warn',removed:'badge-err',decay:'badge-err',nofollow:'badge-warn',low:'badge-pending',medium:'badge-warn',high:'badge-err'};return '<span class="badge '+(m[(s||'').toLowerCase()]||'badge-pending')+'">'+s+'</span>';}
+async function loadDashboard(user){
+document.getElementById('user-email').textContent=user.email;
+const {data:sites}=await sb.from('sites').select('*').eq('user_id',user.id);
+document.getElementById('stat-sites').textContent=(sites||[]).filter(s=>s.status==='verified').length;
+document.getElementById('sites-tbody').innerHTML=(sites||[]).map(s=>'<tr><td>'+s.domain+'</td><td>'+(s.dr||'--')+'</td><td>'+(s.niche||'--')+'</td><td>'+(s.tier||'standard')+'</td><td>'+badge(s.status)+'</td><td>'+(s.hosted_count||0)+'</td></tr>').join('')||'<tr><td colspan="6" class="empty-state">No sites yet. Add your first site to start earning credits.</td></tr>';
+const {data:profile}=await sb.from('users').select('credits').eq('id',user.id).single();
+document.getElementById('stat-credits').textContent=(profile&&profile.credits)||0;
+const {data:ledger}=await sb.from('credits_ledger').select('*').eq('user_id',user.id).order('created_at',{ascending:false}).limit(50);
+document.getElementById('credits-tbody').innerHTML=(ledger||[]).map(l=>'<tr><td>'+new Date(l.created_at).toLocaleDateString()+'</td><td>'+l.type+'</td><td>'+l.description+'</td><td style="color:'+(l.amount>0?'#3ECF8E':'#ff5050')+'">'+(l.amount>0?'+':'')+l.amount+'</td><td>'+l.balance_after+'</td></tr>').join('')||'<tr><td colspan="5" class="empty-state">No transactions yet.</td></tr>';
+const {data:exch}=await sb.from('exchanges').select('*').or('source_user.eq.'+user.id+',target_user.eq.'+user.id).order('created_at',{ascending:false}).limit(50);
+let linksIn=0,linksOut=0;
+document.getElementById('exchanges-tbody').innerHTML=(exch||[]).map(e=>{const isIn=e.target_user===user.id;if(isIn&&e.status==='live')linksIn++;if(!isIn&&e.status==='live')linksOut++;return '<tr><td>'+(isIn?'Incoming':'Outgoing')+'</td><td>'+(e.source_domain||'--')+'</td><td>'+(e.target_domain||'--')+'</td><td>'+(e.anchor||'--')+'</td><td>'+e.credits+'</td><td>'+badge(e.status)+'</td><td>'+new Date(e.created_at).toLocaleDateString()+'</td></tr>';}).join('')||'<tr><td colspan="7" class="empty-state">No exchanges yet.</td></tr>';
+document.getElementById('stat-links-in').textContent=linksIn;document.getElementById('stat-links-out').textContent=linksOut;
+const {data:wd}=await sb.from('watchdog_events').select('*').eq('user_id',user.id).order('created_at',{ascending:false}).limit(50);
+document.getElementById('watchdog-tbody').innerHTML=(wd||[]).map(w=>'<tr><td>'+new Date(w.created_at).toLocaleString()+'</td><td>'+w.site_domain+'</td><td>'+w.event_type+'</td><td>'+badge(w.severity)+'</td><td>'+(w.credit_delta||0)+'</td></tr>').join('')||'<tr><td colspan="5" class="empty-state">No incidents detected. All links healthy.</td></tr>';
 }
-</script>
-</body>
-</html>
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));document.getElementById('tab-'+t.dataset.tab).classList.add('active');}));
+document.getElementById('logout-btn').addEventListener('click',async()=>{if(sb){await sb.auth.signOut();}location.href='/login.html';});
+document.getElementById('add-site-btn').addEventListener('click',()=>{const d=prompt('Enter your domain (e.g. example.com):');if(!d)return;sb.from('sites').insert({user_id:(window.__user&&window.__user.id),domain:d,status:'pending'}).then(()=>location.reload());});
+document.getElementById('new-exchange-btn').addEventListener('click',()=>alert('Exchange request flow opens here. Requires sites to be verified first.'));
+(async function(){if(!sb||SB_KEY.indexOf('REPLACE')>-1){document.getElementById('app-content').style.display='block';document.getElementById('user-email').textContent='[SETUP REQUIRED]';document.getElementById('sites-tbody').innerHTML='<tr><td colspan="6" class="empty-state"><strong>Supabase anon key not configured.</strong><br>Replace REPLACE_WITH_YOUR_ANON_KEY in dashboard.html source.</td></tr>';document.getElementById('credits-tbody').innerHTML='<tr><td colspan="5" class="empty-state">Pending Supabase configuration.</td></tr>';document.getElementById('exchanges-tbody').innerHTML='<tr><td colspan="7" class="empty-state">Pending Supabase configuration.</td></tr>';document.getElementById('watchdog-tbody').innerHTML='<tr><td colspan="5" class="empty-state">Pending Supabase configuration.</td></tr>';return;}const {data:{user}}=await sb.auth.getUser();if(!user){showGate();return;}window.__user=user;showApp();loadDashboard(user).catch(e=>console.error(e));})();
+</script></body></html>
