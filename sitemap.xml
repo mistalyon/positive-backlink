@@ -91,13 +91,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.positivebacklink.com/tools/anchor-text-distribution-checker.html</loc>
+    <loc>https://www.positivebacklink.com/tools/anchor-text-generator.html</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.positivebacklink.com/tools/backlink-quality-scorer.html</loc>
+    <loc>https://www.positivebacklink.com/tools/backlink-roi-calculator.html</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -109,13 +109,31 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.positivebacklink.com/tools/niche-relevance-scorer.html</loc>
+    <loc>https://www.positivebacklink.com/tools/niche-relevance.html</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.positivebacklink.com/tools/serp-snippet-preview.html</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.positivebacklink.com/tools/anchor-ratio-calculator.html</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.positivebacklink.com/tools/link-profile-auditor.html</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.positivebacklink.com/tools/disavow-file-generator.html</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
