@@ -1489,6 +1489,42 @@
     </div>
   </section>
 
+    <!-- NEWSLETTER -->
+  <section id="newsletter" class="py-20 px-6 border-t border-[#2e2e2e]">
+    <div class="max-w-3xl mx-auto text-center">
+      <span class="inline-block px-3 py-1 rounded text-xs font-mono border border-[#3ECF8E] text-[#3ECF8E] mb-4">// UPDATES</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">Get shipped features in your inbox</h2>
+      <p class="text-gray-400 mb-8">Short product updates and SEO insights. No spam. Unsubscribe anytime.</p>
+      <form id="nl-form" class="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto" novalidate>
+        <input type="email" id="nl-email" name="email" required placeholder="you@example.com" autocomplete="email" class="flex-1 px-4 py-3 bg-[#111] border border-[#2a2a2a] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#3ECF8E]">
+        <input type="text" name="website" id="nl-hp" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
+        <button type="submit" id="nl-btn" class="px-6 py-3 bg-[#3ECF8E] text-black font-semibold rounded-lg hover:bg-[#2fbf7e] transition">Subscribe</button>
+      </form>
+      <p id="nl-msg" class="mt-4 text-sm min-h-[20px]" role="status" aria-live="polite"></p>
+    </div>
+    <script>
+    (function(){
+      var f=document.getElementById("nl-form");if(!f)return;
+      f.addEventListener("submit",function(e){
+        e.preventDefault();
+        var em=document.getElementById("nl-email").value.trim();
+        var hp=document.getElementById("nl-hp").value.trim();
+        var btn=document.getElementById("nl-btn");
+        var msg=document.getElementById("nl-msg");
+        msg.style.color="#aaa";msg.textContent="Submitting...";btn.disabled=true;
+        fetch("/api/subscribe",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:em,website:hp})})
+          .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j}});})
+          .then(function(d){
+            btn.disabled=false;
+            if(d.ok){msg.style.color="#3ECF8E";msg.textContent=d.j.message||"Subscribed!";setTimeout(function(){location.href="/thank-you.html";},800);}
+            else{msg.style.color="#ff6b6b";msg.textContent=d.j.message||"Something went wrong.";}
+          })
+          .catch(function(){btn.disabled=false;msg.style.color="#ff6b6b";msg.textContent="Network error. Try again.";});
+      });
+    })();
+    </script>
+  </section>
+
   <!-- HOW IT WORKS -->
   <section id="how" class="py-28 px-6 border-t border-[#2e2e2e] relative">
     <div class="absolute inset-0 dotted-bg opacity-30"></div>
