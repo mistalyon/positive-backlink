@@ -65,59 +65,66 @@ footer a:hover{color:#3ECF8E}
       Continue with Google
     </button>
     <div class="divider">OR REGISTER WITH EMAIL</div>
-    <form id="register-form">
+    <div style="background:#0f0f0f;border:1px solid rgba(62,207,142,.3);border-left:3px solid #3ECF8E;border-radius:8px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:.95rem;color:#d4d4d4">
+<div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:#3ECF8E;letter-spacing:.05em;margin-bottom:.4rem">// EARLY ACCESS</div>
+<p style="margin:0;color:#d4d4d4;line-height:1.55">Drop your email below and we&apos;ll notify you the moment your dashboard is live. Founder pricing locked in for early access signups.</p>
+</div>
+<div id="reg-msg" role="status" aria-live="polite" style="min-height:1.2em;font-size:.9rem;margin:0 0 .75rem;font-family:'JetBrains Mono',monospace"></div>
+<form id="register-form">
       <div class="field">
         <label for="email">// EMAIL</label>
         <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
       </div>
-      <div class="field">
+      <div class="field" id="pwd-field" style="display:none">
         <label for="password">// PASSWORD (8+ characters)</label>
-        <input type="password" id="password" name="password" required minlength="8" autocomplete="new-password" placeholder="••••••••••••">
+        <input type="password" id="password" name="password" minlength="8" autocomplete="new-password" placeholder="••••••••••••">
       </div>
-      <div class="checkbox-row">
-        <input type="checkbox" id="terms" required>
+      <div class="checkbox-row" id="terms-row" style="display:none">
+        <input type="checkbox" id="terms">
         <label for="terms">I agree to the <a href="/terms.html">Terms</a> and <a href="/privacy.html">Privacy Policy</a>.</label>
       </div>
-      <button id="submit-btn" class="submit-btn" type="submit">Create account →</button>
+      <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;width:0" /><button id="submit-btn" class="submit-btn" type="submit">Notify me when live →</button>
     </form>
     <div class="alt-link">Already have an account? <a href="/login.html">Sign in</a></div>
   </div>
 </div>
 <footer>// PositiveBacklink • <a href="/">Home</a> • <a href="/blog/">Blog</a> • <a href="/tools/">Tools</a></footer>
-<script type="module">
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-const SUPABASE_URL = "https://hsgxsxiwwkuplcedfhxq.supabase.co";
-const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || "REPLACE_WITH_YOUR_ANON_KEY";
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-const msg = document.getElementById("msg");
-const form = document.getElementById("register-form");
-const submitBtn = document.getElementById("submit-btn");
-const googleBtn = document.getElementById("google-btn");
-function showMsg(text, type) { msg.textContent = text; msg.className = "msg " + type; }
-if (SUPABASE_ANON_KEY === "REPLACE_WITH_YOUR_ANON_KEY") {
-  showMsg("Auth not configured: Supabase anon key missing. Site admin must set window.SUPABASE_ANON_KEY before sign-up works.", "info");
-  submitBtn.disabled = true; googleBtn.disabled = true;
-}
-supabase.auth.getSession().then(({ data }) => { if (data.session) window.location.href = "/dashboard.html"; });
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  submitBtn.disabled = true; submitBtn.textContent = "Creating account...";
-  const { data, error } = await supabase.auth.signUp({ email, password, options: { emailRedirectTo: window.location.origin + "/dashboard.html" } });
-  if (error) { showMsg(error.message, "error"); submitBtn.disabled = false; submitBtn.textContent = "Create account →"; return; }
-  if (data.user && !data.session) {
-    showMsg("Check your email to confirm your account.", "success");
-    submitBtn.textContent = "Email sent ✓";
-  } else {
-    showMsg("Account created! Redirecting...", "success");
-    setTimeout(() => { window.location.href = "/dashboard.html"; }, 800);
+<script>
+(function(){
+  var form=document.getElementById('register-form');
+  var msg=document.getElementById('reg-msg');
+  var btn=document.getElementById('submit-btn');
+  var emailEl=document.getElementById('email');
+  var ANON=(window.SUPABASE_ANON_KEY||'REPLACE_WITH_YOUR_ANON_KEY');
+  var SUPA_READY=(ANON && ANON.indexOf('REPLACE_WITH')<0);
+  if(!SUPA_READY){
+    var gbtn=document.querySelector('.google-btn');
+    if(gbtn){gbtn.setAttribute('disabled','disabled');gbtn.style.opacity='0.5';gbtn.style.cursor='not-allowed';gbtn.title='Available after auth providers are enabled';}
   }
-});
-googleBtn.addEventListener("click", async () => {
-  const { error } = await supabase.auth.signInWithOAuth({ provider: "google", options: { redirectTo: window.location.origin + "/dashboard.html" } });
-  if (error) showMsg(error.message, "error");
-});
+  function setMsg(text,color){msg.textContent=text;msg.style.color=color||'#a3a3a3';}
+  function validEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);}
+  form.addEventListener('submit',async function(ev){
+    ev.preventDefault();
+    var email=(emailEl.value||'').trim();
+    var honey=(form.querySelector('input[name="website"]')||{}).value||'';
+    if(!validEmail(email)){setMsg('Please enter a valid email address.','#ef4444');return;}
+    btn.disabled=true;btn.textContent='Sending...';setMsg('','#a3a3a3');
+    try{
+      var res=await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,website:honey,source:'register'})});
+      var data=await res.json().catch(function(){return{ok:false};});
+      if(res.ok && data.ok){
+        setMsg('Saved. Redirecting...','#3ECF8E');
+        setTimeout(function(){window.location.href='/thank-you.html';},700);
+      }else{
+        setMsg((data && data.message)||'Something went wrong. Try again.','#ef4444');
+        btn.disabled=false;btn.textContent='Notify me when live \u2192';
+      }
+    }catch(err){
+      setMsg('Network error. Please retry.','#ef4444');
+      btn.disabled=false;btn.textContent='Notify me when live \u2192';
+    }
+  });
+})();
 </script>
 </body>
 </html>

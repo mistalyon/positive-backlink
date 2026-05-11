@@ -92,6 +92,7 @@ footer a{color:#888;margin:0 10px}
 <h1>Changelog</h1>
 <p class="lead">A running log of what we have shipped — free SEO tools, glossary, case studies, internal-linking passes, and platform improvements. Newest first.</p>
 <div class="version-nav">
+<a href="#v1-10-0">v1.10.0</a>
 <a href="#v1-9-0">v1.9.0</a>
 <a href="#v1-8-0">v1.8.0</a>
 <a href="#v1-7-0">v1.7.0</a>
@@ -104,6 +105,20 @@ footer a{color:#888;margin:0 10px}
 <a href="#v1-0-0">v1.0.0</a>
 </div>
 <div class="timeline">
+<article class="entry" id="v1-10-0">
+<div class="entry-head">
+<span class="version">v1.10.0</span>
+<span class="date">2026-05-11</span>
+<span class="type-pill type-content">content</span>
+</div>
+<h2>Comparison matrix + early-access register flow</h2>
+<p>Shipped an 8-row, 5-column comparison matrix on <a href="/compare/">/compare/</a> covering PositiveBacklink, traditional reciprocal, guest posting, PBN and HARO across method, time-per-link, cost, DR uplift, niche control, penalty risk, retention, monitoring and scalability. Converted <a href="/register.html">/register.html</a> into an early-access waitlist that captures email via the <code>/api/subscribe</code> endpoint and redirects to <code>/thank-you.html</code> on success. Supabase email/password and OAuth flows remain wired up and activate automatically the moment the anon key is set.</p>
+<ul>
+<li>New: full comparison matrix on /compare/ with sticky header and color-coded scores</li>
+<li>Changed: /register.html captures email today; full account creation activates with anon key</li>
+<li>Honeypot + rate-limited via /api/subscribe (5 / 60s per IP, in-memory)</li>
+</ul>
+</article>
 <article class="entry" id="v1-9-0">
 <div class="entry-head">
 <span class="version">v1.9.0</span>
