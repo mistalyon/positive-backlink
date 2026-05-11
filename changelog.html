@@ -1,4 +1,14 @@
-    <div class="changelog-entry">
+        <div class="changelog-entry">
+      <div class="version-header"><span class="version-tag">v1.18.0</span><span class="version-date">May 11, 2026</span></div>
+      <h3>Platform: User Dashboard + Admin Panel scaffolds</h3>
+      <ul>
+        <li>Added full /dashboard.html: 4-stat header, 4 tabs (My Sites, Exchanges, Credit Ledger, Watchdog), Supabase queries wired with anon key placeholder.</li>
+        <li>Added /admin.html (noindex): users table, site approval queue, credit adjustment form, watchdog incident queue, ABC matching, is_admin RLS gate.</li>
+        <li>Added /sql/schema.sql: 7 tables, indexes, RLS policies, is_admin() helper, auto-create trigger.</li>
+        <li>Both panels gated by Supabase auth; require user to paste anon key, run schema.sql, enable Email + Google OAuth providers.</li>
+      </ul></div>
+
+<div class="changelog-entry">
       <div class="version-header">
         <span class="version-tag">v1.17.0</span>
         <span class="version-date">May 11, 2026</span>
