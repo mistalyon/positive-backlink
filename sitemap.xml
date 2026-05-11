@@ -25,6 +25,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.positivebacklink.com/changelog.html</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.positivebacklink.com/blog/</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>daily</changefreq>
