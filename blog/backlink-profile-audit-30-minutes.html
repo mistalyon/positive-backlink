@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Audit Your Backlink Profile in 30 Minutes (2026 Checklist) | PositiveBacklink</title>
+<meta name="description" content="Step-by-step 30-minute backlink audit using Trust Flow, Citation Flow, and Spam Score thresholds. 5 timed phases, decision trees, ready-to-use action list.">
+<meta name="keywords" content="backlink audit, link profile audit, toxic backlinks, trust flow audit, spam score audit">
+<link rel="canonical" href="https://www.positivebacklink.com/blog/backlink-profile-audit-30-minutes.html">
+<meta name="google-site-verification" content="0bm_X9ojXIi_-sV7Ov0on_H-WS89MnzovlsSPtoWzO4">
+<meta name="msvalidate.01" content="5627D94178E561857861AE89E474F98A">
+<meta property="og:type" content="article"><meta property="og:title" content="30-Minute Backlink Profile Audit"><meta property="og:description" content="5 timed phases, TF/CF/Spam Score thresholds, action list."><meta property="og:url" content="https://www.positivebacklink.com/blog/backlink-profile-audit-30-minutes.html"><meta property="og:image" content="https://www.positivebacklink.com/og-image.png">
+<link rel="icon" type="image/png" href="/icon-192.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"How to Audit Your Backlink Profile in 30 Minutes","description":"Step-by-step 30-minute backlink audit using Trust Flow, Citation Flow, and Spam Score thresholds across 5 timed phases.","author":{"@type":"Organization","name":"PositiveBacklink"},"publisher":{"@type":"Organization","name":"PositiveBacklink","logo":{"@type":"ImageObject","url":"https://www.positivebacklink.com/icon-512.png"}},"datePublished":"2026-05-12","dateModified":"2026-05-12","mainEntityOfPage":"https://www.positivebacklink.com/blog/backlink-profile-audit-30-minutes.html","image":"https://www.positivebacklink.com/og-image.png"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.positivebacklink.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.positivebacklink.com/blog/"},{"@type":"ListItem","position":3,"name":"Backlink Audit","item":"https://www.positivebacklink.com/blog/backlink-profile-audit-30-minutes.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"Audit Your Backlink Profile in 30 Minutes","description":"5-phase audit covering inventory, quality triage, anchor analysis, loss and toxicity detection, and action list creation.","totalTime":"PT30M","step":[{"@type":"HowToStep","name":"Inventory","text":"Export your complete backlink list from a backlink tool. Deduplicate by referring domain.","position":1},{"@type":"HowToStep","name":"Quality Triage","text":"Apply Trust Flow, Citation Flow, and TF/CF ratio thresholds to bucket links into A, B, C tiers.","position":2},{"@type":"HowToStep","name":"Anchor Distribution Analysis","text":"Check anchor text ratios for over-optimization and exact-match concentration above 30 percent.","position":3},{"@type":"HowToStep","name":"Loss and Toxicity Scan","text":"Identify removed links, nofollow conversions, and Spam Score above 30 percent.","position":4},{"@type":"HowToStep","name":"Action List","text":"Compile recovery, disavow, and outreach actions with owners and deadlines.","position":5}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How often should I audit my backlink profile?","acceptedAnswer":{"@type":"Answer","text":"For sites under 1,000 referring domains, a 30-minute audit every 90 days is enough. For larger profiles or competitive niches, run the full audit monthly and pair it with continuous monitoring like an AI Watchdog."}},{"@type":"Question","name":"Which tool should I use to export backlinks?","acceptedAnswer":{"@type":"Answer","text":"Ahrefs, Majestic, Semrush, and Moz Link Explorer all work. Pick the one your team already uses. If you use multiple, deduplicate by referring domain after export because each tool has gaps the others fill."}},{"@type":"Question","name":"What anchor text distribution is healthy?","acceptedAnswer":{"@type":"Answer","text":"A healthy distribution is roughly 40 to 60 percent branded, 20 to 30 percent naked URL or generic, 15 to 25 percent partial match, and under 5 percent exact match. Anything above 30 percent exact match anchors is a manual action risk."}},{"@type":"Question","name":"Should I disavow every toxic link I find?","acceptedAnswer":{"@type":"Answer","text":"No. Only disavow when you see a clear pattern of low-quality links plus a ranking or traffic decline that maps to that pattern. Disavowing healthy links based purely on Spam Score is a common mistake that can hurt rankings."}},{"@type":"Question","name":"Can this audit be automated?","acceptedAnswer":{"@type":"Answer","text":"The inventory, threshold filtering, and loss detection can all be automated. The judgment calls in anchor analysis and disavow decisions still need a human. Tools like PositiveBacklink AI Watchdog automate the continuous-monitoring layer so your 30-minute audit only handles edge cases."}}]}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0a0a0a;color:#e5e5e5;line-height:1.7}
+a{color:#3ECF8E;text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:820px;margin:0 auto;padding:0 24px}
+header{background:#0f0f0f;border-bottom:1px solid #1f1f1f;padding:16px 0;position:sticky;top:0;z-index:50}
+.nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;max-width:1100px;margin:0 auto;padding:0 24px}
+.logo{font-weight:700;font-size:18px;color:#3ECF8E}
+.nav-links{display:flex;gap:24px;flex-wrap:wrap}.nav-links a{color:#a3a3a3;font-size:14px}
+.breadcrumbs{font-size:13px;color:#737373;padding:16px 0}.breadcrumbs a{color:#a3a3a3}
+.badge{display:inline-block;background:rgba(62,207,142,.1);color:#3ECF8E;padding:4px 12px;border-radius:12px;font-size:12px;font-family:"JetBrains Mono",monospace;margin-bottom:12px}
+h1{font-size:36px;font-weight:700;margin-bottom:14px;color:#fff;line-height:1.2}
+h2{font-size:24px;color:#fff;margin:32px 0 14px;font-weight:700}
+h3{font-size:18px;color:#fff;margin:22px 0 10px;font-weight:600}
+p{margin-bottom:14px;color:#d4d4d4}
+ul,ol{margin:0 0 16px 22px}li{margin-bottom:6px;color:#d4d4d4}
+.meta{font-size:13px;color:#737373;margin-bottom:24px;font-family:"JetBrains Mono",monospace}
+.lede{font-size:18px;color:#a3a3a3;margin-bottom:24px}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:20px 0}
+.stat-card{background:#0f0f0f;border:1px solid #1f1f1f;border-radius:8px;padding:14px}
+.stat-card .k{font-family:"JetBrains Mono",monospace;font-size:11px;color:#737373;text-transform:uppercase}
+.stat-card .v{font-size:22px;color:#3ECF8E;font-weight:700;margin-top:4px}
+.phase{background:#0f0f0f;border:1px solid #1f1f1f;border-radius:12px;padding:20px 24px;margin:20px 0;position:relative}
+.phase-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #1f1f1f}
+.phase-num{font-family:"JetBrains Mono",monospace;font-size:12px;color:#3ECF8E;background:rgba(62,207,142,.08);padding:4px 10px;border-radius:10px}
+.phase-time{font-family:"JetBrains Mono",monospace;font-size:12px;color:#ffaa00;background:rgba(255,170,0,.08);padding:4px 10px;border-radius:10px}
+.phase-title{font-weight:700;color:#fff;font-size:18px;flex:1;min-width:200px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+th,td{text-align:left;padding:10px;border:1px solid #1f1f1f}
+th{background:#0f0f0f;color:#3ECF8E;font-family:"JetBrains Mono",monospace;font-size:12px;text-transform:uppercase}
+td{color:#d4d4d4}
+.note{background:rgba(62,207,142,.04);border-left:3px solid #3ECF8E;padding:12px 16px;border-radius:0 6px 6px 0;margin:14px 0;color:#d4d4d4}
+.warn{background:rgba(255,170,0,.04);border-left:3px solid #ffaa00;padding:12px 16px;border-radius:0 6px 6px 0;margin:14px 0;color:#d4d4d4}
+.decision{background:#0a0a0a;border:1px dashed #2a2a2a;border-radius:8px;padding:14px 18px;margin:14px 0;font-family:"JetBrains Mono",monospace;font-size:13px;color:#d4d4d4;white-space:pre-wrap;line-height:1.6}
+.cta{background:linear-gradient(135deg,rgba(62,207,142,.08),rgba(62,207,142,.02));border:1px solid #3ECF8E;border-radius:12px;padding:24px;margin:32px 0;text-align:center}
+.cta h3{margin-top:0}.cta a.btn{display:inline-block;background:#3ECF8E;color:#0a0a0a;padding:10px 22px;border-radius:8px;font-weight:600;margin-top:8px}
+.cross-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:20px}
+.cross-link{background:#0f0f0f;border:1px solid #1f1f1f;border-radius:8px;padding:14px 16px;display:block}
+.cross-link:hover{border-color:#3ECF8E;text-decoration:none}
+.cross-link .t{font-weight:600;color:#fff;font-size:14px}
+.cross-link .d{font-size:12px;color:#737373;margin-top:4px}
+.faq-item{background:#0f0f0f;border:1px solid #1f1f1f;border-radius:8px;padding:14px 18px;margin-bottom:10px}.faq-item h4{color:#fff;margin-bottom:6px;font-size:15px}.faq-item p{color:#a3a3a3;font-size:14px;margin:0}
+footer{background:#0f0f0f;border-top:1px solid #1f1f1f;padding:24px 0;margin-top:48px;text-align:center;color:#737373;font-size:13px}
+@media(max-width:640px){h1{font-size:28px}h2{font-size:20px}.nav-links{font-size:13px;gap:14px}}
+</style></head><body>
+<header><div class="nav"><a href="/" class="logo">PositiveBacklink</a><nav class="nav-links"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/learn/">Learn</a><a href="/pricing.html">Pricing</a><a href="/register.html">Get Early Access</a></nav></div></header>
+<article class="container">
+<div class="breadcrumbs"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; 30-Minute Backlink Audit</div>
+<span class="badge">AUDIT • 14 MIN READ</span>
+<h1>How to Audit Your Backlink Profile in 30 Minutes (2026 Checklist)</h1>
+<p class="meta">Published May 12, 2026 • 5-phase timed walkthrough • Uses TF, CF, Spam Score thresholds</p>
+<p class="lede">Most backlink audits take 4 hours and produce a spreadsheet nobody acts on. This is the opposite — a 30-minute walkthrough that ends with a 1-page action list you can hand to a freelancer the same afternoon. The trick is using <a href="/learn/trust-flow.html">Trust Flow</a>, <a href="/learn/citation-flow.html">Citation Flow</a>, and <a href="/learn/link-spam-score.html">Link Spam Score</a> as ruthless cut-off filters instead of trying to read every line.</p>
+<div class="stat-grid">
+<div class="stat-card"><div class="k">Total Time</div><div class="v">30 min</div></div>
+<div class="stat-card"><div class="k">Phases</div><div class="v">5</div></div>
+<div class="stat-card"><div class="k">Tools Needed</div><div class="v">2</div></div>
+<div class="stat-card"><div class="k">Output</div><div class="v">1-pager</div></div>
+</div>
+<h2>Before You Start: What You Need</h2>
+<ul>
+<li>One backlink data source (Ahrefs, Majestic, Semrush, or Moz — pick one your team uses).</li>
+<li>A spreadsheet app (Google Sheets is fine).</li>
+<li>An anchor-distribution tool. You can use our free <a href="/tools/anchor-distribution-analyzer.html">Anchor Distribution Analyzer</a>.</li>
+<li>This article open in a tab as your checklist.</li>
+</ul>
+<div class="note"><strong>Output target:</strong> By the end of minute 30 you should have a single page with three columns — <em>Recover</em>, <em>Disavow Candidate</em>, <em>Outreach</em> — and roughly 5–20 rows total. Anything longer than 20 rows means your filters were too loose; tighten them and re-run.</div>
+<div class="phase"><div class="phase-header"><span class="phase-num">PHASE 1</span><div class="phase-title">Inventory</div><span class="phase-time">5 MIN</span></div>
+<p>Export your full backlink list. Don’t filter yet — raw export, every domain, every URL. Push it into a sheet with these columns:</p>
+<ul>
+<li><code>referring_domain</code></li>
+<li><code>target_url</code></li>
+<li><code>anchor_text</code></li>
+<li><code>link_type</code> (dofollow/nofollow/UGC/sponsored)</li>
+<li><code>tf</code>, <code>cf</code>, <code>spam_score</code> (most tools give at least two of these)</li>
+<li><code>first_seen</code>, <code>last_seen</code> (for loss detection in Phase 4)</li>
+</ul>
+<p><strong>Deduplicate by <code>referring_domain</code>.</strong> A site that links to you 50 times still counts as one referring domain for audit purposes. Save the page count in a separate column so you can spot doorway-link patterns later.</p>
+<div class="warn"><strong>5-minute discipline:</strong> If the export and dedupe takes longer than 5 minutes, your dataset is too large for a 30-minute audit. Sample the top 500 referring domains by Trust Flow and audit those. You can run a separate audit on the tail later.</div>
+</div>
+<div class="phase"><div class="phase-header"><span class="phase-num">PHASE 2</span><div class="phase-title">Quality Triage</div><span class="phase-time">8 MIN</span></div>
+<p>Now bucket every referring domain into one of three tiers using <a href="/learn/trust-flow.html">Trust Flow</a> and the <a href="/learn/citation-flow.html">TF/CF ratio</a>. Add a <code>tier</code> column and apply this formula logic:</p>
+<table><thead><tr><th>Tier</th><th>Conditions</th><th>Action Default</th></tr></thead><tbody>
+<tr><td>A — Keep</td><td>TF &ge; 25 AND TF/CF &ge; 0.5</td><td>Protect with monitoring</td></tr>
+<tr><td>B — Watch</td><td>TF 10–24 OR TF/CF 0.3–0.49</td><td>Manual spot-check, accept or downgrade</td></tr>
+<tr><td>C — Inspect</td><td>TF &lt; 10 OR TF/CF &lt; 0.3</td><td>Flag for Phase 4 toxicity scan</td></tr>
+</tbody></table>
+<p>Typical healthy distributions are roughly 40% A, 35% B, 25% C. If A is under 25% of your profile, you have a quality problem regardless of total backlink count. If C is over 40%, you have a toxicity problem and the rest of the audit gets more urgent.</p>
+<div class="note"><strong>Worked example:</strong> Domain X has TF 32, CF 38, Spam Score 4%. TF/CF = 0.84. Tier A, no further action needed beyond monitoring. Domain Y has TF 22, CF 78, Spam Score 18%. TF/CF = 0.28. Tier C, scan for toxicity in Phase 4.</div>
+<p>Sort your sheet by tier, then by TF descending within each tier. Phase 3 needs this order.</p>
+</div>
+<div class="phase"><div class="phase-header"><span class="phase-num">PHASE 3</span><div class="phase-title">Anchor Distribution Analysis</div><span class="phase-time">6 MIN</span></div>
+<p>Anchor text concentration is the fastest way to trigger an algorithmic penalty. Run your <code>anchor_text</code> column through the <a href="/tools/anchor-distribution-analyzer.html">Anchor Distribution Analyzer</a> or compute it manually:</p>
+<table><thead><tr><th>Anchor Type</th><th>Healthy Range</th><th>Red Flag</th></tr></thead><tbody>
+<tr><td>Branded (your brand name)</td><td>40–60%</td><td>&lt; 20%</td></tr>
+<tr><td>Naked URL / generic (click here, read more)</td><td>20–30%</td><td>&lt; 10%</td></tr>
+<tr><td>Partial match (includes target keyword)</td><td>15–25%</td><td>&gt; 35%</td></tr>
+<tr><td>Exact match (target keyword only)</td><td>2–5%</td><td>&gt; 8%</td></tr>
+<tr><td>Image / empty alt</td><td>5–15%</td><td>&gt; 25%</td></tr>
+</tbody></table>
+<p>The most common failure mode is <strong>exact-match concentration on a single target URL</strong>. A site might look fine in aggregate (4% exact match overall) but have one money page sitting at 25% exact match because all the over-optimization is concentrated there.</p>
+<div class="decision">IF exact_match_anchor_pct(target_url) &gt; 15%:
+  ACTION = dilute_with_branded_links(target_url)
+ELIF partial_match(target_url) &gt; 40%:
+  ACTION = monitor_for_30_days
+ELSE:
+  ACTION = healthy</div>
+<p>Flag any URL that crosses these thresholds and add it to the Outreach column with the note <em>dilute exact-match</em>. You’ll fix it by acquiring new links with branded or naked-URL anchors.</p>
+</div>
+<div class="phase"><div class="phase-header"><span class="phase-num">PHASE 4</span><div class="phase-title">Loss & Toxicity Scan</div><span class="phase-time">7 MIN</span></div>
+<p>Two filters in parallel:</p>
+<h3>4A. Loss detection (3 min)</h3>
+<p>Filter your sheet for <code>last_seen &lt; 30 days ago</code>. These are links that have either been removed, redirected, or had their nofollow status flipped. Cross-reference with current live status if your tool supports it; otherwise spot-check the top 10 by Trust Flow.</p>
+<ul>
+<li>If the linking page still exists but the link is gone, add to the <strong>Recover</strong> column. Use <a href="/blog/lost-backlink-recovery-playbook.html">Lost Backlink Recovery Playbook</a> + <a href="/blog/outreach-email-templates-that-convert.html">Template 4.2</a> for the outreach.</li>
+<li>If the linking page is 404, the link is gone for good. Document but no action.</li>
+<li>If the link was dofollow and is now nofollow, log it for trend analysis — a single conversion is noise, a pattern is intentional.</li>
+</ul>
+<h3>4B. Toxicity scan (4 min)</h3>
+<p>Filter for <code>tier = C</code> from Phase 2 and apply <a href="/learn/link-spam-score.html">Spam Score</a> + Manual review:</p>
+<div class="decision">FOR each domain WHERE tier = 'C':
+  IF spam_score &gt; 40 AND tf &lt; 10:
+    ACTION = disavow_candidate
+  ELIF spam_score &gt; 30 AND pages_linking &gt; 100:
+    ACTION = disavow_candidate  // doorway pattern
+  ELSE:
+    ACTION = inspect_manually_in_browser
+  END
+END</div>
+<div class="warn"><strong>Do not auto-disavow.</strong> Disavow Candidate means “put on the list, review at the end of the audit, only file if there’s a confirmed manual action or pattern across many domains.” Disavowing 5 healthy looking C-tier links can do more damage than leaving them alone.</div>
+</div>
+<div class="phase"><div class="phase-header"><span class="phase-num">PHASE 5</span><div class="phase-title">Action List</div><span class="phase-time">4 MIN</span></div>
+<p>Collapse everything into one 3-column page:</p>
+<table><thead><tr><th>Column</th><th>Contains</th><th>Owner</th></tr></thead><tbody>
+<tr><td>Recover</td><td>Lost links from Phase 4A worth re-acquiring</td><td>Outreach lead</td></tr>
+<tr><td>Disavow Candidate</td><td>Toxic patterns from Phase 4B for legal review</td><td>SEO lead</td></tr>
+<tr><td>Outreach</td><td>Phase 3 dilution targets + Phase 2 Tier B promotions</td><td>Outreach lead</td></tr>
+</tbody></table>
+<p>Each row should fit on one line: <em>domain • URL • reason • deadline</em>. The deadline column is what turns this into action. Without dates, the list dies in a Notion page within a week.</p>
+<div class="note"><strong>Healthy action list size:</strong> 5–20 rows after a 30-minute audit. Fewer than 5 means your filters were too loose and you missed issues. More than 20 means you should re-scope the audit by target page or topic cluster instead of running site-wide.</div>
+</div>
+<h2>The 30-Minute Audit Summary Table</h2>
+<table><thead><tr><th>Phase</th><th>Time</th><th>Output</th><th>Key Threshold</th></tr></thead><tbody>
+<tr><td>1. Inventory</td><td>5 min</td><td>Deduped CSV by referring domain</td><td>Sample 500 if too large</td></tr>
+<tr><td>2. Quality Triage</td><td>8 min</td><td>A/B/C tier assignment</td><td>TF &ge; 25, TF/CF &ge; 0.5</td></tr>
+<tr><td>3. Anchor Analysis</td><td>6 min</td><td>Dilution targets list</td><td>Exact match &lt; 5%</td></tr>
+<tr><td>4. Loss & Toxicity</td><td>7 min</td><td>Recover + disavow candidates</td><td>Spam Score &lt; 30%</td></tr>
+<tr><td>5. Action List</td><td>4 min</td><td>3-column 1-pager</td><td>5–20 rows</td></tr>
+</tbody></table>
+<h2>What to Do After the First Audit</h2>
+<p>The first audit always surfaces more issues than subsequent ones because you’re cleaning years of accumulated drift. Plan for the first audit to be 45–60 minutes; the second one onward will hit the 30-minute target. After three audits you’ll know your profile well enough that most rows on the action list will be new acquisitions rather than cleanup.</p>
+<p>If you find yourself repeating Phase 4A (loss detection) over and over because links keep disappearing, you have a different problem: link decay. The fix isn’t more audits, it’s continuous monitoring. Our <a href="/learn/ai-watchdog.html">AI Watchdog</a> checks every link in your portfolio every 12 hours and pings you when status changes, so you catch losses within hours instead of weeks.</p>
+<div class="cta"><h3>Stop Running Audits in Crisis Mode</h3><p>PositiveBacklink continuously monitors your live backlinks and surfaces only the exceptions — removed, nofollowed, redirected, or anchor-changed. Your monthly audit becomes a review instead of a fire drill.</p><a class="btn" href="/register.html">Get Early Access</a></div>
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><h4>How often should I audit my backlink profile?</h4><p>For sites under 1,000 referring domains, a 30-minute audit every 90 days is enough. For larger profiles or competitive niches, run the full audit monthly and pair it with continuous monitoring like an AI Watchdog.</p></div>
+<div class="faq-item"><h4>Which tool should I use to export backlinks?</h4><p>Ahrefs, Majestic, Semrush, and Moz Link Explorer all work. Pick the one your team already uses. If you use multiple, deduplicate by referring domain after export because each tool has gaps the others fill.</p></div>
+<div class="faq-item"><h4>What anchor text distribution is healthy?</h4><p>A healthy distribution is roughly 40 to 60 percent branded, 20 to 30 percent naked URL or generic, 15 to 25 percent partial match, and under 5 percent exact match. Anything above 30 percent exact match anchors is a manual action risk.</p></div>
+<div class="faq-item"><h4>Should I disavow every toxic link I find?</h4><p>No. Only disavow when you see a clear pattern of low-quality links plus a ranking or traffic decline that maps to that pattern. Disavowing healthy links based purely on Spam Score is a common mistake that can hurt rankings.</p></div>
+<div class="faq-item"><h4>Can this audit be automated?</h4><p>The inventory, threshold filtering, and loss detection can all be automated. The judgment calls in anchor analysis and disavow decisions still need a human. Tools like PositiveBacklink AI Watchdog automate the continuous-monitoring layer so your 30-minute audit only handles edge cases.</p></div>
+<h2>Related Resources</h2><div class="cross-links">
+<a class="cross-link" href="/learn/trust-flow.html"><div class="t">Trust Flow Explained</div><div class="d">The quality-weighted backlink metric used in Phase 2</div></a>
+<a class="cross-link" href="/learn/citation-flow.html"><div class="t">Citation Flow Explained</div><div class="d">The volume metric and TF/CF ratio for spam detection</div></a>
+<a class="cross-link" href="/learn/link-spam-score.html"><div class="t">Link Spam Score</div><div class="d">Moz’s 27-signal risk model used in Phase 4B</div></a>
+<a class="cross-link" href="/learn/ai-watchdog.html"><div class="t">AI Watchdog (12h Monitoring)</div><div class="d">Continuous monitoring so audits stay short</div></a>
+<a class="cross-link" href="/blog/outreach-email-templates-that-convert.html"><div class="t">Outreach Email Templates</div><div class="d">12 scripts for the Recover and Outreach columns</div></a>
+<a class="cross-link" href="/tools/backlink-velocity-calculator.html"><div class="t">Backlink Velocity Calculator</div><div class="d">Plan post-audit link acquisition pace safely</div></a>
+</div>
+</article>
+<footer><div class="container">&copy; 2026 PositiveBacklink • <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a> • <a href="/about.html">About</a></div></footer>
+</body></html>
