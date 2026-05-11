@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anchor Distribution Analyzer - Auto-Classify Backlink Anchors | PositiveBacklink</title>
+<meta name="description" content="Paste your raw anchor text list and get an automatic distribution breakdown with over-optimization risk flags. Free, no signup required.">
+<link rel="canonical" href="https://www.positivebacklink.com/tools/anchor-distribution-analyzer.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="application-name" content="PositiveBacklink">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.positivebacklink.com/tools/anchor-distribution-analyzer.html">
+<meta property="og:title" content="Anchor Distribution Analyzer - Free SEO Tool">
+<meta property="og:description" content="Paste your raw anchor text list and get an automatic distribution breakdown with over-optimization risk flags. Free, no signup required.">
+<meta property="og:image" content="https://www.positivebacklink.com/og-image.png">
+<meta property="og:site_name" content="PositiveBacklink">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Anchor Distribution Analyzer">
+<meta name="twitter:description" content="Paste your raw anchor text list and get an automatic distribution breakdown with over-optimization risk flags. Free, no signup required.">
+<meta name="twitter:image" content="https://www.positivebacklink.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="google-site-verification" content="0bm_X9ojXIi_-sV7Ov0on_H-WS89MnzovlsSPtoWzO4">
+<meta name="msvalidate.01" content="5627D94178E561857861AE89E474F98A">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.positivebacklink.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.positivebacklink.com/tools/"},{"@type":"ListItem","position":3,"name":"Anchor Distribution Analyzer","item":"https://www.positivebacklink.com/tools/anchor-distribution-analyzer.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Anchor Distribution Analyzer","applicationCategory":"SEOApplication","operatingSystem":"Any","description":"Paste your raw anchor text list and get an automatic distribution breakdown with over-optimization risk flags. Free, no signup required.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"url":"https://www.positivebacklink.com/tools/anchor-distribution-analyzer.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is anchor text distribution?","acceptedAnswer":{"@type":"Answer","text":"Anchor text distribution is the breakdown of all the clickable text (anchors) pointing to your site, grouped by type: exact-match (your target keyword), partial-match (keyword variation), branded (your brand name), generic (click here, this page), URL (raw domain), and naked URL (the full URL). A healthy distribution looks natural to search engines."}},{"@type":"Question","name":"What percentages are considered safe?","acceptedAnswer":{"@type":"Answer","text":"For most sites: exact-match under 15%, partial-match 10-25%, branded 25-45%, generic 5-15%, URL/naked 10-25%. Distributions outside these ranges (especially exact-match above 30%) are the strongest predictor of an over-optimization penalty."}},{"@type":"Question","name":"How does the tool classify anchors?","acceptedAnswer":{"@type":"Answer","text":"The tool uses rule-based classification: empty or URL-like strings become URL/naked, brand names (auto-detected from repetition) become branded, common phrases (click here, learn more, read more, this page, here, source) become generic, and the rest is classified as exact-match vs partial-match based on whether it contains your target keyword."}},{"@type":"Question","name":"Does this tool store my data?","acceptedAnswer":{"@type":"Answer","text":"No. All analysis runs in your browser. We do not send your anchor list to any server, we do not log it, and we do not store it. Refresh the page and your data is gone."}},{"@type":"Question","name":"How do I export my analysis?","acceptedAnswer":{"@type":"Answer","text":"After analysis, click the \"Copy results\" button to copy the full distribution breakdown to your clipboard. You can paste it into a report, spreadsheet, or share it with your team."}}]}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#e6e6e6;line-height:1.6;min-height:100vh}
+.mono{font-family:'JetBrains Mono',monospace}
+nav{position:sticky;top:0;background:rgba(10,10,10,0.9);backdrop-filter:blur(10px);border-bottom:1px solid #1f1f1f;z-index:50}
+.nav-inner{max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;font-size:18px;color:#fff;text-decoration:none}
+.logo span{color:#3ECF8E}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{color:#a3a3a3;text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#3ECF8E}
+.btn{display:inline-block;padding:10px 20px;border-radius:6px;font-weight:600;font-size:14px;text-decoration:none;transition:all .2s;border:none;cursor:pointer;font-family:inherit}
+.btn-primary{background:#3ECF8E;color:#0a0a0a}
+.btn-primary:hover{background:#2ebb7a}
+.btn-secondary{background:transparent;color:#e6e6e6;border:1px solid #2a2a2a}
+.btn-secondary:hover{border-color:#3ECF8E;color:#3ECF8E}
+.container{max-width:880px;margin:0 auto;padding:48px 24px}
+.breadcrumb{font-size:13px;color:#737373;margin-bottom:24px}
+.breadcrumb a{color:#a3a3a3;text-decoration:none}
+.breadcrumb a:hover{color:#3ECF8E}
+.tag{display:inline-block;color:#3ECF8E;font-size:12px;font-weight:500;margin-bottom:16px;letter-spacing:.05em}
+h1{font-size:40px;font-weight:800;color:#fff;line-height:1.15;margin-bottom:16px;letter-spacing:-.02em}
+.lead{font-size:18px;color:#a3a3a3;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid #1f1f1f}
+h2{font-size:22px;color:#fff;margin:32px 0 12px;font-weight:700}
+p{color:#d4d4d4;margin-bottom:16px}
+.panel{background:#111;border:1px solid #1f1f1f;border-radius:12px;padding:32px;margin-bottom:24px}
+.label{display:block;font-family:'JetBrains Mono',monospace;color:#a3a3a3;font-size:12px;margin-bottom:8px;letter-spacing:.04em}
+.input,textarea,select{width:100%;padding:12px;background:#0a0a0a;border:1px solid #2a2a2a;border-radius:6px;color:#fff;font-family:inherit;font-size:14px}
+textarea{font-family:'JetBrains Mono',monospace;font-size:13px;resize:vertical;min-height:140px}
+.input:focus,textarea:focus,select:focus{outline:none;border-color:#3ECF8E}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.bar-row{margin-bottom:20px}
+.bar-head{display:flex;justify-content:space-between;margin-bottom:6px;font-size:13px}
+.bar-head .name{color:#d4d4d4}
+.bar-head .val{color:#a3a3a3;font-family:'JetBrains Mono',monospace}
+.bar{height:10px;background:#1f1f1f;border-radius:6px;overflow:hidden}
+.bar-fill{height:100%;border-radius:6px;transition:width .4s}
+.healthy{background:#3ECF8E}
+.warning{background:#fbbf24}
+.danger{background:#ef4444}
+.verdict{padding:16px;border-radius:8px;font-weight:600;margin-bottom:24px}
+.verdict.healthy{background:rgba(62,207,142,0.1);border:1px solid #3ECF8E;color:#3ECF8E}
+.verdict.warning{background:rgba(251,191,36,0.1);border:1px solid #fbbf24;color:#fbbf24}
+.verdict.danger{background:rgba(239,68,68,0.1);border:1px solid #ef4444;color:#ef4444}
+.score-box{text-align:center;padding:32px;background:#0a0a0a;border:1px solid #1f1f1f;border-radius:12px;margin-bottom:24px}
+.score-num{font-size:64px;font-weight:800;font-family:'JetBrains Mono',monospace;line-height:1}
+.score-num.healthy{color:#3ECF8E}.score-num.warning{color:#fbbf24}.score-num.danger{color:#ef4444}
+.score-label{font-size:13px;color:#737373;margin-top:8px;letter-spacing:.05em}
+.copy-btn{font-size:13px;padding:6px 12px;background:#1f1f1f;color:#a3a3a3;border:1px solid #2a2a2a;cursor:pointer;border-radius:6px;font-family:inherit}
+.copy-btn:hover{color:#3ECF8E;border-color:#3ECF8E}
+table{width:100%;border-collapse:collapse;margin-top:16px;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid #1f1f1f}
+th{color:#a3a3a3;font-weight:500;font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+td{color:#d4d4d4}
+.hidden{display:none}
+.cta-box{background:#111;border:1px solid #1f1f1f;border-radius:12px;padding:32px;margin-top:48px;text-align:center}
+.cta-box h3{font-size:20px;color:#fff;margin-bottom:8px}
+.cta-box p{color:#a3a3a3;margin-bottom:20px}
+footer{border-top:1px solid #1f1f1f;padding:32px 24px;text-align:center;color:#737373;font-size:13px;margin-top:64px}
+footer a{color:#a3a3a3;text-decoration:none;margin:0 12px}
+footer a:hover{color:#3ECF8E}
+@media(max-width:640px){h1{font-size:30px}.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}.nav-links a:not(.btn){display:none}}
+</style>
+<style>
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.5rem 0}@media(max-width:780px){.tool-grid{grid-template-columns:1fr}}
+.tool-card{background:#0f0f0f;border:1px solid #1f1f1f;border-radius:8px;padding:1.25rem}
+.tool-card h3{color:#e5e5e5;font-size:.95rem;margin-bottom:.75rem;font-family:"JetBrains Mono",monospace}
+textarea.anchor-input{width:100%;min-height:240px;background:#0a0a0a;color:#e5e5e5;border:1px solid #1f1f1f;border-radius:6px;padding:.75rem;font-family:"JetBrains Mono",monospace;font-size:.85rem;resize:vertical}
+input.kw-input{width:100%;background:#0a0a0a;color:#e5e5e5;border:1px solid #1f1f1f;border-radius:6px;padding:.6rem;font-family:"JetBrains Mono",monospace;font-size:.85rem;margin-top:.5rem}
+input.brand-input{width:100%;background:#0a0a0a;color:#e5e5e5;border:1px solid #1f1f1f;border-radius:6px;padding:.6rem;font-family:"JetBrains Mono",monospace;font-size:.85rem;margin-top:.5rem}
+.dist-row{display:flex;align-items:center;gap:.75rem;margin:.5rem 0;font-family:"JetBrains Mono",monospace;font-size:.85rem}
+.dist-label{flex:0 0 130px;color:#a3a3a3}
+.dist-bar-wrap{flex:1;background:#0a0a0a;height:24px;border-radius:4px;border:1px solid #1f1f1f;overflow:hidden;position:relative}
+.dist-bar{height:100%;background:#3ECF8E;transition:width .4s ease}
+.dist-bar.warn{background:#f59e0b}
+.dist-bar.bad{background:#ef4444}
+.dist-pct{flex:0 0 80px;text-align:right;color:#e5e5e5;font-weight:600}
+.dist-count{flex:0 0 60px;text-align:right;color:#737373}
+.risk-banner{padding:.75rem 1rem;border-radius:6px;margin:1rem 0;font-size:.9rem;font-family:"JetBrains Mono",monospace}
+.risk-banner.ok{background:#0f1f15;border-left:3px solid #3ECF8E;color:#3ECF8E}
+.risk-banner.warn{background:#1f1409;border-left:3px solid #f59e0b;color:#f59e0b}
+.risk-banner.bad{background:#1f0a0a;border-left:3px solid #ef4444;color:#ef4444}
+.run-btn{background:#3ECF8E;color:#0a0a0a;border:0;padding:.7rem 1.5rem;border-radius:6px;font-weight:600;cursor:pointer;font-family:"JetBrains Mono",monospace;margin-top:1rem;width:100%}
+.run-btn:hover{background:#36b87a}
+.copy-btn{background:#1f1f1f;color:#e5e5e5;border:1px solid #2a2a2a;padding:.5rem 1rem;border-radius:6px;cursor:pointer;font-family:"JetBrains Mono",monospace;font-size:.85rem;margin-top:1rem}
+.copy-btn:hover{background:#2a2a2a}
+details.faq-item{margin:.5rem 0;padding:.75rem 1rem;background:#0f0f0f;border:1px solid #1f1f1f;border-radius:6px}
+details.faq-item summary{cursor:pointer;color:#e5e5e5;font-weight:500}
+details.faq-item div{margin-top:.5rem;color:#a3a3a3;font-size:.9rem;line-height:1.6}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner">
+<a href="/" class="logo">Positive<span>Backlink</span></a>
+<div class="nav-links">
+<a href="/tools/">Free Tools</a>
+<a href="/blog/">Blog</a>
+<a href="/learn/">Learn</a>
+<a href="/compare/">Compare</a>
+<a href="/pricing.html">Pricing</a>
+<a href="/about.html">About</a>
+<a href="/login.html" class="btn btn-secondary">Login</a>
+<a href="/register.html" class="btn btn-primary">Sign Up</a>
+</div></div></nav>
+<div class="breadcrumb"><a href="/">Home</a> / <a href="/tools/">Tools</a> / Anchor Distribution Analyzer</div>
+<div class="container">
+<div class="page-tag">// FREE TOOL • NO SIGNUP</div>
+<h1>Anchor Distribution Analyzer</h1>
+<p class="lede">Paste your raw anchor text list (one per line) and the analyzer auto-classifies each anchor, calculates the distribution, and flags over-optimization risks in real time. All processing happens in your browser.</p>
+<div class="tool-grid">
+<div class="tool-card">
+<h3>// INPUT</h3>
+<label style="color:#a3a3a3;font-size:.85rem;font-family:'JetBrains Mono',monospace">Target keyword (used for exact-match detection)</label>
+<input type="text" id="kw" class="kw-input" placeholder="e.g. backlink exchange">
+<label style="color:#a3a3a3;font-size:.85rem;font-family:'JetBrains Mono',monospace;margin-top:.75rem;display:block">Brand name (used for branded detection)</label>
+<input type="text" id="brand" class="brand-input" placeholder="e.g. PositiveBacklink">
+<label style="color:#a3a3a3;font-size:.85rem;font-family:'JetBrains Mono',monospace;margin-top:.75rem;display:block">Anchor list (one per line)</label>
+<textarea id="anchors" class="anchor-input" placeholder="positivebacklink&#10;backlink exchange&#10;click here&#10;https://www.positivebacklink.com&#10;learn more about link building&#10;the best backlink exchange&#10;positivebacklink.com&#10;read more"></textarea>
+<button class="run-btn" id="analyze-btn">Analyze Distribution</button>
+</div>
+<div class="tool-card">
+<h3>// DISTRIBUTION</h3>
+<div id="results"><p style="color:#737373;font-size:.85rem;font-family:'JetBrains Mono',monospace">Paste anchors and click Analyze to see the breakdown.</p></div>
+</div>
+</div>
+<script>
+const generics=["click here","read more","learn more","this page","here","source","this site","this article","this post","website","link","more info","find out more","go here","read this","check it out","more","details","this","that"];
+function classify(anchor,kw,brand){
+  const a=anchor.trim().toLowerCase();
+  if(!a)return null;
+  // URL/naked detection
+  if(/^https?:\/\//.test(a))return "url";
+  if(/^[a-z0-9-]+\.[a-z]{2,}$/.test(a))return "naked";
+  if(/^www\.|\.com$|\.io$|\.net$|\.org$/.test(a))return "naked";
+  // Generic
+  if(generics.indexOf(a)>-1)return "generic";
+  // Branded
+  if(brand && a.indexOf(brand.toLowerCase())>-1)return "branded";
+  if(!kw)return "partial";
+  const kwLower=kw.toLowerCase().trim();
+  if(!kwLower)return "partial";
+  if(a===kwLower)return "exact";
+  // Partial-match if it contains all words of the keyword
+  const kwWords=kwLower.split(/\s+/).filter(Boolean);
+  const allPresent=kwWords.every(w=>a.indexOf(w)>-1);
+  if(allPresent)return "partial";
+  return "branded";
+}
+function analyze(){
+  const kw=document.getElementById("kw").value;
+  const brand=document.getElementById("brand").value;
+  const lines=document.getElementById("anchors").value.split(/\n/).map(l=>l.trim()).filter(Boolean);
+  const counts={exact:0,partial:0,branded:0,generic:0,url:0,naked:0};
+  lines.forEach(l=>{const c=classify(l,kw,brand);if(c&&counts.hasOwnProperty(c))counts[c]++;});
+  const total=lines.length;
+  if(!total){document.getElementById("results").innerHTML="<p style=\"color:#ef4444\">Add some anchors first.</p>";return;}
+  const labels={exact:"Exact-match",partial:"Partial-match",branded:"Branded",generic:"Generic",url:"URL",naked:"Naked URL"};
+  const benchmarks={exact:15,partial:25,branded:45,generic:15,url:25,naked:25};
+  let html="";
+  // Risk evaluation
+  const exactPct=(counts.exact/total)*100;
+  if(exactPct>30){html+="<div class=\"risk-banner bad\">// HIGH RISK — Exact-match anchor at "+exactPct.toFixed(1)+"%. This is the strongest signal for an over-optimization penalty. Reduce to under 15%.</div>";}
+  else if(exactPct>15){html+="<div class=\"risk-banner warn\">// CAUTION — Exact-match anchor at "+exactPct.toFixed(1)+"%. Safe ceiling is 15%. Diversify with branded and naked URLs.</div>";}
+  else{html+="<div class=\"risk-banner ok\">// HEALTHY — Exact-match anchor at "+exactPct.toFixed(1)+"%. Distribution looks natural.</div>";}
+  // Bars
+  const order=["exact","partial","branded","generic","url","naked"];
+  order.forEach(k=>{
+    const pct=(counts[k]/total)*100;
+    const bm=benchmarks[k];
+    let cls="dist-bar";
+    if(k==="exact"&&pct>30)cls+=" bad";
+    else if(k==="exact"&&pct>15)cls+=" warn";
+    else if(pct>bm*1.5)cls+=" warn";
+    html+="<div class=\"dist-row\">";
+    html+="<div class=\"dist-label\">"+labels[k]+"</div>";
+    html+="<div class=\"dist-bar-wrap\"><div class=\""+cls+"\" style=\"width:"+pct+"%\"></div></div>";
+    html+="<div class=\"dist-pct\">"+pct.toFixed(1)+"%</div>";
+    html+="<div class=\"dist-count\">"+counts[k]+"</div>";
+    html+="</div>";
+  });
+  html+="<p style=\"color:#737373;font-size:.8rem;font-family:'JetBrains Mono',monospace;margin-top:1rem">Total anchors analyzed: "+total+"</p>";
+  html+="<button class=\"copy-btn\" id=\"copy-btn\">Copy results</button>";
+  document.getElementById("results").innerHTML=html;
+  document.getElementById("copy-btn").onclick=function(){
+    let txt="Anchor Distribution Report\n";
+    order.forEach(k=>{const pct=(counts[k]/total)*100;txt+=labels[k]+": "+counts[k]+" ("+pct.toFixed(1)+"%)\n";});
+    txt+="\nTotal: "+total+"\nGenerated at https://www.positivebacklink.com/tools/anchor-distribution-analyzer.html";
+    navigator.clipboard.writeText(txt).then(()=>{this.textContent="Copied!";setTimeout(()=>this.textContent="Copy results",2000);});
+  };
+}
+document.getElementById("analyze-btn").addEventListener("click",analyze);
+</script>
+<h2 style="margin-top:2rem">How the classification works</h2>
+<p>The tool runs each anchor through 6 rules in order:</p>
+<ol style="margin:.75rem 0 1rem 1.5rem;color:#a3a3a3">
+<li style="margin-bottom:.4rem"><strong>URL:</strong> matches http:// or https:// prefix</li>
+<li style="margin-bottom:.4rem"><strong>Naked URL:</strong> domain-style strings like example.com</li>
+<li style="margin-bottom:.4rem"><strong>Generic:</strong> matches a curated list of generic phrases (click here, learn more, read more, etc.)</li>
+<li style="margin-bottom:.4rem"><strong>Branded:</strong> contains your brand name</li>
+<li style="margin-bottom:.4rem"><strong>Exact-match:</strong> equals your target keyword exactly</li>
+<li><strong>Partial-match:</strong> contains all words of the target keyword in any order</li>
+</ol>
+<h2>Healthy benchmarks (2026)</h2>
+<table style="width:100%;border-collapse:collapse;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.9rem">
+<thead><tr style="background:#0f0f0f"><th style="text-align:left;padding:.6rem;border:1px solid #1f1f1f">Anchor type</th><th style="text-align:left;padding:.6rem;border:1px solid #1f1f1f">Safe range</th><th style="text-align:left;padding:.6rem;border:1px solid #1f1f1f">Risk above</th></tr></thead>
+<tbody>
+<tr><td style="padding:.6rem;border:1px solid #1f1f1f">Exact-match</td><td style="padding:.6rem;border:1px solid #1f1f1f">5-15%</td><td style="padding:.6rem;border:1px solid #1f1f1f;color:#ef4444">30%</td></tr>
+<tr><td style="padding:.6rem;border:1px solid #1f1f1f">Partial-match</td><td style="padding:.6rem;border:1px solid #1f1f1f">10-25%</td><td style="padding:.6rem;border:1px solid #1f1f1f;color:#f59e0b">40%</td></tr>
+<tr><td style="padding:.6rem;border:1px solid #1f1f1f">Branded</td><td style="padding:.6rem;border:1px solid #1f1f1f">25-45%</td><td style="padding:.6rem;border:1px solid #1f1f1f;color:#737373">none</td></tr>
+<tr><td style="padding:.6rem;border:1px solid #1f1f1f">Generic</td><td style="padding:.6rem;border:1px solid #1f1f1f">5-15%</td><td style="padding:.6rem;border:1px solid #1f1f1f;color:#f59e0b">25%</td></tr>
+<tr><td style="padding:.6rem;border:1px solid #1f1f1f">URL / Naked</td><td style="padding:.6rem;border:1px solid #1f1f1f">10-25%</td><td style="padding:.6rem;border:1px solid #1f1f1f;color:#737373">none</td></tr>
+</tbody></table>
+<h2>Related reading and tools</h2>
+<ul style="margin:.75rem 0 1rem 1.5rem;color:#a3a3a3">
+<li style="margin-bottom:.4rem"><a href="/tools/anchor-ratio-calculator.html" style="color:#3ECF8E">Anchor Ratio Calculator</a> — manual count entry for the same analysis</li>
+<li style="margin-bottom:.4rem"><a href="/blog/anchor-text-best-practices-2026.html" style="color:#3ECF8E">Anchor Text Best Practices 2026</a></li>
+<li style="margin-bottom:.4rem"><a href="/blog/anchor-text-diversity-2026.html" style="color:#3ECF8E">Anchor Text Diversity Playbook</a></li>
+<li><a href="/blog/niche-relevance-scoring-explained.html" style="color:#3ECF8E">Niche Relevance Scoring: The 5-Signal Algorithm</a></li>
+</ul>
+<h2>Frequently asked questions</h2>
+<details class="faq-item"><summary>What is anchor text distribution?</summary><div>Anchor text distribution is the breakdown of all the clickable text (anchors) pointing to your site, grouped by type: exact-match (your target keyword), partial-match (keyword variation), branded (your brand name), generic (click here, this page), URL (raw domain), and naked URL (the full URL). A healthy distribution looks natural to search engines.</div></details>
+<details class="faq-item"><summary>What percentages are considered safe?</summary><div>For most sites: exact-match under 15%, partial-match 10-25%, branded 25-45%, generic 5-15%, URL/naked 10-25%. Distributions outside these ranges (especially exact-match above 30%) are the strongest predictor of an over-optimization penalty.</div></details>
+<details class="faq-item"><summary>How does the tool classify anchors?</summary><div>The tool uses rule-based classification: empty or URL-like strings become URL/naked, brand names (auto-detected from repetition) become branded, common phrases (click here, learn more, read more, this page, here, source) become generic, and the rest is classified as exact-match vs partial-match based on whether it contains your target keyword.</div></details>
+<details class="faq-item"><summary>Does this tool store my data?</summary><div>No. All analysis runs in your browser. We do not send your anchor list to any server, we do not log it, and we do not store it. Refresh the page and your data is gone.</div></details>
+<details class="faq-item"><summary>How do I export my analysis?</summary><div>After analysis, click the "Copy results" button to copy the full distribution breakdown to your clipboard. You can paste it into a report, spreadsheet, or share it with your team.</div></details>
+</div>
+<footer>
+<div><a href="/">Home</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/learn/">Learn</a><a href="/case-studies/">Case Studies</a><a href="/pricing.html">Pricing</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a></div>
+<div style="margin-top:16px">&copy; 2026 PositiveBacklink. All rights reserved.</div>
+</footer>
+
+</body></html>
