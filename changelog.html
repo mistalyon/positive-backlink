@@ -66,17 +66,6 @@ footer{border-top:1px solid #222;padding:28px 24px;text-align:center;color:#666;
 footer a{color:#888;margin:0 10px}
 @media (max-width:640px){h1{font-size:28px}.lead{font-size:15px}}
 </style>
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.positivebacklink.com/changelog.html">
-<meta property="og:title" content="Changelog - PositiveBacklink">
-<meta property="og:description" content="Product updates, feature releases, and improvements to the PositiveBacklink platform.">
-<meta property="og:image" content="https://www.positivebacklink.com/og-image.png">
-<meta property="og:site_name" content="PositiveBacklink">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="PositiveBacklink Changelog">
-<meta name="twitter:description" content="Latest product updates and feature releases.">
-<meta name="twitter:image" content="https://www.positivebacklink.com/og-image.png">
 </head>
 <body>
 <header>
@@ -116,6 +105,16 @@ footer a{color:#888;margin:0 10px}
 <a href="#v1-0-0">v1.0.0</a>
 </div>
 <div class="timeline">
+<article class="entry" id="v1-11-0">
+<div class="entry-head">
+<span class="version">v1.11.0</span>
+<span class="date">2026-05-11</span>
+<span class="type-pill type-content">seo</span>
+</div>
+<h2>Hardening pass: social cards and sitemap audit</h2>
+<p>Added Open Graph and Twitter card meta tags to <a href="/about.html">/about</a>, <a href="/faq.html">/faq</a>, <a href="/changelog.html">/changelog</a>, <a href="/learn/">/learn</a>, and <a href="/compare/">/compare</a>. Every indexable page now ships <code>og:image</code>, <code>twitter:card=summary_large_image</code>, and <code>twitter:image</code>. Verified all 49 sitemap URLs return 200 (zero broken links). Verified all hub pages carry the PWA manifest, viewport, and canonical tags.</p>
+</article>
+
 <article class="entry" id="v1-10-0">
 <div class="entry-head">
 <span class="version">v1.10.0</span>
