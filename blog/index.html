@@ -159,10 +159,36 @@ footer{border-top:1px solid #1f1f1f;padding:48px 0;margin-top:80px;text-align:ce
       </a>
     </article>
   </div>
-  <div class="cta-box">
-    <h2>Build Links the Smart Way</h2>
-    <p>Join the waitlist for PositiveBacklink — automated white-hat exchanges with AI monitoring.</p>
-    <a href="/#waitlist" class="cta-btn">Join the Waitlist →</a>
+  <div class="cta-box" id="newsletter">
+    <h2>Get new posts in your inbox</h2>
+    <p>Short SEO insights and product updates. No spam. Unsubscribe anytime.</p>
+    <form id="nl-form-blog" style="max-width:520px;margin:0 auto;display:flex;gap:10px;flex-wrap:wrap;justify-content:center" novalidate>
+      <input type="email" id="nl-email-b" name="email" required placeholder="you@example.com" autocomplete="email" style="flex:1;min-width:240px;padding:14px 18px;border-radius:8px;border:none;font-size:16px;background:#fff;color:#000">
+      <input type="text" name="website" id="nl-hp-b" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
+      <button type="submit" id="nl-btn-b" class="cta-btn" style="border:none;cursor:pointer">Subscribe →</button>
+    </form>
+    <p id="nl-msg-b" role="status" aria-live="polite" style="margin-top:14px;font-size:14px;min-height:18px;color:#000"></p>
+    <script>
+    (function(){
+      var f=document.getElementById("nl-form-blog");if(!f)return;
+      f.addEventListener("submit",function(e){
+        e.preventDefault();
+        var em=document.getElementById("nl-email-b").value.trim();
+        var hp=document.getElementById("nl-hp-b").value.trim();
+        var btn=document.getElementById("nl-btn-b");
+        var msg=document.getElementById("nl-msg-b");
+        msg.textContent="Submitting...";btn.disabled=true;
+        fetch("/api/subscribe",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:em,website:hp})})
+          .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j}});})
+          .then(function(d){
+            btn.disabled=false;
+            if(d.ok){msg.textContent=d.j.message||"Subscribed!";setTimeout(function(){location.href="/thank-you.html";},800);}
+            else{msg.textContent=d.j.message||"Something went wrong.";}
+          })
+          .catch(function(){btn.disabled=false;msg.textContent="Network error. Try again.";});
+      });
+    })();
+    </script>
   </div>
 </div>
 <footer><div class="container">© 2026 PositiveBacklink. All rights reserved. · <a href="/">Home</a> · <a href="/tools/">Tools</a> · <a href="/blog/">Blog</a></div></footer>
