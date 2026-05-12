@@ -1,4 +1,39 @@
                                     <div class="changelog-entry">
+                                      <div class="changelog-version">v1.52.0 <span class="changelog-date">2026-05-12</span></div>
+                                      <div class="changelog-body">
+                                        <p><strong>Faz 19 - Vercel deploy unblock</strong></p>
+                                        <ul>
+                                          <li>Deleted package.json that was making Vercel expect a build output directory, blocking all deploys.</li>
+                                          <li>4 launch-prep pages (support, security, api-docs, status) now serve correctly on production after the failed deploy chain cleared.</li>
+                                          <li>Bumped sitemap.xml lastmod to 2026-05-12 to trigger fresh edge cache.</li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <div class="changelog-entry">
+                                      <div class="changelog-version">v1.51.0 <span class="changelog-date">2026-05-12</span></div>
+                                      <div class="changelog-body">
+                                        <p><strong>Faz 16 - Client error logger</strong></p>
+                                        <ul>
+                                          <li>New /api/log-error endpoint with per-IP rate limiting (10 req/min, in-memory bucket).</li>
+                                          <li>New /assets/error-logger.js drop-in script captures window.onerror and unhandledrejection, sends via navigator.sendBeacon.</li>
+                                          <li>New SQL migration /sql/errors-schema.sql creates client_errors table with RLS (anon can INSERT, only admins can SELECT).</li>
+                                          <li>Service worker registration is bundled into the same client script - one include enables PWA + monitoring.</li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <div class="changelog-entry">
+                                      <div class="changelog-version">v1.50.0 <span class="changelog-date">2026-05-12</span></div>
+                                      <div class="changelog-body">
+                                        <p><strong>Faz 15 - PWA support</strong></p>
+                                        <ul>
+                                          <li>Added /manifest.webmanifest with brand name, theme color (#3ECF8E), shortcuts to Dashboard / Browse / Watchdog.</li>
+                                          <li>Added /service-worker.js: network-first for HTML, cache-first for static assets, offline shell fallback.</li>
+                                          <li>Added /offline.html branded offline page with retry button.</li>
+                                          <li>SW bypasses cache for /api/, /dashboard, /admin, /watchdog routes - always fetches fresh.</li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <div class="changelog-entry">
       <div class="changelog-version">v1.49.0 <span class="changelog-date">2026-05-12</span></div>
       <div class="changelog-body">
         <strong>Faz 14 — Documentation & Launch Readiness.</strong>
