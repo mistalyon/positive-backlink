@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Verify Email - PositiveBacklink</title>
+<meta name="description" content="Confirm your email to activate your PositiveBacklink account." />
+<meta name="robots" content="noindex,nofollow" />
+<link rel="canonical" href="https://www.positivebacklink.com/verify-email.html" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e5e5e5;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}nav{background:#111;border-bottom:1px solid #222;padding:16px 24px}.nav-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}.logo{color:#3ECF8E;font-weight:700;font-size:18px;text-decoration:none}.nav-links a{color:#a1a1a1;text-decoration:none;margin-left:24px;font-size:14px}.nav-links a:hover{color:#3ECF8E}.main{flex:1;display:flex;align-items:center;justify-content:center;padding:32px 16px}.card{background:#111;border:1px solid #222;border-radius:12px;padding:36px;width:100%;max-width:440px}h1{font-size:26px;color:#fff;font-weight:700;margin-bottom:8px}.subtitle{color:#a1a1a1;font-size:14px;margin-bottom:28px}.field{margin-bottom:18px}.field label{display:block;color:#c5c5c5;font-size:13px;margin-bottom:6px;font-family:'JetBrains Mono',monospace}.field input{width:100%;background:#0d0d0d;color:#e5e5e5;border:1px solid #222;border-radius:6px;padding:11px 14px;font-size:14px}.field input:focus{outline:none;border-color:#3ECF8E}.btn{width:100%;background:#3ECF8E;color:#0a0a0a;border:none;padding:13px;border-radius:6px;font-weight:600;cursor:pointer;font-size:15px}.btn:hover:not(:disabled){background:#2dd4a0}.btn:disabled{background:#1a3d2e;color:#666;cursor:not-allowed}.alert{padding:12px 14px;border-radius:6px;margin-bottom:18px;font-size:13px;display:none}.alert.show{display:block}.alert-error{background:#2a0a0a;border:1px solid #ff5555;color:#ff8888}.alert-success{background:#0d2520;border:1px solid #3ECF8E;color:#3ECF8E}.alert-info{background:#0d1a2a;border:1px solid #4a90e2;color:#88bbff}.footer-text{text-align:center;color:#666;font-size:13px;margin-top:24px}.footer-text a{color:#3ECF8E;text-decoration:none}.icon-big{font-size:48px;text-align:center;margin-bottom:16px;color:#3ECF8E}</style>
+</head><body>
+<nav><div class="nav-inner"><a href="/" class="logo">PositiveBacklink</a><div class="nav-links"><a href="/login.html">Sign in</a></div></div></nav>
+<div class="main"><div class="card">
+<div class="icon-big">✉</div>
+<h1 id="title" style="text-align:center">Check your inbox</h1>
+<p class="subtitle" style="text-align:center" id="subtitle">We sent a confirmation link to <strong id="em">your email</strong>. Click it to activate your account.</p>
+<div id="err" class="alert alert-error"></div><div id="ok" class="alert alert-success"></div>
+<button class="btn" id="resendBtn">Resend confirmation email</button>
+<div class="footer-text">Wrong email? <a href="/register.html">Sign up again</a> &middot; Already verified? <a href="/login.html">Sign in</a></div>
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/dist/umd/supabase.min.js"></script>
+<script>
+(function(){const URL='https://hsgxsxiwwkuplcedfhxq.supabase.co',K=window.SUPABASE_ANON_KEY||'REPLACE_WITH_YOUR_ANON_KEY';const sb=window.supabase.createClient(URL,K);
+function gp(n){return new URLSearchParams(window.location.search).get(n);}function se(m){const e=document.getElementById('err');e.textContent=m;e.classList.add('show');}function so(m){const e=document.getElementById('ok');e.textContent=m;e.classList.add('show');}
+const em=gp('email');if(em)document.getElementById('em').textContent=em;
+sb.auth.onAuthStateChange((event,session)=>{if(event==='SIGNED_IN'&&session){document.getElementById('title').textContent='Email confirmed!';document.getElementById('subtitle').textContent='Your account is active. Redirecting...';document.getElementById('resendBtn').style.display='none';so('You are signed in.');setTimeout(()=>window.location.href='/dashboard.html',1500);}});
+document.getElementById('resendBtn').addEventListener('click',async function(){if(!em){se('No email provided. Go back to register.');return;}const b=this;b.disabled=true;b.textContent='Sending...';try{const {error}=await sb.auth.resend({type:'signup',email:em,options:{emailRedirectTo:window.location.origin+'/verify-email.html'}});if(error){se(error.message);b.disabled=false;b.textContent='Resend confirmation email';return;}so('Confirmation email resent.');b.textContent='Sent';setTimeout(()=>{b.disabled=false;b.textContent='Resend confirmation email';},30000);}catch(x){se('Error: '+x.message);b.disabled=false;b.textContent='Resend confirmation email';}});
+})();
+</script></body></html>
