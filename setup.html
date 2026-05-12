@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setup Wizard - PositiveBacklink</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#1c1c1c" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #0e0e0e; color: #e4e4e4; font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif; }
+    .step-card { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; }
+    .step-card.is-done { border-color: rgba(62,207,142,.4); background: rgba(62,207,142,.04); }
+    .step-num { width: 28px; height: 28px; border-radius: 50%; background: #2a2a2a; color: #999; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex-shrink: 0; }
+    .step-card.is-done .step-num { background: #3ECF8E; color: #000; }
+    .input-base { background: #0e0e0e; border: 1px solid #2a2a2a; transition: border-color .15s; }
+    .input-base:focus { outline: none; border-color: #3ECF8E; }
+    .btn-primary { background: #3ECF8E; color: #000; font-weight: 500; transition: background .15s; }
+    .btn-primary:hover:not(:disabled) { background: #34b87a; }
+    .btn-primary:disabled { opacity: .5; cursor: not-allowed; }
+    .btn-outline { background: transparent; border: 1px solid #2e2e2e; color: #d4d4d4; }
+    .btn-outline:hover { border-color: #3ECF8E; color: #3ECF8E; }
+    .msg { padding: 10px 12px; border-radius: 6px; font-size: 13px; margin-top: 10px; }
+    .msg.error { background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.3); color: #fca5a5; }
+    .msg.success { background: rgba(62,207,142,.08); border: 1px solid rgba(62,207,142,.3); color: #86efac; }
+    .code { font-family: ui-monospace, "SF Mono", Menlo, monospace; background: #0a0a0a; border: 1px solid #2a2a2a; border-radius: 6px; padding: 8px 10px; font-size: 12.5px; color: #3ECF8E; display: block; word-break: break-all; }
+    a.lnk { color: #3ECF8E; text-decoration: none; }
+    a.lnk:hover { text-decoration: underline; }
+  </style>
+</head>
+<body class="min-h-screen">
+  <nav class="border-b border-[#2a2a2a]">
+    <div class="max-w-3xl mx-auto h-14 px-6 flex items-center gap-3">
+      <a href="/" class="flex items-center gap-2">
+        <svg width="22" height="22" viewBox="0 0 109 113" fill="none"><path d="M63.7076 110.284C60.8481 113.885 55.0502 111.912 54.9813 107.314L53.9738 40.0627L99.1935 40.0627C107.384 40.0627 111.952 49.5228 106.859 55.9374L63.7076 110.284Z" fill="#3ECF8E"/><path d="M45.317 2.07103C48.1765 -1.53037 53.9745 0.442937 54.0434 5.041L54.4849 72.2922H9.83113C1.64038 72.2922 -2.92775 62.8321 2.1655 56.4175L45.317 2.07103Z" fill="#3ECF8E" fill-opacity="0.5"/></svg>
+        <span class="text-sm font-medium">positivebacklink</span>
+      </a>
+      <span class="text-xs text-gray-500">/ setup</span>
+    </div>
+  </nav>
+  <main class="max-w-3xl mx-auto px-6 py-10">
+    <div class="mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3ECF8E]/10 border border-[#3ECF8E]/20 text-xs text-[#3ECF8E] mb-4">// Setup Wizard</div>
+      <h1 class="text-3xl font-bold mb-2">Activate your PositiveBacklink platform</h1>
+      <p class="text-gray-400">Four steps. Five minutes. After this, login works.</p>
+    </div>
+
+    <!-- STEP 1: Anon Key -->
+    <section id="step1" class="step-card p-6 mb-6">
+      <div class="flex items-start gap-4">
+        <div class="step-num" id="step1-num">1</div>
+        <div class="flex-1">
+          <h2 class="text-lg font-semibold mb-1">Paste your Supabase Anon Key</h2>
+          <p class="text-sm text-gray-400 mb-4">This key is <strong>public-safe</strong> (designed to be exposed in browser). Stored only in your browser localStorage, never sent to GitHub.</p>
+          <details class="mb-4">
+            <summary class="text-xs text-[#3ECF8E] cursor-pointer hover:underline">Where do I find this key?</summary>
+            <ol class="text-sm text-gray-400 mt-3 ml-5 list-decimal space-y-1.5">
+              <li>Open <a href="https://supabase.com/dashboard/project/hsgxsxiwwkuplcedfhxq/settings/api" target="_blank" class="lnk">Supabase API Settings</a></li>
+              <li>Scroll to <strong>"Project API keys"</strong></li>
+              <li>Find the row labeled <code class="text-[#3ECF8E]">anon</code> <code class="text-[#3ECF8E]">public</code></li>
+              <li>Click the <strong>copy icon</strong> next to it</li>
+              <li>Paste below</li>
+            </ol>
+          </details>
+          <input type="text" id="anon-key-input" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6..." class="input-base w-full px-3 py-2.5 rounded-md text-sm font-mono" />
+          <div class="flex gap-2 mt-4">
+            <button id="save-key-btn" class="btn-primary px-5 py-2 rounded-md text-sm">Save & test connection</button>
+            <button id="clear-key-btn" class="btn-outline px-4 py-2 rounded-md text-sm">Clear</button>
+          </div>
+          <div id="step1-msg" class="msg hidden"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 2: SQL migrations -->
+    <section id="step2" class="step-card p-6 mb-6">
+      <div class="flex items-start gap-4">
+        <div class="step-num">2</div>
+        <div class="flex-1">
+          <h2 class="text-lg font-semibold mb-1">Run database migrations</h2>
+          <p class="text-sm text-gray-400 mb-4">Create the users, sites, exchanges, notifications, and error tables.</p>
+          <ol class="text-sm text-gray-300 ml-5 list-decimal space-y-2">
+            <li>Open <a href="https://supabase.com/dashboard/project/hsgxsxiwwkuplcedfhxq/sql/new" target="_blank" class="lnk">Supabase SQL Editor</a></li>
+            <li>Open <a href="https://github.com/mistalyon/positive-backlink/blob/main/sql/schema.sql" target="_blank" class="lnk">sql/schema.sql</a>, copy ALL of it, paste in editor, click <strong>RUN</strong></li>
+            <li>Open <a href="https://github.com/mistalyon/positive-backlink/blob/main/sql/notifications-schema.sql" target="_blank" class="lnk">sql/notifications-schema.sql</a>, repeat</li>
+            <li>Open <a href="https://github.com/mistalyon/positive-backlink/blob/main/sql/errors-schema.sql" target="_blank" class="lnk">sql/errors-schema.sql</a>, repeat</li>
+          </ol>
+          <div class="mt-4"><button id="step2-done" class="btn-outline px-4 py-2 rounded-md text-sm">Mark as done</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3: Auth providers -->
+    <section id="step3" class="step-card p-6 mb-6">
+      <div class="flex items-start gap-4">
+        <div class="step-num">3</div>
+        <div class="flex-1">
+          <h2 class="text-lg font-semibold mb-1">Enable auth providers</h2>
+          <p class="text-sm text-gray-400 mb-4">Turn on Email + Google sign-in in Supabase.</p>
+          <ol class="text-sm text-gray-300 ml-5 list-decimal space-y-2">
+            <li>Open <a href="https://supabase.com/dashboard/project/hsgxsxiwwkuplcedfhxq/auth/providers" target="_blank" class="lnk">Supabase Auth Providers</a></li>
+            <li>Find <strong>Email</strong> -> Enabled (already on by default). Set "Confirm email" to ON.</li>
+            <li>Find <strong>Google</strong> -> Click to expand -> Toggle Enable. You will need Google Cloud OAuth credentials. <a href="https://supabase.com/docs/guides/auth/social-login/auth-google" target="_blank" class="lnk">Full guide</a>. <em>Skip Google for now if you do not have it - email login still works.</em></li>
+          </ol>
+          <p class="text-sm text-gray-300 mt-4 mb-2">Then set the Site URL:</p>
+          <ol class="text-sm text-gray-300 ml-5 list-decimal space-y-2">
+            <li>Open <a href="https://supabase.com/dashboard/project/hsgxsxiwwkuplcedfhxq/auth/url-configuration" target="_blank" class="lnk">URL Configuration</a></li>
+            <li>Site URL: <code class="text-[#3ECF8E]">https://www.positivebacklink.com</code></li>
+            <li>Redirect URLs - add each on its own line:</li>
+          </ol>
+          <code class="code mt-2">https://www.positivebacklink.com/dashboard
+https://www.positivebacklink.com/reset-password
+https://www.positivebacklink.com/verify-email
+http://localhost:3000/**</code>
+          <div class="mt-4"><button id="step3-done" class="btn-outline px-4 py-2 rounded-md text-sm">Mark as done</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 4: Test -->
+    <section id="step4" class="step-card p-6 mb-6">
+      <div class="flex items-start gap-4">
+        <div class="step-num">4</div>
+        <div class="flex-1">
+          <h2 class="text-lg font-semibold mb-1">Test it!</h2>
+          <p class="text-sm text-gray-400 mb-4">Open <a href="/register" class="lnk">/register</a>, create an account, check your email, then <a href="/login" class="lnk">/login</a> and land in your dashboard.</p>
+          <p class="text-xs text-gray-500">If login fails: check the browser console (F12) for the error message and check that the anon key in Step 1 is correct.</p>
+          <div class="mt-4 flex gap-2">
+            <a href="/register" class="btn-primary inline-block px-5 py-2 rounded-md text-sm">Go register a test account</a>
+            <a href="/login" class="btn-outline inline-block px-4 py-2 rounded-md text-sm">Or open login</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="text-center text-xs text-gray-600 mt-8">This page is not indexed. Bookmark <a href="/setup" class="lnk">/setup</a> for future use.</div>
+  </main>
+
+  <script>
+    var input = document.getElementById("anon-key-input");
+    var saveBtn = document.getElementById("save-key-btn");
+    var clearBtn = document.getElementById("clear-key-btn");
+    var msg = document.getElementById("step1-msg");
+    var step1 = document.getElementById("step1");
+    var step1num = document.getElementById("step1-num");
+
+    var stored = localStorage.getItem("PB_SUPABASE_ANON_KEY");
+    if (stored) {
+      input.value = stored;
+      step1.classList.add("is-done");
+      step1num.innerHTML = "&#10003;";
+    }
+
+    function show(t, k) { msg.textContent = t; msg.className = "msg " + (k||"error"); msg.classList.remove("hidden"); }
+
+    saveBtn.addEventListener("click", async function() {
+      var key = input.value.trim();
+      if (!key || key.length < 50) { show("That does not look like a valid anon key. It should be 200+ characters starting with eyJ..."); return; }
+      if (!key.startsWith("eyJ")) { show("Anon keys start with eyJ. Are you sure you copied the right one?"); return; }
+      saveBtn.disabled = true; saveBtn.textContent = "Testing...";
+      localStorage.setItem("PB_SUPABASE_ANON_KEY", key);
+      try {
+        var url = "https://hsgxsxiwwkuplcedfhxq.supabase.co/auth/v1/settings";
+        var r = await fetch(url, { headers: { apikey: key } });
+        if (r.ok) {
+          show("Connection successful! Key saved. Auth is now active across the site.", "success");
+          step1.classList.add("is-done");
+          step1num.innerHTML = "&#10003;";
+        } else {
+          show("Key saved but Supabase rejected it (HTTP " + r.status + "). Double-check the key.");
+        }
+      } catch (e) { show("Network error: " + e.message); }
+      saveBtn.disabled = false; saveBtn.textContent = "Save & test connection";
+    });
+
+    clearBtn.addEventListener("click", function() {
+      localStorage.removeItem("PB_SUPABASE_ANON_KEY");
+      input.value = "";
+      step1.classList.remove("is-done");
+      step1num.textContent = "1";
+      show("Cleared. You can paste a new key.", "success");
+    });
+
+    document.getElementById("step2-done").addEventListener("click", function() {
+      localStorage.setItem("PB_SETUP_STEP2", "1");
+      document.getElementById("step2").classList.add("is-done");
+      document.querySelector("#step2 .step-num").innerHTML = "&#10003;";
+    });
+    document.getElementById("step3-done").addEventListener("click", function() {
+      localStorage.setItem("PB_SETUP_STEP3", "1");
+      document.getElementById("step3").classList.add("is-done");
+      document.querySelector("#step3 .step-num").innerHTML = "&#10003;";
+    });
+    if (localStorage.getItem("PB_SETUP_STEP2")) document.getElementById("step2-done").click();
+    if (localStorage.getItem("PB_SETUP_STEP3")) document.getElementById("step3-done").click();
+  </script>
+</body>
+</html>
