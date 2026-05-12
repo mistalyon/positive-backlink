@@ -9,6 +9,14 @@
     <atom:link href="https://www.positivebacklink.com/feed.xml" rel="self" type="application/rss+xml" />
     <image><url>https://www.positivebacklink.com/icon-512.png</url><title>PositiveBacklink Blog</title><link>https://www.positivebacklink.com/blog/</link></image>
         <item>
+      <title>Robots.txt Best Practices: 11 Mistakes That Kill Indexing</title>
+      <link>https://www.positivebacklink.com/blog/robots-txt-best-practices-11-mistakes.html</link>
+      <guid isPermaLink="true">https://www.positivebacklink.com/blog/robots-txt-best-practices-11-mistakes.html</guid>
+      <pubDate>Mon, 12 May 2026 00:00:00 GMT</pubDate>
+      <description>The 11 robots.txt mistakes we find in 80% of SEO audits, with copy-paste fixes, an 11-row fix table, and an 8-minute audit checklist. Includes a free per-URL Robots.txt Tester.</description>
+      <category>Technical SEO</category>
+    </item>
+    <item>
       <title>Internal Linking Architecture for SEO: Hub-and-Spoke Playbook 2026</title>
       <link>https://www.positivebacklink.com/blog/internal-linking-architecture-seo.html</link>
       <guid>https://www.positivebacklink.com/blog/internal-linking-architecture-seo.html</guid>
