@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Documentation - PositiveBacklink</title>
+<meta name="description" content="REST API reference for PositiveBacklink. Authentication, endpoints for sites, exchanges, credits, watchdog events, and webhooks. Rate limits and examples included.">
+<link rel="canonical" href="https://www.positivebacklink.com/api-docs.html">
+<meta name="google-site-verification" content="0bm_X9ojXIi_-sV7Ov0on_H-WS89MnzovlsSPtoWzO4">
+<meta name="msvalidate.01" content="5627D94178E561857861AE89E474F98A">
+<meta property="og:title" content="API Documentation - PositiveBacklink">
+<meta property="og:description" content="REST API reference for PositiveBacklink. Authentication, endpoints for sites, exchanges, credits, watchdog events, and webhooks. Rate limits and examples included.">
+<meta property="og:url" content="https://www.positivebacklink.com/api-docs.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"APIReference","name":"PositiveBacklink REST API","url":"https://www.positivebacklink.com/api-docs.html","description":"REST API reference for PositiveBacklink. Authentication, endpoints for sites, exchanges, credits, watchdog events, and webhooks. Rate limits and examples included."}</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1c1c1c;background:#fff;line-height:1.7}
+nav{position:sticky;top:0;background:#fff;border-bottom:1px solid #eee;padding:16px 24px;z-index:100;display:flex;justify-content:space-between;align-items:center}
+nav a{color:#1c1c1c;text-decoration:none;margin-right:20px;font-size:14px}
+nav .logo{font-weight:700;color:#3ECF8E;font-size:18px}
+.container{max-width:780px;margin:0 auto;padding:48px 24px}
+.breadcrumbs{font-size:13px;color:#666;margin-bottom:24px}
+.breadcrumbs a{color:#3ECF8E;text-decoration:none}
+h1{font-size:2.4rem;margin-bottom:16px;line-height:1.2}
+h2{font-size:1.6rem;margin:40px 0 16px;color:#1c1c1c}
+h3{font-size:1.25rem;margin:28px 0 12px}
+p,li{margin-bottom:16px;font-size:1.05rem}
+ul,ol{margin-left:24px;margin-bottom:20px}
+table{width:100%;border-collapse:collapse;margin:24px 0}
+th,td{border:1px solid #e0e0e0;padding:12px;text-align:left;font-size:.95rem}
+th{background:#f5f5f5;font-weight:600}
+code{background:#f5f5f5;padding:2px 6px;border-radius:4px;font-family:Menlo,monospace;font-size:.9em}
+pre{background:#1c1c1c;color:#3ECF8E;padding:20px;border-radius:8px;overflow-x:auto;margin:20px 0;font-size:.9rem;line-height:1.5}
+.cta{background:#3ECF8E;color:#fff;padding:14px 28px;text-decoration:none;border-radius:8px;display:inline-block;font-weight:600;margin-top:16px}
+.cta:hover{background:#2eb978}
+.callout{background:#f0fdf6;border-left:4px solid #3ECF8E;padding:20px;margin:24px 0;border-radius:4px}
+.status-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:24px 0}
+.status-card{padding:20px;border:1px solid #e0e0e0;border-radius:8px}
+.status-ok{color:#3ECF8E;font-weight:700}
+.status-warn{color:#f59e0b;font-weight:700}
+.status-err{color:#ef4444;font-weight:700}
+footer{border-top:1px solid #eee;padding:32px 24px;text-align:center;color:#666;font-size:14px;margin-top:80px}
+footer a{color:#3ECF8E;text-decoration:none;margin:0 12px}
+@media(max-width:640px){h1{font-size:1.8rem}.container{padding:32px 16px}}
+</style>
+</head>
+<body>
+<nav><a href="/" class="logo">PositiveBacklink</a><div><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/learn/">Learn</a><a href="/pricing.html">Pricing</a></div></nav>
+<div class="container">
+<div class="breadcrumbs"><a href="/">Home</a> &rsaquo; API Documentation</div>
+<h1>REST API</h1>
+<p>The PositiveBacklink API lets you programmatically manage sites, request exchanges, read credit balance, and subscribe to watchdog events. Base URL is <code>https://www.positivebacklink.com/api</code>.</p>
+<div class="callout"><strong>Availability:</strong> Read-only endpoints are live for all Pro and Agency users in Q2 2026. Write endpoints rolling out Q3 2026.</div>
+<h2>Authentication</h2>
+<p>All requests require a bearer token in the <code>Authorization</code> header. Generate tokens in Dashboard &rsaquo; Settings &rsaquo; API Keys.</p>
+<pre>Authorization: Bearer pbk_live_xxxxxxxxxxxxxxxx</pre>
+<h2>Rate limits</h2>
+<table>
+<tr><th>Plan</th><th>Per minute</th><th>Per day</th></tr>
+<tr><td>Pro</td><td>60</td><td>10,000</td></tr>
+<tr><td>Agency</td><td>240</td><td>100,000</td></tr>
+</table>
+<p>Responses include <code>X-RateLimit-Remaining</code> and <code>X-RateLimit-Reset</code> headers.</p>
+<h2>Endpoints</h2>
+<h3>GET /api/sites</h3>
+<p>List all sites owned by the authenticated user.</p>
+<pre>curl https://www.positivebacklink.com/api/sites \
+  -H "Authorization: Bearer pbk_live_xxx"
+
+Response:
+{
+  "sites": [
+    {
+      "id": "site_01H...",
+      "url": "https://example.com",
+      "niche": "saas",
+      "dr": 42,
+      "verified": true,
+      "created_at": "2026-01-15T10:23:00Z"
+    }
+  ]
+}</pre>
+<h3>POST /api/sites</h3>
+<p>Add a new site to your account. Verification runs asynchronously.</p>
+<pre>curl -X POST https://www.positivebacklink.com/api/sites \
+  -H "Authorization: Bearer pbk_live_xxx" \
+  -H "Content-Type: application/json" \
+  -d '{"url":"https://example.com","niche":"saas"}'</pre>
+<h3>GET /api/exchanges</h3>
+<p>List exchange offers for your sites. Supports filters: <code>?status=pending|accepted|live|broken</code>.</p>
+<h3>POST /api/exchanges/:id/accept</h3>
+<p>Accept an incoming exchange offer. Credits will be deducted on confirmation.</p>
+<h3>GET /api/credits/balance</h3>
+<p>Return current credit balance and ledger entries.</p>
+<pre>{
+  "balance": 142,
+  "lifetime_earned": 580,
+  "lifetime_spent": 438
+}</pre>
+<h3>GET /api/watchdog/events</h3>
+<p>List watchdog events for your earned links. Useful for SIEM integrations.</p>
+<h2>Webhooks</h2>
+<p>Subscribe to push notifications instead of polling. Configure endpoint URL in Dashboard &rsaquo; Settings &rsaquo; Webhooks.</p>
+<table>
+<tr><th>Event</th><th>Payload preview</th></tr>
+<tr><td>exchange.requested</td><td>{id, from_site, to_site, anchor}</td></tr>
+<tr><td>exchange.accepted</td><td>{id, accepted_at}</td></tr>
+<tr><td>exchange.published</td><td>{id, live_url, published_at}</td></tr>
+<tr><td>watchdog.alert</td><td>{exchange_id, severity, type, detail}</td></tr>
+</table>
+<p>All webhook payloads are signed with HMAC-SHA256 in the <code>X-PB-Signature</code> header.</p>
+<h2>Errors</h2>
+<p>Standard HTTP status codes apply. Error responses include a JSON body with <code>error.code</code> and <code>error.message</code>.</p>
+<pre>{
+  "error": {
+    "code": "insufficient_credits",
+    "message": "You need 3 credits but have 1."
+  }
+}</pre>
+</div>
+<footer>
+<p>&copy; 2026 PositiveBacklink. All rights reserved.</p>
+<p style="margin-top:8px"><a href="/">Home</a><a href="/support.html">Support</a><a href="/security.html">Security</a><a href="/about.html">About</a><a href="/api-docs.html">API</a><a href="/status.html">Status</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a></p>
+</footer>
+</body></html>

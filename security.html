@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security - PositiveBacklink</title>
+<meta name="description" content="How PositiveBacklink protects your data: encryption at rest, TLS 1.3, security headers, vulnerability disclosure policy, and compliance roadmap.">
+<link rel="canonical" href="https://www.positivebacklink.com/security.html">
+<meta name="google-site-verification" content="0bm_X9ojXIi_-sV7Ov0on_H-WS89MnzovlsSPtoWzO4">
+<meta name="msvalidate.01" content="5627D94178E561857861AE89E474F98A">
+<meta property="og:title" content="Security - PositiveBacklink">
+<meta property="og:description" content="How PositiveBacklink protects your data: encryption at rest, TLS 1.3, security headers, vulnerability disclosure policy, and compliance roadmap.">
+<meta property="og:url" content="https://www.positivebacklink.com/security.html">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1c1c1c;background:#fff;line-height:1.7}
+nav{position:sticky;top:0;background:#fff;border-bottom:1px solid #eee;padding:16px 24px;z-index:100;display:flex;justify-content:space-between;align-items:center}
+nav a{color:#1c1c1c;text-decoration:none;margin-right:20px;font-size:14px}
+nav .logo{font-weight:700;color:#3ECF8E;font-size:18px}
+.container{max-width:780px;margin:0 auto;padding:48px 24px}
+.breadcrumbs{font-size:13px;color:#666;margin-bottom:24px}
+.breadcrumbs a{color:#3ECF8E;text-decoration:none}
+h1{font-size:2.4rem;margin-bottom:16px;line-height:1.2}
+h2{font-size:1.6rem;margin:40px 0 16px;color:#1c1c1c}
+h3{font-size:1.25rem;margin:28px 0 12px}
+p,li{margin-bottom:16px;font-size:1.05rem}
+ul,ol{margin-left:24px;margin-bottom:20px}
+table{width:100%;border-collapse:collapse;margin:24px 0}
+th,td{border:1px solid #e0e0e0;padding:12px;text-align:left;font-size:.95rem}
+th{background:#f5f5f5;font-weight:600}
+code{background:#f5f5f5;padding:2px 6px;border-radius:4px;font-family:Menlo,monospace;font-size:.9em}
+pre{background:#1c1c1c;color:#3ECF8E;padding:20px;border-radius:8px;overflow-x:auto;margin:20px 0;font-size:.9rem;line-height:1.5}
+.cta{background:#3ECF8E;color:#fff;padding:14px 28px;text-decoration:none;border-radius:8px;display:inline-block;font-weight:600;margin-top:16px}
+.cta:hover{background:#2eb978}
+.callout{background:#f0fdf6;border-left:4px solid #3ECF8E;padding:20px;margin:24px 0;border-radius:4px}
+.status-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:24px 0}
+.status-card{padding:20px;border:1px solid #e0e0e0;border-radius:8px}
+.status-ok{color:#3ECF8E;font-weight:700}
+.status-warn{color:#f59e0b;font-weight:700}
+.status-err{color:#ef4444;font-weight:700}
+footer{border-top:1px solid #eee;padding:32px 24px;text-align:center;color:#666;font-size:14px;margin-top:80px}
+footer a{color:#3ECF8E;text-decoration:none;margin:0 12px}
+@media(max-width:640px){h1{font-size:1.8rem}.container{padding:32px 16px}}
+</style>
+</head>
+<body>
+<nav><a href="/" class="logo">PositiveBacklink</a><div><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/learn/">Learn</a><a href="/pricing.html">Pricing</a></div></nav>
+<div class="container">
+<div class="breadcrumbs"><a href="/">Home</a> &rsaquo; Security</div>
+<h1>Security & Trust</h1>
+<p>This page details how PositiveBacklink protects user data and how to report vulnerabilities. We treat security as an ongoing commitment, not a checkbox.</p>
+<h2>Data protection</h2>
+<ul>
+<li><strong>Encryption in transit:</strong> TLS 1.3 enforced via Cloudflare with HSTS preload (2-year max-age, includeSubDomains).</li>
+<li><strong>Encryption at rest:</strong> All user data is stored in Supabase Postgres with AES-256 encryption on disk and automated daily backups.</li>
+<li><strong>Password storage:</strong> Bcrypt with cost factor 10, salted per-user. Passwords are never logged or visible in plaintext.</li>
+<li><strong>Session tokens:</strong> JWT with 1-hour access token, 7-day refresh token, rotated on every refresh.</li>
+</ul>
+<h2>Security headers</h2>
+<p>Every response includes the following headers (verifiable via <a href="https://securityheaders.com/?q=positivebacklink.com">securityheaders.com</a>):</p>
+<table>
+<tr><th>Header</th><th>Value</th></tr>
+<tr><td>Strict-Transport-Security</td><td>max-age=63072000; includeSubDomains; preload</td></tr>
+<tr><td>X-Frame-Options</td><td>SAMEORIGIN</td></tr>
+<tr><td>X-Content-Type-Options</td><td>nosniff</td></tr>
+<tr><td>Referrer-Policy</td><td>strict-origin-when-cross-origin</td></tr>
+<tr><td>Content-Security-Policy</td><td>Strict allow-list, no unsafe-eval</td></tr>
+<tr><td>Permissions-Policy</td><td>camera/mic/geo disabled</td></tr>
+</table>
+<h2>Authentication</h2>
+<ul>
+<li>Email + password with mandatory verification</li>
+<li>OAuth via Google (optional)</li>
+<li>Magic-link sign-in available on request</li>
+<li>Two-factor authentication (TOTP) coming Q3 2026</li>
+</ul>
+<h2>Infrastructure</h2>
+<ul>
+<li><strong>Edge:</strong> Cloudflare with DDoS mitigation and WAF rules</li>
+<li><strong>Compute:</strong> Vercel serverless functions in iad1, fra1, sin1 regions</li>
+<li><strong>Database:</strong> Supabase Postgres with Row-Level Security on every table</li>
+<li><strong>Secrets:</strong> Vercel Environment Variables, encrypted at rest, never logged</li>
+</ul>
+<h2>Vulnerability disclosure</h2>
+<p>If you discover a security vulnerability, please email <a href="mailto:security@positivebacklink.com">security@positivebacklink.com</a> with:</p>
+<ul>
+<li>Description of the issue and affected endpoint(s)</li>
+<li>Proof-of-concept request or video</li>
+<li>Suggested severity and impact</li>
+</ul>
+<p>We commit to:</p>
+<ul>
+<li>Acknowledge within 48 hours</li>
+<li>Triage and assign severity within 5 business days</li>
+<li>Notify affected users if data exposure is confirmed</li>
+<li>Credit reporters in our Hall of Fame (with consent)</li>
+</ul>
+<div class="callout"><strong>Safe harbor:</strong> Good-faith research that follows this policy is welcomed and will not result in legal action. Please do not access, modify, or exfiltrate user data.</div>
+<h2>Compliance roadmap</h2>
+<ul>
+<li><strong>GDPR:</strong> Compliant. Data processing agreement available on request.</li>
+<li><strong>SOC 2 Type II:</strong> Audit scheduled Q1 2027</li>
+<li><strong>HIPAA / FedRAMP:</strong> Not in scope</li>
+</ul>
+</div>
+<footer>
+<p>&copy; 2026 PositiveBacklink. All rights reserved.</p>
+<p style="margin-top:8px"><a href="/">Home</a><a href="/support.html">Support</a><a href="/security.html">Security</a><a href="/about.html">About</a><a href="/api-docs.html">API</a><a href="/status.html">Status</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a></p>
+</footer>
+</body></html>
