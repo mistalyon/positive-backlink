@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Successful | PositiveBacklink</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://www.positivebacklink.com/billing/success.html">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0a0a0a;color:#e0e0e0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.card{background:#111;border:1px solid #1a4a2a;border-radius:14px;padding:40px;max-width:520px;width:100%;text-align:center}
+.check{width:64px;height:64px;border-radius:50%;background:#0a2a1a;border:2px solid #3ECF8E;color:#3ECF8E;font-size:32px;line-height:60px;margin:0 auto 18px}
+h1{font-size:24px;margin-bottom:10px;color:#3ECF8E}
+p{color:#bbb;margin-bottom:14px;line-height:1.55}
+.sid{font-family:JetBrains Mono,monospace;font-size:11px;color:#666;background:#0a0a0a;padding:6px 10px;border-radius:4px;display:inline-block;margin-bottom:18px;word-break:break-all}
+.bal{background:#0a2a1a;border:1px solid #1a4a2a;border-radius:10px;padding:14px;margin:18px 0}
+.bal-amt{font-size:28px;font-weight:700;color:#3ECF8E}
+.bal-label{font-size:12px;color:#888;font-family:JetBrains Mono,monospace;text-transform:uppercase;margin-bottom:4px}
+.actions{display:flex;gap:10px;margin-top:20px}
+.btn{flex:1;padding:11px;border-radius:6px;text-decoration:none;font-weight:600;font-size:14px}
+.btn-primary{background:#3ECF8E;color:#000}
+.btn-outline{background:transparent;border:1px solid #333;color:#aaa}
+.note{font-size:12px;color:#888;margin-top:14px}
+</style>
+</head>
+<body>
+<div class="card">
+<div class="check">\u2713</div>
+<h1>Payment received</h1>
+<p>Thank you for your purchase. Your credits or plan upgrade will appear in your dashboard within 60 seconds.</p>
+<div id="sidWrap"></div>
+<div class="bal" id="bal" style="display:none"><div class="bal-label">Current Balance</div><div class="bal-amt" id="balAmt">\u2014</div></div>
+<div class="actions"><a class="btn btn-primary" href="/dashboard.html#tab-credits">View Credits</a><a class="btn btn-outline" href="/">Home</a></div>
+<p class="note">Webhook delays? Contact <a href="mailto:billing@positivebacklink.com" style="color:#3ECF8E">billing@positivebacklink.com</a> with the session ID.</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const sid=new URLSearchParams(location.search).get('session_id');
+if(sid){document.getElementById('sidWrap').innerHTML='<div class="sid">Session: '+sid+'</div>';}
+const SUPABASE_URL='https://hsgxsxiwwkuplcedfhxq.supabase.co';
+const SUPABASE_ANON_KEY=window.SUPABASE_ANON_KEY||'REPLACE_WITH_YOUR_ANON_KEY';
+if(SUPABASE_ANON_KEY!=='REPLACE_WITH_YOUR_ANON_KEY'){
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+async function check(){const s=await sb.auth.getSession();if(!s.data.session)return;const u=s.data.session.user;const p=await sb.from('users').select('credits').eq('id',u.id).maybeSingle();if(p.data){document.getElementById('balAmt').textContent=p.data.credits;document.getElementById('bal').style.display='block';}}
+check();setTimeout(check,15000);setTimeout(check,45000);
+}
+</script>
+</body></html>
