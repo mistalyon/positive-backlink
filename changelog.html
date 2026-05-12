@@ -1,4 +1,11 @@
                                     <div class="changelog-entry">
+      <div class="changelog-version">v1.40.0 <span class="changelog-date">2026-05-12</span></div>
+      <div class="changelog-body">
+        <strong>Faz 5 \u2014 Admin Panel.</strong> Rebuilt <code>/admin.html</code> (noindex) as a fully functional 6-tab control center with <code>is_admin</code> guard and access-denied fallback. <strong>Users tab</strong>: email search, credits/site_count/flags columns, ban/unban toggle, manual credit adjustment modal (writes <code>credits_ledger</code> row + <code>admin_actions</code> audit). <strong>Sites tab</strong>: status filter, force-verify/reject/suspend buttons. <strong>Exchanges tab</strong>: mark-live, remove, dispute overrides. <strong>Watchdog tab</strong>: global cross-user events feed with low/medium/high severity stats. <strong>Credits Ledger tab</strong>: 200 most recent transactions across all users with type filter and aggregate stats (earned/spent/purchased/admin adjusted). <strong>Audit Log tab</strong>: complete record of every admin action with admin_email, action_type, target_email, amount, reason. Orange security palette to clearly distinguish from user-facing pages. 5/10 phases remaining \u2192 Faz 6 next: Pricing + Credit (Stripe Payment Links).
+      </div>
+    </div>
+
+    <div class="changelog-entry">
       <div class="changelog-version">v1.39.0 <span class="changelog-date">2026-05-12</span></div>
       <div class="changelog-body">
         <strong>Faz 4 \u2014 AI Watchdog UI.</strong> Launched <code>/watchdog/dashboard.html</code> (noindex) showing per-user link health timeline with severity-coded events (low/medium/high), stats cards (total events, unresolved, high-severity, net credit delta), and filters by severity, event type (link_removed, nofollow_added, redirect_chain, dr_drop, hidden_css, page_404, check_ok), and resolution status. Each event row supports a Resolve action that flips <code>resolved=true</code>. Added Watchdog widget card to main dashboard My Sites tab showing last 5 unresolved alerts, plus Watchdog link in nav. Watchdog page redirects unauthed users to <code>/login.html?next=/watchdog/dashboard.html</code>. Sitemap unchanged (82 URLs, watchdog is private). 6/10 phases remaining \u2192 Faz 5 next: Admin panel.
