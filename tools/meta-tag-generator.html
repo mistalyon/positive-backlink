@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meta Tag Generator - SEO Meta Tags + OG + Twitter Card Builder | PositiveBacklink</title>
+<meta name="description" content="Free meta tag generator with live Google SERP, Facebook Open Graph, and Twitter Card preview. Produces ready-to-paste meta block with proper escaping. 100% client-side.">
+<meta name="keywords" content="meta tag generator, open graph generator, twitter card generator, seo meta tags, og image preview">
+<meta name="author" content="PositiveBacklink">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.positivebacklink.com/tools/meta-tag-generator.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.positivebacklink.com/tools/meta-tag-generator.html">
+<meta property="og:title" content="Meta Tag Generator - SEO + OG + Twitter Card Builder">
+<meta property="og:description" content="Free meta tag generator with live Google SERP, Facebook OG, and Twitter Card preview. Ready-to-paste output.">
+<meta property="og:image" content="https://www.positivebacklink.com/og-image.png">
+<meta property="og:site_name" content="PositiveBacklink">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Meta Tag Generator - SEO + OG + Twitter Card Builder">
+<meta name="twitter:description" content="Free meta tag generator with live preview for Google, Facebook, Twitter.">
+<meta name="twitter:image" content="https://www.positivebacklink.com/og-image.png">
+<link rel="icon" type="image/png" href="/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Meta Tag Generator",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any (browser-based)",
+  "url": "https://www.positivebacklink.com/tools/meta-tag-generator.html",
+  "description": "Free meta tag generator with live preview for Google SERP, Facebook Open Graph, and Twitter Card. Produces ready-to-paste HTML.",
+  "offers": {"@type":"Offer","price":"0","priceCurrency":"USD"},
+  "publisher": {"@type":"Organization","name":"PositiveBacklink","url":"https://www.positivebacklink.com/"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is the ideal meta title length?","acceptedAnswer":{"@type":"Answer","text":"Keep meta titles between 50 and 60 characters. Google typically displays around 580 to 600 pixels which equates to roughly 60 characters depending on character width. Longer titles get truncated with an ellipsis."}},
+    {"@type":"Question","name":"What is the ideal meta description length?","acceptedAnswer":{"@type":"Answer","text":"Keep meta descriptions between 140 and 160 characters. Google displays up to about 920 pixels on desktop and 680 pixels on mobile. Longer descriptions get truncated."}},
+    {"@type":"Question","name":"Do I need both Open Graph and Twitter Card tags?","acceptedAnswer":{"@type":"Answer","text":"Open Graph covers Facebook, LinkedIn, Pinterest, Discord, Slack, and most other platforms. Twitter falls back to OG tags when twitter:* tags are absent, but explicit twitter:card tags give better control over card type. Both are recommended."}},
+    {"@type":"Question","name":"What is the recommended OG image size?","acceptedAnswer":{"@type":"Answer","text":"1200 by 630 pixels with a 1.91 to 1 aspect ratio is the safe choice across Facebook, LinkedIn, and Twitter summary_large_image cards. File size under 8MB, ideally under 1MB for fast loading."}},
+    {"@type":"Question","name":"Does this tool send my data anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The tool runs 100 percent client-side in your browser. No data is uploaded, logged, or transmitted to any server."}}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://www.positivebacklink.com/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://www.positivebacklink.com/tools/"},
+    {"@type":"ListItem","position":3,"name":"Meta Tag Generator","item":"https://www.positivebacklink.com/tools/meta-tag-generator.html"}
+  ]
+}
+</script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0a;color:#e5e5e5;line-height:1.6;font-weight:400}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px}
+  header{border-bottom:1px solid rgba(255,255,255,0.08);padding:20px 0;position:sticky;top:0;background:rgba(10,10,10,0.92);backdrop-filter:blur(12px);z-index:100}
+  .nav{display:flex;justify-content:space-between;align-items:center}
+  .logo{font-family:"JetBrains Mono",monospace;font-size:14px;font-weight:700;color:#3ECF8E;text-decoration:none;letter-spacing:-0.02em}
+  .nav-links{display:flex;gap:28px}
+  .nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px;font-weight:500}
+  .nav-links a:hover{color:#3ECF8E}
+  .breadcrumb{padding:24px 0;font-size:13px;color:rgba(255,255,255,0.5);font-family:"JetBrains Mono",monospace}
+  .breadcrumb a{color:rgba(255,255,255,0.5);text-decoration:none}
+  .breadcrumb a:hover{color:#3ECF8E}
+  .tag{display:inline-block;background:rgba(62,207,142,0.12);color:#3ECF8E;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;padding:4px 10px;border-radius:4px;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:16px}
+  h1{font-size:38px;font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:14px;color:#fff}
+  .lede{font-size:17px;color:rgba(255,255,255,0.7);margin-bottom:36px;max-width:760px}
+  .layout{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:60px}
+  @media(max-width:980px){.layout{grid-template-columns:1fr}}
+  .panel{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:24px}
+  .panel h2{font-size:14px;font-family:"JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:0.06em;color:rgba(255,255,255,0.55);margin-bottom:18px;font-weight:600}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:6px;font-family:"JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:0.05em;font-weight:600}
+  .field input,.field textarea,.field select{width:100%;background:#0a0a0a;border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:9px 12px;color:#fff;font-family:"Inter",sans-serif;font-size:14px;outline:none}
+  .field input:focus,.field textarea:focus,.field select:focus{border-color:#3ECF8E}
+  .field textarea{resize:vertical;min-height:70px;font-family:"Inter",sans-serif}
+  .counter{font-family:"JetBrains Mono",monospace;font-size:11px;margin-top:4px;color:rgba(255,255,255,0.4)}
+  .counter.ok{color:#3ECF8E}
+  .counter.warn{color:#ffaa00}
+  .counter.bad{color:#ff5b5b}
+  .preview-block{margin-bottom:26px}
+  .preview-block h3{font-size:11px;font-family:"JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:0.06em;color:rgba(255,255,255,0.5);margin-bottom:10px;font-weight:600}
+  .serp{background:#fff;color:#202124;border-radius:8px;padding:16px;font-family:Arial,sans-serif}
+  .serp .url{font-size:13px;color:#202124;margin-bottom:2px}
+  .serp .url-prefix{color:#5f6368}
+  .serp .title{color:#1a0dab;font-size:20px;font-weight:400;margin-bottom:4px;cursor:pointer}
+  .serp .title:hover{text-decoration:underline}
+  .serp .desc{font-size:14px;color:#4d5156;line-height:1.5}
+  .ogcard{background:#fff;border-radius:8px;overflow:hidden;border:1px solid #dadde1}
+  .ogcard .ogimg{width:100%;height:200px;background:#e4e6eb url(/og-image.png) center/cover}
+  .ogcard .ogbody{padding:10px 12px;background:#f0f2f5}
+  .ogcard .oghost{font-size:12px;color:#606770;text-transform:uppercase}
+  .ogcard .ogtitle{font-size:16px;color:#1c1e21;font-weight:600;margin-top:2px;line-height:1.3}
+  .ogcard .ogdesc{font-size:14px;color:#606770;margin-top:3px;line-height:1.3}
+  .twcard{background:#15202b;border-radius:14px;overflow:hidden;border:1px solid #38444d}
+  .twcard .twimg{width:100%;height:200px;background:#1c2732 url(/og-image.png) center/cover}
+  .twcard .twbody{padding:10px 14px;background:#15202b}
+  .twcard .twhost{font-size:13px;color:#8899a6}
+  .twcard .twtitle{font-size:15px;color:#fff;font-weight:600;margin-top:2px;line-height:1.3}
+  .twcard .twdesc{font-size:14px;color:#8899a6;margin-top:2px;line-height:1.3}
+  .output{background:#0a0a0a;border:1px solid rgba(62,207,142,0.25);border-radius:8px;padding:16px;font-family:"JetBrains Mono",monospace;font-size:12px;color:#3ECF8E;white-space:pre-wrap;word-break:break-word;max-height:340px;overflow:auto;line-height:1.6}
+  .btns{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+  .btn{background:#3ECF8E;color:#0a0a0a;border:none;border-radius:6px;padding:9px 18px;font-weight:700;font-size:13px;cursor:pointer;font-family:"Inter",sans-serif}
+  .btn:hover{background:#2eb877}
+  .btn.secondary{background:transparent;color:#3ECF8E;border:1px solid rgba(62,207,142,0.4)}
+  .info-section{margin-top:60px;padding-top:48px;border-top:1px solid rgba(255,255,255,0.08)}
+  .info-section h2{font-size:24px;font-weight:700;margin-bottom:14px;color:#fff}
+  .info-section h3{font-size:17px;font-weight:600;margin:24px 0 10px;color:#fff}
+  .info-section p{margin-bottom:14px;color:rgba(255,255,255,0.75)}
+  .info-section ul{margin:0 0 18px 22px;color:rgba(255,255,255,0.75)}
+  .info-section li{margin-bottom:6px}
+  footer{border-top:1px solid rgba(255,255,255,0.08);padding:40px 0;margin-top:60px;font-size:13px;color:rgba(255,255,255,0.45);text-align:center}
+  footer a{color:rgba(255,255,255,0.6);text-decoration:none;margin:0 10px}
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav class="nav">
+      <a href="/" class="logo">POSITIVEBACKLINK</a>
+      <div class="nav-links">
+        <a href="/tools/">Tools</a>
+        <a href="/blog/">Blog</a>
+        <a href="/case-studies/">Cases</a>
+        <a href="/pricing.html">Pricing</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<div class="container">
+  <div class="breadcrumb"><a href="/">Home</a> / <a href="/tools/">Tools</a> / Meta Tag Generator</div>
+  <span class="tag">SEO Tool #13</span>
+  <h1>Meta Tag Generator</h1>
+  <p class="lede">Build SEO + Open Graph + Twitter Card meta tags with live preview across Google SERP, Facebook, and Twitter. Copy the generated block straight into your &lt;head&gt;. 100% client-side, nothing uploaded.</p>
+  <div class="layout">
+    <div class="panel">
+      <h2>Inputs</h2>
+      <div class="field"><label>Page title</label><input type="text" id="f_title" placeholder="The Best Backlink Exchange Platform" maxlength="120"><div class="counter" id="c_title">0 chars</div></div>
+      <div class="field"><label>Meta description</label><textarea id="f_desc" placeholder="Automated white-hat backlink exchange with AI Watchdog 12h monitoring and ABC triangular method." maxlength="320"></textarea><div class="counter" id="c_desc">0 chars</div></div>
+      <div class="field"><label>Canonical URL</label><input type="text" id="f_url" placeholder="https://example.com/page"></div>
+      <div class="field"><label>OG image URL</label><input type="text" id="f_img" placeholder="https://example.com/og.png (1200x630)"></div>
+      <div class="field"><label>OG type</label><select id="f_type"><option value="website">website</option><option value="article">article</option><option value="product">product</option><option value="profile">profile</option><option value="book">book</option><option value="video.other">video.other</option></select></div>
+      <div class="field"><label>Site name</label><input type="text" id="f_site" placeholder="PositiveBacklink"></div>
+      <div class="field"><label>Twitter card</label><select id="f_twcard"><option value="summary_large_image">summary_large_image</option><option value="summary">summary</option><option value="player">player</option><option value="app">app</option></select></div>
+      <div class="field"><label>Twitter handle (with @)</label><input type="text" id="f_twh" placeholder="@positivebacklink"></div>
+      <div class="field"><label>Author</label><input type="text" id="f_author" placeholder="PositiveBacklink"></div>
+      <div class="field"><label>Keywords (comma-separated)</label><input type="text" id="f_kw" placeholder="backlink exchange, seo, link building"></div>
+      <div class="field"><label>Robots</label><select id="f_robots"><option value="index, follow, max-image-preview:large, max-snippet:-1">index, follow (recommended)</option><option value="index, follow">index, follow</option><option value="noindex, follow">noindex, follow</option><option value="index, nofollow">index, nofollow</option><option value="noindex, nofollow">noindex, nofollow</option></select></div>
+    </div>
+    <div class="panel">
+      <h2>Live preview</h2>
+      <div class="preview-block">
+        <h3>Google SERP</h3>
+        <div class="serp">
+          <div class="url"><span class="url-prefix">https://</span><span id="p_serp_host">example.com</span> &rsaquo; <span id="p_serp_path">page</span></div>
+          <div class="title" id="p_serp_title">Your page title here</div>
+          <div class="desc" id="p_serp_desc">Your meta description will appear here. Aim for 140 to 160 characters.</div>
+        </div>
+      </div>
+      <div class="preview-block">
+        <h3>Facebook / Open Graph</h3>
+        <div class="ogcard">
+          <div class="ogimg" id="p_og_img"></div>
+          <div class="ogbody">
+            <div class="oghost" id="p_og_host">example.com</div>
+            <div class="ogtitle" id="p_og_title">Your page title here</div>
+            <div class="ogdesc" id="p_og_desc">Your meta description will appear here.</div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-block">
+        <h3>Twitter / X card</h3>
+        <div class="twcard">
+          <div class="twimg" id="p_tw_img"></div>
+          <div class="twbody">
+            <div class="twhost" id="p_tw_host">example.com</div>
+            <div class="twtitle" id="p_tw_title">Your page title here</div>
+            <div class="twdesc" id="p_tw_desc">Your meta description will appear here.</div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-block">
+        <h3>Generated &lt;meta&gt; block</h3>
+        <div class="output" id="output">&lt;!-- Fill in fields to generate --&gt;</div>
+        <div class="btns">
+          <button class="btn" onclick="copyOutput()">Copy to clipboard</button>
+          <button class="btn secondary" onclick="downloadOutput()">Download as .html</button>
+          <button class="btn secondary" onclick="resetForm()">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="info-section">
+    <h2>Meta tag quick reference</h2>
+    <h3>Title (50 to 60 chars)</h3>
+    <p>Google displays roughly 580 to 600 pixels of title in SERP. Keep titles tight, lead with the primary keyword, end with brand. Over 60 chars triggers truncation with an ellipsis.</p>
+    <h3>Description (140 to 160 chars)</h3>
+    <p>Not a direct ranking factor but heavily influences click-through rate. Write to a user benefit, include the target keyword once, and end with a soft call-to-action.</p>
+    <h3>Open Graph image (1200 x 630)</h3>
+    <p>1.91 to 1 aspect ratio is the safe pick across Facebook, LinkedIn, Discord, Slack. PNG or JPG. Under 1MB for fastest render. Include text readable at small sizes since the image is also used as a thumbnail.</p>
+    <h3>Twitter card types</h3>
+    <ul>
+      <li><strong>summary_large_image</strong> - 2:1 large card, best for articles and product pages</li>
+      <li><strong>summary</strong> - small square thumbnail, best for tools and listings</li>
+      <li><strong>player</strong> - embedded video / audio player</li>
+      <li><strong>app</strong> - mobile app install card</li>
+    </ul>
+    <h3>Canonical URL</h3>
+    <p>Always include rel=canonical on every page, even self-referencing. Prevents duplicate content issues from tracking parameters, HTTPS vs HTTP, www vs non-www, and trailing slashes.</p>
+    <h3>Robots meta</h3>
+    <p>Default for content pages: <code>index, follow, max-image-preview:large, max-snippet:-1</code>. Use <code>noindex, nofollow</code> for thank-you pages, dashboards, internal admin, and auth pages.</p>
+  </div>
+</div>
+<footer>
+  <div class="container">
+    <a href="/about.html">About</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/blog/">Blog</a>
+    <a href="/tools/">Tools</a>
+    <p style="margin-top:18px;font-size:12px">&copy; 2026 PositiveBacklink. All rights reserved.</p>
+  </div>
+</footer>
+<script>
+(function(){
+  var fields = ["f_title","f_desc","f_url","f_img","f_type","f_site","f_twcard","f_twh","f_author","f_kw","f_robots"];
+  function esc(s){return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+  function v(id){var el=document.getElementById(id);return el?el.value.trim():"";}
+  function hostFromUrl(u){try{var x=new URL(u);return x.hostname.replace(/^www\./,"");}catch(e){return "example.com";}}
+  function pathFromUrl(u){try{var x=new URL(u);var pth=x.pathname.replace(/^\//,"");return pth||"";}catch(e){return "page";}}
+  function countClass(el,n,lo,hi){el.className="counter";if(n===0){el.classList.add("");}else if(n>=lo&&n<=hi){el.classList.add("ok");}else if(n<lo){el.classList.add("warn");}else{el.classList.add("bad");}}
+  function render(){
+    var title=v("f_title"),desc=v("f_desc"),url=v("f_url"),img=v("f_img"),type=v("f_type"),site=v("f_site"),twc=v("f_twcard"),twh=v("f_twh"),au=v("f_author"),kw=v("f_kw"),rb=v("f_robots");
+    var titleDisp = title || "Your page title here";
+    var descDisp = desc || "Your meta description will appear here.";
+    var host = hostFromUrl(url);
+    var path = pathFromUrl(url);
+    document.getElementById("p_serp_host").textContent = host;
+    document.getElementById("p_serp_path").textContent = path || "page";
+    document.getElementById("p_serp_title").textContent = titleDisp.length>60 ? titleDisp.substring(0,60)+"\u2026" : titleDisp;
+    document.getElementById("p_serp_desc").textContent = descDisp.length>160 ? descDisp.substring(0,160)+"\u2026" : descDisp;
+    document.getElementById("p_og_host").textContent = host;
+    document.getElementById("p_og_title").textContent = titleDisp;
+    document.getElementById("p_og_desc").textContent = descDisp;
+    document.getElementById("p_tw_host").textContent = host;
+    document.getElementById("p_tw_title").textContent = titleDisp;
+    document.getElementById("p_tw_desc").textContent = descDisp;
+    if(img){
+      document.getElementById("p_og_img").style.backgroundImage="url("+img+")";
+      document.getElementById("p_tw_img").style.backgroundImage="url("+img+")";
+    }
+    var tc=document.getElementById("c_title");var n1=title.length;tc.textContent=n1+" chars "+(n1<50?"(too short)":n1>60?"(too long)":"(ok)");countClass(tc,n1,50,60);
+    var dc=document.getElementById("c_desc");var n2=desc.length;dc.textContent=n2+" chars "+(n2<140?"(too short)":n2>160?"(too long)":"(ok)");countClass(dc,n2,140,160);
+    var lines=[];
+    if(title) lines.push("<title>"+esc(title)+"<\/title>");
+    if(desc) lines.push("<meta name=\"description\" content=\""+esc(desc)+"\">");
+    if(kw) lines.push("<meta name=\"keywords\" content=\""+esc(kw)+"\">");
+    if(au) lines.push("<meta name=\"author\" content=\""+esc(au)+"\">");
+    if(rb) lines.push("<meta name=\"robots\" content=\""+esc(rb)+"\">");
+    if(url) lines.push("<link rel=\"canonical\" href=\""+esc(url)+"\">");
+    lines.push("");
+    lines.push("<!-- Open Graph -->");
+    if(type) lines.push("<meta property=\"og:type\" content=\""+esc(type)+"\">");
+    if(url) lines.push("<meta property=\"og:url\" content=\""+esc(url)+"\">");
+    if(title) lines.push("<meta property=\"og:title\" content=\""+esc(title)+"\">");
+    if(desc) lines.push("<meta property=\"og:description\" content=\""+esc(desc)+"\">");
+    if(img) lines.push("<meta property=\"og:image\" content=\""+esc(img)+"\">");
+    if(site) lines.push("<meta property=\"og:site_name\" content=\""+esc(site)+"\">");
+    lines.push("");
+    lines.push("<!-- Twitter -->");
+    if(twc) lines.push("<meta name=\"twitter:card\" content=\""+esc(twc)+"\">");
+    if(twh) lines.push("<meta name=\"twitter:site\" content=\""+esc(twh)+"\">");
+    if(twh) lines.push("<meta name=\"twitter:creator\" content=\""+esc(twh)+"\">");
+    if(title) lines.push("<meta name=\"twitter:title\" content=\""+esc(title)+"\">");
+    if(desc) lines.push("<meta name=\"twitter:description\" content=\""+esc(desc)+"\">");
+    if(img) lines.push("<meta name=\"twitter:image\" content=\""+esc(img)+"\">");
+    var html=lines.join("\n");
+    document.getElementById("output").textContent = html || "<!-- Fill in fields to generate -->";
+    window.__lastOutput = html;
+  }
+  fields.forEach(function(id){var el=document.getElementById(id);if(el){el.addEventListener("input",render);el.addEventListener("change",render);}});
+  window.copyOutput=function(){var t=window.__lastOutput||"";if(!t){alert("Nothing to copy yet. Fill in some fields first.");return;}navigator.clipboard.writeText(t).then(function(){var b=event.target;var orig=b.textContent;b.textContent="Copied!";setTimeout(function(){b.textContent=orig;},1500);});};
+  window.downloadOutput=function(){var t=window.__lastOutput||"";if(!t){alert("Nothing to download yet.");return;}var blob=new Blob([t],{type:"text/html"});var u=URL.createObjectURL(blob);var a=document.createElement("a");a.href=u;a.download="meta-tags.html";a.click();setTimeout(function(){URL.revokeObjectURL(u);},1000);};
+  window.resetForm=function(){fields.forEach(function(id){var el=document.getElementById(id);if(el){if(el.tagName==="SELECT"){el.selectedIndex=0;}else{el.value="";}}});render();};
+  render();
+})();
+</script>
+</body>
+</html>
