@@ -1,4 +1,65 @@
                                     <div class="changelog-entry">
+      <div class="changelog-version">v1.49.0 <span class="changelog-date">2026-05-12</span></div>
+      <div class="changelog-body">
+        <strong>Faz 14 — Documentation & Launch Readiness.</strong>
+        <ul>
+        <li><code>SETUP.md</code> 6-step production guide (anon key paste, SQL migrations, auth providers, admin promotion, Stripe optional, email optional).</li>
+        <li><code>env-template.txt</code> with all required and optional Vercel environment variables.</li>
+        <li><code>README.md</code> rewritten: stack overview, features, repo structure, dev commands.</li>
+        <li>Platform officially v1.49 production-ready (pending user's manual configuration steps in SETUP.md).</li>
+        </ul>
+      </div>
+    </div>
+                                    <div class="changelog-entry">
+      <div class="changelog-version">v1.48.0 <span class="changelog-date">2026-05-12</span></div>
+      <div class="changelog-body">
+        <strong>Faz 13 — Onboarding Hooks Reserved.</strong>
+        <ul>
+        <li>Empty-state copy and onboarding wizard hooks reserved in dashboard.html (activate when Supabase anon key is configured).</li>
+        <li>First-site-add flow wired to <code>POST /rest/v1/sites</code> via Supabase JS client.</li>
+        </ul>
+      </div>
+    </div>
+                                    <div class="changelog-entry">
+      <div class="changelog-version">v1.47.0 <span class="changelog-date">2026-05-12</span></div>
+      <div class="changelog-body">
+        <strong>Faz 12 — Email Pipeline.</strong>
+        <ul>
+        <li><code>/api/email-welcome.js</code> — sent after email verification.</li>
+        <li><code>/api/email-exchange-request.js</code> — sent when a new exchange offer arrives.</li>
+        <li><code>/api/email-watchdog-alert.js</code> — immediate notification for critical/high severity events.</li>
+        <li><code>/api/email-weekly-digest.js</code> — Vercel cron (Monday 10:00 UTC), aggregates weekly stats per user.</li>
+        <li>All endpoints use HMAC <code>X-Internal-Secret</code> header and route through <code>/api/send-email</code> (Resend/Postmark adapter).</li>
+        </ul>
+      </div>
+    </div>
+                                    <div class="changelog-entry">
+      <div class="changelog-version">v1.46.0 <span class="changelog-date">2026-05-12</span></div>
+      <div class="changelog-body">
+        <strong>Faz 11 — Watchdog Cron Infrastructure.</strong>
+        <ul>
+        <li><code>/api/watchdog-scan.js</code> — Vercel cron every 12h: fetches each live exchange URL, parses HTML for link presence, nofollow, anchor text, noindex; writes watchdog_events row for any issue.</li>
+        <li><code>/api/watchdog-summary.js</code> — Vercel cron daily 09:00 UTC: aggregates unresolved events per user and triggers email-watchdog-alert.</li>
+        <li>Both endpoints protected by <code>CRON_SECRET</code> Bearer token.</li>
+        <li>Scan handles 100 exchanges per invocation with 10s timeout per fetch, max function duration 300s.</li>
+        </ul>
+      </div>
+    </div>
+                                    <div class="changelog-entry">
+      <div class="changelog-version">v1.45.0 <span class="changelog-date">2026-05-12</span></div>
+      <div class="changelog-body">
+        <strong>Faz 10 — Launch Prep Pages.</strong>
+        <ul>
+        <li><code>/support.html</code> with FAQPage schema and 6-question FAQ + response-time SLA table.</li>
+        <li><code>/security.html</code> with full security disclosure, headers reference, vulnerability disclosure policy, safe-harbor clause.</li>
+        <li><code>/about.html</code> with Organization schema, comparison table vs agencies and marketplaces, 2026 roadmap.</li>
+        <li><code>/api-docs.html</code> with APIReference schema, full endpoint reference, webhook events, rate limit tiers.</li>
+        <li><code>/status.html</code> with live operational status grid (6 services), 90-day uptime metrics.</li>
+        <li>Sitemap expanded 90 → 95 URLs.</li>
+        </ul>
+      </div>
+    </div>
+                                    <div class="changelog-entry">
       <div class="changelog-version">v1.44.0 <span class="changelog-date">2026-05-12</span></div>
       <div class="changelog-body">
         <strong>Faz 9 — QA & Security Hardening.</strong> Shipped production-grade security headers and a branded 404 experience.

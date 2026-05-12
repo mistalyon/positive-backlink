@@ -1,0 +1,26 @@
+# PositiveBacklink Environment Variables Template
+# Copy to Vercel Project Settings > Environment Variables
+# DO NOT commit actual values to git
+
+# === Required: Supabase ===
+SUPABASE_URL=https://hsgxsxiwwkuplcedfhxq.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=eyJ... # from Supabase Project Settings > API > service_role
+
+# === Required for cron security ===
+CRON_SECRET=generate-a-random-32-char-string
+INTERNAL_API_SECRET=generate-another-random-32-char-string
+
+# === Optional: Stripe (skip if free-only) ===
+STRIPE_SECRET_KEY=sk_live_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+
+# === Optional: Email (Resend OR Postmark) ===
+FROM_EMAIL=noreply@positivebacklink.com
+RESEND_API_KEY=re_...
+# POSTMARK_API_TOKEN=...
+
+# === Site config ===
+NEXT_PUBLIC_SITE_URL=https://www.positivebacklink.com
+
+# === IndexNow ===
+INDEXNOW_KEY=62fee0104a8e71b1f7dee2663fd411bc
