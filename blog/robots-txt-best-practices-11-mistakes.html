@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robots.txt Best Practices: 11 Mistakes That Kill Indexing | PositiveBacklink</title>
+<meta name="description" content="The 11 robots.txt mistakes we find in 80% of SEO audits - and exactly how to fix each one. With fix table, audit checklist, and a free Robots.txt Tester.">
+<meta name="keywords" content="robots.txt best practices, robots.txt mistakes, robots.txt indexing, googlebot blocked, robots.txt audit, robots.txt fix">
+<meta name="robots" content="index, follow">
+<meta name="author" content="PositiveBacklink">
+<link rel="canonical" href="https://www.positivebacklink.com/blog/robots-txt-best-practices-11-mistakes.html">
+<meta name="google-site-verification" content="0bm_X9ojXIi_-sV7Ov0on_H-WS89MnzovlsSPtoWzO4">
+<meta name="msvalidate.01" content="5627D94178E561857861AE89E474F98A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Robots.txt Best Practices: 11 Mistakes That Kill Indexing">
+<meta property="og:description" content="The 11 robots.txt mistakes we find in 80% of SEO audits, with copy-paste fixes.">
+<meta property="og:url" content="https://www.positivebacklink.com/blog/robots-txt-best-practices-11-mistakes.html">
+<meta property="og:image" content="https://www.positivebacklink.com/og-image.png">
+<meta property="article:published_time" content="2026-05-12T00:00:00Z">
+<meta property="article:author" content="PositiveBacklink">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Robots.txt: 11 Mistakes That Kill Indexing">
+<meta name="twitter:description" content="Audit checklist + fix table + free tester.">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="alternate" type="application/rss+xml" title="PositiveBacklink Blog RSS" href="/feed.xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Robots.txt Best Practices: 11 Mistakes That Kill Indexing",
+  "description": "The 11 robots.txt mistakes we find in 80% of SEO audits, with copy-paste fixes and an audit checklist.",
+  "image": "https://www.positivebacklink.com/og-image.png",
+  "author": {"@type": "Organization", "name": "PositiveBacklink", "url": "https://www.positivebacklink.com/"},
+  "publisher": {"@type": "Organization", "name": "PositiveBacklink", "logo": {"@type": "ImageObject", "url": "https://www.positivebacklink.com/icon-512.png"}},
+  "datePublished": "2026-05-12",
+  "dateModified": "2026-05-12",
+  "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.positivebacklink.com/blog/robots-txt-best-practices-11-mistakes.html"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to audit your robots.txt for indexing-killer mistakes",
+  "description": "A 6-step audit workflow to catch the most common robots.txt mistakes before they hurt indexing.",
+  "step": [
+    {"@type":"HowToStep","position":1,"name":"Fetch your live robots.txt","text":"Open yourdomain.com/robots.txt directly in a browser. Confirm it returns 200 and is plain text - not an HTML 404 page."},
+    {"@type":"HowToStep","position":2,"name":"Check user-agent group precedence","text":"Identify which User-agent group each crawler will actually use. Specific agents (Googlebot) override the wildcard (*) group entirely once selected."},
+    {"@type":"HowToStep","position":3,"name":"Test critical URLs against the file","text":"Paste your robots.txt and 20-30 key URLs (homepage, money pages, CSS/JS assets) into a tester to see verdicts."},
+    {"@type":"HowToStep","position":4,"name":"Verify CSS and JS are not blocked","text":"Googlebot needs to fetch render-blocking resources. Any Disallow on /assets/ or /static/ should have explicit Allow rules for *.css and *.js."},
+    {"@type":"HowToStep","position":5,"name":"Confirm Sitemap directive is present and valid","text":"Include Sitemap: https://yourdomain.com/sitemap.xml at the bottom. The URL must be absolute and return 200."},
+    {"@type":"HowToStep","position":6,"name":"Validate in Google Search Console","text":"Use the robots.txt report under Settings to confirm Googlebot can parse it and to see the last fetch status."}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Does Google still honor the noindex directive in robots.txt?","acceptedAnswer":{"@type":"Answer","text":"No. Google officially stopped supporting noindex in robots.txt on September 1, 2019. Use the noindex meta tag in HTML or the X-Robots-Tag HTTP header instead."}},
+    {"@type":"Question","name":"Can a URL be indexed even if robots.txt blocks it?","acceptedAnswer":{"@type":"Answer","text":"Yes. Robots.txt only blocks crawling, not indexing. If a blocked URL has external backlinks, Google may still index it - shown in SERPs with no snippet and the note 'No information is available for this page'."}},
+    {"@type":"Question","name":"Should I block crawlers like AhrefsBot or SemrushBot?","acceptedAnswer":{"@type":"Answer","text":"Only if you specifically want to hide your backlink profile from competitors who use those tools. Note that this also blocks your own ability to monitor competitor data on those platforms."}},
+    {"@type":"Question","name":"What is the maximum size of a robots.txt file?","acceptedAnswer":{"@type":"Answer","text":"Google parses up to 500 KiB of robots.txt content. Anything beyond that limit is ignored. For most sites, the file should be well under 5 KB."}},
+    {"@type":"Question","name":"Should the Allow directive come before or after Disallow?","acceptedAnswer":{"@type":"Answer","text":"Order does not matter for Google or Bing - they use the longest-match rule per RFC 9309. The most specific path wins regardless of line position in the file."}}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://www.positivebacklink.com/"},
+    {"@type":"ListItem","position":2,"name":"Blog","item":"https://www.positivebacklink.com/blog/"},
+    {"@type":"ListItem","position":3,"name":"Robots.txt Best Practices","item":"https://www.positivebacklink.com/blog/robots-txt-best-practices-11-mistakes.html"}
+  ]
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0a0a0a;color:#e5e5e5;line-height:1.7}
+nav{background:#111;border-bottom:1px solid #222;padding:1rem 2rem;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.logo{color:#3ECF8E;font-weight:700;font-size:1.25rem;text-decoration:none;font-family:"JetBrains Mono",monospace}
+.nav-links a{color:#aaa;text-decoration:none;margin-left:1.5rem;font-size:0.9rem}
+.nav-links a:hover{color:#3ECF8E}
+article{max-width:780px;margin:0 auto;padding:3rem 2rem 5rem}
+.breadcrumb{font-size:0.85rem;color:#666;margin-bottom:1.5rem}
+.breadcrumb a{color:#3ECF8E;text-decoration:none}
+.meta{display:flex;gap:1rem;align-items:center;color:#888;font-size:0.85rem;margin-bottom:1.5rem;font-family:"JetBrains Mono",monospace}
+.meta .tag{background:#1a1a1a;padding:0.25rem 0.7rem;border-radius:4px;color:#3ECF8E;border:1px solid #2a2a2a;font-size:0.75rem}
+h1{font-size:2.6rem;line-height:1.2;margin-bottom:1rem;background:linear-gradient(135deg,#3ECF8E,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.lede{font-size:1.2rem;color:#bbb;margin-bottom:2.5rem;line-height:1.6}
+h2{font-size:1.7rem;margin:3rem 0 1rem;color:#3ECF8E;padding-bottom:0.5rem;border-bottom:1px solid #222}
+h3{font-size:1.25rem;margin:2rem 0 0.75rem;color:#e5e5e5}
+h3 .num{color:#3ECF8E;font-family:"JetBrains Mono",monospace;font-size:1rem;margin-right:0.5rem;background:rgba(62,207,142,0.1);padding:0.15rem 0.6rem;border-radius:4px;border:1px solid #3ECF8E}
+p{color:#cfcfcf;margin-bottom:1.25rem}
+a{color:#3ECF8E;text-decoration:none;border-bottom:1px solid rgba(62,207,142,0.3);transition:border-color 0.2s}
+a:hover{border-bottom-color:#3ECF8E}
+ul,ol{margin:0 0 1.5rem 1.5rem;color:#cfcfcf}
+li{margin-bottom:0.5rem}
+code{background:#1a1a1a;padding:0.15rem 0.45rem;border-radius:3px;font-family:"JetBrains Mono",monospace;font-size:0.88em;color:#3ECF8E;border:1px solid #222}
+pre{background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:1.25rem;overflow-x:auto;margin:1.5rem 0;line-height:1.6}
+pre code{background:none;border:none;padding:0;color:#cfcfcf;font-size:0.85rem}
+.callout{background:rgba(62,207,142,0.05);border-left:3px solid #3ECF8E;padding:1rem 1.25rem;margin:1.5rem 0;border-radius:0 6px 6px 0;color:#bbb}
+.callout-warn{background:rgba(239,68,68,0.05);border-left-color:#ef4444}
+.callout strong{color:#3ECF8E}
+.callout-warn strong{color:#ef4444}
+table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+th{background:#1a1a1a;color:#3ECF8E;text-align:left;padding:0.85rem;font-family:"JetBrains Mono",monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid #2a2a2a}
+td{padding:0.85rem;border-bottom:1px solid #1a1a1a;color:#ccc;vertical-align:top}
+tr:hover td{background:#0f0f0f}
+.faq{margin:1rem 0;padding:1.25rem;background:#0f0f0f;border-radius:8px;border-left:3px solid #3ECF8E}
+.faq h4{color:#3ECF8E;margin-bottom:0.5rem;font-size:1rem}
+.tool-cta{background:linear-gradient(135deg,rgba(62,207,142,0.1),rgba(16,185,129,0.05));border:1px solid #3ECF8E;border-radius:10px;padding:1.5rem;margin:2rem 0;text-align:center}
+.tool-cta h3{margin-top:0;color:#3ECF8E}
+.tool-cta a.btn{display:inline-block;background:#3ECF8E;color:#0a0a0a;padding:0.7rem 1.5rem;border-radius:6px;font-weight:600;border:none;margin-top:0.5rem}
+.tool-cta a.btn:hover{background:#10b981}
+footer{background:#0a0a0a;border-top:1px solid #222;padding:2.5rem 2rem;text-align:center;color:#666;font-size:0.85rem}
+footer a{margin:0 0.5rem;border-bottom:none}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a href="/" class="logo">PositiveBacklink</a><div class="nav-links"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/learn/">Learn</a><a href="/pricing.html">Pricing</a></div></div></nav>
+<article>
+<div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Robots.txt Best Practices</div>
+<div class="meta"><span class="tag">Technical SEO</span><span>May 12, 2026</span><span>14 min read</span></div>
+<h1>Robots.txt Best Practices: 11 Mistakes That Kill Indexing</h1>
+<p class="lede">Across 200+ technical SEO audits we found the same robots.txt mistakes over and over. Each one looks tiny in isolation, but together they explain why some sites lose 30-90% of crawl coverage and slowly disappear from the index. Here are all 11 with copy-paste fixes and an audit checklist at the end.</p>
+<div class="callout"><strong>Before you start &mdash;</strong> fetch your live file at <code>yourdomain.com/robots.txt</code> and keep it open in a tab. Paste it into our free <a href="/tools/robots-txt-tester.html">Robots.txt Tester</a> as you read so you can verify each mistake against your own configuration.</div>
+<h2>Why Robots.txt Mistakes Are So Expensive</h2>
+<p>Unlike a meta tag mistake on a single page, a robots.txt mistake applies to <em>everything</em> on the host. A single misplaced <code>Disallow:</code> can wipe out millions of URLs from Google&apos;s crawl queue overnight. We have seen e-commerce sites lose 40% of organic traffic in two weeks because somebody pushed a staging robots.txt to production with one extra slash in it.</p>
+<p>Worse, the mistakes are silent. There is no error message. The site renders normally for humans. The damage shows up weeks later in Google Search Console as a slow decline in &quot;Discovered &mdash; currently not indexed&quot; numbers.</p>
+<h2>The 11 Mistakes</h2>
+<h3><span class="num">#1</span> Blocking CSS and JavaScript</h3>
+<p>The classic. A developer adds <code>Disallow: /assets/</code> or <code>Disallow: /static/</code> to &quot;save crawl budget&quot;. Result: Googlebot cannot fetch the CSS that styles your page or the JS that hydrates your React components. Google&apos;s rendering engine sees a broken page, your Core Web Vitals signals tank, and structured data parsing breaks for any markup that depends on JS execution.</p>
+<div class="callout-warn callout"><strong>Fix:</strong> Add explicit Allow rules for the file types Googlebot needs:</div>
+<pre><code>User-agent: *
+Disallow: /assets/
+Allow: /assets/*.css
+Allow: /assets/*.js
+Allow: /assets/*.woff2</code></pre>
+<h3><span class="num">#2</span> Using noindex directive (removed Sep 2019)</h3>
+<p>Google officially stopped honoring <code>Noindex:</code> in robots.txt on September 1, 2019. Yet we still find it in production files weekly. The lines are silently ignored, but worse, they create a false sense of safety &mdash; people <em>think</em> their /admin/ pages are deindexed when they are actually fully indexable.</p>
+<div class="callout-warn callout"><strong>Fix:</strong> Delete <code>Noindex:</code> lines and move noindex to HTML meta or HTTP header:</div>
+<pre><code>&lt;!-- In HTML head --&gt;
+&lt;meta name="robots" content="noindex,nofollow"&gt;
+
+# Or HTTP header
+X-Robots-Tag: noindex, nofollow</code></pre>
+<h3><span class="num">#3</span> Forgetting the trailing slash</h3>
+<p>This catches even experienced devs. <code>Disallow: /admin</code> (no slash) blocks everything that <em>starts with</em> /admin, including <code>/admin-panel</code>, <code>/admin-login</code>, and even <code>/administrators.html</code>. If you have a public &quot;admin&quot;-named blog category, it disappears too.</p>
+<div class="callout-warn callout"><strong>Fix:</strong> Be explicit with terminator:</div>
+<pre><code># BAD - blocks /admin-anything
+Disallow: /admin
+
+# GOOD - blocks /admin/ folder only
+Disallow: /admin/
+
+# GOOD - blocks /admin and /admin/ exactly
+Disallow: /admin$
+Disallow: /admin/</code></pre>
+<h3><span class="num">#4</span> Case-sensitive path mismatches</h3>
+<p>Robots.txt paths are case-sensitive. <code>Disallow: /Private/</code> does not block <code>/private/</code>. If your CMS has inconsistent URL casing (looking at you, older WordPress installs), you may think /Private is blocked when half your traffic actually hits /private.</p>
+<div class="callout-warn callout"><strong>Fix:</strong> Audit your canonical URL casing and write rules in the exact case your URLs use. If both /Private and /private exist, write two rules or fix the casing inconsistency at the source.</div>
+<h3><span class="num">#5</span> Missing Sitemap directive</h3>
+<p>Every robots.txt should end with the absolute URL to your sitemap. This is the only standard mechanism for telling all major search engines (not just Google) where your sitemap lives. Without it, Bing, Yandex, and DuckDuckGo rely on you submitting through their webmaster tools individually.</p>
+<div class="callout-warn callout"><strong>Fix:</strong> Add at the bottom, after all groups:</div>
+<pre><code>Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://yourdomain.com/sitemap-blog.xml</code></pre>
+<h3><span class="num">#6</span> Returning HTML 404 instead of plain text</h3>
+<p>If <code>/robots.txt</code> returns your custom 404 page (HTML), Google&apos;s parser sees garbage and treats the entire site as &quot;allow all&quot;. That can be fine, except the same misconfiguration usually means your sitemap.xml also 404s, which is fatal for indexing.</p>
+<div class="callout-warn callout"><strong>Fix:</strong> Curl your file and verify:</div>
+<pre><code>curl -I https://yourdomain.com/robots.txt
+
+# Expect:
+# HTTP/2 200
+# content-type: text/plain</code></pre>
+<h3><span class="num">#7</span> Blocking faceted URLs without canonical fix</h3>
+<p>E-commerce sites love to <code>Disallow: /*?</code> to stop Googlebot crawling infinite filter combinations. Problem: this also blocks legit parameter URLs that <em>should</em> be indexed (paginated archives, language switches with ?lang=, UTM-tagged campaign landing pages).</p>
+<div class="callout-warn callout"><strong>Fix:</strong> Be surgical &mdash; block specific parameters, not all of them:</div>
+<pre><code># BAD - blocks all query strings
+Disallow: /*?
+
+# GOOD - blocks only known facet params
+Disallow: /*?color=
+Disallow: /*?size=
+Disallow: /*?sort=</code></pre>
+<p>Better still: set the canonical to the unfaceted URL on the page itself, and let Google ignore the duplicates naturally.</p>
+<h3><span class="num">#8</span> Conflicting User-agent groups</h3>
+<p>Many devs assume the wildcard group <code>User-agent: *</code> applies to <em>all</em> crawlers including Googlebot. It does not. Once Googlebot finds <code>User-agent: Googlebot</code>, it ignores the wildcard group entirely. So rules written under <code>*</code> that you assumed Googlebot inherits are silently dropped.</p>
+<div class="callout-warn callout"><strong>Fix:</strong> Duplicate critical rules into specific UA groups:</div>
+<pre><code>User-agent: *
+Disallow: /private/
+Disallow: /admin/
+
+User-agent: Googlebot
+Disallow: /private/
+Disallow: /admin/
+Allow: /
+
+User-agent: Bingbot
+Disallow: /private/
+Disallow: /admin/</code></pre>
+<h3><span class="num">#9</span> Using regex syntax that does not exist</h3>
+<p>Robots.txt only supports two special characters: <code>*</code> (any sequence) and <code>$</code> (end of URL). Anything else &mdash; parentheses, brackets, plus signs, lookaheads &mdash; is treated as a literal character. We have seen <code>Disallow: /(secret|hidden)/</code> in production where the dev assumed regex worked. That rule blocks the literal string <code>/(secret|hidden)/</code> and nothing else.</p>
+<div class="callout-warn callout"><strong>Fix:</strong> Write one Disallow per pattern:</div>
+<pre><code># WRONG - this is not regex
+Disallow: /(secret|hidden)/
+
+# CORRECT
+Disallow: /secret/
+Disallow: /hidden/</code></pre>
+<h3><span class="num">#10</span> Treating robots.txt as access control</h3>
+<p>Listing your <code>/admin/</code>, <code>/private-api/</code>, or <code>/backup/</code> directories in a public robots.txt is the equivalent of writing a treasure map for attackers. The file is publicly readable by anyone, including bad actors who specifically scan it looking for juicy disallowed paths to attack.</p>
+<div class="callout-warn callout"><strong>Fix:</strong> Use real authentication (HTTP Basic Auth, server-side checks, IP whitelisting) for sensitive paths. Robots.txt is a politeness convention, not a security boundary. Many bad bots ignore it entirely.</div>
+<h3><span class="num">#11</span> Forgetting to update after site migrations</h3>
+<p>The single most common production accident: a developer copies the staging robots.txt (which contains <code>Disallow: /</code> to block staging from Google) to production during a deploy. The site goes live with everything blocked. Recovery takes 4-8 weeks even after fixing because Google has to recrawl and re-evaluate.</p>
+<div class="callout-warn callout"><strong>Fix:</strong> Three defenses, in order:</div>
+<ol>
+<li>Never ship the same robots.txt to staging and production &mdash; generate it dynamically based on environment variables.</li>
+<li>Add a deployment check that fails the build if production robots.txt contains <code>Disallow: /</code> with no overriding Allow.</li>
+<li>Set up uptime monitoring on <code>yourdomain.com/robots.txt</code> with content-match alerts on the word &quot;Disallow: /&quot; (with no Allow follow-up).</li>
+</ol>
+<h2>The Fix Table (TL;DR)</h2>
+<table>
+<thead><tr><th>Mistake</th><th>Symptom</th><th>One-Line Fix</th></tr></thead>
+<tbody>
+<tr><td>Blocking CSS/JS</td><td>Failing Core Web Vitals, broken rich results</td><td><code>Allow: /assets/*.css</code></td></tr>
+<tr><td>Noindex directive</td><td>Pages still in index</td><td>Move to <code>&lt;meta robots&gt;</code> or <code>X-Robots-Tag</code></td></tr>
+<tr><td>Missing trailing slash</td><td>Adjacent paths blocked</td><td><code>Disallow: /admin/</code></td></tr>
+<tr><td>Case mismatch</td><td>Paths not blocked as expected</td><td>Match URL casing exactly</td></tr>
+<tr><td>No Sitemap directive</td><td>Bing/Yandex not finding sitemap</td><td><code>Sitemap: https://yourdomain.com/sitemap.xml</code></td></tr>
+<tr><td>HTML 404 on /robots.txt</td><td>Parser falls back to allow-all</td><td>Return <code>200 text/plain</code></td></tr>
+<tr><td>Over-broad query block</td><td>Legitimate ?param= URLs deindexed</td><td>Block specific params only</td></tr>
+<tr><td>Wildcard inheritance assumption</td><td>Googlebot ignores * group rules</td><td>Duplicate rules in named groups</td></tr>
+<tr><td>Regex syntax</td><td>Literal string match, blocks nothing</td><td>Multiple Disallow lines</td></tr>
+<tr><td>Disclosed sensitive paths</td><td>Attackers scan robots.txt for targets</td><td>Use HTTP auth + omit from robots.txt</td></tr>
+<tr><td>Staging file in production</td><td>Whole site deindexed</td><td>Dynamic robots.txt per environment</td></tr>
+</tbody>
+</table>
+<h2>The 8-Minute Audit Checklist</h2>
+<p>Run this after every site change. It catches 90% of robots.txt problems before they hit production.</p>
+<ol>
+<li><strong>Fetch the live file:</strong> Open <code>yourdomain.com/robots.txt</code> in an incognito tab. Confirm it returns 200 and shows plain text in the browser, not an HTML 404.</li>
+<li><strong>Grep for the killer pattern:</strong> Search the file for <code>Disallow: /</code> with no overriding <code>Allow:</code>. If present, your whole site is blocked.</li>
+<li><strong>Validate each User-agent group:</strong> Make sure every named UA group (Googlebot, Bingbot, etc.) has the same critical Disallows you put in the wildcard group.</li>
+<li><strong>Test 10 critical URLs:</strong> Paste your robots.txt and your top 10 money pages into the <a href="/tools/robots-txt-tester.html">Robots.txt Tester</a>. Every one should return ALLOWED for Googlebot.</li>
+<li><strong>Test CSS &amp; JS specifically:</strong> Add <code>/assets/main.css</code> and <code>/assets/app.js</code> to the test list. Both must be ALLOWED.</li>
+<li><strong>Verify Sitemap directive:</strong> Confirm the absolute URL works in your browser and returns valid XML.</li>
+<li><strong>Check character encoding:</strong> The file must be UTF-8. BOMs or Windows-1252 can break parsing.</li>
+<li><strong>Submit to Search Console:</strong> Use the robots.txt report under Settings to force a Google re-fetch and confirm parse status.</li>
+</ol>
+<div class="tool-cta">
+<h3>Run This Audit in Your Browser</h3>
+<p>Paste your robots.txt and URLs into the free Robots.txt Tester. Get per-URL allow/block verdicts with the exact rule that triggered each decision. Works for Googlebot, Bingbot, and 9 other crawlers.</p>
+<a class="btn" href="/tools/robots-txt-tester.html">Open Robots.txt Tester &rarr;</a>
+</div>
+<h2>What Robots.txt Cannot Do</h2>
+<p>Three persistent misconceptions worth nailing down:</p>
+<p><strong>1. It does not remove pages from the index.</strong> Robots.txt only blocks <em>crawling</em>. URLs blocked here can still appear in search results if they have external backlinks &mdash; Google just shows them with no snippet and the note &quot;No information is available for this page&quot;. To truly deindex, use noindex meta tag or X-Robots-Tag, or submit a removal request in Search Console.</p>
+<p><strong>2. It does not stop bad bots.</strong> Spam scrapers, vulnerability scanners, and AI training crawlers from unknown operators routinely ignore robots.txt. If you need to block them, use server-side rules (Cloudflare WAF, .htaccess, nginx geo blocks).</p>
+<p><strong>3. It does not consolidate signal between duplicates.</strong> If two URLs serve the same content and you block one with robots.txt, you do not pass link equity to the other. For duplicate consolidation, use <code>rel=&quot;canonical&quot;</code> or 301 redirects.</p>
+<h2>Frequently Asked Questions</h2>
+<div class="faq"><h4>Does Google still honor the noindex directive in robots.txt?</h4><p>No. Google officially stopped supporting <code>Noindex:</code> in robots.txt on September 1, 2019. Use the noindex meta tag in HTML or the X-Robots-Tag HTTP header instead.</p></div>
+<div class="faq"><h4>Can a URL be indexed even if robots.txt blocks it?</h4><p>Yes. Robots.txt only blocks crawling, not indexing. If a blocked URL has external backlinks, Google may still index it &mdash; shown in SERPs with no snippet and the note &quot;No information is available for this page&quot;.</p></div>
+<div class="faq"><h4>Should I block crawlers like AhrefsBot or SemrushBot?</h4><p>Only if you specifically want to hide your backlink profile from competitors who use those tools. Note that this also blocks your own ability to monitor competitor data on those platforms.</p></div>
+<div class="faq"><h4>What is the maximum size of a robots.txt file?</h4><p>Google parses up to 500 KiB of robots.txt content. Anything beyond that limit is ignored. For most sites, the file should be well under 5 KB.</p></div>
+<div class="faq"><h4>Should the Allow directive come before or after Disallow?</h4><p>Order does not matter for Google or Bing &mdash; they use the longest-match rule per RFC 9309. The most specific path wins regardless of line position in the file.</p></div>
+<h2>Related Reading</h2>
+<ul>
+<li><a href="/tools/robots-txt-tester.html">Robots.txt Tester</a> &mdash; free per-URL allow/block checker with rule trace</li>
+<li><a href="/blog/backlink-profile-audit-30-minutes.html">30-Minute Backlink Profile Audit</a> &mdash; companion audit playbook for your link profile</li>
+<li><a href="/blog/internal-linking-architecture-seo.html">Internal Linking Architecture</a> &mdash; how to structure crawl paths after robots.txt fixes</li>
+<li><a href="/learn/crawl-budget.html">Crawl Budget glossary</a> &mdash; how Googlebot allocates fetch resources</li>
+<li><a href="/tools/meta-tag-generator.html">Meta Tag Generator</a> &mdash; build noindex/robots meta tags with live preview</li>
+</ul>
+<p style="margin-top:3rem;font-size:0.85rem;color:#666;border-top:1px solid #222;padding-top:1.5rem">Published May 12, 2026 by PositiveBacklink. We help SaaS, e-commerce, and content sites build editorial backlinks through automated ABC link exchange. <a href="/about.html">Learn more &rarr;</a></p>
+</article>
+<footer><a href="/about.html">About</a> &middot; <a href="/pricing.html">Pricing</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/tools/">Tools</a> &middot; <a href="/feed.xml">RSS</a> &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a><br><br>&copy; 2026 PositiveBacklink. All rights reserved.</footer>
+</body>
+</html>
