@@ -1,4 +1,14 @@
                                     <div class="changelog-entry">
+      <div class="version-header"><span class="version-tag">v1.36.0</span> <span class="version-date">2026-05-12</span></div>
+      <h3>Faz 1: Auth Infrastructure Hardening</h3>
+      <ul>
+        <li>Rebuilt <code>register.html</code> with Supabase v2 JS client, real signUp flow, Google OAuth button, password strength meter, terms checkbox, and email confirmation redirect.</li>
+        <li>Added <code>reset-password.html</code> with two-view flow (request reset link + set new password via magic link hash).</li>
+        <li>Added <code>verify-email.html</code> with confirmation landing, auto-redirect on SIGNED_IN event, and resend-email button (30s cooldown).</li>
+        <li>All auth pages remain <code>noindex,nofollow</code> and excluded from sitemap.</li>
+      </ul>
+    </div>
+    <div class="changelog-entry">
       <div class="version-header"><span class="version-tag">v1.35.0</span> <span class="version-date">2026-05-12</span></div>
       <h3>Phase T7: Tool #15 — Redirect Chain Checker</h3>
       <ul>
