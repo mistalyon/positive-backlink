@@ -1,0 +1,21 @@
+/* TEAM */
+  Built by: PositiveBacklink Team
+  Contact: hello@positivebacklink.com
+  Location: Global / Remote
+
+/* THANKS */
+  Supabase - auth + Postgres backend
+  Vercel - edge hosting + serverless functions
+  Cloudflare - DNS + DDoS protection
+
+/* SITE */
+  Standards: HTML5, CSS3, ES2020
+  Components: vanilla JS, no framework dependency
+  Schema: schema.org JSON-LD on every public page
+  PWA: full manifest + service worker + offline shell
+  Monitoring: client-side error capture via /api/log-error
+  Last updated: 2026-05-12
+
+/* MISSION */
+  White-hat backlink exchanges with AI-monitored quality, scored by niche relevance.
+  No PBNs. No paid links. No spam. Just clean, mutual SEO value.
