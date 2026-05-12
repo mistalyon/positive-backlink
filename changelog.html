@@ -1,4 +1,18 @@
                                     <div class="changelog-entry">
+      <div class="changelog-version">v1.44.0 <span class="changelog-date">2026-05-12</span></div>
+      <div class="changelog-body">
+        <strong>Faz 9 — QA & Security Hardening.</strong> Shipped production-grade security headers and a branded 404 experience.
+        <ul>
+        <li><code>vercel.json</code> added with CSP, HSTS (2y preload), X-Frame-Options SAMEORIGIN, X-Content-Type-Options nosniff, Referrer-Policy strict-origin-when-cross-origin, Permissions-Policy locking down camera/mic/geo, and X-XSS-Protection.</li>
+        <li>Cache rules: 1y immutable on JS/CSS/fonts/images, 1h on sitemap.xml + feed.xml, 24h on robots.txt.</li>
+        <li>Redirects: <code>/blog</code> → <code>/blog/</code> (and 4 other hub paths), <code>/signup</code> → <code>/register.html</code>, <code>/signin</code> → <code>/login.html</code>, <code>/sites</code> → <code>/sites/browse.html</code>.</li>
+        <li>Cron job slots reserved for <code>/api/watchdog-scan</code> (every 12h), <code>/api/watchdog-summary</code> (daily 09:00), <code>/api/email-weekly-digest</code> (Monday 10:00) — implementations in Faz 11-12.</li>
+        <li><code>404.html</code> rebuilt with brand consistency: 4-tile navigation grid (Blog/Tools/Glossary/Pricing) + helpful copy + noindex,follow.</li>
+        </ul>
+      </div>
+    </div>
+
+                                    <div class="changelog-entry">
       <div class="changelog-version">v1.43.0 <span class="changelog-date">2026-05-12</span></div>
       <div class="changelog-body">
         <strong>Faz 8 — SEO Content Sprint.</strong> Published 3 long-form technical SEO blog posts (link velocity, anchor distribution, link reclamation), shipped 2 new in-browser tools (anchor text analyzer + backlink velocity calculator), added 2 glossary entries (link velocity, anchor text), and 1 new SaaS case study (DR 12 → 47).
