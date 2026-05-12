@@ -2,12 +2,11 @@
   "name": "positive-backlink",
   "version": "1.49.0",
   "private": true,
-  "type": "module",
   "engines": {
     "node": ">=18.0.0"
   },
   "scripts": {
-    "build": "echo 'Static site, no build step'"
+    "build": "echo 'Static site, no build step required'"
   },
   "dependencies": {}
 }
