@@ -1,4 +1,11 @@
                                     <div class="changelog-entry">
+      <div class="changelog-version">v1.39.0 <span class="changelog-date">2026-05-12</span></div>
+      <div class="changelog-body">
+        <strong>Faz 4 \u2014 AI Watchdog UI.</strong> Launched <code>/watchdog/dashboard.html</code> (noindex) showing per-user link health timeline with severity-coded events (low/medium/high), stats cards (total events, unresolved, high-severity, net credit delta), and filters by severity, event type (link_removed, nofollow_added, redirect_chain, dr_drop, hidden_css, page_404, check_ok), and resolution status. Each event row supports a Resolve action that flips <code>resolved=true</code>. Added Watchdog widget card to main dashboard My Sites tab showing last 5 unresolved alerts, plus Watchdog link in nav. Watchdog page redirects unauthed users to <code>/login.html?next=/watchdog/dashboard.html</code>. Sitemap unchanged (82 URLs, watchdog is private). 6/10 phases remaining \u2192 Faz 5 next: Admin panel.
+      </div>
+    </div>
+
+    <div class="changelog-entry">
       <div class="changelog-version">v1.38.0 <span class="changelog-date">2026-05-12</span></div>
       <div class="changelog-body">
         <strong>Faz 3 \u2014 Backlink Exchange Flow.</strong> Launched public site catalog at <code>/sites/browse.html</code> with niche filters, DR range sliders, tier filter, and best-match scoring (Jaccard niche match + DR proximity, 70/30 weighting). Added exchange request modal with anchor validation, target URL field, and credit offer (1\u201350). The ABC triangular explanation panel is surfaced on the browse page. Dashboard Exchanges tab now shows accept/decline buttons on incoming requests, cancel on outgoing pending, mark-live on matched, with status pills (pending/matched/live/removed/disputed) and exchange role pill (incoming/outgoing/middle). Added Browse Sites link to dashboard nav. Sitemap +1 URL (82 total). 7/10 phases remaining \u2192 Faz 4 next: AI Watchdog UI.
