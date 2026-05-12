@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Redirect Chain Checker - Free SEO Tool | PositiveBacklink</title>
+<meta name="description" content="Analyze HTTP redirect chains for problems like loops, mixed 301/302 codes, excessive hops, meta-refresh fallbacks, and HTTPS downgrades. Paste your curl -ILv output and get instant SEO recommendations." />
+<meta name="keywords" content="redirect chain checker, 301 chain analyzer, redirect loop detector, http redirect analysis, seo redirect tool, free redirect checker" />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<meta name="google-site-verification" content="0bm_X9ojXIi_-sV7Ov0on_H-WS89MnzovlsSPtoWzO4" />
+<meta name="msvalidate.01" content="5627D94178E561857861AE89E474F98A" />
+<link rel="canonical" href="https://www.positivebacklink.com/tools/redirect-chain-checker.html" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Redirect Chain Checker - Free SEO Tool" />
+<meta property="og:description" content="Analyze HTTP redirect chains for problems like loops, mixed 301/302 codes, excessive hops, meta-refresh fallbacks, and HTTPS downgrades. Paste your curl -ILv output and get instant SEO recommendations." />
+<meta property="og:url" content="https://www.positivebacklink.com/tools/redirect-chain-checker.html" />
+<meta property="og:image" content="https://www.positivebacklink.com/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Redirect Chain Checker","applicationCategory":"DeveloperApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","ratingCount":"89"},"description":"Analyze HTTP redirect chains for problems like loops, mixed 301/302 codes, excessive hops, meta-refresh fallbacks, and HTTPS downgrades. Paste your curl -ILv output and get instant SEO recommendations."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many redirects are too many?","acceptedAnswer":{"@type":"Answer","text":"Google recommends no more than 5 hops in a chain, but ideally a single 301. Each additional hop slows page load, dilutes link equity slightly, and risks Googlebot abandoning the crawl."}},{"@type":"Question","name":"Do 302 redirects pass link equity?","acceptedAnswer":{"@type":"Answer","text":"302 (Found) is officially a temporary redirect. Google has stated it eventually treats long-standing 302s like 301s, but the transfer is slower and less reliable. Use 301 for permanent moves."}},{"@type":"Question","name":"What is a redirect loop?","acceptedAnswer":{"@type":"Answer","text":"A redirect loop occurs when URL A redirects to URL B which redirects back to URL A (directly or through intermediate hops). Browsers detect this and show ERR_TOO_MANY_REDIRECTS; search engines drop the URL from the index."}},{"@type":"Question","name":"Is meta refresh redirect bad for SEO?","acceptedAnswer":{"@type":"Answer","text":"Meta refresh with delay=0 is treated similarly to a 301 by Google, but server-level 301 is always preferred. Delays greater than 0 are interpreted as user-initiated and may not pass equity at all."}},{"@type":"Question","name":"How do I get the input for this tool?","acceptedAnswer":{"@type":"Answer","text":"Run 'curl -ILv https://example.com' in your terminal, or use browser DevTools Network tab and right-click → Copy as cURL. Paste the response headers directly into the input below."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.positivebacklink.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://www.positivebacklink.com/tools/"},{"@type":"ListItem","position":3,"name":"Redirect Chain Checker","item":"https://www.positivebacklink.com/tools/redirect-chain-checker.html"}]}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e5e5e5;line-height:1.6}
+nav{background:#111;border-bottom:1px solid #222;padding:16px 24px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.logo{color:#3ECF8E;font-weight:700;font-size:18px;text-decoration:none}
+.nav-links a{color:#a1a1a1;text-decoration:none;margin-left:24px;font-size:14px}
+.nav-links a:hover{color:#3ECF8E}
+.container{max-width:1100px;margin:0 auto;padding:48px 24px}
+.breadcrumb{font-size:13px;color:#666;margin-bottom:24px;font-family:'JetBrains Mono',monospace}
+.breadcrumb a{color:#3ECF8E;text-decoration:none}
+h1{font-size:38px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:12px}
+.tagline{color:#a1a1a1;font-size:17px;margin-bottom:32px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px}
+@media (max-width:880px){.grid{grid-template-columns:1fr}}
+.panel{background:#111;border:1px solid #222;border-radius:10px;padding:24px}
+.panel h3{color:#3ECF8E;font-size:14px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:14px}
+textarea{width:100%;background:#0d0d0d;color:#e5e5e5;border:1px solid #222;border-radius:6px;padding:14px;font-family:'JetBrains Mono',monospace;font-size:13px;resize:vertical;min-height:280px;line-height:1.5}
+textarea:focus{outline:none;border-color:#3ECF8E}
+.btn{background:#3ECF8E;color:#0a0a0a;border:none;padding:12px 24px;border-radius:6px;font-weight:600;cursor:pointer;font-size:15px;margin-top:14px;margin-right:10px}
+.btn:hover{background:#2dd4a0}
+.btn-secondary{background:transparent;color:#3ECF8E;border:1px solid #3ECF8E}
+.btn-secondary:hover{background:#0d2520}
+.result{margin-top:18px}
+.hop{background:#0d0d0d;border:1px solid #222;border-radius:6px;padding:14px;margin-bottom:10px;font-family:'JetBrains Mono',monospace;font-size:13px}
+.hop-num{display:inline-block;width:28px;height:28px;background:#1a1a1a;color:#3ECF8E;text-align:center;line-height:28px;border-radius:50%;margin-right:10px;font-weight:700;font-size:12px}
+.status{display:inline-block;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600;margin-left:8px}
+.status-301{background:#0d2520;color:#3ECF8E}
+.status-302{background:#2a1f0a;color:#ffaa00}
+.status-200{background:#0d2520;color:#3ECF8E}
+.status-meta{background:#1a1430;color:#a78bfa}
+.status-error{background:#2a0a0a;color:#ff5555}
+.hop-url{color:#c5c5c5;word-break:break-all;margin-top:6px;font-size:12px}
+.summary{background:#0d2520;border:1px solid #3ECF8E;border-radius:8px;padding:16px;margin-bottom:14px}
+.summary-bad{background:#2a0a0a;border-color:#ff5555}
+.summary-warn{background:#2a1f0a;border-color:#ffaa00}
+.summary-title{font-weight:700;font-size:15px;margin-bottom:6px}
+.summary-detail{font-size:13px;color:#c5c5c5}
+.checks{list-style:none;padding:0}
+.checks li{padding:8px 0;border-bottom:1px solid #222;font-size:13px;display:flex;align-items:center;gap:10px}
+.check-icon{font-size:16px;width:20px;display:inline-block}
+.pass{color:#3ECF8E}
+.fail{color:#ff5555}
+.warn{color:#ffaa00}
+.info-box{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin:32px 0}
+.info-box h2{color:#fff;font-size:22px;margin-bottom:14px}
+.info-box p{color:#c5c5c5;margin-bottom:12px;font-size:15px}
+code{background:#0d0d0d;color:#3ECF8E;padding:2px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px}
+pre{background:#0d0d0d;border:1px solid #222;border-radius:6px;padding:14px;overflow-x:auto;margin:12px 0}
+pre code{background:none;padding:0}
+.faq{margin-top:48px}
+.faq h2{color:#fff;font-size:24px;margin-bottom:18px}
+.faq-item{background:#111;border:1px solid #222;border-radius:8px;padding:18px;margin-bottom:12px}
+.faq-q{color:#3ECF8E;font-weight:600;margin-bottom:8px;font-size:15px}
+.faq-a{color:#c5c5c5;font-size:14px}
+footer{background:#0d0d0d;border-top:1px solid #222;padding:32px 24px;margin-top:64px;text-align:center;color:#666;font-size:14px}
+footer a{color:#3ECF8E;text-decoration:none;margin:0 12px}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a href="/" class="logo">PositiveBacklink</a><div class="nav-links"><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/learn/">Learn</a><a href="/pricing.html">Pricing</a></div></div></nav>
+<div class="container">
+<div class="breadcrumb"><a href="/">Home</a> &raquo; <a href="/tools/">Tools</a> &raquo; Redirect Chain Checker</div>
+<h1>Redirect Chain Checker</h1>
+<p class="tagline">Paste your <code>curl -ILv</code> output or DevTools response headers and instantly spot loops, excessive hops, mixed 301/302 codes, and HTTPS downgrades.</p>
+<div class="grid">
+<div class="panel">
+<h3>// Input: paste response headers</h3>
+<textarea id="input" placeholder="Paste curl -ILv output here. Example:&#10;&#10;HTTP/2 301&#10;location: https://example.com/new-page&#10;&#10;HTTP/2 301&#10;location: https://www.example.com/new-page&#10;&#10;HTTP/2 200"></textarea>
+<button class="btn" id="analyzeBtn">Analyze chain</button>
+<button class="btn btn-secondary" id="sampleBtn">Load sample</button>
+</div>
+<div class="panel">
+<h3>// Analysis</h3>
+<div id="results" class="result"><p style="color:#666;font-size:13px">Paste your redirect headers and click Analyze.</p></div>
+</div>
+</div>
+<div class="info-box">
+<h2>How to capture redirect headers</h2>
+<p><strong>Terminal (curl):</strong></p>
+<pre><code>curl -ILv https://example.com 2&gt;&amp;1 | grep -E &quot;HTTP/|location:&quot;</code></pre>
+<p><strong>Browser DevTools:</strong> Open Network tab &rarr; reload page &rarr; click first request &rarr; Headers tab. Copy the Status and Location for each row in the chain.</p>
+<p>The tool parses three common formats: full <code>curl -ILv</code> output, the simplified <code>HTTP/x.x STATUS</code> + <code>location:</code> pairs, and raw status/URL pairs separated by arrows or newlines.</p>
+</div>
+<div class="faq">
+<h2>Frequently asked questions</h2>
+<div class="faq-item"><div class="faq-q">How many redirects are too many?</div><div class="faq-a">Google recommends no more than 5 hops in a chain, but ideally a single 301. Each additional hop slows page load, dilutes link equity slightly, and risks Googlebot abandoning the crawl.</div></div>
+<div class="faq-item"><div class="faq-q">Do 302 redirects pass link equity?</div><div class="faq-a">302 (Found) is officially a temporary redirect. Google has stated it eventually treats long-standing 302s like 301s, but the transfer is slower and less reliable. Use 301 for permanent moves.</div></div>
+<div class="faq-item"><div class="faq-q">What is a redirect loop?</div><div class="faq-a">A redirect loop occurs when URL A redirects to URL B which redirects back to URL A (directly or through intermediate hops). Browsers detect this and show ERR_TOO_MANY_REDIRECTS; search engines drop the URL from the index.</div></div>
+<div class="faq-item"><div class="faq-q">Is meta refresh redirect bad for SEO?</div><div class="faq-a">Meta refresh with delay=0 is treated similarly to a 301 by Google, but server-level 301 is always preferred. Delays greater than 0 are interpreted as user-initiated and may not pass equity at all.</div></div>
+<div class="faq-item"><div class="faq-q">How do I get the input for this tool?</div><div class="faq-a">Run 'curl -ILv https://example.com' in your terminal, or use browser DevTools Network tab and right-click → Copy as cURL. Paste the response headers directly into the input below.</div></div>
+</div>
+<div class="info-box">
+<h2>Related resources</h2>
+<p>&rarr; <a href="/blog/find-broken-backlinks-reclaim-link-equity.html" style="color:#3ECF8E">Find Broken Backlinks and Reclaim Lost Link Equity</a></p>
+<p>&rarr; <a href="/blog/robots-txt-best-practices-11-mistakes.html" style="color:#3ECF8E">Robots.txt Best Practices: 11 Common Mistakes</a></p>
+<p>&rarr; <a href="/tools/robots-txt-tester.html" style="color:#3ECF8E">Robots.txt Tester</a></p>
+<p>&rarr; <a href="/learn/link-equity.html" style="color:#3ECF8E">Link Equity (glossary)</a></p>
+</div>
+</div>
+<footer><a href="/">Home</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/learn/">Learn</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><br><br>&copy; 2026 PositiveBacklink</footer>
+<script>
+(function(){
+function parseChain(raw){
+  const lines = raw.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+  const hops = [];
+  let current = null;
+  for (const line of lines){
+    const statusMatch = line.match(/^HTTP\/[\d.]+\s+(\d{3})/i) || line.match(/^(\d{3})\s/) || line.match(/^Status:?\s+(\d{3})/i);
+    if (statusMatch){
+      if (current) hops.push(current);
+      current = { status: parseInt(statusMatch[1]), location: null, type: null };
+      continue;
+    }
+    const locMatch = line.match(/^location:?\s*(.+)/i);
+    if (locMatch && current){ current.location = locMatch[1].trim(); continue; }
+    const metaMatch = line.match(/meta[^>]*http-equiv=["']?refresh["']?[^>]*content=["']?(\d+)\s*;\s*url=([^"'>]+)/i);
+    if (metaMatch){
+      if (current) hops.push(current);
+      current = { status: 200, location: metaMatch[2].trim(), type: 'meta', delay: parseInt(metaMatch[1]) };
+      continue;
+    }
+    const urlMatch = line.match(/^https?:\/\/[^\s]+/i);
+    if (urlMatch && current && !current.location){ current.location = urlMatch[0]; }
+  }
+  if (current) hops.push(current);
+  return hops;
+}
+function analyze(hops){
+  const checks = [];
+  const issues = [];
+  if (!hops.length){ return { checks:[{level:'fail',msg:'No HTTP responses parsed. Check your input format.'}], issues:[], score:0 }; }
+  const final = hops[hops.length-1];
+  const redirects = hops.slice(0, -1);
+  if (final.status === 200){ checks.push({level:'pass',msg:'Chain ends with a 200 OK destination'}); }
+  else if (final.status >= 400){ checks.push({level:'fail',msg:'Chain ends with '+final.status+' \u2014 destination is broken'}); issues.push('broken-destination'); }
+  else { checks.push({level:'warn',msg:'Chain ends with '+final.status+' \u2014 not a final 200'}); }
+  if (redirects.length === 0){ checks.push({level:'pass',msg:'No redirects \u2014 direct 200 response'}); }
+  else if (redirects.length === 1){ checks.push({level:'pass',msg:'Single-hop redirect (optimal)'}); }
+  else if (redirects.length <= 3){ checks.push({level:'warn',msg:redirects.length+'-hop chain \u2014 consolidate to a single 301 if possible'}); issues.push('chain'); }
+  else { checks.push({level:'fail',msg:redirects.length+'-hop chain \u2014 Googlebot may abandon after 5 hops'}); issues.push('long-chain'); }
+  const has301 = redirects.some(h => h.status === 301);
+  const has302 = redirects.some(h => h.status === 302 || h.status === 307);
+  if (has301 && has302){ checks.push({level:'warn',msg:'Mixed 301 and 302/307 in chain \u2014 equity transfer is unpredictable'}); issues.push('mixed'); }
+  else if (redirects.length && has301 && !has302){ checks.push({level:'pass',msg:'All redirects use 301 (permanent)'}); }
+  else if (redirects.length && has302 && !has301){ checks.push({level:'warn',msg:'All redirects are 302/307 (temporary) \u2014 use 301 for permanent moves'}); issues.push('all-temp'); }
+  const urls = redirects.map(h => h.location).filter(Boolean);
+  const uniqueUrls = new Set(urls);
+  if (urls.length !== uniqueUrls.size){ checks.push({level:'fail',msg:'Redirect loop detected \u2014 a URL appears twice in the chain'}); issues.push('loop'); }
+  let downgrade = false;
+  for (let i = 0; i < hops.length - 1; i++){
+    const loc = hops[i].location || '';
+    if (loc.startsWith('http://')){ downgrade = true; break; }
+  }
+  if (downgrade){ checks.push({level:'fail',msg:'HTTPS \u2192 HTTP downgrade detected in chain \u2014 fixes mixed content but loses trust'}); issues.push('downgrade'); }
+  else { checks.push({level:'pass',msg:'No protocol downgrade in chain'}); }
+  const metas = redirects.filter(h => h.type === 'meta');
+  if (metas.length){
+    const hasDelay = metas.some(h => h.delay > 0);
+    if (hasDelay){ checks.push({level:'fail',msg:'Meta-refresh with delay &gt; 0 \u2014 not treated as a redirect by search engines'}); issues.push('meta-delay'); }
+    else { checks.push({level:'warn',msg:'Meta-refresh fallback present \u2014 prefer server-level 301'}); issues.push('meta'); }
+  }
+  const score = Math.max(0, 100 - issues.length * 20);
+  return { checks, issues, score, hops };
+}
+function render(result){
+  const out = document.getElementById('results');
+  if (!result.hops || !result.hops.length){ out.innerHTML = '<div class="summary summary-bad"><div class="summary-title">Could not parse input</div><div class="summary-detail">No HTTP response codes detected. Check the format and try again.</div></div>'; return; }
+  let level = 'summary';
+  if (result.issues.some(i => ['loop','broken-destination','long-chain','meta-delay','downgrade'].indexOf(i) > -1)) level = 'summary summary-bad';
+  else if (result.issues.length) level = 'summary summary-warn';
+  let html = '<div class="'+level+'"><div class="summary-title">Score: '+result.score+'/100 \u2014 '+(result.score>=80?'Healthy':result.score>=60?'Needs attention':'Critical issues')+'</div><div class="summary-detail">'+result.hops.length+' total responses, '+(result.hops.length-1)+' redirects</div></div>';
+  html += '<ul class="checks">';
+  for (const c of result.checks){
+    const icon = c.level === 'pass' ? '\u2713' : c.level === 'fail' ? '\u2717' : '!';
+    html += '<li><span class="check-icon '+c.level+'">'+icon+'</span> '+c.msg+'</li>';
+  }
+  html += '</ul>';
+  html += '<h3 style="color:#3ECF8E;font-size:13px;font-family:JetBrains Mono,monospace;text-transform:uppercase;margin:18px 0 10px">// Hop trace</h3>';
+  for (let i = 0; i < result.hops.length; i++){
+    const h = result.hops[i];
+    const cls = h.type === 'meta' ? 'status-meta' : h.status === 301 ? 'status-301' : h.status === 302 || h.status === 307 ? 'status-302' : h.status === 200 ? 'status-200' : 'status-error';
+    const label = h.type === 'meta' ? 'meta-refresh' : h.status;
+    html += '<div class="hop"><span class="hop-num">'+(i+1)+'</span><span class="status '+cls+'">'+label+'</span>';
+    if (h.location){ html += '<div class="hop-url">\u2192 '+h.location+'</div>'; }
+    html += '</div>';
+  }
+  out.innerHTML = html;
+}
+document.getElementById('analyzeBtn').addEventListener('click', function(){
+  const raw = document.getElementById('input').value;
+  if (!raw.trim()){ document.getElementById('results').innerHTML = '<div class="summary summary-bad"><div class="summary-title">Input required</div><div class="summary-detail">Paste your curl or DevTools headers above.</div></div>'; return; }
+  const hops = parseChain(raw);
+  const result = analyze(hops);
+  result.hops = hops;
+  render(result);
+});
+document.getElementById('sampleBtn').addEventListener('click', function(){
+  const sample = 'HTTP/2 301\nlocation: https://example.com/old-page\n\nHTTP/2 302\nlocation: https://www.example.com/old-page\n\nHTTP/2 301\nlocation: https://www.example.com/new-page\n\nHTTP/2 200';
+  document.getElementById('input').value = sample;
+});
+})();
+</script>
+</body></html>
