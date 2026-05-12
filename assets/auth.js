@@ -1,105 +1,126 @@
-// PositiveBacklink Auth Helper v2 (localStorage bootstrap)
-(function() {
-  "use strict";
-
+// PositiveBacklink Auth Helper v3
+// Reads Supabase anon key from localStorage (PB_SUPABASE_ANON_KEY)
+// Falls back to window.PB_CONFIG.anonKey, then placeholder.
+// IMPORTANT: createClient is called ONCE after anon key is resolved.
+(function(){
   var SUPABASE_URL = "https://hsgxsxiwwkuplcedfhxq.supabase.co";
+  var STORAGE_KEY = "PB_SUPABASE_ANON_KEY";
+  var PLACEHOLDER = "__SUPABASE_ANON_KEY__";
 
-  function readAnonKey() {
-    try {
-      var ls = localStorage.getItem("PB_SUPABASE_ANON_KEY");
-      if (ls && ls.length > 50) return ls.trim();
-    } catch (e) {}
-    if (window.PB_CONFIG && window.PB_CONFIG.SUPABASE_ANON_KEY) return window.PB_CONFIG.SUPABASE_ANON_KEY;
-    return "__SUPABASE_ANON_KEY__";
+  function readAnonKey(){
+    try{ var v = localStorage.getItem(STORAGE_KEY); if(v && v.length > 40) return v; }catch(e){}
+    if(window.PB_CONFIG && window.PB_CONFIG.anonKey) return window.PB_CONFIG.anonKey;
+    return PLACEHOLDER;
   }
 
-  var SUPABASE_ANON_KEY = readAnonKey();
-  var clientPromise = null;
+  function isConfigured(){
+    var k = readAnonKey();
+    return !!(k && k !== PLACEHOLDER && k.length > 40);
+  }
 
-  function loadSdk() {
-    return new Promise(function(resolve, reject) {
-      if (window.supabase && window.supabase.createClient) return resolve(window.supabase);
-      var s = document.createElement("script");
-      s.src = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
-      s.async = true;
-      s.onload = function() { resolve(window.supabase); };
-      s.onerror = function() { reject(new Error("Supabase SDK failed to load")); };
-      document.head.appendChild(s);
+  function setAnonKey(k){
+    try{ localStorage.setItem(STORAGE_KEY, k); }catch(e){}
+    buildClient();
+  }
+
+  var client = null;
+  function buildClient(){
+    if(!window.supabase || !window.supabase.createClient) return null;
+    var key = readAnonKey();
+    client = window.supabase.createClient(SUPABASE_URL, key, {
+      auth: { autoRefreshToken: true, persistSession: true, detectSessionInUrl: true }
+    });
+    return client;
+  }
+
+  function getClient(){
+    if(!client) buildClient();
+    return client;
+  }
+
+  function notReadyError(){
+    return { data:null, error:{ name:"NotConfigured", message:"Auth not configured. Visit /setup to paste anon key.", status:0 } };
+  }
+
+  function signUp(email, password, opts){
+    if(!isConfigured()) return Promise.resolve(notReadyError());
+    var c = getClient(); if(!c) return Promise.resolve(notReadyError());
+    var redirect = (opts && opts.redirectTo) || (location.origin + "/dashboard");
+    return c.auth.signUp({ email: email, password: password, options: { emailRedirectTo: redirect } });
+  }
+
+  function signIn(email, password){
+    if(!isConfigured()) return Promise.resolve(notReadyError());
+    var c = getClient(); if(!c) return Promise.resolve(notReadyError());
+    return c.auth.signInWithPassword({ email: email, password: password });
+  }
+
+  function signInWithOAuth(provider){
+    if(!isConfigured()) return Promise.resolve(notReadyError());
+    var c = getClient(); if(!c) return Promise.resolve(notReadyError());
+    return c.auth.signInWithOAuth({ provider: provider, options: { redirectTo: location.origin + "/dashboard" } });
+  }
+
+  function signInWithMagicLink(email){
+    if(!isConfigured()) return Promise.resolve(notReadyError());
+    var c = getClient(); if(!c) return Promise.resolve(notReadyError());
+    return c.auth.signInWithOtp({ email: email, options: { emailRedirectTo: location.origin + "/dashboard" } });
+  }
+
+  function signOut(){
+    var c = getClient(); if(!c) return Promise.resolve({ error:null });
+    return c.auth.signOut();
+  }
+
+  function resetPassword(email){
+    if(!isConfigured()) return Promise.resolve(notReadyError());
+    var c = getClient(); if(!c) return Promise.resolve(notReadyError());
+    return c.auth.resetPasswordForEmail(email, { redirectTo: location.origin + "/reset-password.html" });
+  }
+
+  function updatePassword(newPw){
+    var c = getClient(); if(!c) return Promise.resolve(notReadyError());
+    return c.auth.updateUser({ password: newPw });
+  }
+
+  function getSession(){
+    var c = getClient(); if(!c) return Promise.resolve(null);
+    return c.auth.getSession().then(function(r){ return r && r.data ? r.data.session : null; });
+  }
+
+  function requireAuth(redirect){
+    if(!isConfigured()) return;
+    getSession().then(function(s){
+      if(!s){ location.href = redirect || "/login"; }
     });
   }
 
-  function getClient() {
-    if (clientPromise) return clientPromise;
-    SUPABASE_ANON_KEY = readAnonKey();
-    if (SUPABASE_ANON_KEY === "__SUPABASE_ANON_KEY__") {
-      console.warn("[pbAuth] Anon key not configured. Visit /setup to configure.");
-    }
-    clientPromise = loadSdk().then(function(sb) {
-      return sb.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-        auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
-      });
+  function applyNavAuthState(){
+    getSession().then(function(s){
+      var on = !!s;
+      document.querySelectorAll("[data-auth-show-when=\"in\"]").forEach(function(el){ el.style.display = on ? "" : "none"; });
+      document.querySelectorAll("[data-auth-hide-when=\"in\"]").forEach(function(el){ el.style.display = on ? "none" : ""; });
     });
-    return clientPromise;
   }
-
-  function isConfigured() { return readAnonKey() !== "__SUPABASE_ANON_KEY__"; }
-
-  async function getSession() {
-    try { var c = await getClient(); var r = await c.auth.getSession(); return r.data ? r.data.session : null; }
-    catch (e) { console.warn("[pbAuth] getSession err", e); return null; }
-  }
-
-  async function getCurrentUser() { var s = await getSession(); return s ? s.user : null; }
-
-  async function signInWithPassword(email, password) {
-    var c = await getClient(); return c.auth.signInWithPassword({ email: email, password: password });
-  }
-  async function signInWithMagicLink(email, redirectTo) {
-    var c = await getClient(); return c.auth.signInWithOtp({ email: email, options: { emailRedirectTo: redirectTo || (location.origin + "/dashboard") } });
-  }
-  async function signInWithGoogle(redirectTo) {
-    var c = await getClient(); return c.auth.signInWithOAuth({ provider: "google", options: { redirectTo: redirectTo || (location.origin + "/dashboard") } });
-  }
-  async function signUp(email, password, redirectTo) {
-    var c = await getClient(); return c.auth.signUp({ email: email, password: password, options: { emailRedirectTo: redirectTo || (location.origin + "/dashboard") } });
-  }
-  async function resetPassword(email) {
-    var c = await getClient(); return c.auth.resetPasswordForEmail(email, { redirectTo: location.origin + "/reset-password" });
-  }
-  async function updatePassword(newPassword) {
-    var c = await getClient(); return c.auth.updateUser({ password: newPassword });
-  }
-  async function signOut() { var c = await getClient(); await c.auth.signOut(); location.href = "/"; }
-
-  async function requireAuth(loginPath) {
-    if (!isConfigured()) {
-      console.warn("[pbAuth] Not configured - skipping requireAuth guard");
-      return null;
-    }
-    var s = await getSession();
-    if (!s) { location.href = (loginPath || "/login") + "?redirect=" + encodeURIComponent(location.pathname); return null; }
-    return s.user;
-  }
-
-  async function applyNavAuthState() {
-    var s = isConfigured() ? await getSession() : null;
-    var signed = !!s;
-    document.querySelectorAll("[data-auth-hide-when=\"signed-in\"]").forEach(function(el) { el.classList.toggle("hidden", signed); });
-    document.querySelectorAll("[data-auth-show-when=\"signed-in\"]").forEach(function(el) { el.classList.toggle("hidden", !signed); });
-  }
-
-  document.addEventListener("DOMContentLoaded", function() {
-    var btn = document.getElementById("pbnav-logout");
-    if (btn) btn.addEventListener("click", signOut);
-    applyNavAuthState();
-  });
 
   window.pbAuth = {
-    getClient: getClient, getSession: getSession, getCurrentUser: getCurrentUser,
-    signInWithPassword: signInWithPassword, signInWithMagicLink: signInWithMagicLink, signInWithGoogle: signInWithGoogle,
-    signUp: signUp, resetPassword: resetPassword, updatePassword: updatePassword,
-    signOut: signOut, requireAuth: requireAuth, applyNavAuthState: applyNavAuthState,
-    isConfigured: isConfigured, readAnonKey: readAnonKey,
-    setAnonKey: function(k) { localStorage.setItem("PB_SUPABASE_ANON_KEY", k); SUPABASE_ANON_KEY = k; clientPromise = null; }
+    readAnonKey: readAnonKey,
+    setAnonKey: setAnonKey,
+    isConfigured: isConfigured,
+    getClient: getClient,
+    signUp: signUp,
+    signIn: signIn,
+    signInWithOAuth: signInWithOAuth,
+    signInWithMagicLink: signInWithMagicLink,
+    signOut: signOut,
+    resetPassword: resetPassword,
+    updatePassword: updatePassword,
+    getSession: getSession,
+    requireAuth: requireAuth,
+    applyNavAuthState: applyNavAuthState
   };
+
+  // Eager init: if SDK already loaded, build client now
+  if(window.supabase && window.supabase.createClient) buildClient();
+  else { var iv = setInterval(function(){ if(window.supabase && window.supabase.createClient){ buildClient(); clearInterval(iv); } }, 50); }
 })();
