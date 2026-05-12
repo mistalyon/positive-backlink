@@ -1,31 +1,53 @@
 {
   "name": "PositiveBacklink",
-  "short_name": "PositiveBL",
-  "description": "Automated white-hat backlink exchange with AI Watchdog and ABC Triangular method.",
+  "short_name": "PositiveBacklink",
+  "description": "Automated white-hat backlink exchange platform with AI Watchdog",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "orientation": "portrait-primary",
-  "background_color": "#0a0a0a",
-  "theme_color": "#1c1c1c",
+  "orientation": "portrait",
+  "background_color": "#0f172a",
+  "theme_color": "#3ECF8E",
   "lang": "en",
-  "categories": [
-    "productivity",
-    "business",
-    "developer"
-  ],
   "icons": [
     {
+      "src": "/favicon.ico",
+      "sizes": "32x32 64x64",
+      "type": "image/x-icon"
+    },
+    {
       "src": "/icon-192.png",
-      "type": "image/png",
       "sizes": "192x192",
+      "type": "image/png",
       "purpose": "any maskable"
     },
     {
       "src": "/icon-512.png",
-      "type": "image/png",
       "sizes": "512x512",
+      "type": "image/png",
       "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "business",
+    "productivity",
+    "marketing"
+  ],
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "url": "/dashboard.html",
+      "description": "Open your dashboard"
+    },
+    {
+      "name": "Browse Sites",
+      "url": "/sites/browse.html",
+      "description": "Browse the exchange catalog"
+    },
+    {
+      "name": "Watchdog",
+      "url": "/watchdog/dashboard.html",
+      "description": "Open AI Watchdog"
     }
   ]
 }
