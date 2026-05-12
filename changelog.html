@@ -1,4 +1,16 @@
                                     <div class="changelog-entry">
+                                      <div class="changelog-version">v1.53.0 <span class="changelog-date">2026-05-12</span></div>
+                                      <div class="changelog-body">
+                                        <p><strong>Faz 21-22 - PWA activation + robots hardening</strong></p>
+                                        <ul>
+                                          <li>Injected PWA manifest link + theme-color meta + error-logger script into 9 core pages (index, dashboard, login, register, support, security, about, api-docs, status).</li>
+                                          <li>Pages now register the service worker on load - users can install the app to their home screen.</li>
+                                          <li>Hardened robots.txt: added GPTBot, CCBot, anthropic-ai, Claude-Web, PetalBot to AI/scraper blocklist, added admin/notifications/watchdog/billing to disallow.</li>
+                                          <li>Added /humans.txt for brand attribution and mission statement (linked from robots.txt).</li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <div class="changelog-entry">
                                       <div class="changelog-version">v1.52.0 <span class="changelog-date">2026-05-12</span></div>
                                       <div class="changelog-body">
                                         <p><strong>Faz 19 - Vercel deploy unblock</strong></p>
