@@ -1,4 +1,17 @@
                                     <div class="changelog-entry">
+                                      <div class="changelog-version">v1.55.0 <span class="changelog-date">2026-05-13</span></div>
+                                      <div class="changelog-body">
+                                        <p><strong>Faz 30 - Site health audit + Vercel config.</strong></p>
+                                        <ul>
+                                          <li><strong>Critical fix:</strong> Restored homepage to clean baseline. Faz 8 commit had overwritten index.html with case-studies content (138KB to 11KB). Rolled back to ede57e6 + reinjected error-logger hook.</li>
+                                          <li><strong>vercel.json:</strong> Added clean URLs, 5 security headers (HSTS preload, X-Frame-Options, X-Content-Type-Options, strict Referrer-Policy, locked-down Permissions-Policy).</li>
+                                          <li><strong>Cache strategy:</strong> 1-year immutable cache for assets and images; no-cache for service-worker.js.</li>
+                                          <li><strong>SEO rewrites:</strong> /sitemap, /rss, /feed shortcuts.</li>
+                                          <li><strong>Audit pass:</strong> 23 of 23 production URLs verified 200 OK.</li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <div class="changelog-entry">
                                       <div class="changelog-version">v1.54.0 <span class="changelog-date">2026-05-12</span></div>
                                       <div class="changelog-body">
                                         <p><strong>Faz 29 - Branded transactional email templates</strong></p>
