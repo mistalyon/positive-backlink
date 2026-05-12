@@ -1,4 +1,16 @@
                                     <div class="changelog-entry">
+      <div class="version-header"><span class="version-tag">v1.37.0</span> <span class="version-date">2026-05-12</span></div>
+      <h3>Faz 2: Dashboard — 4 Functional Tabs</h3>
+      <ul>
+        <li>Rebuilt <code>dashboard.html</code> (28KB) with auth guard, profile dropdown, sign-out, and credits badge in navbar.</li>
+        <li><strong>My Sites tab</strong>: list user sites with niche/DR/tier/status pills, add-site modal (12 niche options), meta-tag verification flow (CORS fetch + token match), remove-site action.</li>
+        <li><strong>Exchanges tab</strong>: list all exchanges where user is source/target/middle, color-coded status pills (pending/matched/live/removed/disputed), 3-card stat overview.</li>
+        <li><strong>Credits tab</strong>: conic-gradient gauge showing balance, last 50 ledger transactions with type badges (earn/spend/purchase/refund/bonus/penalty/admin_adjust).</li>
+        <li><strong>Settings tab</strong>: email, member-since, user ID display; in-place password change; sign out from all devices; account deletion request via email.</li>
+        <li>Configuration error fallback: if anon key placeholder, page shows clear admin-required notice instead of crashing.</li>
+      </ul>
+    </div>
+    <div class="changelog-entry">
       <div class="version-header"><span class="version-tag">v1.36.0</span> <span class="version-date">2026-05-12</span></div>
       <h3>Faz 1: Auth Infrastructure Hardening</h3>
       <ul>
