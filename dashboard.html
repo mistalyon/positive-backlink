@@ -1,41 +1,414 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex,nofollow"><title>Dashboard - PositiveBacklink</title><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#3ECF8E"><link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
-<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#fff;min-height:100vh}nav{background:#0a0a0a;border-bottom:1px solid rgba(62,207,142,0.2);padding:1rem 2rem;position:sticky;top:0;z-index:100}.nav-inner{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}.logo{font-size:1.4rem;font-weight:700;color:#3ECF8E;text-decoration:none}.user-menu{display:flex;align-items:center;gap:1rem;color:#aaa;font-size:0.9rem}.logout-btn{background:transparent;border:1px solid rgba(62,207,142,0.3);color:#3ECF8E;padding:0.4rem 0.9rem;border-radius:4px;cursor:pointer;font-size:0.85rem}.logout-btn:hover{background:rgba(62,207,142,0.1)}main{max-width:1400px;margin:0 auto;padding:2rem}.page-header{margin-bottom:2rem}.page-header h1{font-size:1.8rem;margin-bottom:0.25rem}.page-header p{color:#888;font-size:0.95rem}.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:2rem}.stat-card{background:rgba(255,255,255,0.03);border:1px solid rgba(62,207,142,0.15);padding:1.25rem;border-radius:8px}.stat-card .label{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#3ECF8E;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.5rem}.stat-card .value{font-size:1.8rem;font-weight:700;font-family:'JetBrains Mono',monospace}.stat-card .sub{font-size:0.75rem;color:#666;margin-top:0.25rem}.panel{background:rgba(255,255,255,0.02);border:1px solid rgba(62,207,142,0.12);border-radius:8px;padding:1.5rem}.panel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)}.panel-title{font-size:1rem;font-weight:600;color:#fff}.btn-primary{background:#3ECF8E;color:#0a0a0a;padding:0.5rem 1rem;border:none;border-radius:4px;cursor:pointer;font-weight:600;font-size:0.85rem;text-decoration:none;display:inline-block}.btn-primary:hover{background:#36b87c}table{width:100%;border-collapse:collapse;font-size:0.88rem}th{text-align:left;padding:0.6rem;color:#3ECF8E;font-family:'JetBrains Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid rgba(62,207,142,0.15)}td{padding:0.75rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.04);color:#ccc}.badge{display:inline-block;padding:0.2rem 0.55rem;border-radius:3px;font-size:0.7rem;font-family:'JetBrains Mono',monospace}.badge-ok{background:rgba(62,207,142,0.15);color:#3ECF8E}.badge-warn{background:rgba(255,170,0,0.15);color:#ffaa00}.badge-err{background:rgba(255,80,80,0.15);color:#ff5050}.badge-pending{background:rgba(160,160,160,0.15);color:#aaa}.empty-state{text-align:center;padding:2rem 1rem;color:#666}.tab-nav{display:flex;gap:0.5rem;margin-bottom:1.5rem;border-bottom:1px solid rgba(62,207,142,0.15)}.tab{background:transparent;border:none;color:#888;padding:0.6rem 1rem;cursor:pointer;font-size:0.9rem;border-bottom:2px solid transparent}.tab.active{color:#3ECF8E;border-bottom-color:#3ECF8E}.tab-content{display:none}.tab-content.active{display:block}.auth-required{text-align:center;padding:4rem 2rem}</style></head><body>
-<nav><div class="nav-inner"><a href="/" class="logo">PositiveBacklink</a><div class="user-menu"><span id="user-email">Loading...</span><button class="logout-btn" id="logout-btn">Sign Out</button></div></div></nav>
-<main id="app-content" style="display:none"><div class="page-header"><h1>Dashboard</h1><p>Manage your sites, exchanges, and credit balance.</p></div>
-<div class="stats-row"><div class="stat-card"><div class="label">Credit Balance</div><div class="value" id="stat-credits">--</div><div class="sub">Available to spend</div></div><div class="stat-card"><div class="label">Active Sites</div><div class="value" id="stat-sites">--</div><div class="sub">Verified and earning</div></div><div class="stat-card"><div class="label">Live Backlinks</div><div class="value" id="stat-links-in">--</div><div class="sub">Pointing to your sites</div></div><div class="stat-card"><div class="label">Hosted Links</div><div class="value" id="stat-links-out">--</div><div class="sub">Earning credits</div></div></div>
-<div class="tab-nav"><button class="tab active" data-tab="sites">My Sites</button><button class="tab" data-tab="exchanges">Exchanges</button><button class="tab" data-tab="credits">Credit Ledger</button><button class="tab" data-tab="watchdog">Watchdog</button></div>
-<div class="tab-content active" id="tab-sites"><div class="panel"><div class="panel-header"><div class="panel-title">Your Verified Sites</div><button class="btn-primary" id="add-site-btn">+ Add Site</button></div><table><thead><tr><th>Domain</th><th>DR</th><th>Niche</th><th>Tier</th><th>Status</th><th>Hosted</th></tr></thead><tbody id="sites-tbody"><tr><td colspan="6" class="empty-state">Loading...</td></tr></tbody></table></div></div>
-<div class="tab-content" id="tab-exchanges"><div class="panel"><div class="panel-header"><div class="panel-title">Active and Pending Exchanges</div><button class="btn-primary" id="new-exchange-btn">Request Backlink</button></div><table><thead><tr><th>Type</th><th>From</th><th>To</th><th>Anchor</th><th>Credits</th><th>Status</th><th>Date</th></tr></thead><tbody id="exchanges-tbody"><tr><td colspan="7" class="empty-state">Loading...</td></tr></tbody></table></div></div>
-<div class="tab-content" id="tab-credits"><div class="panel"><div class="panel-header"><div class="panel-title">Credit Transaction History</div><a href="/pricing.html" class="btn-primary">Buy Credits</a></div><table><thead><tr><th>Date</th><th>Type</th><th>Description</th><th>Amount</th><th>Balance After</th></tr></thead><tbody id="credits-tbody"><tr><td colspan="5" class="empty-state">Loading...</td></tr></tbody></table></div></div>
-<div class="tab-content" id="tab-watchdog"><div class="panel"><div class="panel-header"><div class="panel-title">AI Watchdog: Recent Events</div><span style="font-size:0.8rem;color:#666">Checks every 12 hours</span></div><table><thead><tr><th>Time</th><th>Site</th><th>Event</th><th>Severity</th><th>Credit Impact</th></tr></thead><tbody id="watchdog-tbody"><tr><td colspan="5" class="empty-state">Loading...</td></tr></tbody></table></div></div>
-</main>
-<div id="auth-gate" class="auth-required" style="display:none"><h2>Sign in to access your dashboard</h2><p style="color:#888;margin:1rem 0 2rem">You need to be logged in to view your sites, exchanges, and credits.</p><a href="/login.html" class="btn-primary">Sign In</a></div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard - PositiveBacklink</title>
+<meta name="robots" content="noindex,nofollow" />
+<link rel="canonical" href="https://www.positivebacklink.com/dashboard.html" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e5e5e5;line-height:1.6;min-height:100vh}
+nav{background:#111;border-bottom:1px solid #222;padding:14px 24px;position:sticky;top:0;z-index:50}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.logo{color:#3ECF8E;font-weight:700;font-size:18px;text-decoration:none}
+.nav-right{display:flex;align-items:center;gap:18px}
+.credits-badge{background:#0d2520;border:1px solid #3ECF8E;color:#3ECF8E;padding:6px 12px;border-radius:6px;font-size:13px;font-family:'JetBrains Mono',monospace;font-weight:600}
+.profile-menu{position:relative}
+.profile-btn{background:transparent;border:1px solid #222;color:#e5e5e5;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:13px}
+.profile-btn:hover{border-color:#3ECF8E}
+.profile-dropdown{position:absolute;right:0;top:42px;background:#111;border:1px solid #222;border-radius:8px;min-width:200px;display:none;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,0.5)}
+.profile-dropdown.show{display:block}
+.profile-dropdown a,.profile-dropdown button{display:block;width:100%;text-align:left;padding:10px 14px;color:#e5e5e5;text-decoration:none;background:transparent;border:none;cursor:pointer;font-size:13px;font-family:inherit;border-bottom:1px solid #1a1a1a}
+.profile-dropdown a:last-child,.profile-dropdown button:last-child{border-bottom:none}
+.profile-dropdown a:hover,.profile-dropdown button:hover{background:#0d0d0d;color:#3ECF8E}
+.container{max-width:1200px;margin:0 auto;padding:32px 24px}
+h1{font-size:26px;color:#fff;font-weight:700;margin-bottom:6px}
+.subtitle{color:#a1a1a1;font-size:14px;margin-bottom:28px}
+.tabs{display:flex;gap:4px;border-bottom:1px solid #222;margin-bottom:28px;overflow-x:auto}
+.tab{background:transparent;border:none;color:#888;padding:12px 18px;cursor:pointer;font-size:14px;font-weight:500;font-family:inherit;border-bottom:2px solid transparent;white-space:nowrap;transition:color 0.15s,border-color 0.15s}
+.tab:hover{color:#c5c5c5}
+.tab.active{color:#3ECF8E;border-bottom-color:#3ECF8E}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.grid-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:28px}
+.stat-card{background:#111;border:1px solid #222;border-radius:10px;padding:20px}
+.stat-label{color:#888;font-size:12px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px}
+.stat-value{color:#fff;font-size:28px;font-weight:700;line-height:1.2}
+.stat-sub{color:#666;font-size:12px;margin-top:4px}
+.panel{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:18px}
+.panel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.panel-title{color:#fff;font-size:17px;font-weight:600}
+.btn{background:#3ECF8E;color:#0a0a0a;border:none;padding:10px 18px;border-radius:6px;font-weight:600;cursor:pointer;font-size:13px;text-decoration:none;display:inline-block;font-family:inherit}
+.btn:hover:not(:disabled){background:#2dd4a0}
+.btn:disabled{background:#1a3d2e;color:#666;cursor:not-allowed}
+.btn-sm{padding:6px 12px;font-size:12px}
+.btn-outline{background:transparent;color:#3ECF8E;border:1px solid #3ECF8E}
+.btn-outline:hover{background:#0d2520}
+.btn-danger{background:#ff5555;color:#fff}
+.btn-danger:hover{background:#ff3333}
+.empty{text-align:center;padding:48px 24px;color:#666}
+.empty-icon{font-size:48px;margin-bottom:12px;opacity:0.5}
+.loader{text-align:center;padding:32px;color:#666;font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#0d0d0d;color:#888;padding:12px;text-align:left;font-weight:500;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.05em;font-size:11px;border-bottom:1px solid #222}
+td{padding:12px;border-bottom:1px solid #1a1a1a;color:#c5c5c5}
+tr:last-child td{border-bottom:none}
+.pill{display:inline-block;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.03em}
+.pill-pending{background:#2a1f0a;color:#ffaa00}
+.pill-verified{background:#0d2520;color:#3ECF8E}
+.pill-rejected{background:#2a0a0a;color:#ff5555}
+.pill-live{background:#0d2520;color:#3ECF8E}
+.pill-matched{background:#0d1a2a;color:#88bbff}
+.pill-removed{background:#2a0a0a;color:#ff5555}
+.pill-suspended{background:#2a0a2a;color:#ff88ff}
+.pill-disputed{background:#2a1f0a;color:#ffaa00}
+.modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);display:none;align-items:center;justify-content:center;z-index:200;padding:20px}
+.modal.show{display:flex}
+.modal-content{background:#111;border:1px solid #222;border-radius:12px;padding:32px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto}
+.modal-content h2{color:#fff;font-size:20px;margin-bottom:16px}
+.form-field{margin-bottom:16px}
+.form-field label{display:block;color:#c5c5c5;font-size:12px;margin-bottom:6px;font-family:'JetBrains Mono',monospace}
+.form-field input,.form-field textarea,.form-field select{width:100%;background:#0d0d0d;color:#e5e5e5;border:1px solid #222;border-radius:6px;padding:10px 12px;font-size:13px;font-family:inherit}
+.form-field input:focus,.form-field textarea:focus,.form-field select:focus{outline:none;border-color:#3ECF8E}
+.form-field textarea{resize:vertical;min-height:80px}
+.form-actions{display:flex;gap:10px;margin-top:20px}
+.alert{padding:11px 14px;border-radius:6px;margin-bottom:14px;font-size:13px;display:none}
+.alert.show{display:block}
+.alert-error{background:#2a0a0a;border:1px solid #ff5555;color:#ff8888}
+.alert-success{background:#0d2520;border:1px solid #3ECF8E;color:#3ECF8E}
+.credits-gauge{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.gauge-circle{width:120px;height:120px;border-radius:50%;background:conic-gradient(#3ECF8E 0%,#3ECF8E var(--pct,50%),#222 var(--pct,50%),#222 100%);display:flex;align-items:center;justify-content:center;position:relative}
+.gauge-inner{width:96px;height:96px;background:#111;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.gauge-num{color:#3ECF8E;font-size:28px;font-weight:700}
+.gauge-label{color:#888;font-size:10px;text-transform:uppercase;letter-spacing:0.05em}
+.ledger-type{padding:3px 8px;border-radius:4px;font-size:10px;font-weight:600;text-transform:uppercase}
+.ledger-earn,.ledger-bonus,.ledger-refund,.ledger-purchase{background:#0d2520;color:#3ECF8E}
+.ledger-spend,.ledger-penalty{background:#2a0a0a;color:#ff5555}
+.ledger-admin_adjust{background:#0d1a2a;color:#88bbff}
+@media (max-width:640px){.container{padding:20px 14px}.tab{padding:10px 14px;font-size:13px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner">
+<a href="/" class="logo">PositiveBacklink</a>
+<div class="nav-right">
+<div class="credits-badge" id="navCredits">⏳ ...</div>
+<div class="profile-menu">
+<button class="profile-btn" id="profileBtn"><span id="navEmail">loading...</span> ▾</button>
+<div class="profile-dropdown" id="profileDropdown">
+<a href="#" data-tab="settings">Account settings</a>
+<a href="/blog/">Blog</a>
+<a href="/tools/">Tools</a>
+<button id="signOutBtn">Sign out</button>
+</div>
+</div>
+</div></div></nav>
+<div class="container">
+<h1>Dashboard</h1>
+<p class="subtitle">Manage your sites, exchanges, and credits.</p>
+<div class="tabs">
+<button class="tab active" data-tab="sites">My Sites</button>
+<button class="tab" data-tab="exchanges">Exchanges</button>
+<button class="tab" data-tab="credits">Credits</button>
+<button class="tab" data-tab="settings">Settings</button>
+</div>
+<div class="tab-content active" id="tab-sites">
+<div class="grid-stats">
+<div class="stat-card"><div class="stat-label">Total sites</div><div class="stat-value" id="statTotalSites">—</div><div class="stat-sub">All your registered domains</div></div>
+<div class="stat-card"><div class="stat-label">Verified</div><div class="stat-value" id="statVerified">—</div><div class="stat-sub">Ready for exchange</div></div>
+<div class="stat-card"><div class="stat-label">Pending verification</div><div class="stat-value" id="statPending">—</div><div class="stat-sub">Awaiting meta-tag check</div></div>
+</div>
+<div class="panel">
+<div class="panel-header"><div class="panel-title">Your sites</div><button class="btn" id="addSiteBtn">+ Add site</button></div>
+<div id="sitesList"><div class="loader">Loading sites...</div></div>
+</div>
+</div>
+<div class="tab-content" id="tab-exchanges">
+<div class="grid-stats">
+<div class="stat-card"><div class="stat-label">Live exchanges</div><div class="stat-value" id="statLive">—</div></div>
+<div class="stat-card"><div class="stat-label">Pending</div><div class="stat-value" id="statExPending">—</div></div>
+<div class="stat-card"><div class="stat-label">All-time</div><div class="stat-value" id="statAllEx">—</div></div>
+</div>
+<div class="panel">
+<div class="panel-header"><div class="panel-title">Your exchanges</div><a href="/sites/browse.html" class="btn btn-outline">Browse sites →</a></div>
+<div id="exchangesList"><div class="loader">Loading exchanges...</div></div>
+</div>
+</div>
+<div class="tab-content" id="tab-credits">
+<div class="panel">
+<div class="panel-header"><div class="panel-title">Credit balance</div><a href="/pricing.html" class="btn btn-outline">Buy credits</a></div>
+<div class="credits-gauge">
+<div class="gauge-circle" id="gaugeCircle" style="--pct:50%"><div class="gauge-inner"><div class="gauge-num" id="gaugeNum">—</div><div class="gauge-label">credits</div></div></div>
+<div><div style="color:#fff;font-size:18px;font-weight:600;margin-bottom:6px" id="creditsBigNum">Loading...</div><div style="color:#888;font-size:13px">Each verified site earns 25 base credits. Hosting a backlink earns you 5–20 credits depending on tier.</div></div>
+</div>
+</div>
+<div class="panel">
+<div class="panel-header"><div class="panel-title">Transaction history</div></div>
+<div id="ledgerList"><div class="loader">Loading...</div></div>
+</div>
+</div>
+<div class="tab-content" id="tab-settings">
+<div class="panel">
+<div class="panel-header"><div class="panel-title">Profile</div></div>
+<div id="profileAlertError" class="alert alert-error"></div>
+<div id="profileAlertSuccess" class="alert alert-success"></div>
+<div class="form-field"><label>Email</label><input type="email" id="settingsEmail" disabled /></div>
+<div class="form-field"><label>Member since</label><input type="text" id="settingsCreatedAt" disabled /></div>
+<div class="form-field"><label>Account ID</label><input type="text" id="settingsUserId" disabled style="font-family:'JetBrains Mono',monospace;font-size:11px" /></div>
+</div>
+<div class="panel">
+<div class="panel-header"><div class="panel-title">Change password</div></div>
+<div id="pwAlertError" class="alert alert-error"></div>
+<div id="pwAlertSuccess" class="alert alert-success"></div>
+<div class="form-field"><label>New password</label><input type="password" id="newPw" minlength="8" placeholder="At least 8 characters" autocomplete="new-password" /></div>
+<button class="btn" id="changePwBtn">Update password</button>
+</div>
+<div class="panel">
+<div class="panel-header"><div class="panel-title">Danger zone</div></div>
+<p style="color:#888;font-size:13px;margin-bottom:14px">Sign out from all sessions, or contact support to delete your account permanently.</p>
+<button class="btn btn-outline" id="signOutAllBtn" style="margin-right:10px">Sign out from all devices</button>
+<a href="mailto:support@positivebacklink.com?subject=Delete%20my%20account" class="btn btn-danger">Request account deletion</a>
+</div>
+</div>
+</div>
+<div class="modal" id="addSiteModal">
+<div class="modal-content">
+<h2>Add a new site</h2>
+<div id="addSiteError" class="alert alert-error"></div>
+<form id="addSiteForm">
+<div class="form-field"><label>Domain (without https://)</label><input type="text" id="siteDomain" required placeholder="example.com" pattern="[a-z0-9.-]+\.[a-z]{2,}" /></div>
+<div class="form-field"><label>Niche</label><select id="siteNiche" required>
+<option value="">Select a niche...</option>
+<option value="technology">Technology / SaaS</option>
+<option value="health">Health &amp; Wellness</option>
+<option value="finance">Finance / Crypto</option>
+<option value="marketing">Marketing / SEO</option>
+<option value="ecommerce">E-commerce</option>
+<option value="travel">Travel &amp; Hospitality</option>
+<option value="education">Education / Learning</option>
+<option value="food">Food &amp; Recipes</option>
+<option value="lifestyle">Lifestyle / Home</option>
+<option value="business">Business / B2B</option>
+<option value="entertainment">Entertainment / Media</option>
+<option value="other">Other</option>
+</select></div>
+<div class="form-field"><label>Estimated Domain Rating (optional)</label><input type="number" id="siteDr" min="0" max="100" placeholder="e.g., 35" /></div>
+<div class="form-actions"><button type="submit" class="btn" id="addSiteSubmit">Add site</button><button type="button" class="btn btn-outline" id="addSiteCancel">Cancel</button></div>
+</form>
+</div></div>
+<div class="modal" id="verifyModal">
+<div class="modal-content">
+<h2>Verify site ownership</h2>
+<p style="color:#c5c5c5;font-size:14px;margin-bottom:16px">Add this meta tag to the <code>&lt;head&gt;</code> of your homepage at <strong id="verifyDomain"></strong>, then click verify.</p>
+<pre style="background:#0d0d0d;border:1px solid #222;border-radius:6px;padding:14px;color:#3ECF8E;font-family:'JetBrains Mono',monospace;font-size:12px;overflow-x:auto;margin-bottom:16px" id="verifyTag"></pre>
+<div id="verifyAlertError" class="alert alert-error"></div>
+<div id="verifyAlertSuccess" class="alert alert-success"></div>
+<div class="form-actions">
+<button class="btn" id="verifyCheckBtn">Check verification</button>
+<button class="btn btn-outline" id="verifyCloseBtn">Close</button>
+</div>
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/dist/umd/supabase.min.js"></script>
 <script>
-const SB_URL="https://hsgxsxiwwkuplcedfhxq.supabase.co";const SB_KEY=window.SUPABASE_ANON_KEY||"REPLACE_WITH_YOUR_ANON_KEY";const sb=window.supabase?window.supabase.createClient(SB_URL,SB_KEY):null;
-function showGate(){document.getElementById('auth-gate').style.display='block';document.getElementById('app-content').style.display='none';}
-function showApp(){document.getElementById('auth-gate').style.display='none';document.getElementById('app-content').style.display='block';}
-function badge(s){const m={active:'badge-ok',live:'badge-ok',verified:'badge-ok',pending:'badge-pending',review:'badge-warn',removed:'badge-err',decay:'badge-err',nofollow:'badge-warn',low:'badge-pending',medium:'badge-warn',high:'badge-err'};return '<span class="badge '+(m[(s||'').toLowerCase()]||'badge-pending')+'">'+s+'</span>';}
-async function loadDashboard(user){
-document.getElementById('user-email').textContent=user.email;
-const {data:sites}=await sb.from('sites').select('*').eq('user_id',user.id);
-document.getElementById('stat-sites').textContent=(sites||[]).filter(s=>s.status==='verified').length;
-document.getElementById('sites-tbody').innerHTML=(sites||[]).map(s=>'<tr><td>'+s.domain+'</td><td>'+(s.dr||'--')+'</td><td>'+(s.niche||'--')+'</td><td>'+(s.tier||'standard')+'</td><td>'+badge(s.status)+'</td><td>'+(s.hosted_count||0)+'</td></tr>').join('')||'<tr><td colspan="6" class="empty-state">No sites yet. Add your first site to start earning credits.</td></tr>';
-const {data:profile}=await sb.from('users').select('credits').eq('id',user.id).single();
-document.getElementById('stat-credits').textContent=(profile&&profile.credits)||0;
-const {data:ledger}=await sb.from('credits_ledger').select('*').eq('user_id',user.id).order('created_at',{ascending:false}).limit(50);
-document.getElementById('credits-tbody').innerHTML=(ledger||[]).map(l=>'<tr><td>'+new Date(l.created_at).toLocaleDateString()+'</td><td>'+l.type+'</td><td>'+l.description+'</td><td style="color:'+(l.amount>0?'#3ECF8E':'#ff5050')+'">'+(l.amount>0?'+':'')+l.amount+'</td><td>'+l.balance_after+'</td></tr>').join('')||'<tr><td colspan="5" class="empty-state">No transactions yet.</td></tr>';
-const {data:exch}=await sb.from('exchanges').select('*').or('source_user.eq.'+user.id+',target_user.eq.'+user.id).order('created_at',{ascending:false}).limit(50);
-let linksIn=0,linksOut=0;
-document.getElementById('exchanges-tbody').innerHTML=(exch||[]).map(e=>{const isIn=e.target_user===user.id;if(isIn&&e.status==='live')linksIn++;if(!isIn&&e.status==='live')linksOut++;return '<tr><td>'+(isIn?'Incoming':'Outgoing')+'</td><td>'+(e.source_domain||'--')+'</td><td>'+(e.target_domain||'--')+'</td><td>'+(e.anchor||'--')+'</td><td>'+e.credits+'</td><td>'+badge(e.status)+'</td><td>'+new Date(e.created_at).toLocaleDateString()+'</td></tr>';}).join('')||'<tr><td colspan="7" class="empty-state">No exchanges yet.</td></tr>';
-document.getElementById('stat-links-in').textContent=linksIn;document.getElementById('stat-links-out').textContent=linksOut;
-const {data:wd}=await sb.from('watchdog_events').select('*').eq('user_id',user.id).order('created_at',{ascending:false}).limit(50);
-document.getElementById('watchdog-tbody').innerHTML=(wd||[]).map(w=>'<tr><td>'+new Date(w.created_at).toLocaleString()+'</td><td>'+w.site_domain+'</td><td>'+w.event_type+'</td><td>'+badge(w.severity)+'</td><td>'+(w.credit_delta||0)+'</td></tr>').join('')||'<tr><td colspan="5" class="empty-state">No incidents detected. All links healthy.</td></tr>';
-}
-document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));document.getElementById('tab-'+t.dataset.tab).classList.add('active');}));
-document.getElementById('logout-btn').addEventListener('click',async()=>{if(sb){await sb.auth.signOut();}location.href='/login.html';});
-document.getElementById('add-site-btn').addEventListener('click',()=>{const d=prompt('Enter your domain (e.g. example.com):');if(!d)return;sb.from('sites').insert({user_id:(window.__user&&window.__user.id),domain:d,status:'pending'}).then(()=>location.reload());});
-document.getElementById('new-exchange-btn').addEventListener('click',()=>alert('Exchange request flow opens here. Requires sites to be verified first.'));
-(async function(){if(!sb||SB_KEY.indexOf('REPLACE')>-1){document.getElementById('app-content').style.display='block';document.getElementById('user-email').textContent='[SETUP REQUIRED]';document.getElementById('sites-tbody').innerHTML='<tr><td colspan="6" class="empty-state"><strong>Supabase anon key not configured.</strong><br>Replace REPLACE_WITH_YOUR_ANON_KEY in dashboard.html source.</td></tr>';document.getElementById('credits-tbody').innerHTML='<tr><td colspan="5" class="empty-state">Pending Supabase configuration.</td></tr>';document.getElementById('exchanges-tbody').innerHTML='<tr><td colspan="7" class="empty-state">Pending Supabase configuration.</td></tr>';document.getElementById('watchdog-tbody').innerHTML='<tr><td colspan="5" class="empty-state">Pending Supabase configuration.</td></tr>';return;}const {data:{user}}=await sb.auth.getUser();if(!user){showGate();return;}window.__user=user;showApp();loadDashboard(user).catch(e=>console.error(e));})();
-</script></body></html>
+(function(){
+  const SUPABASE_URL='https://hsgxsxiwwkuplcedfhxq.supabase.co';
+  const SUPABASE_ANON_KEY=window.SUPABASE_ANON_KEY||'REPLACE_WITH_YOUR_ANON_KEY';
+  if (SUPABASE_ANON_KEY==='REPLACE_WITH_YOUR_ANON_KEY'){
+    document.body.innerHTML='<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px;text-align:center;font-family:sans-serif;color:#e5e5e5;background:#0a0a0a"><div><h1 style="color:#ff5555;font-size:24px;margin-bottom:14px">Configuration error</h1><p style="color:#a1a1a1;max-width:480px">Supabase anon key is not set. The platform admin needs to replace the placeholder in <code>dashboard.html</code> and <code>register.html</code> with the project anon key from the Supabase dashboard.</p><a href="/" style="color:#3ECF8E;display:inline-block;margin-top:18px">← Back to homepage</a></div></div>';
+    return;
+  }
+  const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+  window.__sb=sb;
+  let CURRENT_USER=null;
+  let CURRENT_PROFILE=null;
+
+  // ===== AUTH GUARD =====
+  async function init(){
+    const {data:{session}}=await sb.auth.getSession();
+    if (!session){ window.location.href='/login.html?next=/dashboard.html'; return; }
+    CURRENT_USER=session.user;
+    document.getElementById('navEmail').textContent=session.user.email;
+    document.getElementById('settingsEmail').value=session.user.email;
+    document.getElementById('settingsUserId').value=session.user.id;
+    document.getElementById('settingsCreatedAt').value=new Date(session.user.created_at).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+    // Load or create profile in public.users
+    const {data:profile,error:perr}=await sb.from('users').select('*').eq('id',session.user.id).maybeSingle();
+    if (perr){ console.error('profile error',perr); }
+    if (!profile){
+      const {data:newP,error:nerr}=await sb.from('users').insert({id:session.user.id,email:session.user.email}).select().single();
+      if (!nerr) CURRENT_PROFILE=newP;
+    } else { CURRENT_PROFILE=profile; }
+    updateCreditsUI();
+    loadSites();
+    loadExchanges();
+    loadLedger();
+  }
+
+  function updateCreditsUI(){
+    if (!CURRENT_PROFILE){ return; }
+    const c=CURRENT_PROFILE.credits||0;
+    document.getElementById('navCredits').textContent='⚡ '+c+' credits';
+    document.getElementById('gaugeNum').textContent=c;
+    document.getElementById('creditsBigNum').textContent=c+' credits available';
+    const pct=Math.min(100,(c/100)*100);
+    document.getElementById('gaugeCircle').style.setProperty('--pct',pct+'%');
+  }
+
+  // ===== TABS =====
+  document.querySelectorAll('.tab').forEach(btn=>{
+    btn.addEventListener('click',()=>{ switchTab(btn.dataset.tab); });
+  });
+  document.querySelectorAll('[data-tab]').forEach(el=>{
+    if (el.tagName==='A'){ el.addEventListener('click',e=>{ e.preventDefault(); switchTab(el.dataset.tab); document.getElementById('profileDropdown').classList.remove('show'); }); }
+  });
+  function switchTab(name){
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+    const tab=document.querySelector('.tab[data-tab="'+name+'"]'); if (tab) tab.classList.add('active');
+    const content=document.getElementById('tab-'+name); if (content) content.classList.add('active');
+  }
+
+  // ===== PROFILE DROPDOWN =====
+  document.getElementById('profileBtn').addEventListener('click',e=>{ e.stopPropagation(); document.getElementById('profileDropdown').classList.toggle('show'); });
+  document.addEventListener('click',()=>{ document.getElementById('profileDropdown').classList.remove('show'); });
+  document.getElementById('profileDropdown').addEventListener('click',e=>e.stopPropagation());
+
+  // ===== SIGN OUT =====
+  document.getElementById('signOutBtn').addEventListener('click',async()=>{ await sb.auth.signOut(); window.location.href='/'; });
+  document.getElementById('signOutAllBtn').addEventListener('click',async()=>{ await sb.auth.signOut({scope:'global'}); window.location.href='/'; });
+
+  // ===== SITES =====
+  async function loadSites(){
+    const {data,error}=await sb.from('sites').select('*').eq('user_id',CURRENT_USER.id).order('created_at',{ascending:false});
+    const list=document.getElementById('sitesList');
+    if (error){ list.innerHTML='<div class="empty">Error loading sites: '+error.message+'</div>'; return; }
+    const sites=data||[];
+    document.getElementById('statTotalSites').textContent=sites.length;
+    document.getElementById('statVerified').textContent=sites.filter(s=>s.status==='verified').length;
+    document.getElementById('statPending').textContent=sites.filter(s=>s.status==='pending').length;
+    if (!sites.length){ list.innerHTML='<div class="empty"><div class="empty-icon">🌐</div><div>No sites yet. Add your first site to start exchanging backlinks.</div></div>'; return; }
+    let html='<table><thead><tr><th>Domain</th><th>Niche</th><th>DR</th><th>Tier</th><th>Status</th><th>Hosted</th><th></th></tr></thead><tbody>';
+    for (const s of sites){
+      html+='<tr><td><strong>'+escapeHtml(s.domain)+'</strong></td><td>'+(s.niche||'—')+'</td><td>'+(s.dr||'—')+'</td><td>'+(s.tier||'standard')+'</td><td><span class="pill pill-'+s.status+'">'+s.status+'</span></td><td>'+(s.hosted_count||0)+'</td><td>';
+      if (s.status==='pending') html+='<button class="btn btn-sm btn-outline" data-verify="'+s.id+'">Verify</button> ';
+      html+='<button class="btn btn-sm btn-danger" data-remove="'+s.id+'">Remove</button></td></tr>';
+    }
+    html+='</tbody></table>';
+    list.innerHTML=html;
+    list.querySelectorAll('[data-verify]').forEach(b=>b.addEventListener('click',()=>openVerifyModal(b.dataset.verify,sites)));
+    list.querySelectorAll('[data-remove]').forEach(b=>b.addEventListener('click',()=>removeSite(b.dataset.remove)));
+  }
+  function escapeHtml(s){ return String(s||'').replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c])); }
+
+  document.getElementById('addSiteBtn').addEventListener('click',()=>document.getElementById('addSiteModal').classList.add('show'));
+  document.getElementById('addSiteCancel').addEventListener('click',()=>document.getElementById('addSiteModal').classList.remove('show'));
+  document.getElementById('addSiteForm').addEventListener('submit',async function(e){
+    e.preventDefault();
+    const domain=document.getElementById('siteDomain').value.trim().toLowerCase().replace(/^https?:\/\//,'').replace(/\/$/,'');
+    const niche=document.getElementById('siteNiche').value;
+    const dr=parseInt(document.getElementById('siteDr').value)||null;
+    const token='pb-verify-'+Math.random().toString(36).substring(2,10);
+    const btn=document.getElementById('addSiteSubmit'); btn.disabled=true; btn.textContent='Adding...';
+    const {data,error}=await sb.from('sites').insert({user_id:CURRENT_USER.id,owner_email:CURRENT_USER.email,domain:domain,niche:niche,dr:dr,verification_token:token,status:'pending'}).select().single();
+    btn.disabled=false; btn.textContent='Add site';
+    if (error){ document.getElementById('addSiteError').textContent=error.message; document.getElementById('addSiteError').classList.add('show'); return; }
+    document.getElementById('addSiteModal').classList.remove('show');
+    document.getElementById('addSiteForm').reset();
+    loadSites();
+  });
+
+  function openVerifyModal(siteId,sites){
+    const s=sites.find(x=>x.id===siteId); if(!s) return;
+    document.getElementById('verifyDomain').textContent=s.domain;
+    document.getElementById('verifyTag').textContent='&lt;meta name="positivebacklink-verification" content="'+s.verification_token+'" /&gt;';
+    document.getElementById('verifyModal').dataset.siteId=siteId;
+    document.getElementById('verifyModal').dataset.domain=s.domain;
+    document.getElementById('verifyModal').dataset.token=s.verification_token;
+    document.getElementById('verifyModal').classList.add('show');
+  }
+  document.getElementById('verifyCloseBtn').addEventListener('click',()=>document.getElementById('verifyModal').classList.remove('show'));
+  document.getElementById('verifyCheckBtn').addEventListener('click',async function(){
+    const modal=document.getElementById('verifyModal');
+    const domain=modal.dataset.domain, token=modal.dataset.token, sid=modal.dataset.siteId;
+    const btn=this; btn.disabled=true; btn.textContent='Checking...';
+    try {
+      const res=await fetch('https://'+domain+'/?_t='+Date.now(),{mode:'cors'}).catch(()=>null);
+      if (!res){ document.getElementById('verifyAlertError').textContent='Could not fetch '+domain+' (CORS or DNS issue). The site may still be valid — try again or contact support.'; document.getElementById('verifyAlertError').classList.add('show'); btn.disabled=false; btn.textContent='Check verification'; return; }
+      const html=await res.text();
+      if (html.indexOf(token)>-1){
+        await sb.from('sites').update({status:'verified'}).eq('id',sid);
+        document.getElementById('verifyAlertSuccess').textContent='Verified! Reloading...';
+        document.getElementById('verifyAlertSuccess').classList.add('show');
+        setTimeout(()=>{ modal.classList.remove('show'); loadSites(); },1500);
+      } else {
+        document.getElementById('verifyAlertError').textContent='Meta tag not found on '+domain+'. Make sure it is published in the homepage HTML, not blocked by JavaScript rendering.';
+        document.getElementById('verifyAlertError').classList.add('show');
+        btn.disabled=false; btn.textContent='Check verification';
+      }
+    } catch(err){
+      document.getElementById('verifyAlertError').textContent='Error: '+err.message;
+      document.getElementById('verifyAlertError').classList.add('show');
+      btn.disabled=false; btn.textContent='Check verification';
+    }
+  });
+
+  async function removeSite(id){
+    if (!confirm('Remove this site? This cannot be undone.')) return;
+    const {error}=await sb.from('sites').delete().eq('id',id);
+    if (error) alert('Error: '+error.message);
+    else loadSites();
+  }
+
+  // ===== EXCHANGES =====
+  async function loadExchanges(){
+    const list=document.getElementById('exchangesList');
+    const {data,error}=await sb.from('exchanges').select('*').or('source_user.eq.'+CURRENT_USER.id+',target_user.eq.'+CURRENT_USER.id+',middle_user.eq.'+CURRENT_USER.id).order('created_at',{ascending:false});
+    if (error){ list.innerHTML='<div class="empty">Error: '+error.message+'</div>'; return; }
+    const ex=data||[];
+    document.getElementById('statLive').textContent=ex.filter(e=>e.status==='live').length;
+    document.getElementById('statExPending').textContent=ex.filter(e=>e.status==='pending'||e.status==='matched').length;
+    document.getElementById('statAllEx').textContent=ex.length;
+    if (!ex.length){ list.innerHTML='<div class="empty"><div class="empty-icon">🔗</div><div>No exchanges yet. Browse other verified sites to start your first exchange.</div></div>'; return; }
+    let html='<table><thead><tr><th>Source → Target</th><th>Anchor</th><th>Credits</th><th>Status</th><th>Created</th></tr></thead><tbody>';
+    for (const e of ex){
+      html+='<tr><td>'+escapeHtml(e.source_domain||'—')+' → '+escapeHtml(e.target_domain||'—')+'</td><td>'+escapeHtml(e.anchor||'—')+'</td><td>'+(e.credits||0)+'</td><td><span class="pill pill-'+e.status+'">'+e.status+'</span></td><td>'+new Date(e.created_at).toLocaleDateString()+'</td></tr>';
+    }
+    html+='</tbody></table>';
+    list.innerHTML=html;
+  }
+
+  // ===== LEDGER =====
+  async function loadLedger(){
+    const list=document.getElementById('ledgerList');
+    const {data,error}=await sb.from('credits_ledger').select('*').eq('user_id',CURRENT_USER.id).order('created_at',{ascending:false}).limit(50);
+    if (error){ list.innerHTML='<div class="empty">Error: '+error.message+'</div>'; return; }
+    const tx=data||[];
+    if (!tx.length){ list.innerHTML='<div class="empty"><div class="empty-icon">💰</div><div>No transactions yet. Verify a site to earn your first credits.</div></div>'; return; }
+    let html='<table><thead><tr><th>Type</th><th>Amount</th><th>Balance</th><th>Description</th><th>Date</th></tr></thead><tbody>';
+    for (const t of tx){
+      const amt=t.amount>0?'+'+t.amount:t.amount;
+      html+='<tr><td><span class="ledger-type ledger-'+t.type+'">'+t.type+'</span></td><td><strong>'+amt+'</strong></td><td>'+t.balance_after+'</td><td>'+escapeHtml(t.description||'—')+'</td><td>'+new Date(t.created_at).toLocaleDateString()+'</td></tr>';
+    }
+    html+='</tbody></table>';
+    list.innerHTML=html;
+  }
+
+  // ===== CHANGE PASSWORD =====
+  document.getElementById('changePwBtn').addEventListener('click',async function(){
+    const p=document.getElementById('newPw').value;
+    if (p.length<8){ const e=document.getElementById('pwAlertError'); e.textContent='Min 8 characters.'; e.classList.add('show'); return; }
+    const btn=this; btn.disabled=true; btn.textContent='Updating...';
+    const {error}=await sb.auth.updateUser({password:p});
+    btn.disabled=false; btn.textContent='Update password';
+    if (error){ const e=document.getElementById('pwAlertError'); e.textContent=error.message; e.classList.add('show'); return; }
+    const ok=document.getElementById('pwAlertSuccess'); ok.textContent='Password updated successfully.'; ok.classList.add('show');
+    document.getElementById('newPw').value='';
+  });
+
+  init();
+})();
+</script>
+</body></html>
