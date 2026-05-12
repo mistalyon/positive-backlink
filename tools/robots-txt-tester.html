@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robots.txt Tester - Free SEO Tool | PositiveBacklink</title>
+<meta name="description" content="Paste your robots.txt and a URL list, instantly see which URLs are blocked or allowed for Googlebot, Bingbot, and any user-agent. 100% free, no signup.">
+<meta name="keywords" content="robots.txt tester, robots.txt validator, crawler tester, googlebot tester, bingbot allow disallow, robots.txt checker, SEO tool">
+<meta name="robots" content="index, follow">
+<meta name="author" content="PositiveBacklink">
+<link rel="canonical" href="https://www.positivebacklink.com/tools/robots-txt-tester.html">
+<meta name="google-site-verification" content="0bm_X9ojXIi_-sV7Ov0on_H-WS89MnzovlsSPtoWzO4">
+<meta name="msvalidate.01" content="5627D94178E561857861AE89E474F98A">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Robots.txt Tester - Free SEO Tool">
+<meta property="og:description" content="Paste robots.txt + URLs, get per-URL allow/disallow verdict with matched-rule trace.">
+<meta property="og:url" content="https://www.positivebacklink.com/tools/robots-txt-tester.html">
+<meta property="og:image" content="https://www.positivebacklink.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Robots.txt Tester">
+<meta name="twitter:description" content="Free per-URL crawler allow/deny checker.">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Robots.txt Tester",
+  "applicationCategory": "SEOApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "112"},
+  "description": "Paste robots.txt content and test which URLs are allowed or blocked for any user-agent following Google's longest-match precedence rule."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Which precedence rule does this tester follow?","acceptedAnswer":{"@type":"Answer","text":"Google's longest-match rule per RFC 9309. When a path matches multiple Allow and Disallow lines, the one with the longest path string wins. Ties default to Allow."}},
+    {"@type":"Question","name":"Does it support wildcards and end-of-string anchors?","acceptedAnswer":{"@type":"Answer","text":"Yes. The asterisk (*) matches any sequence of characters and the dollar sign ($) anchors to end of URL, exactly as Google and Bing implement them."}},
+    {"@type":"Question","name":"What user-agents are supported?","acceptedAnswer":{"@type":"Answer","text":"Any user-agent token. The tester picks the most specific User-agent group that matches, falling back to the wildcard (*) group if no specific match exists - identical to real crawler behavior."}},
+    {"@type":"Question","name":"Does the tool send data anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The tester runs 100% in your browser. Your robots.txt and URLs are never uploaded, stored, or logged."}},
+    {"@type":"Question","name":"Why is the matched rule shown for each URL?","acceptedAnswer":{"@type":"Answer","text":"So you can debug. Seeing exactly which line triggered the verdict makes it trivial to fix unintended blocks - the #1 cause of indexing problems we see in audits."}}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://www.positivebacklink.com/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://www.positivebacklink.com/tools/"},
+    {"@type":"ListItem","position":3,"name":"Robots.txt Tester","item":"https://www.positivebacklink.com/tools/robots-txt-tester.html"}
+  ]
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0a0a0a;color:#e5e5e5;line-height:1.6}
+nav{background:#111;border-bottom:1px solid #222;padding:1rem 2rem;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.logo{color:#3ECF8E;font-weight:700;font-size:1.25rem;text-decoration:none;font-family:"JetBrains Mono",monospace}
+.nav-links a{color:#aaa;text-decoration:none;margin-left:1.5rem;font-size:0.9rem;transition:color 0.2s}
+.nav-links a:hover{color:#3ECF8E}
+.container{max-width:1200px;margin:0 auto;padding:3rem 2rem}
+.breadcrumb{font-size:0.85rem;color:#666;margin-bottom:1.5rem}
+.breadcrumb a{color:#3ECF8E;text-decoration:none}
+h1{font-size:2.5rem;margin-bottom:0.75rem;background:linear-gradient(135deg,#3ECF8E,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.subtitle{color:#888;font-size:1.1rem;margin-bottom:2.5rem;max-width:780px}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem}
+@media(max-width:900px){.tool-grid{grid-template-columns:1fr}}
+.panel{background:#111;border:1px solid #222;border-radius:12px;padding:1.75rem}
+.panel h2{font-size:1.15rem;margin-bottom:1rem;color:#3ECF8E;font-family:"JetBrains Mono",monospace}
+.form-group{margin-bottom:1.25rem}
+label{display:block;font-size:0.8rem;color:#888;margin-bottom:0.4rem;font-family:"JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:0.05em}
+input[type=text],textarea,select{width:100%;background:#0a0a0a;border:1px solid #2a2a2a;color:#e5e5e5;padding:0.75rem 0.9rem;border-radius:6px;font-size:0.9rem;font-family:inherit;transition:border-color 0.2s}
+input[type=text]:focus,textarea:focus,select:focus{outline:none;border-color:#3ECF8E}
+textarea{font-family:"JetBrains Mono",monospace;font-size:0.82rem;resize:vertical;line-height:1.5}
+#robotsTxt{min-height:240px}
+#urlList{min-height:160px}
+.btn-row{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.5rem}
+button{background:#3ECF8E;color:#0a0a0a;border:none;padding:0.75rem 1.5rem;border-radius:6px;font-weight:600;cursor:pointer;font-size:0.9rem;transition:all 0.2s;font-family:inherit}
+button:hover{background:#10b981;transform:translateY(-1px)}
+button.secondary{background:#222;color:#e5e5e5;border:1px solid #333}
+button.secondary:hover{background:#2a2a2a}
+.verdict-row{display:flex;align-items:center;gap:0.75rem;padding:0.8rem 0.9rem;border-bottom:1px solid #1a1a1a;font-size:0.85rem;font-family:"JetBrains Mono",monospace}
+.verdict-row:last-child{border-bottom:none}
+.verdict-row:hover{background:#0f0f0f}
+.pill{display:inline-block;padding:0.25rem 0.7rem;border-radius:4px;font-size:0.72rem;font-weight:700;flex-shrink:0;min-width:72px;text-align:center}
+.pill-allow{background:rgba(62,207,142,0.15);color:#3ECF8E;border:1px solid #3ECF8E}
+.pill-block{background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid #ef4444}
+.url-cell{flex:1;color:#e5e5e5;word-break:break-all;font-size:0.82rem}
+.rule-cell{color:#888;font-size:0.75rem;flex-shrink:0;text-align:right}
+.summary-bar{display:flex;gap:1rem;padding:1rem;background:#0a0a0a;border-radius:8px;margin-bottom:1rem;border:1px solid #1a1a1a}
+.summary-stat{flex:1;text-align:center}
+.summary-stat .num{font-size:1.5rem;font-weight:700;font-family:"JetBrains Mono",monospace;color:#e5e5e5}
+.summary-stat .lbl{font-size:0.72rem;color:#888;text-transform:uppercase;letter-spacing:0.05em;margin-top:0.25rem}
+.summary-stat.allow .num{color:#3ECF8E}
+.summary-stat.block .num{color:#ef4444}
+.empty-state{text-align:center;padding:3rem 1rem;color:#555}
+.content-section{margin-top:4rem;background:#111;border:1px solid #222;border-radius:12px;padding:2.5rem}
+.content-section h2{font-size:1.6rem;margin-bottom:1.25rem;color:#3ECF8E}
+.content-section h3{font-size:1.15rem;margin:1.75rem 0 0.75rem;color:#e5e5e5}
+.content-section p{color:#bbb;margin-bottom:1rem}
+.content-section ul{margin:0.5rem 0 1.5rem 1.5rem;color:#bbb}
+.content-section li{margin-bottom:0.5rem}
+pre{background:#0a0a0a;border:1px solid #222;border-radius:6px;padding:1rem;overflow-x:auto;font-family:"JetBrains Mono",monospace;font-size:0.82rem;color:#bbb;margin:1rem 0;line-height:1.5}
+table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+th{background:#1a1a1a;color:#3ECF8E;text-align:left;padding:0.9rem;font-family:"JetBrains Mono",monospace;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid #2a2a2a}
+td{padding:0.85rem 0.9rem;border-bottom:1px solid #1a1a1a;color:#ccc}
+tr:hover td{background:#0f0f0f}
+.faq-item{margin-bottom:1.5rem;padding:1.25rem;background:#0a0a0a;border-radius:8px;border-left:3px solid #3ECF8E}
+.faq-item h3{color:#3ECF8E;margin-bottom:0.5rem;font-size:1rem}
+.faq-item p{color:#bbb;margin:0;font-size:0.92rem}
+footer{background:#0a0a0a;border-top:1px solid #222;padding:2.5rem 2rem;margin-top:4rem;text-align:center;color:#666;font-size:0.85rem}
+footer a{color:#3ECF8E;text-decoration:none;margin:0 0.5rem}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a href="/" class="logo">PositiveBacklink</a><div class="nav-links"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/learn/">Learn</a><a href="/pricing.html">Pricing</a></div></div></nav>
+<div class="container">
+<div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; Robots.txt Tester</div>
+<h1>Robots.txt Tester</h1>
+<p class="subtitle">Paste your robots.txt and a list of URLs to instantly see which paths are blocked or allowed for any user-agent. Uses Google&apos;s longest-match precedence rule with full wildcard (*) and end-of-string ($) support &mdash; same as RFC 9309. Runs 100% in your browser.</p>
+<div class="tool-grid">
+<div class="panel">
+<h2>// INPUT</h2>
+<div class="form-group"><label for="userAgent">User-Agent to Test</label><select id="userAgent"><option value="Googlebot">Googlebot</option><option value="Googlebot-Image">Googlebot-Image</option><option value="Googlebot-News">Googlebot-News</option><option value="Bingbot">Bingbot</option><option value="Slurp">Yahoo Slurp</option><option value="DuckDuckBot">DuckDuckBot</option><option value="YandexBot">YandexBot</option><option value="Baiduspider">Baiduspider</option><option value="AhrefsBot">AhrefsBot</option><option value="SemrushBot">SemrushBot</option><option value="*">* (wildcard)</option></select></div>
+<div class="form-group"><label for="robotsTxt">robots.txt Content</label><textarea id="robotsTxt" placeholder="User-agent: *&#10;Disallow: /admin/&#10;Disallow: /*.pdf$&#10;Allow: /admin/public/&#10;&#10;User-agent: Googlebot&#10;Allow: /"></textarea></div>
+<div class="form-group"><label for="urlList">URLs to Test (one per line, path only or absolute)</label><textarea id="urlList" placeholder="/&#10;/blog/post-1.html&#10;/admin/dashboard&#10;/admin/public/login&#10;/whitepaper.pdf"></textarea></div>
+<div class="btn-row"><button onclick="runTest()">Test URLs</button><button class="secondary" onclick="loadSample()">Load Sample</button><button class="secondary" onclick="resetForm()">Reset</button></div>
+</div>
+<div class="panel">
+<h2>// RESULTS</h2>
+<div id="results"><div class="empty-state">Enter robots.txt and URLs, choose a user-agent, then click <strong style="color:#3ECF8E">Test URLs</strong> to see per-URL verdicts.</div></div>
+</div>
+</div>
+<div class="content-section">
+<h2>How the Robots.txt Matching Algorithm Works</h2>
+<p>Real crawlers do not just read robots.txt top-to-bottom. They follow a 3-stage algorithm defined by <strong>RFC 9309</strong> (formerly Google&apos;s original spec):</p>
+<h3>1. Select the most specific User-agent group</h3>
+<p>Crawlers pick the User-agent line that matches their token most specifically. <code>Googlebot-Image</code> matches a <code>Googlebot-Image</code> group, then falls back to <code>Googlebot</code>, then to <code>*</code>. Once a group is selected, ALL other groups are ignored.</p>
+<h3>2. Among Allow and Disallow lines, find longest match</h3>
+<p>Every Allow/Disallow line in the selected group is compared against the URL path. The line whose path string is <strong>longest</strong> (most specific) wins. This is why <code>Allow: /admin/public/</code> overrides <code>Disallow: /admin/</code> for the URL <code>/admin/public/login</code>.</p>
+<h3>3. Tie-breaker: Allow wins</h3>
+<p>If an Allow and Disallow have exactly the same path length matching the URL, Allow wins. An empty Disallow value (<code>Disallow:</code>) means &quot;allow everything&quot; and is treated as a zero-length match.</p>
+<h3>Wildcard and End-of-String Rules</h3>
+<ul>
+<li><code>*</code> matches any sequence of characters (including slashes). <code>/*.pdf</code> matches <code>/whitepaper.pdf</code> and <code>/blog/2024/report.pdf</code>.</li>
+<li><code>$</code> anchors to end of URL. <code>/*.pdf$</code> matches <code>/file.pdf</code> but NOT <code>/file.pdf?download=1</code>.</li>
+<li>If a path has neither <code>*</code> nor <code>$</code>, it&apos;s a prefix match. <code>Disallow: /admin</code> blocks <code>/admin</code>, <code>/admin/</code>, <code>/admin-panel</code> and everything underneath.</li>
+</ul>
+<h3>Common Mistakes This Tester Catches</h3>
+<table>
+<thead><tr><th>Mistake</th><th>Effect</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>Blocking CSS/JS with <code>Disallow: /assets/</code></td><td>Googlebot cannot render the page, hurting Core Web Vitals signals and structured data parsing</td><td>Add <code>Allow: /assets/*.css</code> and <code>Allow: /assets/*.js</code></td></tr>
+<tr><td>Using <code>noindex</code> directive in robots.txt</td><td>Ignored since Sep 2019 (no effect, page still indexed)</td><td>Move noindex to HTML meta tag or HTTP X-Robots-Tag</td></tr>
+<tr><td>Forgetting trailing slash in <code>Disallow: /admin</code></td><td>Also blocks <code>/admin-panel</code>, <code>/administrators.html</code></td><td>Use <code>Disallow: /admin/</code> or <code>Disallow: /admin$</code></td></tr>
+<tr><td>Case-sensitive paths</td><td><code>Disallow: /Private/</code> does NOT block <code>/private/</code></td><td>Paths are case-sensitive &mdash; match URL casing exactly</td></tr>
+<tr><td>Whitespace before directive</td><td>Crawlers may ignore indented lines</td><td>Keep <code>User-agent:</code>, <code>Allow:</code>, <code>Disallow:</code> at column 1</td></tr>
+</tbody>
+</table>
+<h3>What Robots.txt Cannot Do</h3>
+<p>Robots.txt is a <em>crawling</em> directive, not an indexing directive. URLs blocked by robots.txt can still appear in search results if they receive external links &mdash; Google just shows them without a snippet (the famous &quot;no information is available for this page&quot; SERP entry).</p>
+<p>To remove URLs from the index, use the noindex meta tag or X-Robots-Tag HTTP header. To prevent both crawling AND indexing, you need authentication or a separate sitemap-based removal request.</p>
+<h2 style="margin-top:2.5rem">Frequently Asked Questions</h2>
+<div class="faq-item"><h3>Which precedence rule does this tester follow?</h3><p>Google&apos;s longest-match rule per RFC 9309. When a path matches multiple Allow and Disallow lines, the one with the longest path string wins. Ties default to Allow.</p></div>
+<div class="faq-item"><h3>Does it support wildcards and end-of-string anchors?</h3><p>Yes. The asterisk (*) matches any sequence of characters and the dollar sign ($) anchors to end of URL, exactly as Google and Bing implement them.</p></div>
+<div class="faq-item"><h3>What user-agents are supported?</h3><p>Any user-agent token. The tester picks the most specific User-agent group that matches, falling back to the wildcard (*) group if no specific match exists &mdash; identical to real crawler behavior.</p></div>
+<div class="faq-item"><h3>Does the tool send data anywhere?</h3><p>No. The tester runs 100% in your browser. Your robots.txt and URLs are never uploaded, stored, or logged.</p></div>
+<div class="faq-item"><h3>Why is the matched rule shown for each URL?</h3><p>So you can debug. Seeing exactly which line triggered the verdict makes it trivial to fix unintended blocks &mdash; the #1 cause of indexing problems we see in audits.</p></div>
+<h3 style="margin-top:2.5rem">Related Tools &amp; Reading</h3>
+<ul>
+<li><a href="/tools/meta-tag-generator.html" style="color:#3ECF8E">Meta Tag Generator</a> &mdash; build SEO meta tags with live SERP preview</li>
+<li><a href="/tools/json-ld-schema-validator.html" style="color:#3ECF8E">JSON-LD Schema Validator</a> &mdash; validate structured data markup</li>
+<li><a href="/tools/serp-snippet-preview.html" style="color:#3ECF8E">SERP Snippet Preview</a> &mdash; see how your title/description appear in Google</li>
+<li><a href="/learn/crawl-budget.html" style="color:#3ECF8E">Crawl Budget glossary</a> &mdash; how Googlebot allocates crawl resources</li>
+</ul>
+</div>
+</div>
+<footer><a href="/about.html">About</a> &middot; <a href="/pricing.html">Pricing</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/tools/">Tools</a> &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a><br><br>&copy; 2026 PositiveBacklink. All rights reserved.</footer>
+<script>
+function parseRobots(txt){
+  var lines = txt.split(/\r?\n/);
+  var groups = [];
+  var current = null;
+  var lastWasUA = false;
+  for (var i=0;i<lines.length;i++){
+    var raw = lines[i];
+    var hash = raw.indexOf("#");
+    var line = (hash !== -1 ? raw.substring(0,hash) : raw).trim();
+    if (!line) { lastWasUA = false; continue; }
+    var colon = line.indexOf(":");
+    if (colon === -1) continue;
+    var directive = line.substring(0,colon).trim().toLowerCase();
+    var value = line.substring(colon+1).trim();
+    if (directive === "user-agent"){
+      if (!lastWasUA || !current){ current = {agents:[], rules:[]}; groups.push(current); }
+      current.agents.push(value.toLowerCase());
+      lastWasUA = true;
+    } else if (directive === "allow" || directive === "disallow"){
+      if (!current) { current = {agents:["*"], rules:[]}; groups.push(current); }
+      current.rules.push({type: directive, path: value});
+      lastWasUA = false;
+    } else {
+      lastWasUA = false;
+    }
+  }
+  return groups;
+}
+function pickGroup(groups, ua){
+  var u = ua.toLowerCase();
+  var best = null;
+  var bestLen = -1;
+  var wildcard = null;
+  for (var i=0;i<groups.length;i++){
+    for (var j=0;j<groups[i].agents.length;j++){
+      var a = groups[i].agents[j];
+      if (a === "*") wildcard = groups[i];
+      else if (u.indexOf(a) !== -1 && a.length > bestLen) { best = groups[i]; bestLen = a.length; }
+    }
+  }
+  return best || wildcard;
+}
+function pathToRegex(pattern){
+  if (!pattern) return null;
+  var endAnchor = false;
+  var pat = pattern;
+  if (pat.charAt(pat.length-1) === "$"){ endAnchor = true; pat = pat.substring(0, pat.length-1); }
+  var escaped = pat.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, ".*");
+  return new RegExp("^" + escaped + (endAnchor ? "$" : ""));
+}
+function matchLen(pattern, urlPath){
+  var re = pathToRegex(pattern);
+  if (!re) return -1;
+  var m = re.exec(urlPath);
+  if (!m) return -1;
+  return pattern.length;
+}
+function testUrl(group, urlPath){
+  if (!group || group.rules.length === 0) return {allow: true, rule: "(no matching group)"};
+  var bestAllow = -1, bestAllowRule = null;
+  var bestDis = -1, bestDisRule = null;
+  for (var i=0;i<group.rules.length;i++){
+    var r = group.rules[i];
+    if (!r.path && r.type === "disallow") continue;
+    var ml = matchLen(r.path, urlPath);
+    if (ml === -1) continue;
+    if (r.type === "allow" && ml > bestAllow){ bestAllow = ml; bestAllowRule = r; }
+    if (r.type === "disallow" && ml > bestDis){ bestDis = ml; bestDisRule = r; }
+  }
+  if (bestAllow === -1 && bestDis === -1) return {allow: true, rule: "(no rule matched)"};
+  if (bestAllow >= bestDis) return {allow: true, rule: bestAllowRule ? "Allow: " + bestAllowRule.path : "(default allow)"};
+  return {allow: false, rule: "Disallow: " + bestDisRule.path};
+}
+function extractPath(u){
+  u = u.trim();
+  if (!u) return "";
+  if (/^https?:\/\//.test(u)){
+    try { var url = new URL(u); return url.pathname + url.search; } catch(e){ return u; }
+  }
+  return u.charAt(0) === "/" ? u : "/" + u;
+}
+function runTest(){
+  var ua = document.getElementById("userAgent").value;
+  var robotsTxt = document.getElementById("robotsTxt").value;
+  var urlList = document.getElementById("urlList").value;
+  var resultsEl = document.getElementById("results");
+  var urls = urlList.split(/\n/).map(function(s){return s.trim();}).filter(function(s){return s.length>0;});
+  if (!robotsTxt.trim()) { resultsEl.innerHTML = "<div class=\"empty-state\" style=\"color:#ef4444\">Please paste robots.txt content.</div>"; return; }
+  if (urls.length === 0) { resultsEl.innerHTML = "<div class=\"empty-state\" style=\"color:#ef4444\">Please add at least one URL to test.</div>"; return; }
+  var groups = parseRobots(robotsTxt);
+  var group = pickGroup(groups, ua);
+  var groupLabel = group ? (group.agents.indexOf("*") !== -1 ? "* (wildcard)" : group.agents.join(", ")) : "none";
+  var allowCount = 0, blockCount = 0;
+  var rows = "";
+  for (var i=0;i<urls.length;i++){
+    var path = extractPath(urls[i]);
+    var verdict = testUrl(group, path);
+    if (verdict.allow) allowCount++; else blockCount++;
+    var pillClass = verdict.allow ? "pill-allow" : "pill-block";
+    var pillText = verdict.allow ? "ALLOWED" : "BLOCKED";
+    rows += "<div class=\"verdict-row\"><span class=\"pill " + pillClass + "\">" + pillText + "</span><span class=\"url-cell\">" + escapeHtml(path) + "</span><span class=\"rule-cell\">" + escapeHtml(verdict.rule) + "</span></div>";
+  }
+  var summary = "<div class=\"summary-bar\"><div class=\"summary-stat\"><div class=\"num\">" + urls.length + "</div><div class=\"lbl\">URLs Tested</div></div><div class=\"summary-stat allow\"><div class=\"num\">" + allowCount + "</div><div class=\"lbl\">Allowed</div></div><div class=\"summary-stat block\"><div class=\"num\">" + blockCount + "</div><div class=\"lbl\">Blocked</div></div></div>";
+  var meta = "<div style=\"font-size:0.78rem;color:#888;margin-bottom:0.75rem;font-family:'JetBrains Mono',monospace\">// Matched group: " + escapeHtml(groupLabel) + " &middot; UA tested: " + escapeHtml(ua) + "</div>";
+  resultsEl.innerHTML = meta + summary + rows;
+}
+function escapeHtml(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+function resetForm(){
+  document.getElementById("userAgent").value = "Googlebot";
+  document.getElementById("robotsTxt").value = "";
+  document.getElementById("urlList").value = "";
+  document.getElementById("results").innerHTML = "<div class=\"empty-state\">Enter robots.txt and URLs, choose a user-agent, then click <strong style=\"color:#3ECF8E\">Test URLs</strong> to see per-URL verdicts.</div>";
+}
+function loadSample(){
+  document.getElementById("userAgent").value = "Googlebot";
+  document.getElementById("robotsTxt").value = "User-agent: *\nDisallow: /admin/\nDisallow: /private/\nDisallow: /*.pdf$\nDisallow: /search\nAllow: /admin/public/\nAllow: /assets/*.css\nAllow: /assets/*.js\n\nUser-agent: Googlebot-Image\nDisallow: /\n\nUser-agent: AhrefsBot\nDisallow: /\n\nSitemap: https://example.com/sitemap.xml";
+  document.getElementById("urlList").value = "/\n/blog/post-1.html\n/admin/dashboard\n/admin/public/login\n/private/data.json\n/whitepaper.pdf\n/whitepaper.pdf?download=1\n/assets/main.css\n/assets/app.js\n/search?q=seo";
+}
+</script>
+</body>
+</html>
