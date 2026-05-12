@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PageRank - SEO Glossary | PositiveBacklink</title>
+<meta name="description" content="PageRank is Google's original 1998 link-graph ranking algorithm. Damping factor 0.85, formula breakdown, modern variants like Reasonable Surfer and Topic-Sensitive PageRank.">
+<meta name="keywords" content="pagerank, google pagerank, link graph algorithm, damping factor, reasonable surfer">
+<meta name="author" content="PositiveBacklink">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.positivebacklink.com/learn/pagerank.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.positivebacklink.com/learn/pagerank.html">
+<meta property="og:title" content="PageRank - SEO Glossary">
+<meta property="og:description" content="PageRank is Google's original 1998 link-graph ranking algorithm. Damping factor 0.85, formula breakdown, modern variants like Reasonable Surfer and Topic-Sensitive PageRank.">
+<meta property="og:image" content="https://www.positivebacklink.com/og-image.png">
+<meta property="og:site_name" content="PositiveBacklink">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PageRank - SEO Glossary">
+<meta name="twitter:description" content="PageRank is Google's original 1998 link-graph ranking algorithm. Damping factor 0.85, formula breakdown, modern variants like Reasonable Surfer and Topic-Sensitive PageRank.">
+<meta name="twitter:image" content="https://www.positivebacklink.com/og-image.png">
+<link rel="icon" type="image/png" href="/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  "name": "PageRank",
+  "description": "PageRank is Google's original 1998 link-graph ranking algorithm. Damping factor 0.85, formula breakdown, modern variants like Reasonable Surfer and Topic-Sensitive PageRank.",
+  "url": "https://www.positivebacklink.com/learn/pagerank.html",
+  "inDefinedTermSet": {"@type":"DefinedTermSet","name":"PositiveBacklink SEO Glossary","url":"https://www.positivebacklink.com/learn/"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Is PageRank still used by Google?","acceptedAnswer":{"@type":"Answer","text":"Yes. The internal PageRank algorithm is still active and remains a core component of Google's ranking signals. Only the public Toolbar PageRank display was retired in 2016. Subsequent variants like Reasonable Surfer and Topic-Sensitive PageRank refine the original formula."}},
+    {"@type":"Question","name":"What is the damping factor?","acceptedAnswer":{"@type":"Answer","text":"The damping factor (typically 0.85 in the original paper) models the probability that a random surfer continues clicking links rather than jumping to a new page. It prevents infinite loops in the calculation and ensures the algorithm converges to stable values."}},
+    {"@type":"Question","name":"How is PageRank divided among outbound links?","acceptedAnswer":{"@type":"Answer","text":"A page divides its passable PageRank equally across all outbound followed links. A page with 5 outbound links passes more PageRank per link than a page with 50 outbound links. Internal and external links draw from the same pool."}},
+    {"@type":"Question","name":"Does nofollow save PageRank for other links?","acceptedAnswer":{"@type":"Answer","text":"No. Since 2009, Google disabled what was called PageRank Sculpting. A nofollow link still counts toward the page's outbound link count for division purposes, it just does not pass weight to the destination. Adding nofollow does not redirect that weight to your followed links."}},
+    {"@type":"Question","name":"Is Domain Rating the same as PageRank?","acceptedAnswer":{"@type":"Answer","text":"No. Domain Rating is Ahrefs' proxy metric, calculated on their own link index. It correlates with PageRank but is not the same number Google uses. Useful for relative comparison, not as an absolute ranking predictor."}}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://www.positivebacklink.com/"},
+    {"@type":"ListItem","position":2,"name":"Glossary","item":"https://www.positivebacklink.com/learn/"},
+    {"@type":"ListItem","position":3,"name":"PageRank","item":"https://www.positivebacklink.com/learn/pagerank.html"}
+  ]
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0a0a0a;color:#e5e5e5;line-height:1.7}
+a{color:#3ECF8E;text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:820px;margin:0 auto;padding:0 24px}
+header{background:#0f0f0f;border-bottom:1px solid #1f1f1f;padding:16px 0;position:sticky;top:0;z-index:50}
+.nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;max-width:1100px;margin:0 auto;padding:0 24px}
+.logo{font-weight:700;font-size:18px;color:#3ECF8E}
+.nav-links{display:flex;gap:24px;flex-wrap:wrap}.nav-links a{color:#a3a3a3;font-size:14px}
+.breadcrumbs{font-size:13px;color:#737373;padding:16px 0}.breadcrumbs a{color:#a3a3a3}
+.badge{display:inline-block;background:rgba(62,207,142,.1);color:#3ECF8E;padding:4px 12px;border-radius:12px;font-size:12px;font-family:"JetBrains Mono",monospace;margin-bottom:12px}
+h1{font-size:34px;font-weight:700;margin-bottom:12px;color:#fff;line-height:1.2}
+h2{font-size:22px;color:#fff;margin:28px 0 12px;font-weight:700}
+h3{font-size:17px;color:#fff;margin:18px 0 8px;font-weight:600}
+p{margin-bottom:14px;color:#d4d4d4}
+ul,ol{margin:0 0 16px 22px}li{margin-bottom:6px;color:#d4d4d4}
+.lede{font-size:17px;color:#a3a3a3;margin-bottom:20px}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:18px 0}
+.stat-card{background:#0f0f0f;border:1px solid #1f1f1f;border-radius:8px;padding:14px}
+.stat-card .k{font-family:"JetBrains Mono",monospace;font-size:11px;color:#737373;text-transform:uppercase}
+.stat-card .v{font-size:22px;color:#3ECF8E;font-weight:700;margin-top:4px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+th,td{text-align:left;padding:10px;border:1px solid #1f1f1f}
+th{background:#0f0f0f;color:#3ECF8E;font-family:"JetBrains Mono",monospace;font-size:12px;text-transform:uppercase}
+td{color:#d4d4d4}
+.note{background:rgba(62,207,142,.04);border-left:3px solid #3ECF8E;padding:12px 16px;border-radius:0 6px 6px 0;margin:14px 0;color:#d4d4d4}
+.warn{background:rgba(255,170,0,.04);border-left:3px solid #ffaa00;padding:12px 16px;border-radius:0 6px 6px 0;margin:14px 0;color:#d4d4d4}
+.faq-item{background:#0f0f0f;border:1px solid #1f1f1f;border-radius:8px;padding:14px 18px;margin-bottom:10px}
+.faq-item h4{color:#fff;margin-bottom:6px;font-size:15px}.faq-item p{color:#a3a3a3;font-size:14px;margin:0}
+.cross-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:20px}
+.cross-link{background:#0f0f0f;border:1px solid #1f1f1f;border-radius:8px;padding:14px 16px;display:block}
+.cross-link:hover{border-color:#3ECF8E;text-decoration:none}
+.cross-link .t{font-weight:600;color:#fff;font-size:14px}
+.cross-link .d{font-size:12px;color:#737373;margin-top:4px}
+footer{background:#0f0f0f;border-top:1px solid #1f1f1f;padding:24px 0;margin-top:48px;text-align:center;color:#737373;font-size:13px}
+@media(max-width:640px){h1{font-size:26px}h2{font-size:18px}.nav-links{font-size:13px;gap:14px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav class="nav">
+      <a href="/" class="logo">POSITIVEBACKLINK</a>
+      <div class="nav-links">
+        <a href="/learn/">Glossary</a>
+        <a href="/blog/">Blog</a>
+        <a href="/tools/">Tools</a>
+        <a href="/pricing.html">Pricing</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<div class="container">
+  <div class="breadcrumb"><a href="/">Home</a> / <a href="/learn/">Glossary</a> / PageRank</div>
+  <article>
+    <span class="tag">SEO Glossary</span>
+    <h1>PageRank</h1>
+    <p class="lede">Google's original 1998 link-based ranking algorithm. Still the foundation of how authority propagates across the web, even though the public Toolbar score was retired in 2016.</p>
+    <h2>Definition</h2>
+    <p><strong>PageRank</strong> is the original algorithm Google uses to estimate the importance of a web page based on the quantity and quality of inbound links pointing to it. Patented in 1998 by Larry Page and Sergey Brin (US Patent 6,285,999), PageRank treats the web as a graph where each link is a vote, and votes from higher-PageRank pages count more than votes from lower-PageRank pages.</p>
+    <p>While Google has long since stopped publishing the Toolbar PageRank score (retired 2016), the underlying logic remains a core component of Google's ranking signals. Modern variants like Reasonable Surfer (US 7,716,225) and Topic-Sensitive PageRank refine the original by weighting links based on click probability and topical relevance.</p>
+    <h2>The original formula</h2>
+    <pre>PR(A) = (1-d) + d * (PR(T1)/C(T1) + PR(T2)/C(T2) + ... + PR(Tn)/C(Tn))
+
+Where:
+  d  = damping factor (typically 0.85)
+  PR = PageRank of a page
+  C  = number of outbound links from that page
+  T1..Tn = pages linking to A</pre>
+    <p>The damping factor models the probability a random surfer continues clicking links rather than jumping to a new page. At 0.85, there is an 85% chance the surfer follows a link and 15% chance they reset. This prevents infinite loops in the calculation and ensures the algorithm converges.</p>
+    <h2>How PageRank flows</h2>
+    <p>Three rules govern PageRank distribution:</p>
+    <ol>
+      <li><strong>A page divides its PageRank equally across all its outbound links.</strong> A DR 50 page with 5 outbound links passes ~10 units to each. The same page with 50 outbound links passes ~1 unit per link.</li>
+      <li><strong>Internal and external links draw from the same PageRank pool.</strong> If a page links to 4 internal pages and 1 external, each gets 20% of that page's passable PageRank.</li>
+      <li><strong>Nofollow links (and rel=ugc / rel=sponsored since 2019) historically did not pass PageRank.</strong> After 2019, Google treats these as hints rather than directives - PageRank may flow but the destination gets discounted.</li>
+    </ol>
+    <h2>Why PageRank matters in 2026</h2>
+    <p>Google's public position is that "PageRank is one of more than 200 ranking signals." That is technically true but understates its importance. PageRank is the foundation of how authority propagates across the web. Every modern ranking signal that involves "domain authority", "topical authority", or "site quality" is some derivative of graph-based link propagation.</p>
+    <p>Third-party metrics that proxy PageRank include <a href="/learn/domain-rating.html">Ahrefs DR</a>, <a href="/learn/trust-flow.html">Majestic Trust Flow</a>, and Moz Domain Authority. None of these are the actual Google PageRank, but they correlate with the underlying graph signal and are useful for relative comparison.</p>
+    <h2>Common misconceptions</h2>
+    <table>
+      <thead><tr><th>Myth</th><th>Reality</th></tr></thead>
+      <tbody>
+        <tr><td>PageRank is dead (retired 2016)</td><td>Only the public Toolbar score was retired. The internal algorithm is alive and active.</td></tr>
+        <tr><td>More links always equal more PageRank</td><td>Quality and trust gate the flow. Spammy donor pages pass diluted or zero PageRank.</td></tr>
+        <tr><td>Internal linking does not affect PageRank</td><td>Internal links are where most PageRank lives and circulates - external links inject, internal links distribute.</td></tr>
+        <tr><td>Nofollow saves PageRank for other links</td><td>Since 2009 PageRank Sculpting was disabled - nofollow does not redirect flow to remaining followed links.</td></tr>
+      </tbody>
+    </table>
+    <h2>Related concepts</h2>
+    <ul>
+      <li><a href="/learn/link-equity.html">Link Equity</a> - the practitioner term for transferable PageRank</li>
+      <li><a href="/learn/trust-flow.html">Trust Flow</a> - Majestic's trust-weighted PageRank variant</li>
+      <li><a href="/learn/citation-flow.html">Citation Flow</a> - volume-based companion metric to Trust Flow</li>
+      <li><a href="/blog/internal-linking-architecture-seo.html">Internal Linking Architecture</a> - how to wire PageRank flow inside your site</li>
+      <li><a href="/tools/anchor-text-analyzer.html">Anchor Text Analyzer</a> - audit how anchors signal context to PageRank algorithms</li>
+    </ul>
+    <div class="cta-box">
+      <h2>Apply this in PositiveBacklink</h2>
+      <p>Every exchange ships with anchor diversity checks, niche relevance scoring, and 12h Watchdog monitoring.</p>
+      <a href="/register.html" class="cta-btn">Join the waitlist &rarr;</a>
+    </div>
+  </article>
+</div>
+<footer>
+  <div class="container">
+    <a href="/about.html">About</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/blog/">Blog</a>
+    <a href="/learn/">Glossary</a>
+    <p style="margin-top:18px;font-size:12px">&copy; 2026 PositiveBacklink. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

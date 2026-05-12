@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hreflang - SEO Glossary | PositiveBacklink</title>
+<meta name="description" content="Hreflang is an HTML attribute that signals language and regional variants of a page to search engines. Syntax, x-default, reciprocity rule, and 5 most common implementation mistakes.">
+<meta name="keywords" content="hreflang, multi-language seo, x-default, international seo, regional targeting">
+<meta name="author" content="PositiveBacklink">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.positivebacklink.com/learn/hreflang.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.positivebacklink.com/learn/hreflang.html">
+<meta property="og:title" content="Hreflang - SEO Glossary">
+<meta property="og:description" content="Hreflang is an HTML attribute that signals language and regional variants of a page to search engines. Syntax, x-default, reciprocity rule, and 5 most common implementation mistakes.">
+<meta property="og:image" content="https://www.positivebacklink.com/og-image.png">
+<meta property="og:site_name" content="PositiveBacklink">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hreflang - SEO Glossary">
+<meta name="twitter:description" content="Hreflang is an HTML attribute that signals language and regional variants of a page to search engines. Syntax, x-default, reciprocity rule, and 5 most common implementation mistakes.">
+<meta name="twitter:image" content="https://www.positivebacklink.com/og-image.png">
+<link rel="icon" type="image/png" href="/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  "name": "Hreflang",
+  "description": "Hreflang is an HTML attribute that signals language and regional variants of a page to search engines. Syntax, x-default, reciprocity rule, and 5 most common implementation mistakes.",
+  "url": "https://www.positivebacklink.com/learn/hreflang.html",
+  "inDefinedTermSet": {"@type":"DefinedTermSet","name":"PositiveBacklink SEO Glossary","url":"https://www.positivebacklink.com/learn/"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Do I need hreflang for a single-language site?","acceptedAnswer":{"@type":"Answer","text":"Generally no. If your content is in one language even across multiple countries, canonical tags handle the duplicate content question. Hreflang is required when the same language has multiple regional variants (English US vs English UK) or when you have content in multiple languages."}},
+    {"@type":"Question","name":"What is x-default in hreflang?","acceptedAnswer":{"@type":"Answer","text":"x-default is a special hreflang value indicating the fallback page when no other language or region match is found. Use it for language-selector landing pages, your primary default version, or geo-IP-redirecting pages. Google recommends including x-default on any multi-region site."}},
+    {"@type":"Question","name":"Why is my hreflang being ignored?","acceptedAnswer":{"@type":"Answer","text":"The most common cause is non-reciprocal tags - if page A lists B as alternate, B must also list A as alternate. Second cause is non-self-canonical targets - hreflang URLs must have a rel=canonical pointing to themselves. Third cause is invalid language codes (using uk instead of en-gb)."}},
+    {"@type":"Question","name":"Can I put hreflang in the sitemap.xml instead of head tags?","acceptedAnswer":{"@type":"Answer","text":"Yes. XML sitemap, HTTP header, and head tag implementations are all equivalent in signal strength to Google. Choose based on technical convenience. Most sites use head tags for simplicity, but large multi-language sites often prefer sitemap implementation to keep page templates lean."}},
+    {"@type":"Question","name":"Does hreflang affect rankings?","acceptedAnswer":{"@type":"Answer","text":"Not directly. Hreflang does not improve rankings - it just ensures the correct localized version appears in SERP for the right user. The ranking benefit is indirect through better user-version matching, lower bounce rates, and higher engagement signals."}}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://www.positivebacklink.com/"},
+    {"@type":"ListItem","position":2,"name":"Glossary","item":"https://www.positivebacklink.com/learn/"},
+    {"@type":"ListItem","position":3,"name":"Hreflang","item":"https://www.positivebacklink.com/learn/hreflang.html"}
+  ]
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0a0a0a;color:#e5e5e5;line-height:1.7}
+a{color:#3ECF8E;text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:820px;margin:0 auto;padding:0 24px}
+header{background:#0f0f0f;border-bottom:1px solid #1f1f1f;padding:16px 0;position:sticky;top:0;z-index:50}
+.nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;max-width:1100px;margin:0 auto;padding:0 24px}
+.logo{font-weight:700;font-size:18px;color:#3ECF8E}
+.nav-links{display:flex;gap:24px;flex-wrap:wrap}.nav-links a{color:#a3a3a3;font-size:14px}
+.breadcrumbs{font-size:13px;color:#737373;padding:16px 0}.breadcrumbs a{color:#a3a3a3}
+.badge{display:inline-block;background:rgba(62,207,142,.1);color:#3ECF8E;padding:4px 12px;border-radius:12px;font-size:12px;font-family:"JetBrains Mono",monospace;margin-bottom:12px}
+h1{font-size:34px;font-weight:700;margin-bottom:12px;color:#fff;line-height:1.2}
+h2{font-size:22px;color:#fff;margin:28px 0 12px;font-weight:700}
+h3{font-size:17px;color:#fff;margin:18px 0 8px;font-weight:600}
+p{margin-bottom:14px;color:#d4d4d4}
+ul,ol{margin:0 0 16px 22px}li{margin-bottom:6px;color:#d4d4d4}
+.lede{font-size:17px;color:#a3a3a3;margin-bottom:20px}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:18px 0}
+.stat-card{background:#0f0f0f;border:1px solid #1f1f1f;border-radius:8px;padding:14px}
+.stat-card .k{font-family:"JetBrains Mono",monospace;font-size:11px;color:#737373;text-transform:uppercase}
+.stat-card .v{font-size:22px;color:#3ECF8E;font-weight:700;margin-top:4px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+th,td{text-align:left;padding:10px;border:1px solid #1f1f1f}
+th{background:#0f0f0f;color:#3ECF8E;font-family:"JetBrains Mono",monospace;font-size:12px;text-transform:uppercase}
+td{color:#d4d4d4}
+.note{background:rgba(62,207,142,.04);border-left:3px solid #3ECF8E;padding:12px 16px;border-radius:0 6px 6px 0;margin:14px 0;color:#d4d4d4}
+.warn{background:rgba(255,170,0,.04);border-left:3px solid #ffaa00;padding:12px 16px;border-radius:0 6px 6px 0;margin:14px 0;color:#d4d4d4}
+.faq-item{background:#0f0f0f;border:1px solid #1f1f1f;border-radius:8px;padding:14px 18px;margin-bottom:10px}
+.faq-item h4{color:#fff;margin-bottom:6px;font-size:15px}.faq-item p{color:#a3a3a3;font-size:14px;margin:0}
+.cross-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:20px}
+.cross-link{background:#0f0f0f;border:1px solid #1f1f1f;border-radius:8px;padding:14px 16px;display:block}
+.cross-link:hover{border-color:#3ECF8E;text-decoration:none}
+.cross-link .t{font-weight:600;color:#fff;font-size:14px}
+.cross-link .d{font-size:12px;color:#737373;margin-top:4px}
+footer{background:#0f0f0f;border-top:1px solid #1f1f1f;padding:24px 0;margin-top:48px;text-align:center;color:#737373;font-size:13px}
+@media(max-width:640px){h1{font-size:26px}h2{font-size:18px}.nav-links{font-size:13px;gap:14px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav class="nav">
+      <a href="/" class="logo">POSITIVEBACKLINK</a>
+      <div class="nav-links">
+        <a href="/learn/">Glossary</a>
+        <a href="/blog/">Blog</a>
+        <a href="/tools/">Tools</a>
+        <a href="/pricing.html">Pricing</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<div class="container">
+  <div class="breadcrumb"><a href="/">Home</a> / <a href="/learn/">Glossary</a> / Hreflang</div>
+  <article>
+    <span class="tag">SEO Glossary</span>
+    <h1>Hreflang</h1>
+    <p class="lede">The HTML attribute that tells search engines which language and regional version of a page to serve. The reciprocity rule is broken in roughly 80% of audits we run.</p>
+    <h2>Definition</h2>
+    <p><strong>Hreflang</strong> is an HTML attribute (<code>rel="alternate" hreflang="..."</code>) that tells search engines which language and regional version of a page to serve users based on their location and language preferences. Introduced by Google in 2011, hreflang is the standard mechanism for managing multi-language and multi-region SEO without triggering duplicate content issues.</p>
+    <p>Hreflang lives in one of three places: HTML <code>&lt;head&gt;</code> tags, HTTP response headers, or XML sitemap entries. All three are equivalent in signal strength. Most sites use the <code>&lt;head&gt;</code> implementation for simplicity.</p>
+    <h2>Syntax</h2>
+    <pre>&lt;link rel="alternate" hreflang="en-us" href="https://example.com/us/page" /&gt;
+&lt;link rel="alternate" hreflang="en-gb" href="https://example.com/uk/page" /&gt;
+&lt;link rel="alternate" hreflang="de-de" href="https://example.com/de/page" /&gt;
+&lt;link rel="alternate" hreflang="x-default" href="https://example.com/page" /&gt;</pre>
+    <p>The format is <code>language-region</code> using ISO 639-1 language codes and optionally ISO 3166-1 Alpha 2 region codes. <code>en-us</code> means English speakers in the United States. <code>en</code> alone (no region) means English speakers globally. Region without language (<code>en-419</code> for Latin America) is also valid.</p>
+    <h2>The x-default attribute</h2>
+    <p><code>x-default</code> is a special hreflang value indicating the fallback page when no other language/region match is found. Use it for:</p>
+    <ul>
+      <li>A language-selector landing page (user picks their version)</li>
+      <li>Your default English (or other primary language) page</li>
+      <li>A geo-IP-redirecting page that detects user location</li>
+    </ul>
+    <p>Google explicitly recommends including x-default for any multi-region site. Without it, users in unsupported regions may see arbitrary versions.</p>
+    <h2>The reciprocity rule (most-broken)</h2>
+    <div class="callout warn"><p><strong>Critical:</strong> Hreflang tags must be reciprocal. If page A declares page B as its German alternate, page B must declare page A as its English (or whatever) alternate. One-way hreflang is silently ignored by Google.</p></div>
+    <p>This is the #1 source of broken hreflang implementations in audits. A US page lists UK, DE, FR alternates. The UK page lists only US and DE (forgets FR). FR sees no reciprocal link from UK, so the entire UK-FR pair gets dropped. Search Console flags this under "Hreflang errors" but only intermittently.</p>
+    <h2>5 common mistakes</h2>
+    <table>
+      <thead><tr><th>Mistake</th><th>Symptom</th><th>Fix</th></tr></thead>
+      <tbody>
+        <tr><td>Missing x-default</td><td>Unsupported-region users see random version</td><td>Add x-default pointing to language-selector or primary version</td></tr>
+        <tr><td>Non-reciprocal tags</td><td>One-way links silently ignored</td><td>Every page in cluster must list every other page</td></tr>
+        <tr><td>Using country code as language</td><td>hreflang="uk" not valid (UK is region not language)</td><td>Use hreflang="en-gb" instead</td></tr>
+        <tr><td>Pointing to non-canonical URL</td><td>Hreflang ignored if URL is not canonical itself</td><td>Hreflang targets must be self-canonical (rel=canonical points to themselves)</td></tr>
+        <tr><td>Mixing language and content</td><td>German hreflang on English content</td><td>Hreflang must match actual page language</td></tr>
+      </tbody>
+    </table>
+    <h2>When you do NOT need hreflang</h2>
+    <ul>
+      <li><strong>Single-language site.</strong> Even if you target multiple countries, if content is identical and same language, hreflang adds no value. Use canonical instead.</li>
+      <li><strong>Subdomain or subfolder language separation only.</strong> Google detects language automatically reasonably well. Hreflang is required only when the same language has multiple regional variants (en-us vs en-gb).</li>
+      <li><strong>Currency or pricing differences only.</strong> If content is the same and only price/currency changes, that is not a hreflang case - use Schema.org Offer with currency.</li>
+    </ul>
+    <h2>Verification</h2>
+    <p>Two ways to verify hreflang correctness:</p>
+    <ol>
+      <li><strong>Google Search Console</strong> &rarr; Legacy tools &rarr; International Targeting (deprecated but still functional in 2026). Shows hreflang errors and reciprocity issues per language.</li>
+      <li><strong>Screaming Frog</strong> or <strong>Sitebulb</strong> with hreflang module enabled. Crawls the site, builds the hreflang graph, flags non-reciprocal pairs and missing x-default.</li>
+    </ol>
+    <h2>Related concepts</h2>
+    <ul>
+      <li><a href="/learn/canonical-tag.html">Canonical Tag</a> - hreflang targets must be self-canonical to work</li>
+      <li><a href="/learn/duplicate-content.html">Duplicate Content</a> - hreflang prevents multi-region duplicate content penalties</li>
+      <li><a href="/blog/internal-linking-architecture-seo.html">Internal Linking Architecture</a> - multi-language sites need parallel hub-and-spoke per locale</li>
+      <li><a href="/tools/meta-tag-generator.html">Meta Tag Generator</a> - generate the head tags for each locale version</li>
+    </ul>
+    <div class="cta-box">
+      <h2>Apply this in PositiveBacklink</h2>
+      <p>Every exchange ships with anchor diversity checks, niche relevance scoring, and 12h Watchdog monitoring.</p>
+      <a href="/register.html" class="cta-btn">Join the waitlist &rarr;</a>
+    </div>
+  </article>
+</div>
+<footer>
+  <div class="container">
+    <a href="/about.html">About</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/blog/">Blog</a>
+    <a href="/learn/">Glossary</a>
+    <p style="margin-top:18px;font-size:12px">&copy; 2026 PositiveBacklink. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>
