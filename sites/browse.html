@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browse Sites - Find Exchange Partners | PositiveBacklink</title>
+<meta name="description" content="Browse verified sites on PositiveBacklink. Find niche-relevant exchange partners using ABC triangular method. Filter by niche, DR, and tier.">
+<link rel="canonical" href="https://www.positivebacklink.com/sites/browse.html">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;min-height:100vh}
+.nav{background:#111;border-bottom:1px solid #222;padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav a{color:#3ECF8E;text-decoration:none;font-weight:600}
+.nav .links a{margin-left:20px;color:#aaa;font-weight:400;font-size:14px}
+.nav .links a:hover{color:#3ECF8E}
+.container{max-width:1280px;margin:0 auto;padding:32px 24px}
+.header{margin-bottom:32px}
+.header h1{font-size:32px;margin-bottom:8px}
+.header p{color:#888;font-size:15px}
+.abc-panel{background:linear-gradient(135deg,#0d2818,#0a0a0a);border:1px solid #1a3a26;border-radius:12px;padding:20px;margin-bottom:24px;display:flex;gap:16px;align-items:center}
+.abc-icon{font-size:32px;flex-shrink:0}
+.abc-text h3{color:#3ECF8E;font-size:15px;margin-bottom:4px;font-family:'JetBrains Mono',monospace}
+.abc-text p{color:#aaa;font-size:13px;line-height:1.5}
+.layout{display:grid;grid-template-columns:260px 1fr;gap:24px}
+@media(max-width:768px){.layout{grid-template-columns:1fr}}
+.filters{background:#111;border:1px solid #222;border-radius:12px;padding:20px;height:fit-content;position:sticky;top:20px}
+.filter-group{margin-bottom:20px}
+.filter-group label{display:block;font-size:12px;color:#888;font-family:'JetBrains Mono',monospace;text-transform:uppercase;margin-bottom:8px}
+.filter-group select,.filter-group input{width:100%;background:#0a0a0a;border:1px solid #333;color:#e0e0e0;padding:10px;border-radius:6px;font-size:14px}
+.filter-group select:focus,.filter-group input:focus{outline:none;border-color:#3ECF8E}
+.range-vals{display:flex;justify-content:space-between;font-size:12px;color:#666;margin-top:4px}
+.btn-reset{width:100%;background:transparent;border:1px solid #333;color:#aaa;padding:10px;border-radius:6px;cursor:pointer;font-size:13px}
+.btn-reset:hover{border-color:#3ECF8E;color:#3ECF8E}
+.results-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;color:#888;font-size:13px}
+.sites-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.site-card{background:#111;border:1px solid #222;border-radius:12px;padding:18px;transition:all .2s;cursor:pointer}
+.site-card:hover{border-color:#3ECF8E;transform:translateY(-2px)}
+.site-domain{font-family:'JetBrains Mono',monospace;color:#3ECF8E;font-size:15px;font-weight:600;margin-bottom:8px;word-break:break-all}
+.site-meta{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.pill{background:#1a1a1a;border:1px solid #333;padding:3px 10px;border-radius:12px;font-size:11px;color:#aaa;font-family:'JetBrains Mono',monospace}
+.pill.dr{color:#3ECF8E;border-color:#1a3a26}
+.pill.tier{color:#f59e0b;border-color:#3a2a0a}
+.pill.match{background:#0d2818;color:#3ECF8E;border-color:#3ECF8E}
+.site-stats{display:flex;justify-content:space-between;font-size:12px;color:#666;margin-top:8px}
+.btn-request{width:100%;background:#3ECF8E;color:#000;border:none;padding:10px;border-radius:6px;font-weight:600;cursor:pointer;margin-top:12px;font-size:13px}
+.btn-request:hover{background:#33b577}
+.btn-request:disabled{background:#222;color:#555;cursor:not-allowed}
+.empty{background:#111;border:1px solid #222;border-radius:12px;padding:48px;text-align:center;color:#888}
+.empty h3{color:#e0e0e0;margin-bottom:8px}
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:100;justify-content:center;align-items:center;padding:20px}
+.modal-bg.show{display:flex}
+.modal{background:#111;border:1px solid #333;border-radius:14px;padding:28px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto}
+.modal h2{margin-bottom:6px;font-size:20px}
+.modal .sub{color:#888;font-size:13px;margin-bottom:20px}
+.modal .field{margin-bottom:16px}
+.modal label{display:block;font-size:12px;color:#888;font-family:'JetBrains Mono',monospace;text-transform:uppercase;margin-bottom:6px}
+.modal input,.modal textarea,.modal select{width:100%;background:#0a0a0a;border:1px solid #333;color:#e0e0e0;padding:11px;border-radius:6px;font-size:14px}
+.modal textarea{min-height:70px;resize:vertical;font-family:inherit}
+.modal .hint{font-size:11px;color:#666;margin-top:4px}
+.modal-actions{display:flex;gap:10px;margin-top:20px}
+.btn{padding:11px 18px;border-radius:6px;font-weight:600;cursor:pointer;border:none;font-size:14px;flex:1}
+.btn-primary{background:#3ECF8E;color:#000}
+.btn-primary:hover{background:#33b577}
+.btn-secondary{background:transparent;border:1px solid #333;color:#aaa}
+.btn-secondary:hover{border-color:#666;color:#fff}
+.msg{padding:10px;border-radius:6px;font-size:13px;margin-top:12px;display:none}
+.msg.show{display:block}
+.msg.error{background:#2a0a0a;color:#f87171;border:1px solid #5a1a1a}
+.msg.success{background:#0a2a1a;color:#3ECF8E;border:1px solid #1a4a2a}
+.skeleton{background:linear-gradient(90deg,#1a1a1a,#222,#1a1a1a);background-size:200% 100%;animation:sh 1.5s infinite;border-radius:6px;height:120px}
+@keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.config-err{background:#2a0a0a;border:1px solid #5a1a1a;color:#f87171;padding:20px;border-radius:12px;margin:40px auto;max-width:560px;text-align:center}
+.config-err h3{margin-bottom:8px}
+.config-err code{background:#0a0a0a;padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#3ECF8E}
+</style>
+</head>
+<body>
+<nav class="nav">
+<a href="/">PositiveBacklink</a>
+<div class="links"><a href="/dashboard.html">Dashboard</a><a href="/sites/browse.html">Browse Sites</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a></div>
+</nav>
+<div id="main" class="container"></div>
+<div class="modal-bg" id="modal"><div class="modal" id="modalBody"></div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL='https://hsgxsxiwwkuplcedfhxq.supabase.co';
+const SUPABASE_ANON_KEY=window.SUPABASE_ANON_KEY||'REPLACE_WITH_YOUR_ANON_KEY';
+const NICHES=['technology','health','finance','marketing','education','lifestyle','travel','food','fashion','business','crypto','other'];
+let sb,me,profile,sites=[],filtered=[],myDR=30;
+function $(id){return document.getElementById(id);}
+function showErr(html){$('main').innerHTML='<div class="config-err"><h3>Configuration Error</h3>'+html+'</div>';}
+function jacc(a,b){if(!a||!b)return 0;if(a===b)return 1;return 0;}
+function matchScore(site){const niche=jacc(profile?.primary_niche||'',site.niche);const drDiff=Math.abs((site.dr||0)-myDR);const drScore=Math.max(0,1-drDiff/50);return Math.round((niche*0.7+drScore*0.3)*100);}
+async function init(){
+if(SUPABASE_ANON_KEY==='REPLACE_WITH_YOUR_ANON_KEY'){showErr('<p>Supabase anon key is not set. Please configure <code>window.SUPABASE_ANON_KEY</code> via environment variables.</p>');return;}
+sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+const sess=await sb.auth.getSession();
+if(!sess.data.session){window.location.href='/login.html?next=/sites/browse.html';return;}
+me=sess.data.session.user;
+const pr=await sb.from('users').select('*').eq('id',me.id).maybeSingle();
+profile=pr.data;
+const myS=await sb.from('sites').select('dr,niche').eq('user_id',me.id).eq('status','verified').limit(1);
+if(myS.data&&myS.data[0]){myDR=myS.data[0].dr||30;if(!profile)profile={};profile.primary_niche=myS.data[0].niche;}
+render();await loadSites();
+}
+function render(){
+const opts=NICHES.map(n=>'<option value="'+n+'">'+n+'</option>').join('');
+$('main').innerHTML='<div class="header"><h1>Browse Sites</h1><p>Find niche-relevant exchange partners using the ABC triangular method.</p></div>'+
+'<div class="abc-panel"><div class="abc-icon">\u25B3</div><div class="abc-text"><h3>ABC TRIANGULAR METHOD</h3><p>Instead of direct A\u2194B exchanges (easily detected by Google), we route through 3 sites: A links to B, B links to C, C links back to A. Niche matching score shown on each card.</p></div></div>'+
+'<div class="layout"><aside class="filters">'+
+'<div class="filter-group"><label>Niche</label><select id="fNiche"><option value="">All Niches</option>'+opts+'</select></div>'+
+'<div class="filter-group"><label>Min DR</label><input type="range" id="fMinDR" min="0" max="100" value="0"><div class="range-vals"><span>0</span><span id="vMinDR">0</span><span>100</span></div></div>'+
+'<div class="filter-group"><label>Max DR</label><input type="range" id="fMaxDR" min="0" max="100" value="100"><div class="range-vals"><span>0</span><span id="vMaxDR">100</span><span>100</span></div></div>'+
+'<div class="filter-group"><label>Tier</label><select id="fTier"><option value="">All Tiers</option><option value="bronze">Bronze</option><option value="silver">Silver</option><option value="gold">Gold</option><option value="platinum">Platinum</option></select></div>'+
+'<div class="filter-group"><label>Sort By</label><select id="fSort"><option value="match">Best Match</option><option value="dr">Highest DR</option><option value="recent">Recently Added</option></select></div>'+
+'<button class="btn-reset" onclick="resetFilters()">Reset Filters</button>'+
+'</aside>'+
+'<main><div class="results-header"><span id="resultCount">Loading sites...</span><span id="myStats">Your DR: '+myDR+' \u00B7 Niche: '+(profile?.primary_niche||'\u2014')+'</span></div><div id="grid" class="sites-grid"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div></main>'+
+'</div>';
+['fNiche','fTier','fSort'].forEach(id=>$(id).addEventListener('change',applyFilters));
+['fMinDR','fMaxDR'].forEach(id=>{$(id).addEventListener('input',e=>{$('v'+id.substring(1)).textContent=e.target.value;applyFilters();});});
+}
+async function loadSites(){
+const {data,error}=await sb.from('sites').select('*').eq('status','verified').neq('user_id',me.id).order('created_at',{ascending:false}).limit(200);
+if(error){$('grid').innerHTML='<div class="empty"><h3>Could not load sites</h3><p>'+error.message+'</p></div>';return;}
+sites=data||[];applyFilters();
+}
+function applyFilters(){
+const n=$('fNiche').value,minD=+$('fMinDR').value,maxD=+$('fMaxDR').value,t=$('fTier').value,s=$('fSort').value;
+filtered=sites.filter(x=>(!n||x.niche===n)&&(x.dr||0)>=minD&&(x.dr||0)<=maxD&&(!t||x.tier===t));
+filtered.forEach(x=>x._match=matchScore(x));
+if(s==='match')filtered.sort((a,b)=>b._match-a._match);
+else if(s==='dr')filtered.sort((a,b)=>(b.dr||0)-(a.dr||0));
+else filtered.sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
+$('resultCount').textContent=filtered.length+' site'+(filtered.length===1?'':'s')+' found';
+renderGrid();
+}
+function renderGrid(){
+if(filtered.length===0){$('grid').innerHTML='<div class="empty" style="grid-column:1/-1"><h3>No matching sites yet</h3><p>Try widening your filters or check back later as more sites get verified.</p></div>';return;}
+$('grid').innerHTML=filtered.map(s=>{
+const hosted=s.hosted_count||0;
+return '<div class="site-card"><div class="site-domain">'+s.domain+'</div>'+
+'<div class="site-meta"><span class="pill dr">DR '+(s.dr||0)+'</span><span class="pill">'+(s.niche||'\u2014')+'</span><span class="pill tier">'+(s.tier||'bronze')+'</span><span class="pill match">'+s._match+'% match</span></div>'+
+'<div class="site-stats"><span>Hosted: '+hosted+'</span><span>Joined '+new Date(s.created_at).toLocaleDateString()+'</span></div>'+
+'<button class="btn-request" onclick="openRequest(\''+s.id+'\')">Request Exchange</button></div>';
+}).join('');
+}
+function resetFilters(){$('fNiche').value='';$('fTier').value='';$('fSort').value='match';$('fMinDR').value=0;$('fMaxDR').value=100;$('vMinDR').textContent='0';$('vMaxDR').textContent='100';applyFilters();}
+async function openRequest(siteId){
+const target=sites.find(x=>x.id===siteId);if(!target)return;
+const myV=await sb.from('sites').select('domain,niche,dr').eq('user_id',me.id).eq('status','verified');
+const mySites=myV.data||[];
+if(mySites.length===0){alert('You need at least 1 verified site before requesting an exchange. Go to Dashboard \u2192 My Sites first.');return;}
+const sopts=mySites.map(s=>'<option value="'+s.domain+'">'+s.domain+' (DR '+s.dr+')</option>').join('');
+$('modalBody').innerHTML='<h2>Request Exchange</h2><p class="sub">Propose an ABC triangular link with <strong style="color:#3ECF8E">'+target.domain+'</strong></p>'+
+'<div class="field"><label>Your Source Site</label><select id="rSource">'+sopts+'</select></div>'+
+'<div class="field"><label>Anchor Text</label><input type="text" id="rAnchor" placeholder="e.g. best SEO tools" maxlength="60"><div class="hint">2-60 chars. Avoid exact-match commercial keywords.</div></div>'+
+'<div class="field"><label>Target URL on Their Site</label><input type="url" id="rUrl" placeholder="https://'+target.domain+'/page"><div class="hint">Where would you like your link placed? Leave blank to let them choose.</div></div>'+
+'<div class="field"><label>Credit Offer</label><input type="number" id="rCredits" value="5" min="1" max="50"><div class="hint">Suggested: 5 for DR &lt; 30, 10 for DR 30-60, 15+ for DR 60+.</div></div>'+
+'<div id="reqMsg" class="msg"></div>'+
+'<div class="modal-actions"><button class="btn btn-secondary" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="submitReq(\''+siteId+'\',\''+target.domain+'\',\''+target.user_id+'\')">Send Request</button></div>';
+$('modal').classList.add('show');
+}
+function closeModal(){$('modal').classList.remove('show');}
+async function submitReq(siteId,targetDomain,targetUser){
+const source=$('rSource').value,anchor=$('rAnchor').value.trim(),url=$('rUrl').value.trim(),credits=+$('rCredits').value;
+const msg=$('reqMsg');msg.className='msg';
+if(!source||!anchor){msg.className='msg show error';msg.textContent='Source site and anchor text are required.';return;}
+if(anchor.length<2){msg.className='msg show error';msg.textContent='Anchor text too short.';return;}
+const {error}=await sb.from('exchanges').insert({source_user:me.id,source_domain:source,target_user:targetUser,target_domain:targetDomain,anchor,url_placed:url||null,credits,status:'pending'});
+if(error){msg.className='msg show error';msg.textContent=error.message;return;}
+msg.className='msg show success';msg.textContent='Request sent! View status in Dashboard \u2192 Exchanges.';
+setTimeout(closeModal,1800);
+}
+$('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal();});
+init();
+</script>
+</body>
+</html>
