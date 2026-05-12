@@ -1,4 +1,21 @@
                                     <div class="changelog-entry">
+                                      <div class="changelog-version">v1.56.0 <span class="changelog-date">2026-05-13</span></div>
+                                      <div class="changelog-body">
+                                        <p><strong>Faz 31 - Mega menu + Auth flow overhaul.</strong></p>
+                                        <ul>
+                                          <li><strong>Mega menu:</strong> Collapsed 11-link cluttered nav into 6 top-level items: Product (6 cards), Resources (6 cards), Compare, Pricing, About + Sign in/Sign up CTAs. Mobile drawer with collapsible groups.</li>
+                                          <li><strong>Modern login UI:</strong> Split-screen with marketing aside. Google OAuth, password sign-in, magic link, "Forgot password" link, error states, auto-redirect on existing session.</li>
+                                          <li><strong>Modern register UI:</strong> Same split layout, password strength meter (5 levels with color bar), Terms checkbox, email verification redirect.</li>
+                                          <li><strong>Reset password:</strong> Two-step flow (request email + update password) detected automatically via URL hash recovery token.</li>
+                                          <li><strong>Verify email:</strong> Branded "check your inbox" page with one-click resend.</li>
+                                          <li><strong>auth.js helper:</strong> Shared Supabase SDK wrapper exposed at window.pbAuth (signIn/signUp/signOut/requireAuth/getCurrentUser/getSession/resetPassword/updatePassword/applyNavAuthState).</li>
+                                          <li><strong>Session guard:</strong> dashboard, notifications, admin pages auto-redirect to /login when no session.</li>
+                                          <li><strong>Nav auth state:</strong> data-auth-show-when and data-auth-hide-when attributes toggle Sign in/Dashboard buttons automatically.</li>
+                                          <li><strong>SETUP REQUIRED:</strong> User must replace __SUPABASE_ANON_KEY__ placeholder in /assets/auth.js with their public anon key (Supabase dashboard - Project Settings - API).</li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <div class="changelog-entry">
                                       <div class="changelog-version">v1.55.0 <span class="changelog-date">2026-05-13</span></div>
                                       <div class="changelog-body">
                                         <p><strong>Faz 30 - Site health audit + Vercel config.</strong></p>
