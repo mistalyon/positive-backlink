@@ -158,39 +158,93 @@
     @keyframes pulseRing { 0% { r: 8; opacity:.6 } 100% { r: 24; opacity:0 } }
   </style>
   <script src="/assets/error-logger.js" defer></script>
+  <link rel="stylesheet" href="/assets/megamenu.css" />
 </head>
 <body class="min-h-screen">
 
   <!-- NAVBAR -->
-  <nav class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-[#1c1c1c]/80 border-b border-[#2e2e2e]">
+  <nav id="pbnav" class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-[#1c1c1c]/85 border-b border-[#2e2e2e]">
     <div class="max-w-7xl mx-auto flex items-center justify-between h-16 px-6">
-      <a href="/" class="flex items-center gap-2">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 shrink-0">
         <svg width="26" height="26" viewBox="0 0 109 113" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M63.7076 110.284C60.8481 113.885 55.0502 111.912 54.9813 107.314L53.9738 40.0627L99.1935 40.0627C107.384 40.0627 111.952 49.5228 106.859 55.9374L63.7076 110.284Z" fill="#3ECF8E"/>
           <path d="M45.317 2.07103C48.1765 -1.53037 53.9745 0.442937 54.0434 5.041L54.4849 72.2922H9.83113C1.64038 72.2922 -2.92775 62.8321 2.1655 56.4175L45.317 2.07103Z" fill="#3ECF8E" fill-opacity="0.5"/>
         </svg>
         <span class="text-[17px] font-medium tracking-tight">positivebacklink</span>
       </a>
-      <div class="hidden md:flex items-center gap-7">
-        <a href="#product" class="nav-link">Product</a>
-        <a href="/tools/" class="nav-link">Free Tools</a>
-        <a href="/blog/" class="nav-link">Blog</a>
-        <a href="/compare/" class="nav-link">Compare</a>
-        <a href="/about.html" class="nav-link">About</a>
-        <a href="/faq.html" class="nav-link">FAQ</a>
-        <a href="/changelog.html" class="nav-link">Changelog</a>
-        <a href="#case-studies" class="nav-link">Case Studies</a>
-        <a href="#how" class="nav-link">How it works</a>
-        <a href="#pricing" class="nav-link">Pricing</a>
-        <a href="#faq" class="nav-link">FAQ</a>
+
+      <!-- Desktop Mega Menu -->
+      <div class="hidden lg:flex items-center gap-1" id="pbmega-root">
+        <!-- Product -->
+        <div class="pbmega-item">
+          <button class="pbmega-trigger" data-panel="product" aria-expanded="false" aria-haspopup="true">Product <svg class="w-3 h-3 opacity-60" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="pbmega-panel" data-panel="product">
+            <div class="pbmega-grid">
+              <a href="/#how-it-works" class="pbmega-card"><div class="pbmega-icon">[?]</div><div><div class="pbmega-title">How it works</div><div class="pbmega-desc">ABC triangular link exchange explained.</div></div></a>
+              <a href="/watchdog/dashboard" class="pbmega-card"><div class="pbmega-icon">[#]</div><div><div class="pbmega-title">AI Watchdog</div><div class="pbmega-desc">24/7 link monitoring + auto-alerts.</div></div></a>
+              <a href="/sites/browse" class="pbmega-card"><div class="pbmega-icon">[+]</div><div><div class="pbmega-title">Browse Sites</div><div class="pbmega-desc">Find niche-relevant partners (DA15-DA70).</div></div></a>
+              <a href="/dashboard" class="pbmega-card"><div class="pbmega-icon">[*]</div><div><div class="pbmega-title">Dashboard</div><div class="pbmega-desc">Exchanges, credits, analytics.</div></div></a>
+              <a href="/api-docs" class="pbmega-card"><div class="pbmega-icon">[</></div><div><div class="pbmega-title">API Docs</div><div class="pbmega-desc">REST API + webhooks reference.</div></div></a>
+              <a href="/status" class="pbmega-card"><div class="pbmega-icon">[~]</div><div><div class="pbmega-title">System Status</div><div class="pbmega-desc">Uptime + incident history.</div></div></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resources -->
+        <div class="pbmega-item">
+          <button class="pbmega-trigger" data-panel="resources" aria-expanded="false" aria-haspopup="true">Resources <svg class="w-3 h-3 opacity-60" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="pbmega-panel" data-panel="resources">
+            <div class="pbmega-grid">
+              <a href="/blog" class="pbmega-card"><div class="pbmega-icon">[B]</div><div><div class="pbmega-title">Blog</div><div class="pbmega-desc">SEO tactics, case breakdowns, link building guides.</div></div></a>
+              <a href="/learn" class="pbmega-card"><div class="pbmega-icon">[L]</div><div><div class="pbmega-title">SEO Glossary</div><div class="pbmega-desc">25+ backlink terms explained.</div></div></a>
+              <a href="/tools" class="pbmega-card"><div class="pbmega-icon">[T]</div><div><div class="pbmega-title">Free Tools</div><div class="pbmega-desc">15+ no-signup SEO calculators.</div></div></a>
+              <a href="/case-studies" class="pbmega-card"><div class="pbmega-icon">[C]</div><div><div class="pbmega-title">Case Studies</div><div class="pbmega-desc">Real DR/DA growth from users.</div></div></a>
+              <a href="/changelog" class="pbmega-card"><div class="pbmega-icon">[~]</div><div><div class="pbmega-title">Changelog</div><div class="pbmega-desc">Latest features & shipped updates.</div></div></a>
+              <a href="/faq" class="pbmega-card"><div class="pbmega-icon">[?]</div><div><div class="pbmega-title">FAQ</div><div class="pbmega-desc">Common questions answered.</div></div></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compare -->
+        <a href="/compare" class="pbmega-link">Compare</a>
+
+        <!-- Pricing -->
+        <a href="/pricing" class="pbmega-link">Pricing</a>
+
+        <!-- About -->
+        <a href="/about" class="pbmega-link">About</a>
       </div>
-      <div class="flex items-center gap-3">
-        <a href="https://github.com/mistalyon/positive-backlink" target="_blank" class="hidden sm:flex items-center gap-2 text-[13px] text-[#a0a0a0] hover:text-white">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          <span>1.2K</span>
-        </a>
-        <a href="/login.html" class="nav-link">Sign in</a>
-        <a href="/login.html" class="btn-primary">Dashboard</a>
+
+      <!-- Right side: Auth CTAs -->
+      <div class="hidden lg:flex items-center gap-3 shrink-0">
+        <a href="/login" class="text-sm text-gray-300 hover:text-white transition" data-auth-hide-when="signed-in">Sign in</a>
+        <a href="/register" class="px-4 py-2 rounded-md bg-[#3ECF8E] hover:bg-[#34b87a] text-black font-medium text-sm transition" data-auth-hide-when="signed-in">Sign up</a>
+        <a href="/dashboard" class="px-4 py-2 rounded-md bg-[#3ECF8E] hover:bg-[#34b87a] text-black font-medium text-sm transition hidden" data-auth-show-when="signed-in">Dashboard</a>
+        <button id="pbnav-logout" class="text-sm text-gray-300 hover:text-white transition hidden" data-auth-show-when="signed-in" type="button">Log out</button>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button id="pbnav-hamburger" class="lg:hidden p-2 rounded-md hover:bg-white/5" aria-label="Open menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div id="pbnav-drawer" class="lg:hidden hidden border-t border-[#2e2e2e] bg-[#1c1c1c] overflow-y-auto" style="max-height:calc(100vh - 4rem)">
+      <div class="px-6 py-5 space-y-1">
+        <details class="pbmega-mobile-group"><summary>Product</summary>
+          <div class="pbmega-mobile-links"><a href="/#how-it-works">How it works</a><a href="/watchdog/dashboard">AI Watchdog</a><a href="/sites/browse">Browse Sites</a><a href="/dashboard">Dashboard</a><a href="/api-docs">API Docs</a><a href="/status">System Status</a></div></details>
+        <details class="pbmega-mobile-group"><summary>Resources</summary>
+          <div class="pbmega-mobile-links"><a href="/blog">Blog</a><a href="/learn">SEO Glossary</a><a href="/tools">Free Tools</a><a href="/case-studies">Case Studies</a><a href="/changelog">Changelog</a><a href="/faq">FAQ</a></div></details>
+        <a href="/compare" class="block px-3 py-2.5 text-gray-200 hover:bg-white/5 rounded-md">Compare</a>
+        <a href="/pricing" class="block px-3 py-2.5 text-gray-200 hover:bg-white/5 rounded-md">Pricing</a>
+        <a href="/about" class="block px-3 py-2.5 text-gray-200 hover:bg-white/5 rounded-md">About</a>
+        <div class="pt-4 mt-4 border-t border-[#2e2e2e] flex flex-col gap-2">
+          <a href="/login" class="block px-3 py-2.5 text-center text-gray-200 border border-[#2e2e2e] rounded-md" data-auth-hide-when="signed-in">Sign in</a>
+          <a href="/register" class="block px-3 py-2.5 text-center bg-[#3ECF8E] text-black font-medium rounded-md" data-auth-hide-when="signed-in">Sign up</a>
+          <a href="/dashboard" class="block px-3 py-2.5 text-center bg-[#3ECF8E] text-black font-medium rounded-md hidden" data-auth-show-when="signed-in">Dashboard</a>
+        </div>
       </div>
     </div>
   </nav>
@@ -1743,5 +1797,7 @@
   <script>
     if (window.lucide) lucide.createIcons();
   </script>
+  <script src="/assets/megamenu.js" defer></script>
+  <script src="/assets/auth.js" defer></script>
 </body>
 </html>
