@@ -1,4 +1,18 @@
                                     <div class="changelog-entry">
+                                      <div class="changelog-version">v1.54.0 <span class="changelog-date">2026-05-12</span></div>
+                                      <div class="changelog-body">
+                                        <p><strong>Faz 29 - Branded transactional email templates</strong></p>
+                                        <ul>
+                                          <li>New /api/_templates.js: shared module with welcome, exchange-request, watchdog-alert, weekly-digest templates (inline CSS, mobile responsive, dark-mode safe, ASCII-only headers).</li>
+                                          <li>Refactored 4 email API endpoints to use shared template module - 50% smaller code, single source of truth for branding.</li>
+                                          <li>New /api/email-preview endpoint: GET ?template=welcome renders the email inline in browser, POST returns JSON. Admin-only via INTERNAL_API_SECRET (or open in dev mode).</li>
+                                          <li>New helper sendEmail(): auto-detects Resend (RESEND_API_KEY) or Postmark (POSTMARK_API_TOKEN) provider with same payload shape.</li>
+                                          <li>SAMPLE data exported for each template so preview works zero-config.</li>
+                                          <li>Brand color #3ECF8E, support@positivebacklink.com footer, real-human reply-to UX.</li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <div class="changelog-entry">
                                       <div class="changelog-version">v1.53.0 <span class="changelog-date">2026-05-12</span></div>
                                       <div class="changelog-body">
                                         <p><strong>Faz 21-22 - PWA activation + robots hardening</strong></p>
