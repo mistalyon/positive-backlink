@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notifications | PositiveBacklink</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://www.positivebacklink.com/notifications.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0a0a0a;color:#e0e0e0;min-height:100vh}
+.nav{background:#111;border-bottom:1px solid #222;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav a.brand{color:#3ECF8E;text-decoration:none;font-weight:600}
+.nav .links a{margin-left:18px;color:#aaa;text-decoration:none;font-size:14px}
+.nav .links a:hover{color:#3ECF8E}
+.container{max-width:820px;margin:0 auto;padding:32px 24px}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;gap:12px;flex-wrap:wrap}
+.header h1{font-size:28px}
+.header .actions{display:flex;gap:8px}
+.toolbar{background:#111;border:1px solid #222;border-radius:10px;padding:12px;margin-bottom:16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.toolbar select{background:#0a0a0a;border:1px solid #333;color:#e0e0e0;padding:8px;border-radius:6px;font-size:13px;flex:1}
+.btn{padding:9px 14px;border-radius:6px;font-weight:600;cursor:pointer;border:none;font-size:13px}
+.btn-primary{background:#3ECF8E;color:#000}
+.btn-primary:hover{background:#33b577}
+.btn-outline{background:transparent;border:1px solid #333;color:#aaa}
+.btn-outline:hover{border-color:#3ECF8E;color:#3ECF8E}
+.list{display:flex;flex-direction:column;gap:8px}
+.item{background:#111;border:1px solid #222;border-radius:10px;padding:16px;display:flex;gap:12px;align-items:flex-start;transition:border-color .15s}
+.item.unread{border-left:3px solid #3ECF8E;background:#0d1814}
+.item:hover{border-color:#3ECF8E}
+.icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;background:#1a1a1a}
+.icon.exchange{background:#0a2a1a;color:#3ECF8E}
+.icon.watchdog{background:#3a2a0a;color:#f59e0b}
+.icon.watchdog-high{background:#2a0a0a;color:#f87171}
+.icon.payment{background:#0a2a4a;color:#60a5fa}
+.icon.system{background:#2a0a2a;color:#f472b6}
+.body{flex:1;min-width:0}
+.title{font-size:14px;font-weight:600;margin-bottom:3px}
+.body p{color:#aaa;font-size:13px;line-height:1.5;margin-bottom:6px}
+.meta{display:flex;gap:10px;align-items:center;font-size:11px;color:#666;font-family:JetBrains Mono,monospace}
+.meta a{color:#3ECF8E;text-decoration:none}
+.meta a:hover{text-decoration:underline}
+.dot{width:8px;height:8px;border-radius:50%;background:#3ECF8E;flex-shrink:0;margin-top:6px}
+.item.read .dot{display:none}
+.empty{background:#111;border:1px solid #222;border-radius:12px;padding:48px;text-align:center;color:#888}
+.empty h3{color:#e0e0e0;margin-bottom:8px}
+.empty a{color:#3ECF8E;text-decoration:none}
+.config-err{background:#2a0a0a;border:1px solid #5a1a1a;color:#f87171;padding:20px;border-radius:12px;margin:40px auto;max-width:520px;text-align:center}
+.config-err code{background:#0a0a0a;padding:2px 6px;border-radius:4px;font-family:JetBrains Mono,monospace;font-size:11px;color:#3ECF8E}
+.missing-tbl{background:#3a2a0a;color:#f59e0b;border:1px solid #5a4010;border-radius:10px;padding:14px;font-size:13px;margin-bottom:16px}
+</style>
+</head>
+<body>
+<nav class="nav">
+<a class="brand" href="/">PositiveBacklink</a>
+<div class="links"><a href="/dashboard.html">Dashboard</a><a href="/sites/browse.html">Browse</a><a href="/notifications.html">Notifications</a><a href="/tools/">Tools</a></div>
+</nav>
+<div id="main" class="container"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL='https://hsgxsxiwwkuplcedfhxq.supabase.co';
+const SUPABASE_ANON_KEY=window.SUPABASE_ANON_KEY||'REPLACE_WITH_YOUR_ANON_KEY';
+let sb,me,notifs=[],filtered=[];
+function $(id){return document.getElementById(id);}
+function showErr(html){$('main').innerHTML='<div class="config-err"><h3>Configuration Error</h3>'+html+'</div>';}
+function iconFor(t,sev){if(t==='exchange_request'||t==='exchange_accepted'||t==='exchange_live')return '<div class="icon exchange">\u21C4</div>';if(t==='watchdog_alert')return '<div class="icon '+(sev==='high'?'watchdog-high':'watchdog')+'">\u26A1</div>';if(t==='payment_receipt')return '<div class="icon payment">\u00A4</div>';return '<div class="icon system">\u2139</div>';}
+async function init(){
+if(SUPABASE_ANON_KEY==='REPLACE_WITH_YOUR_ANON_KEY'){showErr('<p>Supabase anon key not set. Configure <code>window.SUPABASE_ANON_KEY</code>.</p>');return;}
+sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+const sess=await sb.auth.getSession();
+if(!sess.data.session){window.location.href='/login.html?next=/notifications.html';return;}
+me=sess.data.session.user;
+render();await load();
+}
+function render(){
+$('main').innerHTML='<div class="header"><h1>Notifications</h1><div class="actions"><button class="btn btn-outline" onclick="markAllRead()">Mark all read</button></div></div>'+
+'<div class="toolbar"><select id="fType"><option value="">All types</option><option value="exchange_request">Exchange Request</option><option value="exchange_accepted">Exchange Accepted</option><option value="exchange_live">Exchange Live</option><option value="watchdog_alert">Watchdog Alert</option><option value="payment_receipt">Payment Receipt</option><option value="system">System</option></select><select id="fStat"><option value="">All</option><option value="unread">Unread only</option><option value="read">Read only</option></select></div>'+
+'<div id="list" class="list"><div class="empty">Loading...</div></div>';
+['fType','fStat'].forEach(id=>$(id).addEventListener('change',applyFilters));
+}
+async function load(){
+const {data,error}=await sb.from('notifications').select('*').eq('user_id',me.id).order('created_at',{ascending:false}).limit(200);
+if(error){
+if(error.message&&(error.message.indexOf('does not exist')>=0||error.code==='42P01')){
+$('list').innerHTML='<div class="missing-tbl"><strong>Notifications table not yet created.</strong> Run <code>sql/notifications-schema.sql</code> in your Supabase SQL Editor to enable notifications.</div><div class="empty"><h3>Notifications inbox</h3><p>Once the migration runs, exchange requests, watchdog alerts and payment receipts will appear here.</p></div>';return;
+}
+$('list').innerHTML='<div class="empty"><h3>Error</h3><p>'+error.message+'</p></div>';return;
+}
+notifs=data||[];applyFilters();
+}
+function applyFilters(){
+const tp=$('fType').value,st=$('fStat').value;
+filtered=notifs.filter(n=>(!tp||n.type===tp)&&(st===''||(st==='unread'&&!n.read_at)||(st==='read'&&!!n.read_at)));
+renderList();
+}
+function renderList(){
+if(filtered.length===0){$('list').innerHTML='<div class="empty"><h3>You\'re all caught up</h3><p>No notifications match your filters. <a href="/dashboard.html">Back to dashboard \u2192</a></p></div>';return;}
+$('list').innerHTML=filtered.map(function(n){
+var meta=n.metadata||{};var sev=meta.severity||'low';
+var icon=iconFor(n.type,sev);
+var date=new Date(n.created_at).toLocaleString();
+var action=n.action_url?'<a href="'+n.action_url+'">View \u2192</a>':'';
+var cls=n.read_at?'item read':'item unread';
+return '<div class="'+cls+'" onclick="markRead(\''+n.id+'\')">'+icon+'<div class="body"><div class="title">'+(n.title||'\u2014')+'</div><p>'+(n.body||'')+'</p><div class="meta"><span>'+date+'</span>'+action+'</div></div>'+(n.read_at?'':'<div class="dot"></div>')+'</div>';
+}).join('');
+}
+async function markRead(id){
+const n=notifs.find(x=>x.id===id);if(!n||n.read_at)return;
+await sb.from('notifications').update({read_at:new Date().toISOString()}).eq('id',id);
+await load();
+}
+async function markAllRead(){
+if(!confirm('Mark all notifications as read?'))return;
+await sb.from('notifications').update({read_at:new Date().toISOString()}).eq('user_id',me.id).is('read_at',null);
+await load();
+}
+init();
+</script>
+</body></html>
