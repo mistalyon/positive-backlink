@@ -16,6 +16,7 @@ export default async function handler(req, res) {
   const wantsJson = (req.headers.accept || '').includes('application/json') || req.method === 'POST';
   if (wantsJson) return res.status(200).json({ subject, html, template });
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.setHeader('X-Email-Subject', subject);
+  // X-Email-Subject header: encode non-ASCII as RFC 2047 base64 to avoid header throws
+  try { res.setHeader('X-Email-Subject', /[^\x00-\x7F]/.test(subject) ? '=?UTF-8?B?' + Buffer.from(subject, 'utf8').toString('base64') + '?=' : subject); } catch (e) {}
   return res.status(200).send(html);
 }

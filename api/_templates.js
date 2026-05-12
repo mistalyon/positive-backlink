@@ -89,7 +89,7 @@ export function renderExchangeRequest(d) {
     + p(`Review the proposal and accept or decline from your dashboard.`)
     + button('Review request', `${BRAND.url}/dashboard.html?exchange=${exchangeId}`)
     + muted(`If you do not act within 7 days, the request expires automatically.`);
-  return { subject: `New exchange request: ${fromSite} ${'\u2194'} ${toSite}`, html: shell('New exchange request', body, `${requesterName} wants to link to ${toSite} from ${fromSite}.`) };
+  return { subject: `New exchange request: ${fromSite} <-> ${toSite}`, html: shell('New exchange request', body, `${requesterName} wants to link to ${toSite} from ${fromSite}.`) };
 }
 export function renderWatchdogAlert(d) {
   const severity = (d.severity || 'medium').toLowerCase();
