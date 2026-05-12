@@ -89,7 +89,7 @@ tr:last-child td{border-bottom:none}
 .ledger-spend,.ledger-penalty{background:#2a0a0a;color:#ff5555}
 .ledger-admin_adjust{background:#0d1a2a;color:#88bbff}
 @media (max-width:640px){.container{padding:20px 14px}.tab{padding:10px 14px;font-size:13px}}
-</style>
+.ex-row{display:flex;justify-content:space-between;align-items:center;background:#0f0f0f;border:1px solid #222;border-radius:8px;padding:14px;margin-bottom:8px}.ex-main{flex:1}.ex-dom{font-family:JetBrains Mono,monospace;color:#3ECF8E;font-size:14px;margin-bottom:4px}.ex-meta{font-size:12px;color:#888}.ex-right{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}.ex-actions{display:flex;gap:6px;width:100%;justify-content:flex-end;margin-top:6px}.btn-sm{padding:5px 10px;border-radius:5px;border:none;font-size:11px;font-weight:600;cursor:pointer}.btn-ok{background:#3ECF8E;color:#000}.btn-no{background:#2a0a0a;color:#f87171;border:1px solid #5a1a1a}.btn-ok:hover{background:#33b577}.btn-no:hover{background:#3a1010}.status-pending{background:#3a2a0a;color:#f59e0b;border-color:#5a4010}.status-matched{background:#0d2818;color:#3ECF8E;border-color:#1a3a26}.status-live{background:#0a2a4a;color:#60a5fa;border-color:#1a3a5a}.status-removed{background:#2a0a0a;color:#f87171;border-color:#5a1a1a}.status-disputed{background:#4a0a2a;color:#f472b6;border-color:#5a1a3a}</style>
 </head>
 <body>
 <nav><div class="nav-inner">
@@ -101,7 +101,7 @@ tr:last-child td{border-bottom:none}
 <div class="profile-dropdown" id="profileDropdown">
 <a href="#" data-tab="settings">Account settings</a>
 <a href="/blog/">Blog</a>
-<a href="/tools/">Tools</a>
+<a href="/sites/browse.html">Browse Sites</a><a href="/tools/">Tools</a>
 <button id="signOutBtn">Sign out</button>
 </div>
 </div>
@@ -364,24 +364,33 @@ tr:last-child td{border-bottom:none}
 
   // ===== EXCHANGES =====
   async function loadExchanges(){
-    const list=document.getElementById('exchangesList');
-    const {data,error}=await sb.from('exchanges').select('*').or('source_user.eq.'+CURRENT_USER.id+',target_user.eq.'+CURRENT_USER.id+',middle_user.eq.'+CURRENT_USER.id).order('created_at',{ascending:false});
-    if (error){ list.innerHTML='<div class="empty">Error: '+error.message+'</div>'; return; }
-    const ex=data||[];
-    document.getElementById('statLive').textContent=ex.filter(e=>e.status==='live').length;
-    document.getElementById('statExPending').textContent=ex.filter(e=>e.status==='pending'||e.status==='matched').length;
-    document.getElementById('statAllEx').textContent=ex.length;
-    if (!ex.length){ list.innerHTML='<div class="empty"><div class="empty-icon">🔗</div><div>No exchanges yet. Browse other verified sites to start your first exchange.</div></div>'; return; }
-    let html='<table><thead><tr><th>Source → Target</th><th>Anchor</th><th>Credits</th><th>Status</th><th>Created</th></tr></thead><tbody>';
-    for (const e of ex){
-      html+='<tr><td>'+escapeHtml(e.source_domain||'—')+' → '+escapeHtml(e.target_domain||'—')+'</td><td>'+escapeHtml(e.anchor||'—')+'</td><td>'+(e.credits||0)+'</td><td><span class="pill pill-'+e.status+'">'+e.status+'</span></td><td>'+new Date(e.created_at).toLocaleDateString()+'</td></tr>';
+  const {data:ex,error}=await sb.from('exchanges').select('*').or('source_user.eq.'+CURRENT_USER.id+',target_user.eq.'+CURRENT_USER.id+',middle_user.eq.'+CURRENT_USER.id+').order('created_at',{ascending:false}).limit(100);
+  const wrap=document.getElementById('exList');
+  if(error){wrap.innerHTML='<div class="empty">Error: '+error.message+'</div>';return;}
+  if(!ex||ex.length===0){wrap.innerHTML='<div class="empty"><h3>No exchanges yet</h3><p>Browse verified sites and send your first exchange request.</p><a href="/sites/browse.html" class="btn-primary" style="display:inline-block;margin-top:12px;padding:10px 18px;border-radius:6px;text-decoration:none;background:#3ECF8E;color:#000;font-weight:600">Browse Sites</a></div>';return;}
+  wrap.innerHTML=ex.map(function(e){
+    var role=e.source_user===CURRENT_USER.id?'outgoing':(e.target_user===CURRENT_USER.id?'incoming':'middle');
+    var pill='<span class="pill status-'+e.status+'">'+e.status+'</span>';
+    var roleP='<span class="pill">'+role+'</span>';
+    var actions='';
+    if(role==='incoming' && e.status==='pending'){
+      actions='<button class="btn-sm btn-ok" onclick="exAction(\''+e.id+'\',\'matched\')">Accept</button> <button class="btn-sm btn-no" onclick="exAction(\''+e.id+'\',\'removed\')">Decline</button>';
+    } else if(role==='outgoing' && e.status==='pending'){
+      actions='<button class="btn-sm btn-no" onclick="exAction(\''+e.id+'\',\'removed\')">Cancel</button>';
+    } else if(e.status==='matched'){
+      actions='<button class="btn-sm btn-ok" onclick="exAction(\''+e.id+'\',\'live\')">Mark Live</button>';
     }
-    html+='</tbody></table>';
-    list.innerHTML=html;
-  }
+    return '<div class="ex-row"><div class="ex-main"><div class="ex-dom">'+e.source_domain+' \u2192 '+e.target_domain+'</div><div class="ex-meta">Anchor: <em>'+(e.anchor||'\u2014')+'</em> \u00B7 '+(e.credits||0)+' credits \u00B7 '+new Date(e.created_at).toLocaleDateString()+'</div></div><div class="ex-right">'+roleP+pill+'<div class="ex-actions">'+actions+'</div></div></div>';
+  }).join('');
+}
 
-  // ===== LEDGER =====
-  async function loadLedger(){
+async function exAction(id,newStatus){
+  const {error}=await sb.from('exchanges').update({status:newStatus}).eq('id',id);
+  if(error){alert('Error: '+error.message);return;}
+  await loadExchanges();
+}
+
+async function loadLedger(){
     const list=document.getElementById('ledgerList');
     const {data,error}=await sb.from('credits_ledger').select('*').eq('user_id',CURRENT_USER.id).order('created_at',{ascending:false}).limit(50);
     if (error){ list.innerHTML='<div class="empty">Error: '+error.message+'</div>'; return; }
