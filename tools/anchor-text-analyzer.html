@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Anchor Text Analyzer - Audit Your Backlink Profile | PositiveBacklink</title>
+<meta name="description" content="Paste your anchor text list and instantly see distribution across branded, naked, generic, partial, and exact-match categories. Free, no signup, runs in your browser.">
+<link rel="canonical" href="https://www.positivebacklink.com/tools/anchor-text-analyzer.html">
+<meta name="google-site-verification" content="0bm_X9ojXIi_-sV7Ov0on_H-WS89MnzovlsSPtoWzO4">
+<meta name="msvalidate.01" content="5627D94178E561857861AE89E474F98A">
+<meta property="og:title" content="Free Anchor Text Analyzer - Audit Your Backlink Profile | PositiveBacklink">
+<meta property="og:description" content="Paste your anchor text list and instantly see distribution across branded, naked, generic, partial, and exact-match categories. Free, no signup, runs in your browser.">
+<meta property="og:url" content="https://www.positivebacklink.com/tools/anchor-text-analyzer.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Anchor Text Analyzer","url":"https://www.positivebacklink.com/tools/anchor-text-analyzer.html","description":"Paste your anchor text list and instantly see distribution across branded, naked, generic, partial, and exact-match categories. Free, no signup, runs in your browser.","applicationCategory":"SEO","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1c1c1c;background:#fff;line-height:1.7}
+nav{position:sticky;top:0;background:#fff;border-bottom:1px solid #eee;padding:16px 24px;z-index:100;display:flex;justify-content:space-between;align-items:center}
+nav a{color:#1c1c1c;text-decoration:none;margin-right:20px;font-size:14px}
+nav .logo{font-weight:700;color:#3ECF8E;font-size:18px}
+.container{max-width:780px;margin:0 auto;padding:48px 24px}
+.breadcrumbs{font-size:13px;color:#666;margin-bottom:24px}
+.breadcrumbs a{color:#3ECF8E;text-decoration:none}
+h1{font-size:2.4rem;margin-bottom:16px;line-height:1.2}
+h2{font-size:1.6rem;margin:40px 0 16px;color:#1c1c1c}
+h3{font-size:1.25rem;margin:28px 0 12px}
+p,li{margin-bottom:16px;font-size:1.05rem}
+ul,ol{margin-left:24px;margin-bottom:20px}
+.meta{color:#666;font-size:14px;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid #eee}
+.cta{background:#3ECF8E;color:#fff;padding:16px 32px;text-decoration:none;border-radius:8px;display:inline-block;font-weight:600;margin-top:24px}
+.cta:hover{background:#2eb978}
+.callout{background:#f0fdf6;border-left:4px solid #3ECF8E;padding:20px;margin:24px 0;border-radius:4px}
+table{width:100%;border-collapse:collapse;margin:24px 0}
+th,td{border:1px solid #e0e0e0;padding:12px;text-align:left;font-size:.95rem}
+th{background:#f5f5f5;font-weight:600}
+code{background:#f5f5f5;padding:2px 6px;border-radius:4px;font-family:Menlo,monospace;font-size:.9em}
+pre{background:#1c1c1c;color:#3ECF8E;padding:20px;border-radius:8px;overflow-x:auto;margin:20px 0;font-size:.9rem}
+footer{border-top:1px solid #eee;padding:32px 24px;text-align:center;color:#666;font-size:14px;margin-top:80px}
+footer a{color:#3ECF8E;text-decoration:none;margin:0 12px}
+.tool-ui{background:#f8f8f8;padding:24px;border-radius:8px;margin:24px 0}
+.tool-ui input,.tool-ui textarea,.tool-ui select{width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;font-size:1rem;margin-bottom:12px;font-family:inherit}
+.tool-ui textarea{min-height:120px;resize:vertical}
+.tool-ui button{background:#3ECF8E;color:#fff;border:none;padding:12px 24px;border-radius:6px;font-weight:600;cursor:pointer;font-size:1rem}
+.result{background:#fff;padding:20px;border-radius:6px;margin-top:16px;border:1px solid #e0e0e0;min-height:60px;white-space:pre-wrap;font-family:Menlo,monospace;font-size:.9rem}
+@media(max-width:640px){h1{font-size:1.8rem}.container{padding:32px 16px}nav{padding:12px 16px}}
+</style>
+</head>
+<body>
+<nav><a href="/" class="logo">PositiveBacklink</a><div><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/learn/">Learn</a><a href="/pricing.html">Pricing</a></div></nav>
+<div class="container">
+<div class="breadcrumbs"><a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; Anchor Text Analyzer</div>
+<h1>Anchor Text Analyzer</h1>
+<p>Paste one anchor text per line. We classify each into 5 categories and show you the distribution. Everything runs in your browser; nothing is sent to our servers.</p>
+<div class="tool-ui">
+<label for="brand"><strong>Your brand name</strong> (for branded-anchor detection):</label>
+<input id="brand" type="text" placeholder="e.g. PositiveBacklink" value="">
+<label for="domain"><strong>Your domain</strong> (for naked-URL detection):</label>
+<input id="domain" type="text" placeholder="e.g. positivebacklink.com" value="">
+<label for="anchors"><strong>Anchor text list</strong> (one per line):</label>
+<textarea id="anchors" placeholder="PositiveBacklink
+click here
+https://positivebacklink.com
+backlink exchange platform
+buy backlinks"></textarea>
+<button onclick="analyze()">Analyze Distribution</button>
+<div id="result" class="result">Results will appear here.</div>
+</div>
+<h2>How the classifier works</h2>
+<ul>
+<li><strong>Branded:</strong> Anchor contains your brand name (case insensitive)</li>
+<li><strong>Naked URL:</strong> Anchor contains your domain or starts with http</li>
+<li><strong>Generic:</strong> Anchor matches a list of common generic phrases (click here, read more, this site, etc.)</li>
+<li><strong>Exact match:</strong> Anchor is a money keyword pattern (2-4 words, no brand, no generic)</li>
+<li><strong>Partial match:</strong> Everything else</li>
+</ul>
+<h2>Safe distribution targets</h2>
+<p>Aim for 35-50% branded, 15-25% naked, 10-20% generic, 10-15% partial, and 1-5% exact. See our <a href="/blog/anchor-text-distribution-2026.html">anchor distribution playbook</a> for the full methodology.</p>
+<script>
+function classify(a, brand, domain){
+  const al = a.toLowerCase().trim();
+  if(!al) return null;
+  const generics = ['click here','read more','this','here','this site','this page','website','source','link','more info','more','learn more'];
+  if(brand && al.includes(brand.toLowerCase())) return 'Branded';
+  if(al.startsWith('http') || (domain && al.includes(domain.toLowerCase()))) return 'Naked URL';
+  if(generics.includes(al)) return 'Generic';
+  const wc = al.split(/\s+/).length;
+  if(wc>=2 && wc<=4) return 'Exact match';
+  return 'Partial match';
+}
+function analyze(){
+  const brand = document.getElementById('brand').value;
+  const domain = document.getElementById('domain').value;
+  const anchors = document.getElementById('anchors').value.split('\n').filter(x=>x.trim());
+  if(!anchors.length){document.getElementById('result').textContent='Paste at least one anchor.';return;}
+  const buckets = {'Branded':0,'Naked URL':0,'Generic':0,'Exact match':0,'Partial match':0};
+  anchors.forEach(a=>{const c = classify(a,brand,domain); if(c) buckets[c]++;});
+  const total = anchors.length;
+  const targets = {'Branded':'35-50%','Naked URL':'15-25%','Generic':'10-20%','Exact match':'1-5%','Partial match':'10-15%'};
+  let out = 'Total anchors: '+total+'\n\n';
+  Object.keys(buckets).forEach(k=>{
+    const pct = ((buckets[k]/total)*100).toFixed(1);
+    out += k.padEnd(15)+': '+String(buckets[k]).padStart(3)+' ('+pct+'%) target '+targets[k]+'\n';
+  });
+  document.getElementById('result').textContent = out;
+}
+</script>
+</div>
+<footer>
+<p>&copy; 2026 PositiveBacklink. All rights reserved.</p>
+<p style="margin-top:8px"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/learn/">Learn</a><a href="/pricing.html">Pricing</a><a href="/contact.html">Contact</a></p>
+</footer>
+</body></html>
