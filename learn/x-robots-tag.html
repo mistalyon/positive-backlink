@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>X-Robots-Tag - SEO Glossary | PositiveBacklink</title>
+<meta name="description" content="X-Robots-Tag is an HTTP response header that delivers robots directives (noindex, nofollow, etc.) for any file type including PDFs and images.">
+<meta name="keywords" content="x-robots-tag, http robots header, noindex header, pdf noindex, robots directive http">
+<meta name="robots" content="index, follow">
+<meta name="author" content="PositiveBacklink">
+<link rel="canonical" href="https://www.positivebacklink.com/learn/x-robots-tag.html">
+<meta name="google-site-verification" content="0bm_X9ojXIi_-sV7Ov0on_H-WS89MnzovlsSPtoWzO4">
+<meta name="msvalidate.01" content="5627D94178E561857861AE89E474F98A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="X-Robots-Tag - SEO Glossary">
+<meta property="og:description" content="X-Robots-Tag is an HTTP response header that delivers robots directives (noindex, nofollow, etc.) for any file type including PDFs and images.">
+<meta property="og:url" content="https://www.positivebacklink.com/learn/x-robots-tag.html">
+<meta property="og:image" content="https://www.positivebacklink.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  "name": "X-Robots-Tag",
+  "description": "X-Robots-Tag is an HTTP response header that delivers robots directives (noindex, nofollow, etc.) for any file type including PDFs and images.",
+  "inDefinedTermSet": {"@type": "DefinedTermSet", "name": "PositiveBacklink SEO Glossary", "url": "https://www.positivebacklink.com/learn/"},
+  "url": "https://www.positivebacklink.com/learn/x-robots-tag.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Can I use X-Robots-Tag for HTML pages?","acceptedAnswer":{"@type":"Answer","text":"Yes. For HTML, X-Robots-Tag and meta robots are functionally identical. Most teams pick one convention per project. X-Robots-Tag is preferred when you want to control directives at the CDN or reverse proxy layer without touching templates."}},
+    {"@type":"Question","name":"Does Google honor X-Robots-Tag from a CDN?","acceptedAnswer":{"@type":"Answer","text":"Yes. As long as the directive is in the response Google receives, it does not matter whether the header originated at the origin server, CDN edge, or middleware layer."}},
+    {"@type":"Question","name":"What happens if X-Robots-Tag and meta robots conflict?","acceptedAnswer":{"@type":"Answer","text":"Google combines all directives from both sources and applies the most restrictive interpretation. So if meta says 'index' and X-Robots-Tag says 'noindex', the page will not be indexed."}},
+    {"@type":"Question","name":"Is X-Robots-Tag case-sensitive?","acceptedAnswer":{"@type":"Answer","text":"The header name is case-insensitive per HTTP spec. The directive values should be lowercase as a convention, but Google parses them case-insensitively as well."}},
+    {"@type":"Question","name":"Can I use X-Robots-Tag to remove a URL from Google's index?","acceptedAnswer":{"@type":"Answer","text":"Yes, but only after Google recrawls the URL and sees the header. For faster removal, also use the Removals tool in Search Console. X-Robots-Tag is the permanent fix; the Removals tool is a 6-month emergency override."}}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://www.positivebacklink.com/"},
+    {"@type":"ListItem","position":2,"name":"Learn","item":"https://www.positivebacklink.com/learn/"},
+    {"@type":"ListItem","position":3,"name":"X-Robots-Tag","item":"https://www.positivebacklink.com/learn/x-robots-tag.html"}
+  ]
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0a0a0a;color:#e5e5e5;line-height:1.7}
+nav{background:#111;border-bottom:1px solid #222;padding:1rem 2rem;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.logo{color:#3ECF8E;font-weight:700;font-size:1.25rem;text-decoration:none;font-family:"JetBrains Mono",monospace}
+.nav-links a{color:#aaa;text-decoration:none;margin-left:1.5rem;font-size:0.9rem}
+.nav-links a:hover{color:#3ECF8E}
+article{max-width:780px;margin:0 auto;padding:3rem 2rem 5rem}
+.breadcrumb{font-size:0.85rem;color:#666;margin-bottom:1.5rem}
+.breadcrumb a{color:#3ECF8E;text-decoration:none}
+.tag{display:inline-block;background:#1a1a1a;color:#3ECF8E;padding:0.25rem 0.7rem;border-radius:4px;font-size:0.75rem;font-family:"JetBrains Mono",monospace;border:1px solid #2a2a2a;margin-bottom:1rem}
+h1{font-size:2.6rem;line-height:1.2;margin-bottom:1rem;background:linear-gradient(135deg,#3ECF8E,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.lede{font-size:1.2rem;color:#bbb;margin-bottom:2.5rem;line-height:1.6}
+h2{font-size:1.55rem;margin:2.5rem 0 1rem;color:#3ECF8E;padding-bottom:0.5rem;border-bottom:1px solid #222}
+h3{font-size:1.15rem;margin:1.75rem 0 0.75rem;color:#e5e5e5}
+p{color:#cfcfcf;margin-bottom:1.25rem}
+a{color:#3ECF8E;text-decoration:none;border-bottom:1px solid rgba(62,207,142,0.3)}
+a:hover{border-bottom-color:#3ECF8E}
+ul,ol{margin:0 0 1.5rem 1.5rem;color:#cfcfcf}
+li{margin-bottom:0.5rem}
+code{background:#1a1a1a;padding:0.15rem 0.45rem;border-radius:3px;font-family:"JetBrains Mono",monospace;font-size:0.88em;color:#3ECF8E;border:1px solid #222}
+pre{background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:1.25rem;overflow-x:auto;margin:1.5rem 0;line-height:1.6}
+pre code{background:none;border:none;padding:0;color:#cfcfcf;font-size:0.85rem}
+.callout{background:rgba(62,207,142,0.05);border-left:3px solid #3ECF8E;padding:1rem 1.25rem;margin:1.5rem 0;border-radius:0 6px 6px 0;color:#bbb}
+.callout-warn{background:rgba(239,68,68,0.05);border-left-color:#ef4444}
+table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+th{background:#1a1a1a;color:#3ECF8E;text-align:left;padding:0.85rem;font-family:"JetBrains Mono",monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid #2a2a2a}
+td{padding:0.85rem;border-bottom:1px solid #1a1a1a;color:#ccc;vertical-align:top}
+tr:hover td{background:#0f0f0f}
+.faq{margin:1rem 0;padding:1.25rem;background:#0f0f0f;border-radius:8px;border-left:3px solid #3ECF8E}
+.faq h4{color:#3ECF8E;margin-bottom:0.5rem;font-size:1rem}
+footer{background:#0a0a0a;border-top:1px solid #222;padding:2.5rem 2rem;text-align:center;color:#666;font-size:0.85rem}
+footer a{margin:0 0.5rem;border-bottom:none}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a href="/" class="logo">PositiveBacklink</a><div class="nav-links"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/learn/">Learn</a><a href="/pricing.html">Pricing</a></div></div></nav>
+<article>
+<div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/learn/">Learn</a> &rsaquo; X-Robots-Tag</div>
+<span class="tag">SEO Glossary</span>
+<h1>X-Robots-Tag</h1>
+<p class="lede">X-Robots-Tag is the HTTP-header equivalent of the robots meta tag. It works for any file type Google crawls &mdash; PDFs, images, videos, JSON APIs &mdash; not just HTML, making it the only way to deindex non-HTML resources.</p>
+<h2>What is X-Robots-Tag?</h2>
+<p>X-Robots-Tag is an HTTP response header that delivers the same indexing directives as the <code>&lt;meta name="robots"&gt;</code> tag, but at the response level rather than in HTML. Because it travels in headers, it can be applied to <strong>any file type</strong>: PDFs, images, videos, JSON APIs, plain text &mdash; not just HTML.</p>
+<p>It was introduced by Google in 2007 to solve a specific problem: how do you tell search engines not to index a PDF or image, when those files have no place to embed a meta tag? The answer is to add the directive to the HTTP response itself.</p>
+<h2>Syntax</h2>
+<pre><code>X-Robots-Tag: noindex, nofollow</code></pre>
+<p>You can also target specific user-agents:</p>
+<pre><code>X-Robots-Tag: googlebot: noindex
+X-Robots-Tag: bingbot: noindex, nofollow
+X-Robots-Tag: noindex, noarchive</code></pre>
+<p>When multiple X-Robots-Tag headers are sent, all directives combine. The most restrictive interpretation wins.</p>
+<h2>Supported Directives</h2>
+<table>
+<thead><tr><th>Directive</th><th>Effect</th><th>Use Case</th></tr></thead>
+<tbody>
+<tr><td><code>noindex</code></td><td>Page will not appear in search results</td><td>Thin tag archives, internal search results</td></tr>
+<tr><td><code>nofollow</code></td><td>Links on the page do not pass equity</td><td>User-generated content pages</td></tr>
+<tr><td><code>none</code></td><td>Shorthand for noindex, nofollow</td><td>Pages to fully exclude from SEO</td></tr>
+<tr><td><code>noarchive</code></td><td>No cached copy shown in SERPs</td><td>Time-sensitive pricing pages</td></tr>
+<tr><td><code>nosnippet</code></td><td>No description shown in SERPs</td><td>Premium content previews</td></tr>
+<tr><td><code>max-snippet:N</code></td><td>Cap description length at N chars</td><td>Brand-controlled previews</td></tr>
+<tr><td><code>noimageindex</code></td><td>Images on page excluded from Image Search</td><td>Stock photo-heavy pages</td></tr>
+<tr><td><code>unavailable_after: [date]</code></td><td>Drop from index after date</td><td>Event landing pages, expiring promos</td></tr>
+</tbody>
+</table>
+<h2>How to Implement</h2>
+<h3>Nginx</h3>
+<pre><code>location ~* \.(pdf|docx|xlsx)$ {
+    add_header X-Robots-Tag "noindex, nofollow";
+}</code></pre>
+<h3>Apache (.htaccess)</h3>
+<pre><code>&lt;FilesMatch "\.(pdf|docx|xlsx)$"&gt;
+  Header set X-Robots-Tag "noindex, nofollow"
+&lt;/FilesMatch&gt;</code></pre>
+<h3>Node.js / Express</h3>
+<pre><code>app.get('/private-pdf', (req, res) =&gt; {
+  res.set('X-Robots-Tag', 'noindex, nofollow');
+  res.sendFile('file.pdf');
+});</code></pre>
+<h2>X-Robots-Tag vs Meta Robots vs Robots.txt</h2>
+<table>
+<thead><tr><th>Method</th><th>Works For</th><th>Prevents Crawl?</th><th>Prevents Index?</th></tr></thead>
+<tbody>
+<tr><td>Robots.txt Disallow</td><td>Any URL</td><td>Yes</td><td>No (can still appear)</td></tr>
+<tr><td><code>&lt;meta robots&gt;</code></td><td>HTML only</td><td>No</td><td>Yes</td></tr>
+<tr><td>X-Robots-Tag</td><td>Any file type</td><td>No</td><td>Yes</td></tr>
+</tbody>
+</table>
+<div class="callout-warn callout"><strong>Critical gotcha:</strong> if a URL is blocked by robots.txt, Googlebot never fetches it, which means it never sees the X-Robots-Tag header. Blocking + X-Robots-Tag noindex on the same URL is contradictory &mdash; the noindex is unreachable. Use one or the other, not both.</div>
+<h2>Frequently Asked Questions</h2>
+<div class="faq"><h4>Can I use X-Robots-Tag for HTML pages?</h4><p>Yes. For HTML, X-Robots-Tag and meta robots are functionally identical. Most teams pick one convention per project. X-Robots-Tag is preferred when you want to control directives at the CDN or reverse proxy layer without touching templates.</p></div>
+<div class="faq"><h4>Does Google honor X-Robots-Tag from a CDN?</h4><p>Yes. As long as the directive is in the response Google receives, it does not matter whether the header originated at the origin server, CDN edge, or middleware layer.</p></div>
+<div class="faq"><h4>What happens if X-Robots-Tag and meta robots conflict?</h4><p>Google combines all directives from both sources and applies the most restrictive interpretation. So if meta says 'index' and X-Robots-Tag says 'noindex', the page will not be indexed.</p></div>
+<div class="faq"><h4>Is X-Robots-Tag case-sensitive?</h4><p>The header name is case-insensitive per HTTP spec. The directive values should be lowercase as a convention, but Google parses them case-insensitively as well.</p></div>
+<div class="faq"><h4>Can I use X-Robots-Tag to remove a URL from Google's index?</h4><p>Yes, but only after Google recrawls the URL and sees the header. For faster removal, also use the Removals tool in Search Console. X-Robots-Tag is the permanent fix; the Removals tool is a 6-month emergency override.</p></div>
+<h2>Related Terms &amp; Resources</h2>
+<ul>
+<li><a href="/blog/robots-txt-best-practices-11-mistakes.html">Robots.txt Best Practices</a> &mdash; why robots.txt cannot deindex</li>
+<li><a href="/tools/robots-txt-tester.html">Robots.txt Tester</a> &mdash; verify your crawl rules</li>
+<li><a href="/tools/meta-tag-generator.html">Meta Tag Generator</a> &mdash; build robots meta tags with preview</li>
+<li><a href="/learn/crawl-budget.html">Crawl Budget glossary</a> &mdash; how indexing rules affect crawl</li>
+</ul>
+<p style="margin-top:3rem;font-size:0.85rem;color:#666;border-top:1px solid #222;padding-top:1.5rem">Part of the <a href="/learn/">PositiveBacklink SEO Glossary</a>. Updated May 2026.</p>
+</article>
+<footer><a href="/about.html">About</a> &middot; <a href="/pricing.html">Pricing</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/tools/">Tools</a> &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a><br><br>&copy; 2026 PositiveBacklink. All rights reserved.</footer>
+</body>
+</html>
