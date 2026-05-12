@@ -1,27 +1,271 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex,nofollow"><title>Admin Panel - PositiveBacklink</title><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#3ECF8E"><link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
-<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#fff;min-height:100vh}nav{background:#0a0a0a;border-bottom:1px solid rgba(255,170,0,0.3);padding:1rem 2rem;position:sticky;top:0;z-index:100}.nav-inner{max-width:1500px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}.logo{font-size:1.4rem;font-weight:700;color:#ffaa00;text-decoration:none}.logo:after{content:' ADMIN';font-size:0.65rem;background:rgba(255,170,0,0.2);padding:0.2rem 0.4rem;border-radius:3px;margin-left:0.5rem;letter-spacing:1px}.user-menu{display:flex;align-items:center;gap:1rem;color:#aaa;font-size:0.9rem}.logout-btn{background:transparent;border:1px solid rgba(255,170,0,0.3);color:#ffaa00;padding:0.4rem 0.9rem;border-radius:4px;cursor:pointer;font-size:0.85rem}main{max-width:1500px;margin:0 auto;padding:2rem}.page-header{margin-bottom:2rem}.page-header h1{font-size:1.8rem;margin-bottom:0.25rem}.page-header p{color:#888;font-size:0.95rem}.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:2rem}.stat-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,170,0,0.15);padding:1.25rem;border-radius:8px}.stat-card .label{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#ffaa00;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.5rem}.stat-card .value{font-size:1.8rem;font-weight:700;font-family:'JetBrains Mono',monospace}.tab-nav{display:flex;gap:0.5rem;margin-bottom:1.5rem;border-bottom:1px solid rgba(255,170,0,0.15);overflow-x:auto}.tab{background:transparent;border:none;color:#888;padding:0.6rem 1rem;cursor:pointer;font-size:0.9rem;border-bottom:2px solid transparent;white-space:nowrap}.tab.active{color:#ffaa00;border-bottom-color:#ffaa00}.tab-content{display:none}.tab-content.active{display:block}.panel{background:rgba(255,255,255,0.02);border:1px solid rgba(255,170,0,0.12);border-radius:8px;padding:1.5rem}.panel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)}.panel-title{font-size:1rem;font-weight:600}.search-input{background:#0a0a0a;border:1px solid rgba(255,255,255,0.1);color:#fff;padding:0.5rem 0.75rem;border-radius:4px;font-size:0.85rem;width:240px}table{width:100%;border-collapse:collapse;font-size:0.85rem}th{text-align:left;padding:0.6rem;color:#ffaa00;font-family:'JetBrains Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid rgba(255,170,0,0.15)}td{padding:0.7rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.04);color:#ccc}.btn-warn{background:#ffaa00;color:#0a0a0a;padding:0.35rem 0.7rem;border:none;border-radius:3px;cursor:pointer;font-weight:600;font-size:0.75rem}.btn-danger{background:transparent;color:#ff5050;border:1px solid rgba(255,80,80,0.3);padding:0.35rem 0.7rem;border-radius:3px;cursor:pointer;font-size:0.75rem}.btn-ok{background:rgba(62,207,142,0.15);color:#3ECF8E;border:1px solid rgba(62,207,142,0.3);padding:0.35rem 0.7rem;border-radius:3px;cursor:pointer;font-size:0.75rem}.badge{display:inline-block;padding:0.2rem 0.55rem;border-radius:3px;font-size:0.7rem;font-family:'JetBrains Mono',monospace}.badge-ok{background:rgba(62,207,142,0.15);color:#3ECF8E}.badge-warn{background:rgba(255,170,0,0.15);color:#ffaa00}.badge-err{background:rgba(255,80,80,0.15);color:#ff5050}.badge-pending{background:rgba(160,160,160,0.15);color:#aaa}.empty-state{text-align:center;padding:2rem;color:#666}.form-row{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:0.75rem;align-items:end;background:rgba(255,170,0,0.05);padding:1rem;border-radius:6px;margin-bottom:1.5rem}.form-row label{display:block;font-size:0.7rem;color:#ffaa00;margin-bottom:0.25rem;font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase}.form-row input,.form-row select{background:#0a0a0a;border:1px solid rgba(255,255,255,0.1);color:#fff;padding:0.5rem;border-radius:4px;font-size:0.85rem;width:100%}.access-denied{text-align:center;padding:5rem 2rem}.access-denied h2{color:#ff5050;margin-bottom:1rem}</style></head><body>
-<nav><div class="nav-inner"><a href="/" class="logo">PositiveBacklink</a><div class="user-menu"><span id="user-email">Loading...</span><a href="/dashboard.html" style="color:#888;font-size:0.85rem;text-decoration:none">User Dashboard</a><button class="logout-btn" id="logout-btn">Sign Out</button></div></div></nav>
-<main id="app-content" style="display:none"><div class="page-header"><h1>Admin Panel</h1><p>Network-wide oversight: users, sites, exchanges, credits, watchdog incidents.</p></div>
-<div class="stats-row"><div class="stat-card"><div class="label">Total Users</div><div class="value" id="s-users">--</div></div><div class="stat-card"><div class="label">Verified Sites</div><div class="value" id="s-sites">--</div></div><div class="stat-card"><div class="label">Pending Reviews</div><div class="value" id="s-pending">--</div></div><div class="stat-card"><div class="label">Live Exchanges</div><div class="value" id="s-exch">--</div></div><div class="stat-card"><div class="label">Open Incidents</div><div class="value" id="s-incidents">--</div></div><div class="stat-card"><div class="label">Credits in Float</div><div class="value" id="s-credits">--</div></div></div>
-<div class="tab-nav"><button class="tab active" data-tab="users">Users</button><button class="tab" data-tab="approvals">Site Approvals</button><button class="tab" data-tab="exchanges">All Exchanges</button><button class="tab" data-tab="adjust">Credit Adjust</button><button class="tab" data-tab="incidents">Watchdog Queue</button><button class="tab" data-tab="matching">ABC Matching</button></div>
-<div class="tab-content active" id="tab-users"><div class="panel"><div class="panel-header"><div class="panel-title">All Users</div><input type="text" class="search-input" id="user-search" placeholder="Search email..."></div><table><thead><tr><th>Email</th><th>Joined</th><th>Sites</th><th>Credits</th><th>Status</th><th>Actions</th></tr></thead><tbody id="users-tbody"><tr><td colspan="6" class="empty-state">Loading...</td></tr></tbody></table></div></div>
-<div class="tab-content" id="tab-approvals"><div class="panel"><div class="panel-header"><div class="panel-title">Pending Site Approvals</div></div><table><thead><tr><th>Domain</th><th>Owner</th><th>DR</th><th>Niche</th><th>Submitted</th><th>Actions</th></tr></thead><tbody id="approvals-tbody"><tr><td colspan="6" class="empty-state">Loading...</td></tr></tbody></table></div></div>
-<div class="tab-content" id="tab-exchanges"><div class="panel"><div class="panel-header"><div class="panel-title">Network-wide Exchanges</div></div><table><thead><tr><th>Source</th><th>Target</th><th>Anchor</th><th>Credits</th><th>Status</th><th>Created</th></tr></thead><tbody id="adminexch-tbody"><tr><td colspan="6" class="empty-state">Loading...</td></tr></tbody></table></div></div>
-<div class="tab-content" id="tab-adjust"><div class="panel"><div class="panel-header"><div class="panel-title">Manual Credit Adjustment</div></div><div class="form-row"><div><label>User Email</label><input type="email" id="adj-email" placeholder="user@example.com"></div><div><label>Amount</label><input type="number" id="adj-amount" placeholder="+10 or -5"></div><div><label>Reason</label><input type="text" id="adj-reason" placeholder="Manual bonus / penalty"></div><button class="btn-warn" id="adj-submit">Apply</button></div><table><thead><tr><th>Date</th><th>User</th><th>Amount</th><th>Reason</th><th>Admin</th></tr></thead><tbody id="adjustments-tbody"><tr><td colspan="5" class="empty-state">Loading...</td></tr></tbody></table></div></div>
-<div class="tab-content" id="tab-incidents"><div class="panel"><div class="panel-header"><div class="panel-title">Watchdog Incident Queue</div></div><table><thead><tr><th>Detected</th><th>Site</th><th>Owner</th><th>Event</th><th>Severity</th><th>Auto-Action</th><th>Override</th></tr></thead><tbody id="incidents-tbody"><tr><td colspan="7" class="empty-state">Loading...</td></tr></tbody></table></div></div>
-<div class="tab-content" id="tab-matching"><div class="panel"><div class="panel-header"><div class="panel-title">ABC Triangular Matching Queue</div><button class="btn-warn" id="force-match">Force Re-Match</button></div><p style="color:#888;font-size:0.85rem;margin-bottom:1rem">Requests waiting for a 3rd-party site (B) to complete the A-B-C triangle.</p><table><thead><tr><th>Request</th><th>A (Recipient)</th><th>C (Source)</th><th>Niche</th><th>Waiting Since</th><th>Manual Match</th></tr></thead><tbody id="matching-tbody"><tr><td colspan="6" class="empty-state">Loading...</td></tr></tbody></table></div></div>
-</main>
-<div id="access-denied" class="access-denied" style="display:none"><h2>Access Denied</h2><p style="color:#888">This panel is restricted to administrators only.</p><a href="/dashboard.html" style="color:#3ECF8E">Return to your dashboard</a></div>
-<div id="auth-gate" class="access-denied" style="display:none"><h2 style="color:#fff">Sign in required</h2><p style="color:#888">Admin access requires authentication.</p><a href="/login.html" style="color:#3ECF8E">Sign In</a></div>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel - PositiveBacklink</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://www.positivebacklink.com/admin.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;min-height:100vh}
+.nav{background:#1a0a0a;border-bottom:2px solid #5a1a1a;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav .brand{color:#f59e0b;text-decoration:none;font-weight:700;font-family:JetBrains Mono,monospace;font-size:14px}
+.nav .links a{margin-left:18px;color:#aaa;text-decoration:none;font-size:13px}
+.nav .links a:hover{color:#f59e0b}
+.container{max-width:1400px;margin:0 auto;padding:24px}
+.header{margin-bottom:20px;display:flex;justify-content:space-between;align-items:center}
+.header h1{font-size:24px;color:#f59e0b}
+.header .badge{background:#2a0a0a;color:#f87171;border:1px solid #5a1a1a;padding:4px 10px;border-radius:12px;font-size:11px;font-family:JetBrains Mono,monospace}
+.tabs{display:flex;gap:4px;border-bottom:1px solid #222;margin-bottom:20px;overflow-x:auto}
+.tab{background:transparent;border:none;color:#888;padding:10px 16px;cursor:pointer;font-size:13px;font-family:JetBrains Mono,monospace;text-transform:uppercase;border-bottom:2px solid transparent;white-space:nowrap}
+.tab.active{color:#f59e0b;border-bottom-color:#f59e0b}
+.tab:hover{color:#fbbf24}
+.pane{display:none}
+.pane.active{display:block}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px}
+.stat{background:#111;border:1px solid #222;border-radius:10px;padding:14px}
+.stat-label{font-size:10px;color:#888;font-family:JetBrains Mono,monospace;text-transform:uppercase;margin-bottom:4px}
+.stat-value{font-size:22px;font-weight:700;color:#f59e0b}
+.toolbar{background:#111;border:1px solid #222;border-radius:10px;padding:12px;margin-bottom:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.toolbar input,.toolbar select{background:#0a0a0a;border:1px solid #333;color:#e0e0e0;padding:8px 10px;border-radius:6px;font-size:13px}
+.toolbar input{flex:1;min-width:180px}
+.toolbar input:focus,.toolbar select:focus{outline:none;border-color:#f59e0b}
+table{width:100%;background:#111;border:1px solid #222;border-radius:10px;border-collapse:separate;border-spacing:0;font-size:13px;overflow:hidden}
+th{background:#1a1a1a;color:#888;text-align:left;padding:10px;font-size:11px;font-family:JetBrains Mono,monospace;text-transform:uppercase;border-bottom:1px solid #222}
+td{padding:10px;border-bottom:1px solid #1a1a1a;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#161616}
+.email{color:#3ECF8E;font-family:JetBrains Mono,monospace;font-size:12px}
+.domain{color:#3ECF8E;font-family:JetBrains Mono,monospace;font-size:12px}
+.pill{padding:3px 8px;border-radius:10px;font-size:10px;font-family:JetBrains Mono,monospace;text-transform:uppercase;font-weight:600}
+.p-admin{background:#3a2a0a;color:#f59e0b}
+.p-banned{background:#2a0a0a;color:#f87171}
+.p-ok{background:#0a2a1a;color:#3ECF8E}
+.p-pending{background:#3a2a0a;color:#f59e0b}
+.p-verified{background:#0a2a1a;color:#3ECF8E}
+.p-rejected{background:#2a0a0a;color:#f87171}
+.p-suspended{background:#2a0a2a;color:#f472b6}
+.p-live{background:#0a2a4a;color:#60a5fa}
+.p-matched{background:#0d2818;color:#3ECF8E}
+.p-removed{background:#2a0a0a;color:#f87171}
+.p-disputed{background:#4a0a2a;color:#f472b6}
+.p-low{background:#0a2a1a;color:#3ECF8E}
+.p-medium{background:#3a2a0a;color:#f59e0b}
+.p-high{background:#2a0a0a;color:#f87171}
+.p-earn{background:#0a2a1a;color:#3ECF8E}
+.p-spend{background:#2a0a0a;color:#f87171}
+.p-purchase{background:#0a2a4a;color:#60a5fa}
+.p-bonus{background:#3a2a0a;color:#f59e0b}
+.p-penalty{background:#2a0a2a;color:#f472b6}
+.p-refund{background:#0d2818;color:#3ECF8E}
+.p-admin_adjust{background:#3a2a0a;color:#f59e0b}
+.btn-sm{padding:5px 10px;border-radius:5px;border:none;font-size:11px;font-weight:600;cursor:pointer;margin-right:4px}
+.btn-ok{background:#3ECF8E;color:#000}
+.btn-warn{background:#f59e0b;color:#000}
+.btn-no{background:#2a0a0a;color:#f87171;border:1px solid #5a1a1a}
+.btn-blue{background:#1a3a5a;color:#60a5fa;border:1px solid #2a5a8a}
+.btn-ok:hover{background:#33b577}
+.btn-warn:hover{background:#d97706}
+.btn-no:hover{background:#3a1010}
+.empty{padding:32px;text-align:center;color:#888}
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:100;justify-content:center;align-items:center;padding:20px}
+.modal-bg.show{display:flex}
+.modal{background:#111;border:1px solid #5a1a1a;border-radius:14px;padding:24px;max-width:480px;width:100%}
+.modal h2{margin-bottom:6px;color:#f59e0b;font-size:18px}
+.modal .sub{color:#888;font-size:12px;margin-bottom:16px}
+.modal .field{margin-bottom:14px}
+.modal label{display:block;font-size:11px;color:#888;font-family:JetBrains Mono,monospace;text-transform:uppercase;margin-bottom:5px}
+.modal input,.modal textarea,.modal select{width:100%;background:#0a0a0a;border:1px solid #333;color:#e0e0e0;padding:10px;border-radius:6px;font-size:13px}
+.modal textarea{min-height:60px;font-family:inherit;resize:vertical}
+.modal-actions{display:flex;gap:8px;margin-top:18px}
+.btn{padding:10px 16px;border-radius:6px;font-weight:600;cursor:pointer;border:none;font-size:13px;flex:1}
+.config-err,.access-err{background:#2a0a0a;border:1px solid #5a1a1a;color:#f87171;padding:20px;border-radius:12px;margin:40px auto;max-width:520px;text-align:center}
+.config-err code{background:#0a0a0a;padding:2px 6px;border-radius:4px;font-family:JetBrains Mono,monospace;font-size:11px;color:#f59e0b}
+.tbl-wrap{overflow-x:auto}
+</style>
+</head>
+<body>
+<nav class="nav">
+<a class="brand" href="/admin.html">\u26A0\uFE0F ADMIN PANEL</a>
+<div class="links"><a href="/dashboard.html">User Dashboard</a><a href="/">Home</a></div>
+</nav>
+<div id="main" class="container"></div>
+<div class="modal-bg" id="modal"><div class="modal" id="modalBody"></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const SB_URL="https://hsgxsxiwwkuplcedfhxq.supabase.co";const SB_KEY=window.SUPABASE_ANON_KEY||"REPLACE_WITH_YOUR_ANON_KEY";const sb=window.supabase?window.supabase.createClient(SB_URL,SB_KEY):null;
-function badge(s){const m={active:'badge-ok',verified:'badge-ok',live:'badge-ok',pending:'badge-pending',review:'badge-warn',low:'badge-pending',medium:'badge-warn',high:'badge-err',removed:'badge-err',banned:'badge-err'};return '<span class="badge '+(m[(s||'').toLowerCase()]||'badge-pending')+'">'+s+'</span>';}
-document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));document.getElementById('tab-'+t.dataset.tab).classList.add('active');}));
-document.getElementById('logout-btn').addEventListener('click',async()=>{if(sb){await sb.auth.signOut();}location.href='/login.html';});
-async function loadAdmin(){const {data:users}=await sb.from('users').select('*').order('created_at',{ascending:false}).limit(100);document.getElementById('s-users').textContent=(users||[]).length;document.getElementById('s-credits').textContent=(users||[]).reduce((a,u)=>a+(u.credits||0),0);document.getElementById('users-tbody').innerHTML=(users||[]).map(u=>'<tr><td>'+u.email+'</td><td>'+new Date(u.created_at).toLocaleDateString()+'</td><td>'+(u.site_count||0)+'</td><td>'+(u.credits||0)+'</td><td>'+badge(u.is_banned?'banned':'active')+'</td><td><button class="btn-ok" onclick="viewUser(\''+u.id+'\')">View</button> <button class="btn-danger" onclick="banUser(\''+u.id+'\')">Ban</button></td></tr>').join('')||'<tr><td colspan="6" class="empty-state">No users yet.</td></tr>';const {data:sites}=await sb.from('sites').select('*');document.getElementById('s-sites').textContent=(sites||[]).filter(s=>s.status==='verified').length;const pending=(sites||[]).filter(s=>s.status==='pending');document.getElementById('s-pending').textContent=pending.length;document.getElementById('approvals-tbody').innerHTML=pending.map(s=>'<tr><td>'+s.domain+'</td><td>'+(s.owner_email||s.user_id.substring(0,8))+'</td><td>'+(s.dr||'--')+'</td><td>'+(s.niche||'--')+'</td><td>'+new Date(s.created_at).toLocaleDateString()+'</td><td><button class="btn-ok" onclick="approveSite(\''+s.id+'\')">Approve</button> <button class="btn-danger" onclick="rejectSite(\''+s.id+'\')">Reject</button></td></tr>').join('')||'<tr><td colspan="6" class="empty-state">No pending approvals.</td></tr>';const {data:exch}=await sb.from('exchanges').select('*').order('created_at',{ascending:false}).limit(100);document.getElementById('s-exch').textContent=(exch||[]).filter(e=>e.status==='live').length;document.getElementById('adminexch-tbody').innerHTML=(exch||[]).map(e=>'<tr><td>'+(e.source_domain||'--')+'</td><td>'+(e.target_domain||'--')+'</td><td>'+(e.anchor||'--')+'</td><td>'+e.credits+'</td><td>'+badge(e.status)+'</td><td>'+new Date(e.created_at).toLocaleDateString()+'</td></tr>').join('')||'<tr><td colspan="6" class="empty-state">No exchanges.</td></tr>';const {data:wd}=await sb.from('watchdog_events').select('*').order('created_at',{ascending:false}).limit(100);document.getElementById('s-incidents').textContent=(wd||[]).filter(w=>w.severity==='high'||w.severity==='medium').length;document.getElementById('incidents-tbody').innerHTML=(wd||[]).map(w=>'<tr><td>'+new Date(w.created_at).toLocaleString()+'</td><td>'+w.site_domain+'</td><td>'+(w.owner_email||w.user_id.substring(0,8))+'</td><td>'+w.event_type+'</td><td>'+badge(w.severity)+'</td><td>'+(w.auto_action||'--')+'</td><td><button class="btn-warn" onclick="overrideIncident(\''+w.id+'\')">Override</button></td></tr>').join('')||'<tr><td colspan="7" class="empty-state">No incidents.</td></tr>';const {data:adj}=await sb.from('admin_actions').select('*').eq('action_type','credit_adjust').order('created_at',{ascending:false}).limit(50);document.getElementById('adjustments-tbody').innerHTML=(adj||[]).map(a=>'<tr><td>'+new Date(a.created_at).toLocaleString()+'</td><td>'+a.target_email+'</td><td>'+(a.amount>0?'+':'')+a.amount+'</td><td>'+a.reason+'</td><td>'+a.admin_email+'</td></tr>').join('')||'<tr><td colspan="5" class="empty-state">No adjustments yet.</td></tr>';document.getElementById('matching-tbody').innerHTML='<tr><td colspan="6" class="empty-state">Matching engine idle. No queued requests.</td></tr>';}
-window.viewUser=(id)=>alert('User detail modal: '+id);window.banUser=async(id)=>{if(!confirm('Ban this user?'))return;await sb.from('users').update({is_banned:true}).eq('id',id);loadAdmin();};window.approveSite=async(id)=>{await sb.from('sites').update({status:'verified'}).eq('id',id);loadAdmin();};window.rejectSite=async(id)=>{await sb.from('sites').update({status:'rejected'}).eq('id',id);loadAdmin();};window.overrideIncident=(id)=>alert('Override flow for incident '+id);
-document.getElementById('adj-submit').addEventListener('click',async()=>{const email=document.getElementById('adj-email').value.trim();const amt=parseInt(document.getElementById('adj-amount').value);const reason=document.getElementById('adj-reason').value.trim();if(!email||!amt||!reason){alert('All fields required');return;}const {data:tgt}=await sb.from('users').select('id,credits').eq('email',email).single();if(!tgt){alert('User not found');return;}await sb.from('users').update({credits:(tgt.credits||0)+amt}).eq('id',tgt.id);await sb.from('admin_actions').insert({action_type:'credit_adjust',target_email:email,amount:amt,reason:reason,admin_email:window.__admin.email});alert('Adjustment applied.');loadAdmin();});
-(async function(){if(!sb||SB_KEY.indexOf('REPLACE')>-1){document.getElementById('app-content').style.display='block';document.getElementById('user-email').textContent='[SETUP REQUIRED]';['users','approvals','adminexch','adjustments','incidents','matching'].forEach(id=>{const el=document.getElementById(id+'-tbody');if(el)el.innerHTML='<tr><td colspan="7" class="empty-state"><strong>Supabase anon key not configured.</strong></td></tr>';});return;}const {data:{user}}=await sb.auth.getUser();if(!user){document.getElementById('auth-gate').style.display='block';return;}const {data:profile}=await sb.from('users').select('is_admin,email').eq('id',user.id).single();if(!profile||!profile.is_admin){document.getElementById('access-denied').style.display='block';return;}window.__admin={id:user.id,email:profile.email};document.getElementById('user-email').textContent=profile.email+' (admin)';document.getElementById('app-content').style.display='block';loadAdmin().catch(e=>console.error(e));})();
-</script></body></html>
+const SUPABASE_URL='https://hsgxsxiwwkuplcedfhxq.supabase.co';
+const SUPABASE_ANON_KEY=window.SUPABASE_ANON_KEY||'REPLACE_WITH_YOUR_ANON_KEY';
+let sb,me,profile,activeTab='users';
+function $(id){return document.getElementById(id);}
+function showErr(html){$('main').innerHTML='<div class="config-err"><h3>Configuration Error</h3>'+html+'</div>';}
+function showAccessErr(){$('main').innerHTML='<div class="access-err"><h3>Access Denied</h3><p>You are not an administrator. Contact the site owner if you believe this is an error.</p><p style="margin-top:14px"><a href="/dashboard.html" style="color:#3ECF8E">\u2190 Back to dashboard</a></p></div>';}
+async function init(){
+if(SUPABASE_ANON_KEY==='REPLACE_WITH_YOUR_ANON_KEY'){showErr('<p>Supabase anon key not set. Configure <code>window.SUPABASE_ANON_KEY</code>.</p>');return;}
+sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+const sess=await sb.auth.getSession();
+if(!sess.data.session){window.location.href='/login.html?next=/admin.html';return;}
+me=sess.data.session.user;
+const pr=await sb.from('users').select('*').eq('id',me.id).maybeSingle();
+profile=pr.data;
+if(!profile||!profile.is_admin){showAccessErr();return;}
+renderShell();switchTab('users');
+}
+function renderShell(){
+$('main').innerHTML='<div class="header"><h1>\u26A0\uFE0F Admin Panel</h1><span class="badge">'+me.email+' \u00B7 SUPERUSER</span></div>'+
+'<div class="tabs">'+
+'<button class="tab" data-t="users" onclick="switchTab(\'users\')">Users</button>'+
+'<button class="tab" data-t="sites" onclick="switchTab(\'sites\')">Sites</button>'+
+'<button class="tab" data-t="exchanges" onclick="switchTab(\'exchanges\')">Exchanges</button>'+
+'<button class="tab" data-t="watchdog" onclick="switchTab(\'watchdog\')">Watchdog</button>'+
+'<button class="tab" data-t="ledger" onclick="switchTab(\'ledger\')">Credits Ledger</button>'+
+'<button class="tab" data-t="audit" onclick="switchTab(\'audit\')">Audit Log</button>'+
+'</div>'+
+'<div id="pane-users" class="pane"></div>'+
+'<div id="pane-sites" class="pane"></div>'+
+'<div id="pane-exchanges" class="pane"></div>'+
+'<div id="pane-watchdog" class="pane"></div>'+
+'<div id="pane-ledger" class="pane"></div>'+
+'<div id="pane-audit" class="pane"></div>';
+}
+function switchTab(t){
+activeTab=t;
+document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.t===t));
+document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('active',p.id==='pane-'+t));
+if(t==='users')loadUsers();
+else if(t==='sites')loadSites();
+else if(t==='exchanges')loadExchanges();
+else if(t==='watchdog')loadWatchdog();
+else if(t==='ledger')loadLedger();
+else if(t==='audit')loadAudit();
+}
+async function loadUsers(){
+const p=$('pane-users');p.innerHTML='<div class="toolbar"><input id="uSearch" placeholder="Search by email..."><button class="btn-sm btn-warn" onclick="loadUsers()">Refresh</button></div><div id="uTbl">Loading...</div>';
+const q=$('uSearch').value.trim();
+let sel=sb.from('users').select('*').order('created_at',{ascending:false}).limit(200);
+if(q)sel=sel.ilike('email','%'+q+'%');
+const {data,error}=await sel;
+if(error){$('uTbl').innerHTML='<div class="empty">Error: '+error.message+'</div>';return;}
+$('uSearch').addEventListener('input',()=>{clearTimeout(window._ut);window._ut=setTimeout(loadUsers,400);});
+if(!data||data.length===0){$('uTbl').innerHTML='<div class="empty">No users found</div>';return;}
+$('uTbl').innerHTML='<div class="tbl-wrap"><table><thead><tr><th>Email</th><th>Credits</th><th>Sites</th><th>Flags</th><th>Joined</th><th>Actions</th></tr></thead><tbody>'+
+data.map(u=>{
+var flags='';if(u.is_admin)flags+='<span class="pill p-admin">admin</span> ';if(u.is_banned)flags+='<span class="pill p-banned">banned</span> ';if(!flags)flags='<span class="pill p-ok">ok</span>';
+var actions='<button class="btn-sm btn-warn" onclick="creditModal(\''+u.id+'\',\''+u.email+'\','+(u.credits||0)+')">Credits</button>'+(u.is_banned?'<button class="btn-sm btn-ok" onclick="setBan(\''+u.id+'\',false)">Unban</button>':'<button class="btn-sm btn-no" onclick="setBan(\''+u.id+'\',true)">Ban</button>');
+return '<tr><td class="email">'+u.email+'</td><td>'+(u.credits||0)+'</td><td>'+(u.site_count||0)+'</td><td>'+flags+'</td><td>'+new Date(u.created_at).toLocaleDateString()+'</td><td>'+actions+'</td></tr>';
+}).join('')+'</tbody></table></div>';
+}
+function creditModal(uid,email,curr){
+$('modalBody').innerHTML='<h2>Adjust Credits</h2><p class="sub">User: <strong style="color:#3ECF8E">'+email+'</strong> \u00B7 Current: '+curr+' credits</p>'+
+'<div class="field"><label>Delta (positive to add, negative to deduct)</label><input type="number" id="cAmt" value="0"></div>'+
+'<div class="field"><label>Reason (audit log)</label><textarea id="cReason" placeholder="e.g. compensation for watchdog false positive"></textarea></div>'+
+'<div class="modal-actions"><button class="btn btn-no" onclick="closeModal()">Cancel</button><button class="btn btn-warn" onclick="applyCredit(\''+uid+'\',\''+email+'\','+curr+')">Apply</button></div>';
+$('modal').classList.add('show');
+}
+function closeModal(){$('modal').classList.remove('show');}
+async function applyCredit(uid,email,curr){
+const amt=+$('cAmt').value;const reason=$('cReason').value.trim();
+if(!amt||!reason){alert('Amount and reason required');return;}
+const newBal=curr+amt;
+const u1=await sb.from('users').update({credits:newBal}).eq('id',uid);if(u1.error){alert(u1.error.message);return;}
+await sb.from('credits_ledger').insert({user_id:uid,type:'admin_adjust',amount:amt,balance_after:newBal,description:reason});
+await sb.from('admin_actions').insert({admin_id:me.id,admin_email:me.email,action_type:'credit_adjust',target_user:uid,target_email:email,amount:amt,reason});
+closeModal();loadUsers();
+}
+async function setBan(uid,val){
+if(!confirm((val?'Ban':'Unban')+' this user?'))return;
+const u=await sb.from('users').update({is_banned:val}).eq('id',uid);if(u.error){alert(u.error.message);return;}
+await sb.from('admin_actions').insert({admin_id:me.id,admin_email:me.email,action_type:val?'ban':'unban',target_user:uid,reason:val?'manual ban':'manual unban'});
+loadUsers();
+}
+async function loadSites(){
+const p=$('pane-sites');p.innerHTML='<div class="toolbar"><select id="sStatus"><option value="">All Statuses</option><option value="pending">Pending</option><option value="verified">Verified</option><option value="rejected">Rejected</option><option value="suspended">Suspended</option></select><button class="btn-sm btn-warn" onclick="loadSites()">Refresh</button></div><div id="sTbl">Loading...</div>';
+const st=$('sStatus').value;
+let sel=sb.from('sites').select('*').order('created_at',{ascending:false}).limit(200);
+if(st)sel=sel.eq('status',st);
+const {data,error}=await sel;
+$('sStatus').addEventListener('change',loadSites);
+if(error){$('sTbl').innerHTML='<div class="empty">Error: '+error.message+'</div>';return;}
+if(!data||data.length===0){$('sTbl').innerHTML='<div class="empty">No sites</div>';return;}
+$('sTbl').innerHTML='<div class="tbl-wrap"><table><thead><tr><th>Domain</th><th>Owner</th><th>Niche</th><th>DR</th><th>Status</th><th>Hosted</th><th>Actions</th></tr></thead><tbody>'+
+data.map(s=>{
+var st='<span class="pill p-'+s.status+'">'+s.status+'</span>';
+var actions='';
+if(s.status!=='verified')actions+='<button class="btn-sm btn-ok" onclick="setSiteStatus(\''+s.id+'\',\''+s.domain+'\',\'verified\')">Verify</button>';
+if(s.status!=='rejected')actions+='<button class="btn-sm btn-no" onclick="setSiteStatus(\''+s.id+'\',\''+s.domain+'\',\'rejected\')">Reject</button>';
+if(s.status!=='suspended')actions+='<button class="btn-sm btn-warn" onclick="setSiteStatus(\''+s.id+'\',\''+s.domain+'\',\'suspended\')">Suspend</button>';
+return '<tr><td class="domain">'+s.domain+'</td><td class="email">'+(s.owner_email||'\u2014')+'</td><td>'+(s.niche||'\u2014')+'</td><td>'+(s.dr||0)+'</td><td>'+st+'</td><td>'+(s.hosted_count||0)+'</td><td>'+actions+'</td></tr>';
+}).join('')+'</tbody></table></div>';
+}
+async function setSiteStatus(id,domain,newSt){
+const u=await sb.from('sites').update({status:newSt}).eq('id',id);if(u.error){alert(u.error.message);return;}
+await sb.from('admin_actions').insert({admin_id:me.id,admin_email:me.email,action_type:'site_'+newSt,metadata:{domain},reason:'manual '+newSt});
+loadSites();
+}
+async function loadExchanges(){
+const p=$('pane-exchanges');p.innerHTML='<div class="toolbar"><select id="eStatus"><option value="">All</option><option value="pending">Pending</option><option value="matched">Matched</option><option value="live">Live</option><option value="removed">Removed</option><option value="disputed">Disputed</option></select><button class="btn-sm btn-warn" onclick="loadExchanges()">Refresh</button></div><div id="eTbl">Loading...</div>';
+const st=$('eStatus').value;
+let sel=sb.from('exchanges').select('*').order('created_at',{ascending:false}).limit(200);
+if(st)sel=sel.eq('status',st);
+const {data,error}=await sel;
+$('eStatus').addEventListener('change',loadExchanges);
+if(error){$('eTbl').innerHTML='<div class="empty">Error: '+error.message+'</div>';return;}
+if(!data||data.length===0){$('eTbl').innerHTML='<div class="empty">No exchanges</div>';return;}
+$('eTbl').innerHTML='<div class="tbl-wrap"><table><thead><tr><th>Source</th><th>Target</th><th>Anchor</th><th>Credits</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead><tbody>'+
+data.map(e=>{
+var st='<span class="pill p-'+e.status+'">'+e.status+'</span>';
+var actions='';
+if(e.status!=='live')actions+='<button class="btn-sm btn-blue" onclick="setExStatus(\''+e.id+'\',\'live\')">Live</button>';
+if(e.status!=='removed')actions+='<button class="btn-sm btn-no" onclick="setExStatus(\''+e.id+'\',\'removed\')">Remove</button>';
+if(e.status!=='disputed')actions+='<button class="btn-sm btn-warn" onclick="setExStatus(\''+e.id+'\',\'disputed\')">Dispute</button>';
+return '<tr><td class="domain">'+e.source_domain+'</td><td class="domain">'+e.target_domain+'</td><td>'+(e.anchor||'\u2014')+'</td><td>'+(e.credits||0)+'</td><td>'+st+'</td><td>'+new Date(e.created_at).toLocaleDateString()+'</td><td>'+actions+'</td></tr>';
+}).join('')+'</tbody></table></div>';
+}
+async function setExStatus(id,newSt){
+const u=await sb.from('exchanges').update({status:newSt}).eq('id',id);if(u.error){alert(u.error.message);return;}
+await sb.from('admin_actions').insert({admin_id:me.id,admin_email:me.email,action_type:'exchange_'+newSt,reason:'manual override'});
+loadExchanges();
+}
+async function loadWatchdog(){
+const p=$('pane-watchdog');p.innerHTML='<div id="wStats" class="stats"></div><div id="wTbl">Loading...</div>';
+const {data,error}=await sb.from('watchdog_events').select('*').order('created_at',{ascending:false}).limit(200);
+if(error){$('wTbl').innerHTML='<div class="empty">Error: '+error.message+'</div>';return;}
+const lo=(data||[]).filter(x=>x.severity==='low').length;
+const md=(data||[]).filter(x=>x.severity==='medium').length;
+const hi=(data||[]).filter(x=>x.severity==='high').length;
+$('wStats').innerHTML='<div class="stat"><div class="stat-label">Total</div><div class="stat-value">'+(data||[]).length+'</div></div><div class="stat"><div class="stat-label">Low</div><div class="stat-value" style="color:#3ECF8E">'+lo+'</div></div><div class="stat"><div class="stat-label">Medium</div><div class="stat-value" style="color:#f59e0b">'+md+'</div></div><div class="stat"><div class="stat-label">High</div><div class="stat-value" style="color:#f87171">'+hi+'</div></div>';
+if(!data||data.length===0){$('wTbl').innerHTML='<div class="empty">No events yet</div>';return;}
+$('wTbl').innerHTML='<div class="tbl-wrap"><table><thead><tr><th>User</th><th>Domain</th><th>Event</th><th>Severity</th><th>Credit \u0394</th><th>Resolved</th><th>Date</th></tr></thead><tbody>'+
+data.map(e=>'<tr><td class="email">'+(e.owner_email||'\u2014')+'</td><td class="domain">'+(e.site_domain||'\u2014')+'</td><td>'+(e.event_type||'').replace(/_/g,' ')+'</td><td><span class="pill p-'+e.severity+'">'+e.severity+'</span></td><td>'+(e.credit_delta||0)+'</td><td>'+(e.resolved?'\u2713':'\u2717')+'</td><td>'+new Date(e.created_at).toLocaleDateString()+'</td></tr>').join('')+'</tbody></table></div>';
+}
+async function loadLedger(){
+const p=$('pane-ledger');p.innerHTML='<div class="toolbar"><select id="lType"><option value="">All Types</option><option value="earn">Earn</option><option value="spend">Spend</option><option value="purchase">Purchase</option><option value="refund">Refund</option><option value="bonus">Bonus</option><option value="penalty">Penalty</option><option value="admin_adjust">Admin Adjust</option></select><button class="btn-sm btn-warn" onclick="loadLedger()">Refresh</button></div><div id="lStats" class="stats"></div><div id="lTbl">Loading...</div>';
+const tp=$('lType').value;
+let sel=sb.from('credits_ledger').select('*').order('created_at',{ascending:false}).limit(200);
+if(tp)sel=sel.eq('type',tp);
+const {data,error}=await sel;
+$('lType').addEventListener('change',loadLedger);
+if(error){$('lTbl').innerHTML='<div class="empty">Error: '+error.message+'</div>';return;}
+const tEarn=(data||[]).filter(x=>x.type==='earn').reduce((s,x)=>s+(x.amount||0),0);
+const tSpend=(data||[]).filter(x=>x.type==='spend').reduce((s,x)=>s+(x.amount||0),0);
+const tPurch=(data||[]).filter(x=>x.type==='purchase').reduce((s,x)=>s+(x.amount||0),0);
+const tAdj=(data||[]).filter(x=>x.type==='admin_adjust').reduce((s,x)=>s+(x.amount||0),0);
+$('lStats').innerHTML='<div class="stat"><div class="stat-label">Total Earned</div><div class="stat-value" style="color:#3ECF8E">+'+tEarn+'</div></div><div class="stat"><div class="stat-label">Total Spent</div><div class="stat-value" style="color:#f87171">'+tSpend+'</div></div><div class="stat"><div class="stat-label">Purchased</div><div class="stat-value" style="color:#60a5fa">+'+tPurch+'</div></div><div class="stat"><div class="stat-label">Admin Adj</div><div class="stat-value">'+(tAdj>=0?'+':'')+tAdj+'</div></div>';
+if(!data||data.length===0){$('lTbl').innerHTML='<div class="empty">No transactions</div>';return;}
+$('lTbl').innerHTML='<div class="tbl-wrap"><table><thead><tr><th>Date</th><th>Type</th><th>Amount</th><th>Balance</th><th>Description</th></tr></thead><tbody>'+
+data.map(t=>'<tr><td>'+new Date(t.created_at).toLocaleString()+'</td><td><span class="pill p-'+t.type+'">'+t.type+'</span></td><td>'+(t.amount>0?'+':'')+t.amount+'</td><td>'+t.balance_after+'</td><td>'+(t.description||'\u2014')+'</td></tr>').join('')+'</tbody></table></div>';
+}
+async function loadAudit(){
+const p=$('pane-audit');p.innerHTML='<div id="aTbl">Loading...</div>';
+const {data,error}=await sb.from('admin_actions').select('*').order('created_at',{ascending:false}).limit(200);
+if(error){$('aTbl').innerHTML='<div class="empty">Error: '+error.message+'</div>';return;}
+if(!data||data.length===0){$('aTbl').innerHTML='<div class="empty">No admin actions yet</div>';return;}
+$('aTbl').innerHTML='<div class="tbl-wrap"><table><thead><tr><th>Date</th><th>Admin</th><th>Action</th><th>Target</th><th>Amount</th><th>Reason</th></tr></thead><tbody>'+
+data.map(t=>'<tr><td>'+new Date(t.created_at).toLocaleString()+'</td><td class="email">'+(t.admin_email||'\u2014')+'</td><td><span class="pill p-admin">'+t.action_type+'</span></td><td class="email">'+(t.target_email||'\u2014')+'</td><td>'+(t.amount||'\u2014')+'</td><td>'+(t.reason||'\u2014')+'</td></tr>').join('')+'</tbody></table></div>';
+}
+$('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal();});
+init();
+</script>
+</body>
+</html>
