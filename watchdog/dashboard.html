@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Watchdog - Link Health Monitor | PositiveBacklink</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://www.positivebacklink.com/watchdog/dashboard.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;min-height:100vh}
+.nav{background:#111;border-bottom:1px solid #222;padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav a.brand{color:#3ECF8E;text-decoration:none;font-weight:600}
+.nav .links a{margin-left:20px;color:#aaa;font-weight:400;font-size:14px;text-decoration:none}
+.nav .links a:hover,.nav .links a.active{color:#3ECF8E}
+.container{max-width:1200px;margin:0 auto;padding:32px 24px}
+.header{margin-bottom:24px}
+.header h1{font-size:30px;margin-bottom:6px}
+.header p{color:#888;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:28px}
+.stat{background:#111;border:1px solid #222;border-radius:12px;padding:18px}
+.stat-label{font-size:11px;color:#888;font-family:'JetBrains Mono',monospace;text-transform:uppercase;margin-bottom:6px}
+.stat-value{font-size:26px;font-weight:700;color:#3ECF8E}
+.stat-value.warn{color:#f59e0b}
+.stat-value.bad{color:#f87171}
+.stat-sub{font-size:11px;color:#666;margin-top:4px}
+.filters{background:#111;border:1px solid #222;border-radius:12px;padding:16px;margin-bottom:18px;display:flex;gap:12px;flex-wrap:wrap;align-items:end}
+.filter{flex:1;min-width:140px}
+.filter label{display:block;font-size:11px;color:#888;font-family:'JetBrains Mono',monospace;text-transform:uppercase;margin-bottom:4px}
+.filter select{width:100%;background:#0a0a0a;border:1px solid #333;color:#e0e0e0;padding:8px;border-radius:6px;font-size:13px}
+.filter select:focus{outline:none;border-color:#3ECF8E}
+.events{background:#111;border:1px solid #222;border-radius:12px;overflow:hidden}
+.event-row{display:grid;grid-template-columns:80px 1fr 130px 120px 90px;gap:14px;padding:14px 18px;border-bottom:1px solid #1a1a1a;align-items:center;transition:background .15s}
+.event-row:hover{background:#161616}
+.event-row:last-child{border-bottom:none}
+.sev{padding:4px 10px;border-radius:12px;font-size:11px;font-weight:600;text-align:center;font-family:'JetBrains Mono',monospace;text-transform:uppercase}
+.sev.low{background:#0a2a1a;color:#3ECF8E;border:1px solid #1a4a2a}
+.sev.medium{background:#3a2a0a;color:#f59e0b;border:1px solid #5a4010}
+.sev.high{background:#2a0a0a;color:#f87171;border:1px solid #5a1a1a}
+.event-main{font-size:13px}
+.event-domain{color:#3ECF8E;font-family:'JetBrains Mono',monospace;font-size:13px}
+.event-type{color:#888;font-size:12px;margin-top:2px}
+.event-date{color:#666;font-size:12px}
+.event-credit{font-family:'JetBrains Mono',monospace;font-size:13px;text-align:right}
+.event-credit.minus{color:#f87171}
+.event-credit.plus{color:#3ECF8E}
+.event-credit.zero{color:#666}
+.btn-sm{padding:6px 10px;border-radius:5px;border:none;font-size:11px;font-weight:600;cursor:pointer;background:#3ECF8E;color:#000}
+.btn-sm:hover{background:#33b577}
+.btn-sm.disabled{background:#222;color:#555;cursor:not-allowed}
+.empty{padding:48px;text-align:center;color:#888}
+.empty h3{color:#e0e0e0;margin-bottom:8px}
+.info-card{background:linear-gradient(135deg,#0d2818,#0a0a0a);border:1px solid #1a3a26;border-radius:12px;padding:18px;margin-bottom:24px;display:flex;gap:14px;align-items:flex-start}
+.info-icon{font-size:22px;flex-shrink:0;color:#3ECF8E}
+.info-card h3{color:#3ECF8E;font-size:13px;margin-bottom:4px;font-family:'JetBrains Mono',monospace;text-transform:uppercase}
+.info-card p{color:#bbb;font-size:13px;line-height:1.55}
+.config-err{background:#2a0a0a;border:1px solid #5a1a1a;color:#f87171;padding:20px;border-radius:12px;margin:40px auto;max-width:560px;text-align:center}
+.config-err code{background:#0a0a0a;padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#3ECF8E}
+@media(max-width:768px){.event-row{grid-template-columns:60px 1fr;gap:8px}.event-row > div.hidesm{display:none}}
+</style>
+</head>
+<body>
+<nav class="nav">
+<a class="brand" href="/">PositiveBacklink</a>
+<div class="links"><a href="/dashboard.html">Dashboard</a><a href="/sites/browse.html">Browse Sites</a><a class="active" href="/watchdog/dashboard.html">Watchdog</a><a href="/tools/">Tools</a></div>
+</nav>
+<div id="main" class="container"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL='https://hsgxsxiwwkuplcedfhxq.supabase.co';
+const SUPABASE_ANON_KEY=window.SUPABASE_ANON_KEY||'REPLACE_WITH_YOUR_ANON_KEY';
+let sb,me,events=[],filtered=[];
+function $(id){return document.getElementById(id);}
+function showErr(html){$('main').innerHTML='<div class="config-err"><h3>Configuration Error</h3>'+html+'</div>';}
+async function init(){
+if(SUPABASE_ANON_KEY==='REPLACE_WITH_YOUR_ANON_KEY'){showErr('<p>Supabase anon key not set. Configure <code>window.SUPABASE_ANON_KEY</code> via environment.</p>');return;}
+sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+const sess=await sb.auth.getSession();
+if(!sess.data.session){window.location.href='/login.html?next=/watchdog/dashboard.html';return;}
+me=sess.data.session.user;
+render();
+await loadEvents();
+}
+function render(){
+$('main').innerHTML='<div class="header"><h1>AI Watchdog</h1><p>Automated link health monitoring every 12 hours. Detects removed links, nofollow injection, redirect chains, and DR drops.</p></div>'+
+'<div class="info-card"><div class="info-icon">\u26A1</div><div><h3>HOW WATCHDOG WORKS</h3><p>Our crawler revisits every live exchange every 12 hours. If your link is removed, replaced with nofollow, hidden via CSS, or routed through a redirect chain, you get a credit refund and the offending site loses tier points. High-severity events auto-mark the exchange as <strong>disputed</strong>.</p></div></div>'+
+'<div class="stats" id="stats"></div>'+
+'<div class="filters">'+
+'<div class="filter"><label>Severity</label><select id="fSev"><option value="">All</option><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select></div>'+
+'<div class="filter"><label>Event Type</label><select id="fType"><option value="">All Events</option><option value="link_removed">Link Removed</option><option value="nofollow_added">Nofollow Added</option><option value="redirect_chain">Redirect Chain</option><option value="dr_drop">DR Drop</option><option value="hidden_css">Hidden via CSS</option><option value="page_404">Page 404</option><option value="check_ok">Check OK</option></select></div>'+
+'<div class="filter"><label>Status</label><select id="fRes"><option value="">All</option><option value="false">Unresolved</option><option value="true">Resolved</option></select></div>'+
+'</div>'+
+'<div class="events" id="events"><div class="empty">Loading...</div></div>';
+['fSev','fType','fRes'].forEach(id=>$(id).addEventListener('change',applyFilters));
+}
+async function loadEvents(){
+const {data,error}=await sb.from('watchdog_events').select('*').eq('user_id',me.id).order('created_at',{ascending:false}).limit(200);
+if(error){$('events').innerHTML='<div class="empty"><h3>Error</h3><p>'+error.message+'</p></div>';return;}
+events=data||[];applyFilters();renderStats();
+}
+function renderStats(){
+const total=events.length;
+const unresolved=events.filter(e=>!e.resolved).length;
+const high=events.filter(e=>e.severity==='high').length;
+const credits=events.reduce((s,e)=>s+(e.credit_delta||0),0);
+$('stats').innerHTML=
+'<div class="stat"><div class="stat-label">Total Events (90d)</div><div class="stat-value">'+total+'</div><div class="stat-sub">Last 200 entries</div></div>'+
+'<div class="stat"><div class="stat-label">Unresolved</div><div class="stat-value '+(unresolved>0?'warn':'')+'">'+unresolved+'</div><div class="stat-sub">Needs your action</div></div>'+
+'<div class="stat"><div class="stat-label">High Severity</div><div class="stat-value '+(high>0?'bad':'')+'">'+high+'</div><div class="stat-sub">Auto-disputed</div></div>'+
+'<div class="stat"><div class="stat-label">Net Credit Delta</div><div class="stat-value '+(credits<0?'bad':'')+'">'+(credits>=0?'+':'')+credits+'</div><div class="stat-sub">From watchdog refunds/penalties</div></div>';
+}
+function applyFilters(){
+const sv=$('fSev').value,tp=$('fType').value,rs=$('fRes').value;
+filtered=events.filter(e=>(!sv||e.severity===sv)&&(!tp||e.event_type===tp)&&(rs===''||String(!!e.resolved)===rs));
+renderEvents();
+}
+function renderEvents(){
+if(filtered.length===0){$('events').innerHTML='<div class="empty"><h3>No watchdog events</h3><p>All your live exchanges are healthy. Watchdog will report here when it detects an issue.</p></div>';return;}
+$('events').innerHTML=filtered.map(function(e){
+var cd=e.credit_delta||0;
+var cdCls=cd<0?'minus':(cd>0?'plus':'zero');
+var cdTxt=cd>0?'+'+cd:(''+cd);
+var act=e.resolved?'<button class="btn-sm disabled" disabled>Resolved</button>':'<button class="btn-sm" onclick="resolveEvent(\''+e.id+'\')">Resolve</button>';
+return '<div class="event-row"><div><span class="sev '+e.severity+'">'+e.severity+'</span></div>'+
+'<div class="event-main"><div class="event-domain">'+(e.site_domain||'\u2014')+'</div><div class="event-type">'+(e.event_type||'\u2014').replace(/_/g,' ')+(e.auto_action?' \u00B7 auto-action: '+e.auto_action:'')+'</div></div>'+
+'<div class="event-date hidesm">'+new Date(e.created_at).toLocaleString()+'</div>'+
+'<div class="event-credit '+cdCls+' hidesm">'+cdTxt+' credits</div>'+
+'<div class="hidesm">'+act+'</div></div>';
+}).join('');
+}
+async function resolveEvent(id){
+const {error}=await sb.from('watchdog_events').update({resolved:true}).eq('id',id);
+if(error){alert('Error: '+error.message);return;}
+await loadEvents();
+}
+init();
+</script>
+</body>
+</html>
