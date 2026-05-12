@@ -1,121 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sign In - PositiveBacklink</title>
-<meta name="description" content="Sign in to your PositiveBacklink account to manage backlink exchanges.">
-<link rel="canonical" href="https://www.positivebacklink.com/login.html">
-<meta name="google-site-verification" content="0bm_X9ojXIi_-sV7Ov0on_H-WS89MnzovlsSPtoWzO4">
-<meta name="msvalidate.01" content="5627D94178E561857861AE89E474F98A">
-<meta name="robots" content="noindex, nofollow">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0a0a'/%3E%3Ctext x='50' y='65' font-size='60' text-anchor='middle' fill='%233ECF8E' font-family='monospace' font-weight='bold'%3EP%3C/text%3E%3C/svg%3E">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#e5e5e5;min-height:100vh;display:flex;flex-direction:column}
-.nav{padding:1.5rem 2rem;border-bottom:1px solid #1f1f1f}
-.logo{font-family:'JetBrains Mono',monospace;font-size:1.15rem;font-weight:700;color:#3ECF8E;text-decoration:none}
-.auth-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:2rem 1rem}
-.auth-card{width:100%;max-width:420px;background:#0f0f0f;border:1px solid #1f1f1f;border-radius:12px;padding:2.5rem}
-.auth-tag{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#3ECF8E;letter-spacing:.1em;margin-bottom:.5rem}
-.auth-title{font-size:1.75rem;font-weight:700;color:#fff;margin-bottom:.5rem;letter-spacing:-.02em}
-.auth-sub{color:#a3a3a3;font-size:0.95rem;margin-bottom:2rem}
-.oauth-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:.75rem;padding:.85rem;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#fff;font-weight:500;font-size:.95rem;cursor:pointer;transition:all .15s}
-.oauth-btn:hover{background:#1f1f1f;border-color:#3a3a3a}
-.oauth-btn svg{width:18px;height:18px}
-.divider{display:flex;align-items:center;gap:1rem;margin:1.5rem 0;color:#525252;font-family:'JetBrains Mono',monospace;font-size:0.7rem}
-.divider::before,.divider::after{content:'';flex:1;height:1px;background:#1f1f1f}
-.field{margin-bottom:1.25rem}
-.field label{display:block;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:#a3a3a3;letter-spacing:.05em;margin-bottom:.5rem}
-.field input[type=email],.field input[type=password]{width:100%;padding:.75rem .9rem;background:#0a0a0a;border:1px solid #262626;border-radius:6px;color:#fff;font-family:inherit;font-size:.95rem;transition:border-color .15s}
-.field input:focus{outline:none;border-color:#3ECF8E}
-.field-row{display:flex;justify-content:space-between;align-items:center;margin-top:.5rem}
-.field-row a{color:#3ECF8E;text-decoration:none;font-size:.85rem}
-.field-row a:hover{text-decoration:underline}
-.checkbox-row{display:flex;align-items:flex-start;gap:.6rem;margin-bottom:1.25rem;color:#a3a3a3;font-size:.85rem}
-.checkbox-row input{margin-top:.2rem;accent-color:#3ECF8E}
-.checkbox-row a{color:#3ECF8E;text-decoration:none}
-.checkbox-row a:hover{text-decoration:underline}
-.submit-btn{width:100%;padding:.85rem;background:#3ECF8E;color:#0a0a0a;border:none;border-radius:8px;font-weight:600;font-size:.95rem;cursor:pointer;transition:all .15s}
-.submit-btn:hover:not(:disabled){background:#2eb872;transform:translateY(-1px)}
-.submit-btn:disabled{opacity:.5;cursor:not-allowed}
-.alt-link{text-align:center;margin-top:1.5rem;color:#a3a3a3;font-size:.9rem}
-.alt-link a{color:#3ECF8E;text-decoration:none;font-weight:500}
-.alt-link a:hover{text-decoration:underline}
-.msg{padding:.75rem .9rem;border-radius:6px;margin-bottom:1.25rem;font-size:.85rem;display:none}
-.msg.error{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#fca5a5;display:block}
-.msg.success{background:rgba(62,207,142,.1);border:1px solid rgba(62,207,142,.3);color:#86efac;display:block}
-.msg.info{background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.3);color:#93c5fd;display:block}
-footer{padding:1.5rem 2rem;border-top:1px solid #1f1f1f;text-align:center;color:#525252;font-family:'JetBrains Mono',monospace;font-size:.75rem}
-footer a{color:#737373;text-decoration:none}
-footer a:hover{color:#3ECF8E}
-</style>
-
-<!-- PWA + Monitoring -->
-<link rel="manifest" href="/manifest.webmanifest" />
-<meta name="theme-color" content="#3ECF8E" />
-<link rel="apple-touch-icon" href="/icon-192.png" />
-<script src="/assets/error-logger.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In - PositiveBacklink</title>
+  <meta name="description" content="Sign in to your PositiveBacklink account to manage backlink exchanges." />
+  <link rel="canonical" href="https://www.positivebacklink.com/login" />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <meta name="theme-color" content="#1c1c1c" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/megamenu.css" />
+  <style>
+    body { background: #0e0e0e; color: #e4e4e4; font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif; }
+    .auth-card { background: #161616; border: 1px solid #2a2a2a; }
+    .auth-input { background: #0e0e0e; border: 1px solid #2a2a2a; transition: border-color .15s; }
+    .auth-input:focus { outline: none; border-color: #3ECF8E; }
+    .auth-btn-primary { background: #3ECF8E; color: #000; transition: background .15s; }
+    .auth-btn-primary:hover:not(:disabled) { background: #34b87a; }
+    .auth-btn-primary:disabled { opacity: .55; cursor: not-allowed; }
+    .auth-btn-oauth { background: #1c1c1c; border: 1px solid #2e2e2e; }
+    .auth-btn-oauth:hover { border-color: #3ECF8E; background: #1f1f1f; }
+    .auth-divider { display: flex; align-items: center; gap: 12px; color: #6a6a6a; font-size: 12px; }
+    .auth-divider::before, .auth-divider::after { content: ""; flex: 1; height: 1px; background: #2a2a2a; }
+    .auth-msg { padding: 10px 12px; border-radius: 6px; font-size: 13px; margin-top: 12px; }
+    .auth-msg.error { background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.3); color: #fca5a5; }
+    .auth-msg.success { background: rgba(62,207,142,.08); border: 1px solid rgba(62,207,142,.3); color: #86efac; }
+    .auth-side { background: radial-gradient(ellipse at top left, rgba(62,207,142,.15), transparent 50%), #0e0e0e; }
+  </style>
+  <script src="/assets/error-logger.js" defer></script>
 </head>
-<body>
-<nav class="nav"><a href="/" class="logo">// PositiveBacklink</a></nav>
-<div class="auth-wrap">
-  <div class="auth-card">
-    <div class="auth-tag">// SIGN IN</div>
-    <h1 class="auth-title">Welcome back</h1>
-    <p class="auth-sub">Sign in to manage your backlink exchanges.</p>
-    <div id="msg" class="msg"></div>
-    <button id="google-btn" class="oauth-btn" type="button">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-      Continue with Google
-    </button>
-    <div class="divider">OR CONTINUE WITH EMAIL</div>
-    <form id="login-form">
-      <div class="field">
-        <label for="email">// EMAIL</label>
-        <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
+<body class="min-h-screen">
+  <nav class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-[#0e0e0e]/85 border-b border-[#2a2a2a]">
+    <div class="max-w-7xl mx-auto flex items-center justify-between h-16 px-6">
+      <a href="/" class="flex items-center gap-2">
+        <svg width="26" height="26" viewBox="0 0 109 113" fill="none"><path d="M63.7076 110.284C60.8481 113.885 55.0502 111.912 54.9813 107.314L53.9738 40.0627L99.1935 40.0627C107.384 40.0627 111.952 49.5228 106.859 55.9374L63.7076 110.284Z" fill="#3ECF8E"/><path d="M45.317 2.07103C48.1765 -1.53037 53.9745 0.442937 54.0434 5.041L54.4849 72.2922H9.83113C1.64038 72.2922 -2.92775 62.8321 2.1655 56.4175L45.317 2.07103Z" fill="#3ECF8E" fill-opacity="0.5"/></svg>
+        <span class="text-[17px] font-medium">positivebacklink</span>
+      </a>
+      <div class="text-sm text-gray-400">New here? <a href="/register" class="text-[#3ECF8E] hover:underline ml-1">Create account</a></div>
+    </div>
+  </nav>
+  <!-- Layout: form on left, marketing side on right -->
+  <main class="pt-16 grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+    <section class="flex items-center justify-center p-6 lg:p-10">
+      <div class="w-full max-w-md">
+        <h1 class="text-2xl font-semibold mb-2">Welcome back</h1>
+        <p class="text-sm text-gray-400 mb-8">Sign in to your PositiveBacklink account.</p>
+        <div class="space-y-3 mb-6">
+          <button id="oauth-google" type="button" class="auth-btn-oauth w-full flex items-center justify-center gap-3 px-4 py-3 rounded-md text-sm font-medium">
+            <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/><path fill="#FBBC05" d="M3.964 10.71c-.18-.54-.282-1.117-.282-1.71s.102-1.17.282-1.71V4.958H.957C.347 6.173 0 7.548 0 9s.348 2.827.957 4.042l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/></svg>
+            Continue with Google
+          </button>
+        </div>
+        <div class="auth-divider mb-6">OR CONTINUE WITH EMAIL</div>
+        <form id="login-form" class="space-y-4">
+          <div>
+            <label class="text-xs text-gray-400 uppercase tracking-wider">Email</label>
+            <input type="email" name="email" required autocomplete="email" class="auth-input w-full mt-1 px-3 py-2.5 rounded-md text-sm" placeholder="you@example.com">
+          </div>
+          <div>
+            <div class="flex items-center justify-between">
+              <label class="text-xs text-gray-400 uppercase tracking-wider">Password</label>
+              <a href="/reset-password" class="text-xs text-[#3ECF8E] hover:underline">Forgot?</a>
+            </div>
+            <input type="password" name="password" required autocomplete="current-password" class="auth-input w-full mt-1 px-3 py-2.5 rounded-md text-sm" placeholder="••••••••">
+          </div>
+          <button type="submit" id="login-submit" class="auth-btn-primary w-full px-4 py-2.5 rounded-md font-medium text-sm">Sign in</button>
+        </form>
+        <div class="mt-4">
+          <button id="magic-link-btn" type="button" class="text-xs text-gray-400 hover:text-[#3ECF8E]">Or send me a magic link instead</button>
+        </div>
+        <div id="auth-msg" class="auth-msg hidden"></div>
+        <p class="text-sm text-gray-400 mt-8 text-center">Don\'t have an account? <a href="/register" class="text-[#3ECF8E] hover:underline">Sign up</a></p>
+        <script>
+          (function() {
+            function showMsg(text, type) {
+              var el = document.getElementById("auth-msg");
+              el.textContent = text; el.className = "auth-msg " + (type || "error");
+              el.classList.remove("hidden");
+            }
+            function redirectAfter() {
+              var p = new URLSearchParams(location.search);
+              return p.get("redirect") || "/dashboard";
+            }
+            document.addEventListener("DOMContentLoaded", function() {
+              if (!window.pbAuth) { setTimeout(arguments.callee, 100); return; }
+              window.pbAuth.getSession().then(function(s) { if (s) location.href = redirectAfter(); });
+              document.getElementById("login-form").addEventListener("submit", async function(e) {
+                e.preventDefault();
+                var btn = document.getElementById("login-submit");
+                btn.disabled = true; btn.textContent = "Signing in...";
+                var data = new FormData(e.target);
+                var res = await window.pbAuth.signInWithPassword(data.get("email"), data.get("password"));
+                if (res.error) { showMsg(res.error.message, "error"); btn.disabled = false; btn.textContent = "Sign in"; }
+                else { showMsg("Signed in. Redirecting...", "success"); setTimeout(function() { location.href = redirectAfter(); }, 600); }
+              });
+              document.getElementById("oauth-google").addEventListener("click", async function() {
+                var res = await window.pbAuth.signInWithGoogle(location.origin + redirectAfter());
+                if (res.error) showMsg(res.error.message, "error");
+              });
+              document.getElementById("magic-link-btn").addEventListener("click", async function() {
+                var email = document.querySelector("[name=email]").value;
+                if (!email) { showMsg("Enter your email first.", "error"); return; }
+                var res = await window.pbAuth.signInWithMagicLink(email, location.origin + redirectAfter());
+                if (res.error) showMsg(res.error.message, "error");
+                else showMsg("Check your inbox for a magic link.", "success");
+              });
+            });
+          })();
+        </script>
       </div>
-      <div class="field">
-        <label for="password">// PASSWORD</label>
-        <input type="password" id="password" name="password" required autocomplete="current-password" placeholder="••••••••••••">
-        <div class="field-row"><span></span><a href="/forgot-password.html">Forgot password?</a></div>
+    </section>
+    <aside class="auth-side hidden lg:flex flex-col justify-center p-12">
+      <div class="max-w-md">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3ECF8E]/10 border border-[#3ECF8E]/20 text-xs text-[#3ECF8E] mb-6">// PositiveBacklink</div>
+        <h2 class="text-3xl font-bold leading-tight mb-4">Backlinks that bring you <span class="text-[#3ECF8E]">real buyers.</span></h2>
+        <p class="text-gray-400 mb-8">High-DA, niche-relevant partner exchanges on autopilot. AI Watchdog monitors every link 24/7. ABC triangular method keeps your profile clean.</p>
+        <div class="space-y-3 text-sm text-gray-300">
+          <div class="flex items-start gap-3"><div class="w-5 h-5 rounded-full bg-[#3ECF8E]/15 flex items-center justify-center text-[#3ECF8E] text-xs mt-0.5">+</div><span>4.9/5 rating from 1,783 customers</span></div>
+          <div class="flex items-start gap-3"><div class="w-5 h-5 rounded-full bg-[#3ECF8E]/15 flex items-center justify-center text-[#3ECF8E] text-xs mt-0.5">+</div><span>White-hat exchanges (no PBN, no spam)</span></div>
+          <div class="flex items-start gap-3"><div class="w-5 h-5 rounded-full bg-[#3ECF8E]/15 flex items-center justify-center text-[#3ECF8E] text-xs mt-0.5">+</div><span>12-hour link health monitoring</span></div>
+          <div class="flex items-start gap-3"><div class="w-5 h-5 rounded-full bg-[#3ECF8E]/15 flex items-center justify-center text-[#3ECF8E] text-xs mt-0.5">+</div><span>Niche-relevance scoring + DA filters</span></div>
+        </div>
       </div>
-      <button id="submit-btn" class="submit-btn" type="submit">Sign in →</button>
-    </form>
-    <div class="alt-link">Don't have an account? <a href="/register.html">Create one</a></div>
-  </div>
-</div>
-<footer>// PositiveBacklink • <a href="/">Home</a> • <a href="/blog/">Blog</a> • <a href="/tools/">Tools</a></footer>
-<script type="module">
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-const SUPABASE_URL = "https://hsgxsxiwwkuplcedfhxq.supabase.co";
-const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || "REPLACE_WITH_YOUR_ANON_KEY";
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-const msg = document.getElementById("msg");
-const form = document.getElementById("login-form");
-const submitBtn = document.getElementById("submit-btn");
-const googleBtn = document.getElementById("google-btn");
-function showMsg(text, type) { msg.textContent = text; msg.className = "msg " + type; }
-if (SUPABASE_ANON_KEY === "REPLACE_WITH_YOUR_ANON_KEY") {
-  showMsg("Auth not configured: Supabase anon key missing. Site admin must set window.SUPABASE_ANON_KEY before sign-in works.", "info");
-  submitBtn.disabled = true; googleBtn.disabled = true;
-}
-supabase.auth.getSession().then(({ data }) => { if (data.session) window.location.href = "/dashboard.html"; });
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  submitBtn.disabled = true; submitBtn.textContent = "Signing in...";
-  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-  if (error) { showMsg(error.message, "error"); submitBtn.disabled = false; submitBtn.textContent = "Sign in →"; return; }
-  showMsg("Success! Redirecting...", "success");
-  setTimeout(() => { window.location.href = "/dashboard.html"; }, 800);
-});
-googleBtn.addEventListener("click", async () => {
-  const { error } = await supabase.auth.signInWithOAuth({ provider: "google", options: { redirectTo: window.location.origin + "/dashboard.html" } });
-  if (error) showMsg(error.message, "error");
-});
-</script>
+    </aside>
+  </main>
+  <script src="/assets/auth.js" defer></script>
 </body>
 </html>

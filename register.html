@@ -1,91 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Create Account - PositiveBacklink</title>
-<meta name="description" content="Create your free PositiveBacklink account and start exchanging high-quality backlinks with the ABC triangular method and 12-hour AI Watchdog monitoring." />
-<meta name="robots" content="noindex,nofollow" />
-<link rel="canonical" href="https://www.positivebacklink.com/register.html" />
-<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
-<link rel="manifest" href="/manifest.webmanifest" />
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e5e5e5;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
-nav{background:#111;border-bottom:1px solid #222;padding:16px 24px}
-.nav-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
-.logo{color:#3ECF8E;font-weight:700;font-size:18px;text-decoration:none}
-.nav-links a{color:#a1a1a1;text-decoration:none;margin-left:24px;font-size:14px}
-.nav-links a:hover{color:#3ECF8E}
-.main{flex:1;display:flex;align-items:center;justify-content:center;padding:32px 16px}
-.card{background:#111;border:1px solid #222;border-radius:12px;padding:36px;width:100%;max-width:440px}
-h1{font-size:26px;color:#fff;font-weight:700;margin-bottom:8px}
-.subtitle{color:#a1a1a1;font-size:14px;margin-bottom:28px}
-.field{margin-bottom:18px}
-.field label{display:block;color:#c5c5c5;font-size:13px;margin-bottom:6px;font-family:'JetBrains Mono',monospace}
-.field input{width:100%;background:#0d0d0d;color:#e5e5e5;border:1px solid #222;border-radius:6px;padding:11px 14px;font-size:14px}
-.field input:focus{outline:none;border-color:#3ECF8E}
-.password-hint{font-size:11px;color:#666;margin-top:4px}
-.password-strength{height:4px;background:#222;border-radius:2px;margin-top:6px;overflow:hidden}
-.password-strength-bar{height:100%;width:0;transition:width 0.2s,background 0.2s}
-.checkbox{display:flex;align-items:flex-start;gap:10px;margin-bottom:18px;font-size:13px;color:#c5c5c5}
-.checkbox input{margin-top:3px;cursor:pointer;accent-color:#3ECF8E}
-.checkbox label{cursor:pointer;line-height:1.5}
-.checkbox a{color:#3ECF8E;text-decoration:none}
-.btn{width:100%;background:#3ECF8E;color:#0a0a0a;border:none;padding:13px;border-radius:6px;font-weight:600;cursor:pointer;font-size:15px}
-.btn:hover:not(:disabled){background:#2dd4a0}
-.btn:disabled{background:#1a3d2e;color:#666;cursor:not-allowed}
-.divider{display:flex;align-items:center;margin:20px 0;color:#444;font-size:12px;text-transform:uppercase;letter-spacing:0.05em}
-.divider::before,.divider::after{content:'';flex:1;height:1px;background:#222}
-.divider span{padding:0 14px}
-.btn-google{width:100%;background:transparent;color:#e5e5e5;border:1px solid #333;padding:11px;border-radius:6px;font-weight:500;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;gap:10px}
-.btn-google:hover{border-color:#3ECF8E}
-.alert{padding:12px 14px;border-radius:6px;margin-bottom:18px;font-size:13px;display:none}
-.alert.show{display:block}
-.alert-error{background:#2a0a0a;border:1px solid #ff5555;color:#ff8888}
-.alert-success{background:#0d2520;border:1px solid #3ECF8E;color:#3ECF8E}
-.footer-text{text-align:center;color:#666;font-size:13px;margin-top:24px}
-.footer-text a{color:#3ECF8E;text-decoration:none}
-</style>
-
-<script src="/assets/error-logger.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account - PositiveBacklink</title>
+  <meta name="description" content="Create your PositiveBacklink account and start exchanging high-DA backlinks." />
+  <link rel="canonical" href="https://www.positivebacklink.com/register" />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <meta name="theme-color" content="#1c1c1c" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/megamenu.css" />
+  <style>
+    body { background: #0e0e0e; color: #e4e4e4; font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif; }
+    .auth-card { background: #161616; border: 1px solid #2a2a2a; }
+    .auth-input { background: #0e0e0e; border: 1px solid #2a2a2a; transition: border-color .15s; }
+    .auth-input:focus { outline: none; border-color: #3ECF8E; }
+    .auth-btn-primary { background: #3ECF8E; color: #000; transition: background .15s; }
+    .auth-btn-primary:hover:not(:disabled) { background: #34b87a; }
+    .auth-btn-primary:disabled { opacity: .55; cursor: not-allowed; }
+    .auth-btn-oauth { background: #1c1c1c; border: 1px solid #2e2e2e; }
+    .auth-btn-oauth:hover { border-color: #3ECF8E; background: #1f1f1f; }
+    .auth-divider { display: flex; align-items: center; gap: 12px; color: #6a6a6a; font-size: 12px; }
+    .auth-divider::before, .auth-divider::after { content: ""; flex: 1; height: 1px; background: #2a2a2a; }
+    .auth-msg { padding: 10px 12px; border-radius: 6px; font-size: 13px; margin-top: 12px; }
+    .auth-msg.error { background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.3); color: #fca5a5; }
+    .auth-msg.success { background: rgba(62,207,142,.08); border: 1px solid rgba(62,207,142,.3); color: #86efac; }
+    .auth-side { background: radial-gradient(ellipse at top left, rgba(62,207,142,.15), transparent 50%), #0e0e0e; }
+  </style>
+  <script src="/assets/error-logger.js" defer></script>
 </head>
-<body>
-<nav><div class="nav-inner"><a href="/" class="logo">PositiveBacklink</a><div class="nav-links"><a href="/pricing.html">Pricing</a><a href="/login.html">Sign in</a></div></div></nav>
-<div class="main"><div class="card">
-<h1>Create your account</h1>
-<p class="subtitle">Start exchanging high-quality backlinks in under 2 minutes.</p>
-<div id="alertSuccess" class="alert alert-success"></div>
-<div id="alertError" class="alert alert-error"></div>
-<button type="button" class="btn-google" id="googleBtn">
-<svg width="18" height="18" viewBox="0 0 18 18"><path d="M17.64 9.205c0-.639-.057-1.252-.164-1.841H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
-Continue with Google
-</button>
-<div class="divider"><span>or with email</span></div>
-<form id="registerForm">
-<div class="field"><label for="email">Email</label><input type="email" id="email" required autocomplete="email" placeholder="you@example.com" /></div>
-<div class="field"><label for="password">Password</label><input type="password" id="password" required minlength="8" autocomplete="new-password" placeholder="At least 8 characters" />
-<div class="password-strength"><div class="password-strength-bar" id="strengthBar"></div></div>
-<div class="password-hint" id="passwordHint">Min 8 chars. Mix letters, numbers and symbols.</div></div>
-<div class="checkbox"><input type="checkbox" id="terms" required /><label for="terms">I agree to the <a href="/terms.html" target="_blank">Terms</a> and <a href="/privacy.html" target="_blank">Privacy Policy</a>.</label></div>
-<button type="submit" class="btn" id="submitBtn">Create account</button>
-</form>
-<div class="footer-text">Already have an account? <a href="/login.html">Sign in</a></div>
-</div></div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/dist/umd/supabase.min.js"></script>
-<script>
-(function(){
-  const SUPABASE_URL='https://hsgxsxiwwkuplcedfhxq.supabase.co';
-  const SUPABASE_ANON_KEY=window.SUPABASE_ANON_KEY||'REPLACE_WITH_YOUR_ANON_KEY';
-  if (SUPABASE_ANON_KEY==='REPLACE_WITH_YOUR_ANON_KEY'){ const e=document.getElementById('alertError'); e.textContent='Configuration error: Supabase anon key not set.'; e.classList.add('show'); }
-  const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
-  sb.auth.getSession().then(({data})=>{ if(data.session) window.location.href='/dashboard.html'; });
-  const pw=document.getElementById('password'),bar=document.getElementById('strengthBar'),hint=document.getElementById('passwordHint');
-  pw.addEventListener('input',()=>{ const v=pw.value; let s=0; if(v.length>=8)s++; if(v.length>=12)s++; if(/[A-Z]/.test(v)&&/[a-z]/.test(v))s++; if(/\d/.test(v))s++; if(/[^\w\s]/.test(v))s++; const w=['0','20','40','60','80','100'],c=['#222','#ff5555','#ffaa00','#ffaa00','#3ECF8E','#3ECF8E'],l=['','Very weak','Weak','Fair','Good','Strong']; bar.style.width=w[s]+'%'; bar.style.background=c[s]; hint.textContent=v.length?l[s]+' password':'Min 8 chars. Mix letters, numbers and symbols.'; });
-  function err(m){ const e=document.getElementById('alertError'); e.textContent=m; e.classList.add('show'); document.getElementById('alertSuccess').classList.remove('show'); }
-  function ok(m){ const e=document.getElementById('alertSuccess'); e.textContent=m; e.classList.add('show'); document.getElementById('alertError').classList.remove('show'); }
-  document.getElementById('registerForm').addEventListener('submit',async function(e){ e.preventDefault(); const em=document.getElementById('email').value.trim(),p=document.getElementById('password').value; if(!document.getElementById('terms').checked){err('You must agree to the Terms.');return;} if(p.length<8){err('Password must be at least 8 characters.');return;} const b=document.getElementById('submitBtn'); b.disabled=true; b.textContent='Creating account...'; try{ const {data,error}=await sb.auth.signUp({email:em,password:p,options:{emailRedirectTo:window.location.origin+'/verify-email.html'}}); if(error){err(error.message);b.disabled=false;b.textContent='Create account';return;} if(data.user&&!data.session){ ok('Account created! Check your email to confirm.'); setTimeout(()=>{ window.location.href='/verify-email.html?email='+encodeURIComponent(em); },2000); } else if(data.session){ ok('Account created! Redirecting...'); setTimeout(()=>{ window.location.href='/dashboard.html'; },1000); } }catch(x){ err('Network error: '+x.message); b.disabled=false; b.textContent='Create account'; } });
-  document.getElementById('googleBtn').addEventListener('click',async()=>{ try{ const {error}=await sb.auth.signInWithOAuth({provider:'google',options:{redirectTo:window.location.origin+'/dashboard.html'}}); if(error)err(error.message); }catch(x){err('OAuth error: '+x.message);} });
-})();
-</script>
-</body></html>
+<body class="min-h-screen">
+  <nav class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-[#0e0e0e]/85 border-b border-[#2a2a2a]">
+    <div class="max-w-7xl mx-auto flex items-center justify-between h-16 px-6">
+      <a href="/" class="flex items-center gap-2">
+        <svg width="26" height="26" viewBox="0 0 109 113" fill="none"><path d="M63.7076 110.284C60.8481 113.885 55.0502 111.912 54.9813 107.314L53.9738 40.0627L99.1935 40.0627C107.384 40.0627 111.952 49.5228 106.859 55.9374L63.7076 110.284Z" fill="#3ECF8E"/><path d="M45.317 2.07103C48.1765 -1.53037 53.9745 0.442937 54.0434 5.041L54.4849 72.2922H9.83113C1.64038 72.2922 -2.92775 62.8321 2.1655 56.4175L45.317 2.07103Z" fill="#3ECF8E" fill-opacity="0.5"/></svg>
+        <span class="text-[17px] font-medium">positivebacklink</span>
+      </a>
+      <div class="text-sm text-gray-400">Already have an account? <a href="/login" class="text-[#3ECF8E] hover:underline ml-1">Sign in</a></div>
+    </div>
+  </nav>
+  <!-- Layout: form on left, marketing side on right -->
+  <main class="pt-16 grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+    <section class="flex items-center justify-center p-6 lg:p-10">
+      <div class="w-full max-w-md">
+        <h1 class="text-2xl font-semibold mb-2">Create your account</h1>
+        <p class="text-sm text-gray-400 mb-8">Start exchanging backlinks in under 2 minutes.</p>
+        <div class="space-y-3 mb-6">
+          <button id="oauth-google" type="button" class="auth-btn-oauth w-full flex items-center justify-center gap-3 px-4 py-3 rounded-md text-sm font-medium">
+            <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/><path fill="#FBBC05" d="M3.964 10.71c-.18-.54-.282-1.117-.282-1.71s.102-1.17.282-1.71V4.958H.957C.347 6.173 0 7.548 0 9s.348 2.827.957 4.042l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/></svg>
+            Sign up with Google
+          </button>
+        </div>
+        <div class="auth-divider mb-6">OR SIGN UP WITH EMAIL</div>
+        <form id="register-form" class="space-y-4">
+          <div>
+            <label class="text-xs text-gray-400 uppercase tracking-wider">Email</label>
+            <input type="email" name="email" required autocomplete="email" class="auth-input w-full mt-1 px-3 py-2.5 rounded-md text-sm" placeholder="you@example.com">
+          </div>
+          <div>
+            <label class="text-xs text-gray-400 uppercase tracking-wider">Password</label>
+            <input type="password" name="password" required minlength="8" autocomplete="new-password" class="auth-input w-full mt-1 px-3 py-2.5 rounded-md text-sm" placeholder="At least 8 characters">
+            <div id="pw-strength" class="mt-2 h-1 rounded bg-[#2a2a2a] overflow-hidden"><div id="pw-strength-bar" class="h-full transition-all" style="width:0%;background:#ef4444"></div></div>
+            <p id="pw-strength-text" class="text-[11px] text-gray-500 mt-1">Use 8+ characters with a mix of letters, numbers and symbols.</p>
+          </div>
+          <label class="flex items-start gap-2 text-xs text-gray-400">
+            <input type="checkbox" name="terms" required class="mt-0.5 accent-[#3ECF8E]">
+            <span>I agree to the <a href="/terms" class="text-[#3ECF8E] hover:underline">Terms</a> and <a href="/privacy" class="text-[#3ECF8E] hover:underline">Privacy Policy</a>.</span>
+          </label>
+          <button type="submit" id="register-submit" class="auth-btn-primary w-full px-4 py-2.5 rounded-md font-medium text-sm">Create account</button>
+        </form>
+        <div id="auth-msg" class="auth-msg hidden"></div>
+        <p class="text-sm text-gray-400 mt-8 text-center">Already have an account? <a href="/login" class="text-[#3ECF8E] hover:underline">Sign in</a></p>
+        <script>
+          (function() {
+            function showMsg(text, type) { var el = document.getElementById("auth-msg"); el.textContent = text; el.className = "auth-msg " + (type || "error"); el.classList.remove("hidden"); }
+            function scorePw(pw) {
+              var s = 0;
+              if (pw.length >= 8) s++; if (pw.length >= 12) s++;
+              if (/[A-Z]/.test(pw)) s++; if (/[0-9]/.test(pw)) s++;
+              if (/[^A-Za-z0-9]/.test(pw)) s++;
+              return Math.min(s, 4);
+            }
+            document.addEventListener("DOMContentLoaded", function() {
+              if (!window.pbAuth) { setTimeout(arguments.callee, 100); return; }
+              window.pbAuth.getSession().then(function(s) { if (s) location.href = "/dashboard"; });
+              var pwInput = document.querySelector("[name=password]");
+              var bar = document.getElementById("pw-strength-bar");
+              var text = document.getElementById("pw-strength-text");
+              var labels = ["Very weak", "Weak", "OK", "Good", "Strong"];
+              var colors = ["#ef4444", "#f59e0b", "#eab308", "#84cc16", "#3ECF8E"];
+              pwInput.addEventListener("input", function() {
+                var s = scorePw(pwInput.value);
+                bar.style.width = ((s/4)*100) + "%";
+                bar.style.background = colors[s];
+                text.textContent = labels[s];
+              });
+              document.getElementById("register-form").addEventListener("submit", async function(e) {
+                e.preventDefault();
+                var btn = document.getElementById("register-submit");
+                btn.disabled = true; btn.textContent = "Creating account...";
+                var data = new FormData(e.target);
+                var res = await window.pbAuth.signUp(data.get("email"), data.get("password"));
+                if (res.error) { showMsg(res.error.message, "error"); btn.disabled = false; btn.textContent = "Create account"; }
+                else { showMsg("Account created! Check your email to verify.", "success"); setTimeout(function() { location.href = "/verify-email"; }, 1200); }
+              });
+              document.getElementById("oauth-google").addEventListener("click", async function() {
+                var res = await window.pbAuth.signInWithGoogle();
+                if (res.error) showMsg(res.error.message, "error");
+              });
+            });
+          })();
+        </script>
+      </div>
+    </section>
+    <aside class="auth-side hidden lg:flex flex-col justify-center p-12">
+      <div class="max-w-md">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3ECF8E]/10 border border-[#3ECF8E]/20 text-xs text-[#3ECF8E] mb-6">// PositiveBacklink</div>
+        <h2 class="text-3xl font-bold leading-tight mb-4">Backlinks that bring you <span class="text-[#3ECF8E]">real buyers.</span></h2>
+        <p class="text-gray-400 mb-8">High-DA, niche-relevant partner exchanges on autopilot. AI Watchdog monitors every link 24/7. ABC triangular method keeps your profile clean.</p>
+        <div class="space-y-3 text-sm text-gray-300">
+          <div class="flex items-start gap-3"><div class="w-5 h-5 rounded-full bg-[#3ECF8E]/15 flex items-center justify-center text-[#3ECF8E] text-xs mt-0.5">+</div><span>4.9/5 rating from 1,783 customers</span></div>
+          <div class="flex items-start gap-3"><div class="w-5 h-5 rounded-full bg-[#3ECF8E]/15 flex items-center justify-center text-[#3ECF8E] text-xs mt-0.5">+</div><span>White-hat exchanges (no PBN, no spam)</span></div>
+          <div class="flex items-start gap-3"><div class="w-5 h-5 rounded-full bg-[#3ECF8E]/15 flex items-center justify-center text-[#3ECF8E] text-xs mt-0.5">+</div><span>12-hour link health monitoring</span></div>
+          <div class="flex items-start gap-3"><div class="w-5 h-5 rounded-full bg-[#3ECF8E]/15 flex items-center justify-center text-[#3ECF8E] text-xs mt-0.5">+</div><span>Niche-relevance scoring + DA filters</span></div>
+        </div>
+      </div>
+    </aside>
+  </main>
+  <script src="/assets/auth.js" defer></script>
+</body>
+</html>
