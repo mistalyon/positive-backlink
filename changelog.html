@@ -1,4 +1,20 @@
                                     <div class="changelog-entry">
+      <div class="changelog-version">v1.43.0 <span class="changelog-date">2026-05-12</span></div>
+      <div class="changelog-body">
+        <strong>Faz 8 — SEO Content Sprint.</strong> Published 3 long-form technical SEO blog posts (link velocity, anchor distribution, link reclamation), shipped 2 new in-browser tools (anchor text analyzer + backlink velocity calculator), added 2 glossary entries (link velocity, anchor text), and 1 new SaaS case study (DR 12 → 47).
+        <ul>
+        <li>Blog: <code>/blog/link-velocity-explained.html</code>, <code>/blog/anchor-text-distribution-2026.html</code>, <code>/blog/link-reclamation-guide.html</code>.</li>
+        <li>Tools: <code>/tools/anchor-text-analyzer.html</code> (5-bucket classifier, browser-only), <code>/tools/backlink-velocity-calculator.html</code> (piecewise age-tier formula).</li>
+        <li>Learn: <code>/learn/link-velocity.html</code>, <code>/learn/anchor-text.html</code> with DefinedTerm schema and cross-links to blog deep dives.</li>
+        <li>Case study: <code>/case-studies/saas-dr12-to-dr47.html</code> with 9-month anchor profile transition table.</li>
+        <li>Hubs updated: blog/index, learn/index, case-studies/index.</li>
+        <li>Sitemap expanded 82 → 90 URLs. Feed.xml expanded 16 → 19 items.</li>
+        <li>All new content carries Article/WebApplication/DefinedTerm Schema.org and breadcrumbs.</li>
+        </ul>
+      </div>
+    </div>
+
+                                    <div class="changelog-entry">
       <div class="changelog-version">v1.42.0 <span class="changelog-date">2026-05-12</span></div>
       <div class="changelog-body">
         <strong>Faz 7 \u2014 Email & Notifications.</strong> Launched <code>/notifications.html</code> (noindex) in-app inbox with type filter (exchange_request/exchange_accepted/exchange_live/watchdog_alert/payment_receipt/system), read/unread filter, mark-read on click, mark-all-read button, severity-coded icons, and graceful fallback if the notifications table is not yet migrated. Created <code>/api/send-email.js</code> Vercel serverless function with dual Resend/Postmark adapter (env-driven) and 4 transactional templates: welcome, exchange_request, watchdog_alert, payment_receipt (text + HTML bodies inline). Added <code>sql/notifications-schema.sql</code> migration creating notifications + email_preferences tables with RLS policies and an <code>insert_notification</code> SECURITY DEFINER helper for server-side use. Patched dashboard with notification bell + unread-count badge in nav (auto-polls), and a new Email Preferences subsection in Settings tab with 4 auto-save toggles (exchange requests, watchdog alerts, payment receipts, newsletter). Sitemap unchanged (82 URLs). 3/10 phases remaining \u2192 Faz 8 next: SEO content sprint (Blog #18-22, Tool #16-18, expanded learn glossary, more case studies, vs-compare pages).
